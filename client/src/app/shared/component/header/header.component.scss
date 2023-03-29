@@ -1,0 +1,66 @@
+@import "src/assets/styles/color";
+@import "src/assets/styles/typography";
+
+header{
+    display: flex;
+    height: 88px;
+    justify-content: center;
+    position: relative;
+    z-index: 9999;
+    section{
+        display: grid;
+        grid-template-columns: 1fr 600px 1fr;
+        .logo{
+        }
+        nav{
+            li{
+                display: flex;
+                align-items: center;
+                margin-left: 24px;
+                margin-right: 24px;
+                list-style: none;
+                height: 100%;
+                @include body2;
+                font-weight: 500;
+                a{
+                    position: relative;
+                    color: $color-text-tint;
+                    &:after{
+                        display: flex;
+                        position: absolute;
+                        top: 40px;
+                        left: 0;
+                        right: 0;
+                        margin-right: auto;
+                        margin-left: auto;
+                        content: "";
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 3px;
+                        background-color: $color-stroke;
+                        transition: all ease-in-out 0.3s;
+                        opacity: 0;
+                    }
+                    &:hover{
+                        color: $color-text;
+                        &:after{
+                            top: 30px;
+                            opacity: 1;
+                        }
+                    }
+                    &.active{
+                        position: relative;
+                        color: $color-text !important;
+                        &:after{
+                            background-color: $color-primary;
+                            top: 30px;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+        .auth{
+        }
+    }
+}

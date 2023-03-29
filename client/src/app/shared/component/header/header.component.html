@@ -1,0 +1,20 @@
+<header>
+    <section class="laptop">
+        <div class="logo flex align-ctr">
+            <a routerLink="/" class="flex"><img src="assets/images/logo.svg" alt="logo" /></a>
+        </div>
+        <nav class="flex align-ctr justify-ctr">
+            <ul class="flex height-full padding-0 margin-0">
+                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">صفحه اصلی</a></li>
+                <li><a routerLink="/portfolio" routerLinkActive="active">نمونه کارها</a></li>
+                <li><a routerLink="/order" routerLinkActive="active">سفارش کار</a></li>
+                <li><a routerLink="/about" routerLinkActive="active">درباره من</a></li>
+                <li><a routerLink="/contact" routerLinkActive="active">تماس با من</a></li>
+            </ul>
+        </nav>
+        <div class="flex align-ctr justify-end">
+            <app-button type="ghost" color="secondary" click="/login">ورود</app-button>
+            <app-button type="filled" color="secondary" click="/register" class="margin-right-16">عضویت</app-button>
+        </div>
+    </section>
+</header>
