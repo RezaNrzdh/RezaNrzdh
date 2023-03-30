@@ -1,3 +1,26 @@
-<section class="flex justify-ctr">
+<section class="flex column justify-ctr">
     <div class="slider"></div>
+    <div class="slogan column align-ctr">
+        <span class="title">طراحی و پیاده سازی</span>
+        <span class="title">مدرن، زیبا و حرفه ای</span>
+        <span class="subtitle margin-top-16">
+            با 6 سال سابقه کار حرفه ای در زمینه طراحی محصول و پیاده سازی صفحات وب آماده همکاری هستم.
+            <br/>بهتره با من تماس بگیرید
+        </span>
+        <div class="action flex align-ctr margin-top-32">
+            <app-button type="filled" color="secondary">سفارش بده</app-button>
+            <a class="flex align-ctr margin-right-24">
+                <span class="margin-left-8">با من بیشتر آشنا شو</span>
+                <img src="assets/images/arrow-left.svg" alt="arrow-left" />
+            </a>
+        </div>
+    </div>
+    <div class="skills crt-monitor grid margin-bot-32">
+        <div *ngFor="let i of [1,2,3,4,5,6,7,8]" class="skill radius-16 shadow-24">
+            <div class="skill-logo flex radius-16"></div>
+            <label class="skill-title margin-top-32">تسلط کامل به Figma</label>
+            <span class="skill-desc margin-top-4">توانایی کامل در طراحی صفحات وب و موبایل بر پایه دیزاین سیستم</span>
+            <a class="margin-top-auto">اطلاعات بیشتر</a>
+        </div>
+    </div>
 </section>
