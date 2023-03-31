@@ -33,6 +33,25 @@
 .padding-bot-32   { padding-bottom: 32px }
 .padding-right-32 { padding-right: 32px }
 .padding-left-32  { padding-left: 32px }
+.padding-40       { padding: 40px }
+.padding-top-40   { padding-top: 40px }
+.padding-bot-40   { padding-bottom: 40px }
+.padding-right-40 { padding-right: 40px }
+.padding-left-40  { padding-left: 40px }
+.padding-48       { padding: 48px }
+.padding-top-48   { padding-top: 48px }
+.padding-bot-48   { padding-bottom: 48px }
+.padding-right-48 { padding-right: 48px }
+.padding-left-48  { padding-left: 48px }
+.padding-56       { padding: 56px }
+.padding-top-56   { padding-top: 56px }
+.padding-bot-56   { padding-bottom: 56px }
+.padding-right-56 { padding-right: 56px }
+.padding-left-56  { padding-left: 56px }
+.padding-64       { padding: 64px }
+.padding-top-64   { padding-top: 64px }
+.padding-bot-64   { padding-bottom: 64px }
+.padding-right-64 { padding-right: 64px }
 
 .margin-0       { margin: 0 }
 .margin-top-0   { margin-top: 0 }
@@ -69,6 +88,26 @@
 .margin-bot-32   { margin-bottom: 32px }
 .margin-right-32 { margin-right: 32px }
 .margin-left-32  { margin-left: 32px }
+.margin-40       { margin: 40px }
+.margin-top-40   { margin-top: 40px }
+.margin-bot-40   { margin-bottom: 40px }
+.margin-right-40 { margin-right: 40px }
+.margin-left-40  { margin-left: 40px }
+.margin-48       { margin: 48px }
+.margin-top-48   { margin-top: 48px }
+.margin-bot-48   { margin-bottom: 48px }
+.margin-right-48 { margin-right: 48px }
+.margin-left-48  { margin-left: 48px }
+.margin-56       { margin: 56px }
+.margin-top-56   { margin-top: 56px }
+.margin-bot-56   { margin-bottom: 56px }
+.margin-right-56 { margin-right: 56px }
+.margin-left-56  { margin-left: 56px }
+.margin-64       { margin: 64px }
+.margin-top-64   { margin-top: 64px }
+.margin-bot-64   { margin-bottom: 64px }
+.margin-right-64 { margin-right: 64px }
+.margin-left-64  { margin-left: 64px }
 
 .margin-auto      { margin: auto }
 .margin-top-auto  { margin-top: auto }
@@ -78,6 +117,16 @@
 
 .margin-ctr { margin-left: auto; margin-right: auto }
 .margin-mid { margin-top: auto; margin-bottom: auto }
+
+.headline-1 { font-size: 2rem; font-weight: 500 }
+.headline-2 { font-size: 1.875rem; font-weight: 500 }
+.headline-3 { font-size: 1.75rem; font-weight: 500 }
+.headline-4 { font-size: 1.5rem; font-weight: 500 }
+.headline-5 { font-size: 1.25rem; font-weight: 500 }
+.headline-6 { font-size: 1rem; font-weight: 500 }
+.body-1     { font-size: 1rem }
+.body-2     { font-size: 0.875rem }
+.caption    { font-size: 0.75rem }
 
 .shadow-2  { box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
 .shadow-4  { box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
@@ -147,6 +196,8 @@
 .opacity-80  { opacity: 0.8 }
 .opacity-90  { opacity: 0.9 }
 .opacity-100 { opacity: 1 }
+
+.text-ctr { text-align: center };
 
 //TEST
 .red    { background-color: indianred };

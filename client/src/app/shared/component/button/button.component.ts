@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 
 @Component({
@@ -7,9 +7,11 @@ import {Router} from "@angular/router";
     styleUrls: ["button.component.scss"]
 })
 export class ButtonComponent implements OnInit {
-    @Input() type: "filled" | "outlined" | "ghost";
+    @Input() mode: "filled" | "outlined" | "ghost" | "submit";
+    @Input() action: "submit" | "button" | "reset";
     @Input() color: "primary" | "secondary" | "success" | "danger" | "info";
     @Input() click: any;
+    @Input() disabled: any = "";
 
     constructor(private router: Router) {
     }

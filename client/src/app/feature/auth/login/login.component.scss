@@ -1,3 +1,6 @@
+@import "src/assets/styles/color";
+@import "src/assets/styles/typography";
+
 section{
     &:before{
         display: flex;
@@ -13,7 +16,15 @@ section{
     }
     .login{
         width: 400px;
-        height: 525px;
         background-color: white;
+        > label {
+            font-size: 24px;
+            font-weight: 700;
+            color: $color-text;
+        }
+        > span {
+            @include body2;
+            color: $color-text-tint;
+        }
     }
 }

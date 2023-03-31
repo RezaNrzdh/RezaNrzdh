@@ -5,6 +5,7 @@
     button{
         @include body2;
         border-radius: 20px;
+        width: 100%;
         height: 40px;
         padding: 0 16px;
         transition: all ease-in-out 0.3s;
@@ -13,7 +14,7 @@
 }
 
 :host{
-    &[type="filled"]{
+    &[mode="filled"]{
         button{
             color: $color-contrast;
             border: none;
@@ -61,7 +62,7 @@
 }
 
 :host{
-    &[type="outlined"]{
+    &[mode="outlined"]{
         button{
             color: $color-text;
             background-color: transparent;
@@ -116,7 +117,7 @@
 }
 
 :host{
-    &[type="ghost"]{
+    &[mode="ghost"]{
         button{
             color: $color-text;
             border: none;

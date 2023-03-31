@@ -1,29 +1,78 @@
+//Primary Color
 $color-primary: #F05756;
 $color-primary-tint: #FFF1F1;
 $color-primary-shade: #B74141;
+.color-primary       { color: #F05756 }
+.color-primary-tint  { color: #FFF1F1 }
+.color-primary-shade { color: #B74141 }
+.background-primary       { background-color: #F05756 }
+.background-primary-tint  { background-color: #FFF1F1 }
+.background-primary-shade { background-color: #B74141 }
 
+//Secondary Color
 $color-secondary: #418FFB;
 $color-secondary-tint: #F4F7FF;
 $color-secondary-shade: #3A73C2;
+.color-secondary       { color: #418FFB }
+.color-secondary-tint  { color: #F4F7FF }
+.color-secondary-shade { color: #3A73C2 }
+.background-secondary       { background-color: #418FFB }
+.background-secondary-tint  { background-color: #F4F7FF }
+.background-secondary-shade { background-color: #3A73C2 }
 
+//Success Color
 $color-success: #71CE9A;
 $color-success-tint: #EEF8F2;
+.color-success      { color: #71CE9A }
+.color-success-tint { color: #EEF8F2 }
+.background-success      { background-color: #71CE9A }
+.background-success-tint { background-color: #EEF8F2 }
 
+//Danger Color
 $color-danger: #FE764B;
 $color-danger-tint: #F4F7FF;
+.color-danger      { color: #FE764B }
+.color-danger-tint { color: #F4F7FF }
+.background-danger      { background-color: #FE764B }
+.background-danger-tint { background-color: #F4F7FF }
 
+//Info Color
 $color-info: #3F8FFF;
 $color-info-tint: #F4F7FF;
+.color-info      { color: #3F8FFF }
+.color-info-tint { color: #F4F7FF }
+.background-info      { background-color: #3F8FFF }
+.background-info-tint { background-color: #F4F7FF }
 
+//Layout Color
 $color-contrast: white;
+$color-background: white;
+$color-surface: white;
+.color-contrast { color: white }
+.background-contrast { background-color: white }
+.color-background { color: white }
+.background-background { background-color: white }
+.color-surface { color: white }
+.background-surface { background-color: white }
 
-//$color-background: white;
-
-//$color-surface: white;
-
+//Stroke Color
 $color-stroke: #DEDEDE;
 $color-stroke-tint: #F1F1F1;
+$color-stroke-lighter: #F7F7F7;
 $color-stroke-shade: #C4C4C4;
+.color-stroke         { color: #DEDEDE }
+.color-stroke-tint    { color: #F1F1F1 }
+.color-stroke-lighter { color: #F7F7F7 }
+.color-stroke-shade   { color: #C4C4C4 }
+.background-stroke         { background-color: #DEDEDE }
+.background-stroke-tint    { background-color: #F1F1F1 }
+.background-stroke-lighter { background-color: #F7F7F7 }
+.background-stroke-shade   { background-color: #C4C4C4 }
 
+//Text Color
 $color-text: #383E43;
 $color-text-tint: #848B90;
+.color-text      { color: #383E43 }
+.color-text-tint { color: #848B90 }
+.background-text      { background-color: #383E43 }
+.background-text-tint { background-color: #848B90 }

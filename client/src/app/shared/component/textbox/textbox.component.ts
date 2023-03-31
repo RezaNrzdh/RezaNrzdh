@@ -16,8 +16,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 export class TextboxComponent implements ControlValueAccessor {
 
     @Input() title: string;
-    @Input() type: "text" | "password" | "submit" | "email" | "tel";
+    @Input() type: "text" | "password" | "email" | "tel";
     @Input() name: string;
+    @Input() placeholder: string = "";
     @Input() formGroup: any = "";
 
     value: string = "";

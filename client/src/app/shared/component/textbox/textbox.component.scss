@@ -4,6 +4,11 @@
 :host{
     display: flex;
     flex-direction: column;
+    &.ng-invalid.ng-touched{
+        input{
+            border: 1px solid $color-danger;
+        }
+    }
     label{
         @include body2;
         color: $color-text;
@@ -12,7 +17,8 @@
         height: 40px;
         border: none;
         outline: none;
-        background-color: $color-stroke-tint;
+        font-family: VazirMatnFont;
+        background-color: $color-stroke-lighter;
     }
     span{
         @include caption;
