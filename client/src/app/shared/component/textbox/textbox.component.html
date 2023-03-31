@@ -1,0 +1,11 @@
+<label class="flex margin-bot-4">{{ title }}</label>
+<input class="padding-16 borderbox radius-8"
+       #input
+       type="{{ type }}"
+       (input)="onChange(input.value)"
+       (blur)="onTouched()"
+       [value]="value"
+       name="{{ name }}"
+       required
+       ngModel />
+<span *ngIf="formGroup.invalid && formGroup.touched" class="margin-top-4 margin-right-8">Alert_Message</span>

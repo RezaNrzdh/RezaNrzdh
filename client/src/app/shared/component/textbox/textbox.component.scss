@@ -1,0 +1,21 @@
+@import "src/assets/styles/_color.scss";
+@import "src/assets/styles/typography";
+
+:host{
+    display: flex;
+    flex-direction: column;
+    label{
+        @include body2;
+        color: $color-text;
+    }
+    input{
+        height: 40px;
+        border: none;
+        outline: none;
+        background-color: $color-stroke-tint;
+    }
+    span{
+        @include caption;
+        color: $color-danger;
+    }
+}
