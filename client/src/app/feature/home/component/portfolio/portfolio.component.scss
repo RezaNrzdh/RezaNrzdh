@@ -1,0 +1,57 @@
+@import "src/assets/styles/color";
+@import "src/assets/styles/typography";
+
+
+:host{
+    .portfolio{
+        h2{
+            &:after{
+                display: flex;
+                content: "";
+                width: 48px;
+                height: 4px;
+                background-color: $color-primary;
+                margin: 4px auto 0 auto;
+            }
+        }
+        .categories{
+            ul li {
+                list-style: none;
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+        }
+        .samples{
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-column-gap: 32px;
+            grid-row-gap: 32px;
+            > div {
+                height: 320px;
+                img {
+                    width: 100%;
+                    height: 234px;
+                    object-fit: cover;
+                    object-position: center center;
+                }
+                .actions{
+                    .show img, .like img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+        .nextBtn{
+            &:after{
+                content: "";
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+                background-image: url("~src/assets/images/arrow-left.svg");
+            }
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}

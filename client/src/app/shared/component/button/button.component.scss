@@ -16,7 +16,7 @@
 :host{
     &[mode="filled"]{
         button{
-            color: $color-contrast;
+            color: $color-text-shade;
             border: none;
         }
         &[color="primary"]{
@@ -71,7 +71,7 @@
         &[color="primary"]{
             button{
                 &:hover{
-                    color: $color-contrast;
+                    color: $color-text-shade;
                     background-color: $color-primary;
                     border: 1px solid $color-primary;
                 }
@@ -80,7 +80,7 @@
         &[color="secondary"]{
             button{
                 &:hover{
-                    color: $color-contrast;
+                    color: $color-text-shade;
                     background-color: $color-secondary;
                     border: 1px solid $color-secondary;
                 }
@@ -89,7 +89,7 @@
         &[color="success"]{
             button{
                 &:hover {
-                    color: $color-contrast;
+                    color: $color-text-shade;
                     background-color: $color-success;
                     border: 1px solid $color-success;
                 }
@@ -98,7 +98,7 @@
         &[color="danger"]{
             button{
                 &:hover {
-                    color: $color-contrast;
+                    color: $color-text-shade;
                     background-color: $color-danger;
                     border: 1px solid $color-danger;
                 }
@@ -135,7 +135,7 @@
             button{
                 &:hover{
                     color: $color-secondary;
-                    background-color: $color-secondary-tint;
+                    background-color: $color-gray-3;
                 }
             }
         }
@@ -143,7 +143,7 @@
             button{
                 &:hover{
                     color: $color-success;
-                    background-color: $color-success-tint;
+                    background-color: $color-gray-3;
                 }
             }
         }
@@ -151,7 +151,7 @@
             button{
                 &:hover{
                     color: $color-danger;
-                    background-color: $color-danger-tint;
+                    background-color: $color-gray-3;
                 }
             }
         }
@@ -159,7 +159,7 @@
             button{
                 &:hover{
                     color: $color-info;
-                    background-color: $color-info-tint;
+                    background-color: $color-gray-3;
                 }
             }
         }

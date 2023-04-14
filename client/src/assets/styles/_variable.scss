@@ -113,7 +113,7 @@
 .margin-top-auto  { margin-top: auto }
 .margin-bot-auto  { margin-bottom: auto }
 .margin-left-auto { margin-left: auto }
-.margin-left-auto { margin-right: auto }
+.margin-right-auto { margin-right: auto }
 
 .margin-ctr { margin-left: auto; margin-right: auto }
 .margin-mid { margin-top: auto; margin-bottom: auto }
@@ -198,6 +198,8 @@
 .opacity-100 { opacity: 1 }
 
 .text-ctr { text-align: center };
+
+.hidden { overflow: hidden };
 
 //TEST
 .red    { background-color: indianred };
