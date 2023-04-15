@@ -1,9 +1,9 @@
-@import "fonts";
-@import "color";
-@import "animate";
-@import "typography";
-@import "media";
-@import "variable";
+@use "fonts";
+@use "color";
+@use "animate";
+@use "typography";
+@use "media";
+@use "variable";
 
 body, html {
     padding: 0;
@@ -11,7 +11,7 @@ body, html {
     height: 100%;
     direction: rtl;
     font-family: VazirMatnFont;
-    background-color: $color-gray-2;
+    background-color: color.$color-gray-2;
 }
 
 h1, h2, h3, h4, h5, h6, p {

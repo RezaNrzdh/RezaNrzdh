@@ -1,5 +1,5 @@
-@import "src/assets/styles/color";
-@import "src/assets/styles/typography";
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
 
 :host{
     width: 1024px;
@@ -26,7 +26,7 @@
             width: 230px;
             height: 230px;
             border-radius: 50%;
-            border: 16px solid $color-gray-1;
+            border: 16px solid color.$color-gray-1;
             box-sizing: border-box;
         }
     }

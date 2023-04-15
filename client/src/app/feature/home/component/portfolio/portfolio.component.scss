@@ -1,5 +1,5 @@
-@import "src/assets/styles/color";
-@import "src/assets/styles/typography";
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
 
 
 :host{
@@ -10,7 +10,7 @@
                 content: "";
                 width: 48px;
                 height: 4px;
-                background-color: $color-primary;
+                background-color: color.$color-primary;
                 margin: 4px auto 0 auto;
             }
         }

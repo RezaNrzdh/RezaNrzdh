@@ -1,0 +1,15 @@
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
+
+:host {
+    h2{
+        &:after{
+            display: flex;
+            content: "";
+            width: 48px;
+            height: 4px;
+            background-color: color.$color-primary;
+            margin-top: 4px;
+        }
+    }
+}

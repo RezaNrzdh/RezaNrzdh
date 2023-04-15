@@ -1,5 +1,5 @@
-@import "src/assets/styles/color";
-@import "src/assets/styles/typography";
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
 
 :host{
     &:before{
@@ -9,7 +9,7 @@
         content: "";
         width: 100%;
         height: 320px;
-        background-color: $color-gray-3;
+        background-color: color.$color-gray-3;
     }
     .experience{
         position: relative;
