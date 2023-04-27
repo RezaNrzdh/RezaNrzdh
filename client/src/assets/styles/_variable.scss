@@ -160,6 +160,10 @@
 .justify-end   { justify-content: flex-end }
 .justify-btw   { justify-content: space-between }
 
+.justify-self-ctr   { justify-self: center }
+.justify-self-start { justify-self: flex-start }
+.justify-self-end   { justify-self: flex-end }
+
 .width-full  { width: 100% }
 .height-full { height: 100% }
 .width-half  { width: 50% }

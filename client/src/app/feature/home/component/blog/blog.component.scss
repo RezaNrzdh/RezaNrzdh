@@ -2,7 +2,7 @@
 @use "src/assets/styles/typography";
 
 :host {
-    h2{
+    .blogtitle {
         &:after{
             display: flex;
             content: "";
@@ -10,6 +10,18 @@
             height: 4px;
             background-color: color.$color-primary;
             margin-top: 4px;
+        }
+    }
+    .newestArticle {
+        .date{
+            min-width: 80px;
+            height: 80px;
+            .day{
+                font-size: 48px;
+            }
+            .month{
+                bottom: 10px;
+            }
         }
     }
 }
