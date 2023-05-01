@@ -5,15 +5,14 @@
         <img src="assets/images/tosan-logo.png" alt="Tosan"/>
     </div>
     <div class="skill grid">
-        <div *ngFor="let s of [1,2,3,4]" class="flex column radius-8 borderbox background-gray-1 padding-32">
-            <span class="body-2 color-text-tint margin-bot-40">3 سال سابقه کار</span>
-            <div class="skillIcon flex">
-                <img src="assets/images/skill/angular-icon.svg" alt="angular" />
-                <img src="assets/images/skill/nodejs-icon.svg" alt="nodejs" />
-                <img src="assets/images/skill/react-icon.svg" alt="react" />
+        <div *ngFor="let i of experience" class="flex column radius-8 borderbox background-gray-1">
+            <div class="flex align-ctr padding-top-24 padding-left-32 padding-right-32 padding-bot-24">
+                <h2 class="headline-6 color-text">{{ i.title }}</h2>
+                <span class="margin-right-auto headline-4 color-secondary">{{ i.years }}</span>
+                <span class="caption color-text-tint margin-right-8">سال</span>
             </div>
-            <h2 class="headline-6 color-text margin-top-16">توسعه دهنده فرانت-اند</h2>
-            <p class="body-2 color-text-tint margin-top-8">با 6 سال سابقه کار حرفه ای در زمینه طراحی محصول و پیاده سازی صفحات وب آماده همکاری هستم.</p>
+            <img src="{{ i.img }}" />
+            <p class="body-2 color-text-tint padding-top-24 padding-right-32 padding-left-32">{{ i.desc }}</p>
         </div>
     </div>
 </div>
