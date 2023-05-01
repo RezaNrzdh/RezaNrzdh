@@ -5,10 +5,12 @@ import {ButtonComponent} from "./component/button/button.component";
 import {TextboxComponent} from "./component/textbox/textbox.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {FooterComponent} from "./component/footer/footer.component";
 
 @NgModule({
     declarations: [
         HeaderComponent,
+        FooterComponent,
         ButtonComponent,
         TextboxComponent
     ],
@@ -19,6 +21,7 @@ import {FormsModule} from "@angular/forms";
     ],
     exports: [
         HeaderComponent,
+        FooterComponent,
         ButtonComponent,
         TextboxComponent
     ]

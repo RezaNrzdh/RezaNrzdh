@@ -1,0 +1,26 @@
+footer{
+    .instagtamBtn{
+        &:before{
+            content: "";
+            width: 16px;
+            height: 16px;
+            background-image: url("~src/assets/images/instagram.svg");
+        }
+    }
+    .linkedinBtn{
+        &:before{
+            content: "";
+            width: 16px;
+            height: 16px;
+            background-image: url("~src/assets/images/linkedin.svg");
+        }
+    }
+    .githubBtn{
+        &:before{
+            content: "";
+            width: 16px;
+            height: 16px;
+            background-image: url("~src/assets/images/github.svg");
+        }
+    }
+}
