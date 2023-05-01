@@ -1,23 +1,19 @@
-<div class="blog flex column laptop">
-    <h2 class="blogtitle headline-4 color-text margin-top-56">هیچ می‌دانی؟</h2>
-    <div class="flex margin-top-40 margin-bot-56">
-        <div class="flex column width-half">
-            <img src="assets/images/blogsample.jpg" class="radius-8" alt="blogSample" />
-            <div class="Article flex margin-top-24">
-                <div class="date flex column relative align-ctr radius-8 background-gray-2">
-                    <span class="day color-secondary">23</span>
-                    <span class="month caption color-secondary absolute">اردیبهشت</span>
+<div class="blog flex column laptop padding-bot-56">
+    <div class="flex justify-btw align-ctr margin-top-56">
+        <h2 class="blogtitle headline-4 color-text">هیچ می‌دانی؟</h2>
+        <app-button mode="filled" color="secondary">مطالب بیشتر</app-button>
+    </div>
+    <div class="grid margin-top-32">
+        <div *ngFor="let i of [1,2]" class="flex">
+            <img src="assets/images/blogsample.jpg" class="radius-8" />
+            <div class="flex column margin-right-24">
+                <div>
+                    <span class="day headline-4 color-secondary margin-left-4">24</span>
+                    <span class="month caption color-text-tint"> / اردیبهشت</span>
                 </div>
-                <h2 class="headline-4 color-text margin-right-16">درآمد دلاری برای فریلنسر های تازه کار. آری یا نه؟ چطور و چگونه درآمد دلاری کسب کنیم؟</h2>
-            </div>
-        </div>
-        <div class="flex column width-half margin-right-32">
-            <div class="Article flex align-ctr">
-                <div class="date flex column relative align-ctr radius-8">
-                    <span class="day color-text-tint">23</span>
-                    <span class="month caption color-text-tint absolute">اردیبهشت</span>
-                </div>
-                <div class="body-1 color-text margin-right-16">درآمد دلاری برای فریلنسر های تازه کار. آری یا نه؟ چطور و چگونه درآمد دلاری کسب کنیم؟</div>
+                <h3 class="color-text margin-top-24 margin-bot-16">درآمد دلاری برای فریلنسر های تازه کار. آری یا نه؟ چطور و چگونه درآمد دلاری کسب کنیم؟</h3>
+                <p class="body-2 color-text-tint">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+                <a class="nextBtn flex margin-top-auto body-2 color-secondary">ادامه مطلب</a>
             </div>
         </div>
     </div>
