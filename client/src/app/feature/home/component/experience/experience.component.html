@@ -1,4 +1,4 @@
-<div class="experience laptop">
+<div *ngIf="!isMobile" class="experience laptop">
     <div class="companies flex justify-ctr margin-top-48 margin-bot-48">
         <img src="assets/images/plaza-logo.png" alt="Plaza"/>
         <img src="assets/images/savaarman-logo.png" alt="Sava Arman"/>
@@ -11,8 +11,11 @@
                 <span class="margin-right-auto headline-4 color-secondary">{{ i.years }}</span>
                 <span class="caption color-text-tint margin-right-8">سال</span>
             </div>
-            <img src="{{ i.img }}" />
+            <img src="{{ i.img }}" alt="" />
             <p class="body-2 color-text-tint padding-top-24 padding-right-32 padding-left-32">{{ i.desc }}</p>
         </div>
     </div>
+</div>
+<div *ngIf="isMobile">
+    is Mobile
 </div>

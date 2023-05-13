@@ -7,9 +7,14 @@ import {Component, OnInit} from "@angular/core";
 })
 export class HomeComponent implements OnInit {
 
+    userAgent: any;
+    isMobile: boolean = false;
+    pattern = /mobile/i;
+
     constructor() {
     }
 
     ngOnInit() {
+        this.isMobile = this.pattern.test(navigator.userAgent);
     }
 }
