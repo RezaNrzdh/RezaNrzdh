@@ -207,6 +207,14 @@
 
 .hidden { overflow: hidden };
 
+.pointer { cursor: pointer }
+
+.transition-1 { transition: all ease 0.1s }
+.transition-2 { transition: all ease 0.2s }
+.transition-3 { transition: all ease 0.3s }
+.transition-6 { transition: all ease 0.6s }
+.transition-9 { transition: all ease 0.9s }
+
 //TEST
 .red    { background-color: indianred };
 .green  { background-color: darkolivegreen }
