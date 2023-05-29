@@ -10,21 +10,7 @@
         </ul>
     </div>
     <div class="samples grid">
-        <div *ngFor="let i of [1,2,3,4,5,6,7,8]" class="flex column hidden radius-8 borderbox background-gray-1">
-            <img src="assets/images/sample.jpg" alt="" />
-            <div class="flex body-2 color-text margin-top-16 margin-right-24 margin-left-24">طراحی پلتفرم Einricht</div>
-            <div class="actions flex align-ctr margin-top-8 margin-right-24 margin-left-24">
-                <div class="show flex align-ctr caption color-text-tint margin-left-16">
-                    <img src="assets/images/eye.svg" class="margin-left-4" />
-                    2514
-                </div>
-                <div class="like flex align-ctr caption color-text-tint">
-                    <img src="assets/images/like.svg" class="margin-left-4" />
-                    548
-                </div>
-            </div>
-
-        </div>
+        <app-portfoliocard *ngFor="let i of data" [title]="i.title" [visit]="i.visit" [like]="i.like"></app-portfoliocard>
     </div>
     <a routerLink="portfolio" class="nextBtn flex margin-ctr margin-top-32 body-2 color-secondary">نمایش نمونه کارهای بیشتر</a>
 </div>
