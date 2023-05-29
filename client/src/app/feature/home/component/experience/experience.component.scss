@@ -29,11 +29,16 @@
                 width: 128px;
                 height: 146px;
                 .starContainer {
-                    top: -16px;
+                    top: -12px;
                     img {
-                        width: 32px;
-                        height: 32px;
+                        width: 24px;
+                        height: 24px;
                     }
+                }
+                &:hover{
+                    transform: scale(110%);
+                    box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+                    background-color: color.$color-gray-1;
                 }
             }
         }
