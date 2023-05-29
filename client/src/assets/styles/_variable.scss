@@ -164,10 +164,12 @@
 .justify-self-start { justify-self: flex-start }
 .justify-self-end   { justify-self: flex-end }
 
-.width-full  { width: 100% }
-.height-full { height: 100% }
 .width-half  { width: 50% }
+.width-3q    { width: 75%  }
+.width-full  { width: 100% }
 .height-half { height: 50% }
+.height-3q   { height: 75%  }
+.height-full { height: 100% }
 
 .radius-2  { border-radius: 2px }
 .radius-4  { border-radius: 4px }
