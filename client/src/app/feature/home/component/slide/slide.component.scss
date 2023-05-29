@@ -1,71 +1,18 @@
 @use "src/assets/styles/color";
 @use "src/assets/styles/typography";
 
-:host{
-    width: 1024px;
-    height: 450px;
-    img{
-        height: fit-content;
+
+:host {
+    position: relative;
+    &:before{
+        position: absolute;
+        bottom: 0;
+        content: "";
+        width: 100%;
+        height: 128px;
+        background-color: color.$color-gray-3;
     }
-    .circle{
-        height: 360px;
-        width: 360px;
-        margin-top: 20px;
-        margin-right: 25px;
-        &:before{
-            content: "";
-            position: absolute;
-            width: 360px;
-            height: 360px;
-            background-image: url(~src/assets/images/circle_dashed.svg);
-            animation: rotate 16s infinite;
-            animation-timing-function: linear;
-        }
-        &:after{
-            content: "";
-            width: 230px;
-            height: 230px;
-            border-radius: 50%;
-            border: 16px solid color.$color-gray-1;
-            box-sizing: border-box;
-        }
-    }
-    > div {
-        .nextBtn{
-            &:after{
-                content: "";
-                width: 24px;
-                height: 24px;
-                margin-right: 8px;
-                background-image: url("~src/assets/images/arrow-left.svg");
-            }
-            &:hover{
-                text-decoration: underline;
-            }
-        }
-        .instagtamBtn{
-            &:before{
-                content: "";
-                width: 16px;
-                height: 16px;
-                background-image: url("~src/assets/images/instagram.svg");
-            }
-        }
-        .linkedinBtn{
-            &:before{
-                content: "";
-                width: 16px;
-                height: 16px;
-                background-image: url("~src/assets/images/linkedin.svg");
-            }
-        }
-        .githubBtn{
-            &:before{
-                content: "";
-                width: 16px;
-                height: 16px;
-                background-image: url("~src/assets/images/github.svg");
-            }
-        }
+    .slider {
+        height: 400px;
     }
 }
