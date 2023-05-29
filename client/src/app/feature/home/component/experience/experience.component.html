@@ -1,20 +1,20 @@
 <div *ngIf="!isMobile" class="experience laptop">
-    <div class="companies flex justify-ctr margin-top-48 margin-bot-48">
+    <div class="companies flex justify-ctr align-ctr padding-top-40 padding-bot-40">
         <img src="assets/images/plaza-logo.png" alt="Plaza"/>
         <img src="assets/images/savaarman-logo.png" alt="Sava Arman"/>
         <img src="assets/images/tosan-logo.png" alt="Tosan"/>
     </div>
-    <div class="skill grid">
-        <div *ngFor="let i of experience" class="flex column radius-8 borderbox background-gray-1">
-            <div class="flex align-ctr padding-top-24 padding-left-32 padding-right-32 padding-bot-24">
-                <h2 class="headline-6 color-text">{{ i.title }}</h2>
-                <span class="margin-right-auto headline-4 color-secondary">{{ i.years }}</span>
-                <span class="caption color-text-tint margin-right-8">سال</span>
-            </div>
-            <img src="{{ i.img }}" alt="" />
-            <p class="body-2 color-text-tint padding-top-24 padding-right-32 padding-left-32">{{ i.desc }}</p>
+</div>
+<div class="skills laptop margin-top-56">
+    <a></a>
+    <div class="skillContainer flex justify-ctr">
+        <div *ngFor="let skill of experience" class="skillBox flex column relative background-gray-2 radius-16 margin-left-16 margin-right-16">
+            <div class="starContainer flex width-full justify-ctr absolute"><img *ngFor="let t of [].constructor(skill.level)" src="assets/images/skill/star.svg" /></div>
+            <img src="{{ skill.img }}" width="56" height="56" class="margin-left-auto margin-right-auto margin-top-40"/>
+            <span class="flex margin-top-auto justify-ctr margin-bot-16 body-2 color-text-tint">{{ skill.title }}</span>
         </div>
     </div>
+    <a></a>
 </div>
 <div *ngIf="isMobile">
     is Mobile

@@ -11,28 +11,39 @@ export class ExperienceComponent implements OnInit {
 
     experience = [
         {
-            title: "طراح وب و موبایل",
-            years: "6",
-            img: "assets/images/uiux.png",
-            desc: "تسلط کامل به نرم افزارهای Figma و Adobe XD و توانایی اجرای تمامی طرح های ترند وب و موبایل"
+            title: "Figma",
+            level: 3,
+            img: "assets/images/skill/figma-icon.svg"
         },
         {
-            title: "توسعه دهنده front-end",
-            years: "3",
-            img: "assets/images/frontend.png",
-            desc: "توانایی کار با Javascriopt و React و Angular و NextJs برای پیاده سازی اپلیکیشن های تحت وب"
+            title: "Angular",
+            level: 2,
+            img: "assets/images/skill/angular-icon.svg"
         },
         {
-            title: "توسعه دهنده back-end",
-            years: "3",
-            img: "assets/images/backend.png",
-            desc: "توانایی کار با NodeJs و ExpressJs و MongoDB برای ساخت بخش سرور اپلیکیشن ها"
+            title: "Node Js",
+            level: 2,
+            img: "assets/images/skill/nodejs-icon.svg"
         },
         {
-            title: "گرافیست",
-            years: "10",
-            img: "assets/images/graphic.png",
-            desc: "تسلط کامل به نرم افزار های گرافیکی Photoshop و Illustrator برای طراحی المان های گرافیکی پیکسلی و برداری"
+            title: "Photoshop",
+            level: 3,
+            img: "assets/images/skill/photoshop-icon.svg"
+        },
+        {
+            title: "Illustrator",
+            level: 3,
+            img: "assets/images/skill/illustrator-icon.svg"
+        },
+        {
+            title: "Blender",
+            level: 2,
+            img: "assets/images/skill/blender-icon.svg"
+        },
+        {
+            title: "React Js",
+            level: 2,
+            img: "assets/images/skill/react-icon.svg"
         }
     ]
 
