@@ -14,7 +14,7 @@
     }
     .slider {
         height: 400px;
-        background: url("/assets/images/slider_bg.png");
+        background: url("~src/assets/images/slider_bg.png");
         background-color: color.$color-gray-1;
         img {
             margin-right: 128px;
@@ -28,7 +28,7 @@
                     width: 24px;
                     height: 24px;
                     margin-right: 8px;
-                    background-image: url("~src/assets/images/arrow-left.svg");
+                    background-image: url("~src/assets/icons/arrow-left.svg");
                 }
                 &:hover{
                     text-decoration: underline;
@@ -39,7 +39,7 @@
                     content: "";
                     width: 16px;
                     height: 16px;
-                    background-image: url("~src/assets/images/instagram.svg");
+                    background-image: url("~src/assets/icons/instagram.svg");
                 }
             }
             .linkedinBtn{
@@ -47,7 +47,7 @@
                     content: "";
                     width: 16px;
                     height: 16px;
-                    background-image: url("~src/assets/images/linkedin.svg");
+                    background-image: url("~src/assets/icons/linkedin.svg");
                 }
             }
             .githubBtn{
@@ -55,7 +55,7 @@
                     content: "";
                     width: 16px;
                     height: 16px;
-                    background-image: url("~src/assets/images/github.svg");
+                    background-image: url("~src/assets/icons/github.svg");
                 }
             }
         }

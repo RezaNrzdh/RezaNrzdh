@@ -1,12 +1,12 @@
 section{
-    width: 800px;
+    width: 960px;
     .actions {
         a.like {
             &:before{
                 content: "";
                 width: 24px;
                 height: 24px;
-                background-image: url("~src/assets/images/like.svg");
+                background-image: url("~src/assets/icons/like.svg");
             }
         }
         a.share {
@@ -14,7 +14,7 @@ section{
                 content: "";
                 width: 24px;
                 height: 24px;
-                background-image: url("~src/assets/images/share.svg");
+                background-image: url("~src/assets/icons/share.svg");
             }
         }
     }

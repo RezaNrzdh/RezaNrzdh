@@ -1,12 +1,18 @@
 import {NgModule} from "@angular/core";
-import {HeaderComponent} from "./component/header/header.component";
-import {RouterModule} from "@angular/router";
-import {ButtonComponent} from "./component/button/button.component";
-import {TextboxComponent} from "./component/textbox/textbox.component";
+
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
+import {MatIconModule} from '@angular/material/icon';
+
+import {ButtonComponent} from "./component/button/button.component";
+import {TextboxComponent} from "./component/textbox/textbox.component";
 import {FooterComponent} from "./component/footer/footer.component";
 import {PortfolioCardComponent} from "./component/portfolioCard/portfolio-card.component";
+import {IconComponent} from "./component/icon/icon.component";
+import { IconDirective } from './directive/icon.directive';
+import {HeaderComponent} from "./component/header/header.component";
 
 @NgModule({
     declarations: [
@@ -14,19 +20,25 @@ import {PortfolioCardComponent} from "./component/portfolioCard/portfolio-card.c
         FooterComponent,
         ButtonComponent,
         TextboxComponent,
-        PortfolioCardComponent
+        PortfolioCardComponent,
+        IconComponent,
+        IconDirective
     ],
     imports: [
         CommonModule,
         FormsModule,
-        RouterModule
+        RouterModule,
+        HttpClientModule,
+        MatIconModule
     ],
     exports: [
         HeaderComponent,
         FooterComponent,
         ButtonComponent,
         TextboxComponent,
-        PortfolioCardComponent
+        PortfolioCardComponent,
+        IconComponent,
+        IconDirective
     ]
 })
 export class SharedModule {}
