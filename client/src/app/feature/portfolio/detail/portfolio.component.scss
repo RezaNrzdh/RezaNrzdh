@@ -1,21 +1,5 @@
 section{
     width: 960px;
     .actions {
-        a.like {
-            &:before{
-                content: "";
-                width: 24px;
-                height: 24px;
-                background-image: url("~src/assets/icons/like.svg");
-            }
-        }
-        a.share {
-            &:before{
-                content: "";
-                width: 24px;
-                height: 24px;
-                background-image: url("~src/assets/icons/share.svg");
-            }
-        }
     }
 }
