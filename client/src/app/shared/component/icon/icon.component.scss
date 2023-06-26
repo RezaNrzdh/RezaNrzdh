@@ -1,3 +1,97 @@
+@use "src/assets/styles/color";
+
 :host{
     display: flex;
+}
+
+:host{
+    &[color="primary"]{
+        mat-icon{
+            color: color.$color-primary !important;
+        }
+    }
+
+    &[color="secondary"]{
+        mat-icon{
+            color: color.$color-secondary;
+        }
+    }
+
+    &[color="success"]{
+        mat-icon{
+            color: color.$color-success;
+        }
+    }
+
+    &[color="danger"]{
+        mat-icon{
+            color: color.$color-danger;
+        }
+    }
+
+    &[color="info"]{
+        mat-icon{
+            color: color.$color-info;
+        }
+    }
+
+    &[color="gray1"]{
+        mat-icon{
+            color: color.$color-gray-1;
+        }
+    }
+
+    &[color="gray2"]{
+        mat-icon{
+            color: color.$color-gray-2;
+        }
+    }
+
+    &[color="gray3"]{
+        mat-icon{
+            color: color.$color-gray-3;
+        }
+    }
+
+    &[color="contrast"]{
+        mat-icon{
+            color: color.$color-contrast;
+        }
+    }
+
+    &[color="textTint"]{
+        mat-icon{
+            color: color.$color-text-tint;
+        }
+    }
+}
+
+:host {
+    &[size="16"] {
+        mat-icon {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &[size="20"] {
+        mat-icon {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &[size="24"] {
+        mat-icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &[size="32"] {
+        mat-icon {
+            width: 32px;
+            height: 32px;
+        }
+    }
 }

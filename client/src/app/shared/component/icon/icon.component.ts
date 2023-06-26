@@ -1,5 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {Component, Input, OnInit} from "@angular/core";
 import {DomSanitizer} from "@angular/platform-browser";
 import {MatIconRegistry} from "@angular/material/icon";
 
@@ -10,23 +9,17 @@ import {MatIconRegistry} from "@angular/material/icon";
 })
 export class IconComponent implements OnInit {
 
-    constructor(private matIconRegistery: MatIconRegistry, private sanitizer: DomSanitizer) {
-        this.matIconRegistery.addSvgIcon(
-            this.icon,
-            this.sanitizer.bypassSecurityTrustResourceUrl(`../assets/icons/${ this.icon }.svg`)
-        );
-    }
+    constructor(private matIconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {}
 
     @Input() icon: string;
-    @Input() size: 16 | 20 | 24 | 32 = 24;
-    @Input() color: string;
+    @Input() size: "16" | "20" | "24" | "32" = "24";
+    @Input() color: "primary" | "secondary" | "success" | "danger" | "info" | "gray1" | "gray2" | "gray3" | "contrast" | "textTint";
 
     ngOnInit() {
-        // this.httpClient.get(`assets/icons/${ this.icon }.svg`, { responseType: "text" }).subscribe({
-        //     next: ((value: any) => {
-        //         this.setIcon = this.sanitizer.bypassSecurityTrustHtml(value);
-        //     })
-        // });
+        this.matIconRegistry.addSvgIcon(
+            this.icon,
+            this.sanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${ this.icon }.svg`)
+        );
     }
 
 }
