@@ -1,3 +1,5 @@
+@use "src/assets/styles/color";
+
 section {
     height: 450px;
     img {
@@ -15,6 +17,9 @@ section {
     }
     .rightArrowBtn{
         left: -80px;
+        &:hover{
+            background-color: color.$color-secondary;
+        }
     }
     .leftArrowBtn{
         fill: #B74141;
