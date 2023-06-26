@@ -1,5 +1,11 @@
-@import "src/assets/styles/color";
-@import "src/assets/styles/typography";
+@use "src/assets/styles/color";
+@import  "src/assets/styles/typography";
+
+:host{
+    &[indexpage="true"] header section {
+        border-bottom:1px solid color.$color-gray-1;
+    }
+}
 
 header{
     display: flex;
@@ -24,7 +30,7 @@ header{
                 font-weight: 500;
                 a{
                     position: relative;
-                    color: $color-text-tint;
+                    color: color.$color-text-tint;
                     &:after{
                         display: flex;
                         position: absolute;
@@ -37,12 +43,12 @@ header{
                         width: 6px;
                         height: 6px;
                         border-radius: 3px;
-                        background-color: $color-stroke;
+                        background-color: color.$color-stroke;
                         transition: all ease-in-out 0.3s;
                         opacity: 0;
                     }
                     &:hover{
-                        color: $color-text;
+                        color: color.$color-text;
                         &:after{
                             top: 30px;
                             opacity: 1;
@@ -50,9 +56,9 @@ header{
                     }
                     &.active{
                         position: relative;
-                        color: $color-text !important;
+                        color: color.$color-text !important;
                         &:after{
-                            background-color: $color-primary;
+                            background-color: color.$color-primary;
                             top: 30px;
                             opacity: 1;
                         }
