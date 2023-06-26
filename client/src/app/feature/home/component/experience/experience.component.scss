@@ -2,7 +2,6 @@
 @use "src/assets/styles/typography";
 
 :host{
-    height: 386px;
     background-color: color.$color-gray-3 ;
     .experience{
         position: relative;
@@ -10,7 +9,7 @@
         .companies{
             &:after{
                 position: absolute;
-                bottom: 0;
+                top: 0;
                 content: "";
                 width: 624px;
                 height: 1px;
