@@ -1,12 +1,6 @@
 @use "src/assets/styles/color";
 @import  "src/assets/styles/typography";
 
-:host{
-    &[indexpage="true"] header section {
-        border-bottom:1px solid color.$color-gray-1;
-    }
-}
-
 header{
     display: flex;
     height: 88px;
@@ -43,7 +37,7 @@ header{
                         width: 6px;
                         height: 6px;
                         border-radius: 3px;
-                        background-color: color.$color-stroke;
+                        background-color: color.$color-stroke-1;
                         transition: all ease-in-out 0.3s;
                         opacity: 0;
                     }

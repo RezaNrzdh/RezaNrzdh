@@ -56,18 +56,15 @@ $color-surface:    white;
 .background-surface    { background-color: white }
 
 //Stroke Color
-$color-stroke:         #DEDEDE;
-$color-stroke-tint:    #F1F1F1;
-$color-stroke-lighter: #F7F7F7;
-$color-stroke-shade:   #C4C4C4;
-.color-stroke         { color: #DEDEDE }
-.color-stroke-tint    { color: #F1F1F1 }
-.color-stroke-lighter { color: #F7F7F7 }
-.color-stroke-shade   { color: #C4C4C4 }
-.background-stroke         { background-color: #DEDEDE }
-.background-stroke-tint    { background-color: #F1F1F1 }
-.background-stroke-lighter { background-color: #F7F7F7 }
-.background-stroke-shade   { background-color: #C4C4C4 }
+$color-stroke-1: #525663;
+$color-stroke-2: #424657;
+$color-stroke-3: #323647;
+.color-stroke-1 { color: #525663 }
+.color-stroke-2 { color: #424657 }
+.color-stroke-3 { color: #323647 }
+.background-stroke-1 { background-color: #525663 }
+.background-stroke-2 { background-color: #424657 }
+.background-stroke-3 { background-color: #323647 }
 
 //Gray Color
 $color-gray-1: #424657;
