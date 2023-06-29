@@ -4,12 +4,14 @@ import {PortfolioComponent} from "./detail/portfolio.component";
 import {PortfolioRoutingModule} from "./portfolio-routing.module";
 import {PortfolioListComponent} from "./list/portfolio-list.component";
 import {SliderComponent} from "./detail/component/slider/slider.component";
+import {SideComponent} from "./detail/component/side/side.component";
 
 @NgModule({
     declarations: [
         PortfolioComponent,
         SliderComponent,
-        PortfolioListComponent
+        PortfolioListComponent,
+        SideComponent
     ],
     providers: [],
     imports: [
