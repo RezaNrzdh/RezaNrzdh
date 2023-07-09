@@ -1,0 +1,24 @@
+@use "src/assets/styles/color";
+
+#inforamtion{
+    height: 535px;
+}
+.related {
+    h2{
+        &:after{
+            display: flex;
+            content: "";
+            width: 48px;
+            height: 2px;
+            margin-top: 4px;
+            background-color: color.$color-primary;
+        }
+    }
+    .related_card{
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+        }
+    }
+}

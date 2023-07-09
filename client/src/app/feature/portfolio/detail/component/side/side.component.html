@@ -1,1 +1,16 @@
-<div class="flex width-full background-gray-1 radius-16"></div>
+<div id="inforamtion" class="width-full background-gray-1 radius-16"></div>
+<div class="related margin-top-48">
+    <h2 class="headline-6 color-text margin-bot-24">موارد مشابه</h2>
+    <div class="related_card flex margin-bot-24 " *ngFor="let i of [].constructor(5)">
+        <img src="assets/images/sample.jpg" />
+        <div class="flex column margin-right-16">
+            <h3 class="headline-6 color-text">طراحی واسط و تجربه کاربری سایت آینریخت</h3>
+            <div class="flex margin-top-auto">
+                <app-icon icon="eye" size="20" color="textTint"></app-icon>
+                <span class="margin-left-16 caption color-text-tint margin-right-4">2345</span>
+                <app-icon icon="like" size="20" color="textTint"></app-icon>
+                <span class="caption color-text-tint margin-right-4">34</span>
+            </div>
+        </div>
+    </div>
+</div>
