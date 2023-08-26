@@ -167,6 +167,11 @@
 .row { display: flex }
 .column { display: flex; flex-direction: column }
 
+.left  {  left: 0 }
+.right { right: 0 }
+.top   { top: 0 }
+.bot   { bottom: 0 }
+
 .align-ctr { align-items: center }
 .align-top { align-items: flex-start }
 .align-bot { align-items: flex-end }

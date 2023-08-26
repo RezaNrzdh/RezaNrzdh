@@ -1,0 +1,23 @@
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
+
+:host{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    #mainBody {
+        display: flex;
+        position: relative;
+        height: 512px;
+        z-index: 1;
+    }
+    &:after{
+        position: absolute;
+        content: "";
+        bottom: 0;
+        width: 100%;
+        height: 256px;
+        z-index: 0;
+        background-color: color.$color-gray-3;
+    }
+}

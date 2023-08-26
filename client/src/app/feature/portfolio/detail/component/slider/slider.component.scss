@@ -1,27 +1,17 @@
 @use "src/assets/styles/color";
 
 section {
-    height: 535px;
     img {
         width: 952px;
         height: 535px;
         object-fit: cover;
         object-position: center top;
     }
-    div{
-        width: 80px;
-    }
-    a {
-        width: 48px;
-        height: 48px;
-    }
-    .rightArrowBtn{
-        left: -80px;
+    a{
+        color: color.$color-text-tint;
         &:hover{
             background-color: color.$color-secondary;
+            color: red;
         }
-    }
-    .leftArrowBtn{
-        fill: #B74141;
     }
 }
