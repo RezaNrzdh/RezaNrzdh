@@ -1,2 +1,22 @@
-<div id="mainBody" class="background-gray-1 radius-16 laptop"></div>
+<div id="mainBody" class="background-gray-1 radius-16 laptop padding-16 borderbox">
+    <form [formGroup]="contactForm" (ngSubmit)="OnSubmit()" class="flex column" >
+        <label class="color-text-tint">نام</label>
+        <input type="text" name="name" formControlName="name" />
+        <span></span>
+        <br>
+        <label class="color-text-tint">ایمیل</label>
+        <input type="text" name="email" formControlName="email" />
+        <span></span>
+        <br>
+        <label class="color-text-tint">شماره تماس</label>
+        <input type="text" name="phone" formControlName="phone" />
+        <span></span>
+        <br>
+        <label class="color-text-tint">پیغام</label>
+        <input type="text" name="comment" formControlName="comment" />
+        <br>
+        <app-button action="submit" mode="filled" color="secondary">ثبت نظر</app-button>
+    </form>
+</div>
 <span class="padding-bot-64"></span>
+
