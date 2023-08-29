@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 
 @Component({
     selector: "app-button",
@@ -7,19 +6,22 @@ import {Router} from "@angular/router";
     styleUrls: ["button.component.scss"]
 })
 export class ButtonComponent implements OnInit {
+
     @Input() mode: "filled" | "outlined" | "ghost" | "submit";
     @Input() action: "submit" | "button" | "reset";
     @Input() color: "primary" | "secondary" | "success" | "danger" | "info";
-    @Input() click: any;
     @Input() disabled: any = "";
+    @Output() click: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor(private router: Router) {
-    }
+    constructor() {}
 
     ngOnInit() {
     }
 
     onClick = () => {
-        this.router.navigate([this.click])
+        if(this.click["observers"].length == 0){
+            return;
+        }
+        this.click.emit();
     }
 }
