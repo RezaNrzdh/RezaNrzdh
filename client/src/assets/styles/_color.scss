@@ -1,48 +1,80 @@
+//Basic Color
+$color-dark:   #42494D;
+$color-white:  #ffffff;
+.color-dark   { color: #42494D }
+.color-white  { color: #ffffff }
+.background-dark   { background-color: #42494D }
+.background-white  { background-color: #ffffff }
+
+
 //Primary Color
-$color-primary:       #F05756;
-$color-primary-tint:  #FFF1F1;
-$color-primary-shade: #B74141;
-.color-primary       { color: #F05756 }
-.color-primary-tint  { color: #FFF1F1 }
-.color-primary-shade { color: #B74141 }
-.background-primary       { background-color: #F05756 }
-.background-primary-tint  { background-color: #FFF1F1 }
-.background-primary-shade { background-color: #B74141 }
+$color-primary:       #FFAB2D;
+$color-primary-tint:  #FFBF5F;
+$color-primary-shade: #E8910F;
+.color-primary       { color: #FFAB2D }
+.color-primary-tint  { color: #FFBF5F }
+.color-primary-shade { color: #E8910F }
+.background-primary       { background-color: #FFAB2D }
+.background-primary-tint  { background-color: #FFBF5F }
+.background-primary-shade { background-color: #E8910F }
 
 //Secondary Color
-$color-secondary:       #FFC25B;
-$color-secondary-tint:  #FFE8C0;
-$color-secondary-shade: #C78C2A;
-.color-secondary       { color: #FFC25B }
-.color-secondary-tint  { color: #FFE8C0 }
-.color-secondary-shade { color: #C78C2A }
-.background-secondary       { background-color: #FFC25B }
-.background-secondary-tint  { background-color: #FFE8C0 }
-.background-secondary-shade { background-color: #C78C2A }
+$color-secondary:       #9749E5;
+$color-secondary-tint:  #C79EF0;
+$color-secondary-shade: #8013ED;
+.color-secondary       { color: #9749E5 }
+.color-secondary-tint  { color: #C79EF0 }
+.color-secondary-shade { color: #8013ED }
+.background-secondary       { background-color: #9749E5 }
+.background-secondary-tint  { background-color: #C79EF0 }
+.background-secondary-shade { background-color: #8013ED }
+
+//Gray Color
+$color-gray-1: #F9FAFB;
+$color-gray-2: #DAE6EE;
+$color-gray-3: #BDC9D1;
+$color-gray-4: #848B90;
+$color-gray-5: #666D73;
+.color-gray-1 { color: #F9FAFB }
+.color-gray-2 { color: #DAE6EE }
+.color-gray-3 { color: #BDC9D1 }
+.color-gray-4 { color: #848B90 }
+.color-gray-5 { color: #666D73 }
+.background-gray-1 { background-color: #F9FAFB }
+.background-gray-2 { background-color: #DAE6EE }
+.background-gray-3 { background-color: #BDC9D1 }
+.background-gray-4 { background-color: #848B90 }
+.background-gray-5 { background-color: #666D73 }
 
 //Success Color
-$color-success:      #71CE9A;
+$color-success:      #4BC97C;
 $color-success-tint: #EEF8F2;
-.color-success      { color: #71CE9A }
+.color-success      { color: #4BC97C }
 .color-success-tint { color: #EEF8F2 }
-.background-success      { background-color: #71CE9A }
+.background-success      { background-color: #4BC97C }
 .background-success-tint { background-color: #EEF8F2 }
 
 //Danger Color
-$color-danger:      #FE764B;
+$color-danger:      #FE6F6B;
 $color-danger-tint: #F4F7FF;
-.color-danger      { color: #FE764B }
+.color-danger      { color: #FE6F6B }
 .color-danger-tint { color: #F4F7FF }
-.background-danger      { background-color: #FE764B }
+.background-danger      { background-color: #FE6F6B }
 .background-danger-tint { background-color: #F4F7FF }
 
-//Info Color
-$color-info:      #3F8FFF;
-$color-info-tint: #F4F7FF;
-.color-info      { color: #3F8FFF }
-.color-info-tint { color: #F4F7FF }
-.background-info      { background-color: #3F8FFF }
-.background-info-tint { background-color: #F4F7FF }
+
+
+
+//Text Color
+$color-text:       white;
+$color-text-tint:  #848B90;
+$color-text-shade: #242734;
+.color-text       { color: white }
+.color-text-tint  { color: #848B90 }
+.color-text-shade { color: #242734 }
+.background-text       { background-color: white }
+.background-text-tint  { background-color: #848B90 }
+.background-text-shade { background-color: #242734 }
 
 //Layout Color
 $color-contrast:   white;
@@ -66,24 +98,10 @@ $color-stroke-3: #323647;
 .background-stroke-2 { background-color: #424657 }
 .background-stroke-3 { background-color: #323647 }
 
-//Gray Color
-$color-gray-1: #424657;
-$color-gray-2: #323647;
-$color-gray-3: #242734;
-.color-gray-1 { color: #424657 }
-.color-gray-2 { color: #323647 }
-.color-gray-3 { color: #242734 }
-.background-gray-1 { background-color: #424657 }
-.background-gray-2 { background-color: #323647 }
-.background-gray-3 { background-color: #242734 }
-
-//Text Color
-$color-text:       white;
-$color-text-tint:  #848B90;
-$color-text-shade: #242734;
-.color-text       { color: white }
-.color-text-tint  { color: #848B90 }
-.color-text-shade { color: #242734 }
-.background-text       { background-color: white }
-.background-text-tint  { background-color: #848B90 }
-.background-text-shade { background-color: #242734 }
+//Info Color
+$color-info:      #3F8FFF;
+$color-info-tint: #F4F7FF;
+.color-info      { color: #3F8FFF }
+.color-info-tint { color: #F4F7FF }
+.background-info      { background-color: #3F8FFF }
+.background-info-tint { background-color: #F4F7FF }

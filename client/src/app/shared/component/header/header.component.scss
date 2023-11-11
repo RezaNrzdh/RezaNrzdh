@@ -24,7 +24,7 @@ header{
                 font-weight: 500;
                 a{
                     position: relative;
-                    color: color.$color-text-tint;
+                    color: color.$color-white;
                     &:after{
                         display: flex;
                         position: absolute;
@@ -37,12 +37,11 @@ header{
                         width: 6px;
                         height: 6px;
                         border-radius: 3px;
-                        background-color: color.$color-stroke-1;
+                        background-color: color.$color-white;
                         transition: all ease-in-out 0.3s;
                         opacity: 0;
                     }
                     &:hover{
-                        color: color.$color-text;
                         &:after{
                             top: 30px;
                             opacity: 1;
@@ -50,7 +49,7 @@ header{
                     }
                     &.active{
                         position: relative;
-                        color: color.$color-text !important;
+                        color: color.$color-primary;
                         &:after{
                             background-color: color.$color-primary;
                             top: 30px;

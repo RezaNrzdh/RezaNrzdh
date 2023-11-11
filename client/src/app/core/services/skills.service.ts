@@ -6,38 +6,27 @@ export class SkillsService {
     data: any = [
         {
             title: "Figma",
-            level: 3,
             img: "assets/images/skill/figma-icon.svg"
         },
         {
             title: "Angular",
-            level: 2,
             img: "assets/images/skill/angular-icon.svg"
         },
         {
             title: "Node Js",
-            level: 2,
-            img: "assets/images/skill/nodejs-icon.svg"
+            img: "assets/images/skill/node-icon.svg"
         },
         {
             title: "Photoshop",
-            level: 3,
             img: "assets/images/skill/photoshop-icon.svg"
         },
         {
-            title: "Illustrator",
-            level: 3,
-            img: "assets/images/skill/illustrator-icon.svg"
-        },
-        {
             title: "Blender",
-            level: 2,
             img: "assets/images/skill/blender-icon.svg"
         },
         {
-            title: "React Js",
-            level: 2,
-            img: "assets/images/skill/react-icon.svg"
+            title: "unreal",
+            img: "assets/images/skill/unreal-icon.svg"
         }
     ]
 

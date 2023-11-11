@@ -13,15 +13,17 @@ export class AppComponent {
     @HostBinding("class.indexpage") IndexPage = false;
 
     constructor(private router: Router) {
-        this.router.url === "/" ? this.IndexPage = true : this.IndexPage = false;
-        this.router.url === "/contact" ? this.IndexPage = true :this.IndexPage = false;
-
-        this.router.events.subscribe(event => {
-            if(event instanceof NavigationStart){
-                event.url === "/" ? this.IndexPage = true : this.IndexPage = false;
-                event.url === "/contact" ? this.IndexPage = true : this.IndexPage = false;
-            }
-        })
+        // console.log(this.router.url);
+        // this.router.url === "/" ? this.IndexPage = true : this.IndexPage = false;
+        // this.router.url === "/contact" ? this.IndexPage = true :this.IndexPage = false;
+        //
+        // this.router.events.subscribe(event => {
+        //     console.log(this.router.url);
+        //     if(event instanceof NavigationStart){
+        //         event.url === "/" ? this.IndexPage = true : this.IndexPage = false;
+        //         event.url === "/contact" ? this.IndexPage = true : this.IndexPage = false;
+        //     }
+        // })
     }
 
 

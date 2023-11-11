@@ -2,43 +2,33 @@
 @use "src/assets/styles/typography";
 
 :host{
-    background-color: color.$color-gray-3 ;
-    .experience{
-        position: relative;
-        z-index: 1;
-        .companies{
-            &:after{
-                position: absolute;
-                top: 0;
-                content: "";
-                width: 624px;
-                height: 1px;
-                background: linear-gradient(90deg, rgba(66,70,87,0) 0%, rgba(66,70,87,1) 50%, rgba(66,70,87,0) 100%);
-            }
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: color.$color-white;
+    .apps{
+        width: 440px;
+        .big, .small{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ECF0F3;
+        }
+        .big{
+            width: 280px;
+            height: 280px;
             img{
-                height: 48px;
-                margin-left: 24px;
-                margin-right: 24px;
+                display: flex;
+                width: 160px;
+                height: 160px;
             }
         }
-    }
-    .skills{
-        .skillContainer{
-            .skillBox {
-                width: 128px;
-                height: 146px;
-                .starContainer {
-                    top: -12px;
-                    img {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-                &:hover{
-                    transform: scale(110%);
-                    box-shadow: 0 6px 16px rgba(0,0,0,0.16);
-                    background-color: color.$color-gray-1;
-                }
+        .small{
+            width: 128px;
+            height: 128px;
+            img{
+                display: flex;
+                width: 72px;
+                height: 72px;
             }
         }
     }
