@@ -137,8 +137,13 @@
 .body-2     { font-size: 0.875rem; font-weight: 300 }
 .caption    { font-size: 0.75rem; font-weight: 300 }
 
-.bold   { font-weight: 500 };
+.bold   { font-weight: 600 };
+.medium { font-weight: 500 };
 .italic { font-style: italic };
+
+.lineheight-24 { line-height: 24px }
+.lineheight-28 { line-height: 28px }
+.lineheight-32 { line-height: 32px }
 
 .text-ctr { text-align: center };
 

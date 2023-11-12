@@ -10,8 +10,8 @@ body, html {
     margin: 0;
     height: 100%;
     direction: rtl;
-    font-family: VazirMatnFont;
-    background-color: color.$color-gray-2;
+    font-family: PelakFont;
+    background-color: color.$color-white;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -26,7 +26,7 @@ a {
 
 button {
     cursor: pointer;
-    font-family: VazirMatnFont;
+    font-family: PelakFont;
 }
 
 //app-root:not(.indexpage) {

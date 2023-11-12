@@ -2,34 +2,33 @@
 @use "src/assets/styles/typography";
 
 :host{
-    padding-top: 32px;
-    padding-bottom: 32px;
-    background-color: color.$color-white;
-    .apps{
-        width: 440px;
-        .big, .small{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ECF0F3;
-        }
-        .big{
-            width: 280px;
-            height: 280px;
-            img{
-                display: flex;
-                width: 160px;
-                height: 160px;
+    background-color: color.$color-gray-1;
+    .cards{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-column-gap: 32px;
+        .card{
+            height: 336px;
+            .icon{
+                width: 80px;
+                height: 80px;
+                border-radius: 40px;
+                background-color: color.$color-secondary;
             }
-        }
-        .small{
-            width: 128px;
-            height: 128px;
-            img{
-                display: flex;
-                width: 72px;
-                height: 72px;
+            .level{
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-column-gap: 4px;
+                span{
+                    height: 6px;
+                    background-color: color.$color-gray-2;
+                    &:first-child{
+                        border-radius: 0 3px 3px 0;
+                    }
+                    &:last-child{
+                        border-radius: 3px 0 0 3px;
+                    }
+                }
             }
+            box-shadow: 0 16px 48px rgba(0,0,0,0.04);
         }
     }
 }

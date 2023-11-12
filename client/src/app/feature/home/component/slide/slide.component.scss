@@ -8,12 +8,26 @@
     height: 625px;
     section{
         display: flex;
+        position: relative;
         width: inherit;
         height: inherit;
+        background-color: red;
         background: url("~src/assets/images/heroimg.jpg");
         background-repeat: no-repeat;
         background-position: center center;
         image-rendering: pixelated;
+        .comment{
+            position: absolute;
+            margin-top: 345px;
+            margin-right: 92px;
+            width: 210px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+            > span{
+                width: 48px;
+                height: 48px;
+                background-color: color.$color-primary;
+            }
+        }
         .socialmedia{
             display: flex;
             justify-content: end;

@@ -1,30 +1,23 @@
-<Section class="laptop flex">
-    <div class="info margin-left-24"></div>
-    <div class="apps flex column margin-right-auto">
-        <div class="flex margin-bot-24">
-            <div class="big radius-8 margin-left-24">
-                <img src="assets/images/skill/angular-icon.svg"/>
+<Section class="laptop tflex column margin-top-56  margin-bot-56 ">
+    <div class="flex margin-bot-32">
+        <h2 class="headline-1 color-dark bold margin-left-24">7 سال سابقه کار حرفه ای</h2>
+        <img src="assets/images/dot.svg" />
+    </div>
+    <div class="cards grid">
+        <div *ngFor="let exp of experience" class="card flex column padding-32 background-white radius-8">
+            <div class="icon flex justify-ctr align-ctr">
+                <img src="{{ exp.img }}" />
             </div>
-            <div class="flex column">
-                <div class="small radius-8 margin-bot-24">
-                    <img src="assets/images/skill/unreal-icon.svg"/>
+            <h3 class="body-1 bold color-dark margin-top-32 margin-bot-16">{{ exp.title }}</h3>
+            <p class="body-2 lineheight-24 color-gray-5">{{ exp.desc }}</p>
+            <div class="flex column margin-top-auto">
+                <div>
+                    <span class="body-2 color-dark medium">مهارت:</span>
+                    <span class="margin-right-4 color-dark">{{ exp.level }}</span>
                 </div>
-                <div class="small radius-8">
-                    <img src="assets/images/skill/node-icon.svg"/>
+                <div class="level grid margin-top-4">
+                    <span *ngFor="let i of [].constructor(4)"></span>
                 </div>
-            </div>
-        </div>
-        <div class="flex">
-            <div class="flex column">
-                <div class="small radius-8 margin-bot-24">
-                    <img src="assets/images/skill/photoshop-icon.svg"/>
-                </div>
-                <div class="small radius-8">
-                    <img src="assets/images/skill/blender-icon.svg"/>
-                </div>
-            </div>
-            <div class="big radius-8 margin-right-24">
-                <img src="assets/images/skill/figma-icon.svg"/>
             </div>
         </div>
     </div>

@@ -51,6 +51,12 @@
 }
 @font-face {
     font-family: PelakFont;
+    src: url('../fonts/Pelak-Medium.ttf') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: PelakFont;
     src: url('../fonts/Pelak-Bold.woff') format('woff');
     font-weight: 700;
     font-style: normal;

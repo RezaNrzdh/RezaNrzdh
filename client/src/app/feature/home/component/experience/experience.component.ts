@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SkillsService} from "../../../../core/services/skills.service";
+import {LevelEnum} from "../../../../core/enum/level.enum";
 
 @Component({
     selector: 'app--home-experience',
@@ -17,5 +18,4 @@ export class ExperienceComponent implements OnInit {
     ngOnInit(): void {
         this.experience = this.skillService.getSkills();
     }
-
 }
