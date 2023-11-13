@@ -17,8 +17,4 @@ export class ExperienceComponent implements OnInit {
     ngOnInit(): void {
         this.experience = this.skillService.getSkills();
     }
-
-    getExpLevel(): void {
-
-    }
 }
