@@ -13,6 +13,7 @@ import {PortfolioCardComponent} from "./component/portfolioCard/portfolio-card.c
 import {IconComponent} from "./component/icon/icon.component";
 import { IconDirective } from './directive/icon.directive';
 import {HeaderComponent} from "./component/header/header.component";
+import {NewsletterComponent} from "./component/newsletter/newsletter.component";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import {HeaderComponent} from "./component/header/header.component";
         TextboxComponent,
         PortfolioCardComponent,
         IconComponent,
-        IconDirective
+        IconDirective,
+        NewsletterComponent
     ],
     imports: [
         CommonModule,
@@ -38,7 +40,8 @@ import {HeaderComponent} from "./component/header/header.component";
         TextboxComponent,
         PortfolioCardComponent,
         IconComponent,
-        IconDirective
+        IconDirective,
+        NewsletterComponent
     ]
 })
 export class SharedModule {}

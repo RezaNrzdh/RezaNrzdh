@@ -1,9 +1,32 @@
-<footer class="laptop flex padding-top-32 padding-bot-32 justify-btw align-ctr">
-    <span class="caption color-text-tint">تمام حق و حقوق متعلق است به وبسایت RezaNrzdh</span>
-    <a routerLink="/" class="flex"><img src="assets/images/logo.svg" alt="logo" /></a>
-    <div class="flex">
-        <a class="instagramBtn flex body-2 margin-right-auto"></a>
-        <a class="linkedinBtn flex body-2 margin-right-24"></a>
-        <a class="githubBtn flex body-2 margin-right-24"></a>
+<footer class="laptop flex column margin-top-56 margin-bot-32">
+    <div class="grid margin-bot-32 padding-bot-32">
+        <div class="flex align-ctr">
+            <a routerLink="/" class="flex"><img src="assets/images/logo.svg" alt="logo" /></a>
+        </div>
+        <div class="flex justify-ctr align-ctr">
+            <ul class="flex padding-0 margin-0">
+                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">صفحه اصلی</a></li>
+                <li><a routerLink="/portfolio" routerLinkActive="active">نمونه کارها</a></li>
+                <li><a routerLink="/order" routerLinkActive="active">سفارش کار</a></li>
+                <li><a routerLink="/blog" routerLinkActive="active">بلاگ</a></li>
+                <li><a routerLink="/about" routerLinkActive="active">درباره من</a></li>
+                <li><a routerLink="/contact" routerLinkActive="active">تماس با من</a></li>
+            </ul>
+        </div>
+        <div class="flex">
+            <div class="social flex align-ctr  margin-right-auto">
+                <a><app-icon icon="instagram" size="16" color="white"></app-icon></a>
+                <a><app-icon icon="linkedin" size="16" color="white"></app-icon></a>
+                <a><app-icon icon="github" size="16" color="white"></app-icon></a>
+            </div>
+            <div class="lang flex align-ctr margin-right-48">
+                <span class="body-2 color-gray-3 margin-left-8">Farsi</span>
+                <app-icon icon="lang" size="16" color="white"></app-icon>
+            </div>
+        </div>
     </div>
+    <div class="newsletter margin-bot-40">
+        <app-newsletter></app-newsletter>
+    </div>
+    <span class="caption medium color-gray-3 margin-auto">تمامی حق و حقوق متعلق است به سایت RezaNrzdh</span>
 </footer>
