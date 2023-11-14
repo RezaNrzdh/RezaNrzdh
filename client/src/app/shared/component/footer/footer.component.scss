@@ -1,26 +1,34 @@
-footer{
-    .instagramBtn{
-        &:before{
-            content: "";
-            width: 16px;
-            height: 16px;
-            background-image: url("~src/assets/icons/instagram.svg");
+@use "src/assets/styles/color";
+
+:host{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    background-color: color.$color-dark;
+    footer{
+        .instagramBtn{
+            &:before{
+                content: "";
+                width: 16px;
+                height: 16px;
+                background-image: url("~src/assets/icons/instagram.svg");
+            }
         }
-    }
-    .linkedinBtn{
-        &:before{
-            content: "";
-            width: 16px;
-            height: 16px;
-            background-image: url("~src/assets/icons/linkedin.svg");
+        .linkedinBtn{
+            &:before{
+                content: "";
+                width: 16px;
+                height: 16px;
+                background-image: url("~src/assets/icons/linkedin.svg");
+            }
         }
-    }
-    .githubBtn{
-        &:before{
-            content: "";
-            width: 16px;
-            height: 16px;
-            background-image: url("~src/assets/icons/github.svg");
+        .githubBtn{
+            &:before{
+                content: "";
+                width: 16px;
+                height: 16px;
+                background-image: url("~src/assets/icons/github.svg");
+            }
         }
     }
 }

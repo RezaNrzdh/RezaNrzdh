@@ -1,6 +1,17 @@
 @use "src/assets/styles/color";
 @use "src/assets/styles/typography";
 
+@keyframes AnimateUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
 
 :host {
     margin-top: -88px;
@@ -11,8 +22,7 @@
         position: relative;
         width: inherit;
         height: inherit;
-        background-color: red;
-        background: url("~src/assets/images/heroimg.jpg");
+        background: url("../../../../../assets/images/heroimg.jpg");
         background-repeat: no-repeat;
         background-position: center center;
         image-rendering: pixelated;
@@ -22,6 +32,10 @@
             margin-right: 92px;
             width: 210px;
             box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+            animation-name: AnimateUpDown;
+            animation-timing-function: ease-in-out;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
             > span{
                 width: 48px;
                 height: 48px;

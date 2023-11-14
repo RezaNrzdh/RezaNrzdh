@@ -1,0 +1,13 @@
+@use "src/assets/styles/color";
+
+:host{
+    height: 160px;
+    background-color: color.$color-gray-1;
+    section{
+        height: inherit;
+        img{
+            margin-left: 32px;
+            margin-right: 32px;
+        }
+    }
+}

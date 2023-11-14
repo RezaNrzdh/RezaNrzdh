@@ -1,11 +1,11 @@
-<div class="flex column hidden radius-16 borderbox background-gray-1 padding-bot-16">
+<div class="flex column hidden radius-8 borderbox background-gray-1 padding-bot-16">
     <img src="assets/images/sample.jpg" alt="" />
     <div class="flex body-2 margin-top-16 margin-right-24 margin-left-24">
-        <a routerLink="portfolio/{{title}}" class="color-text">
+        <a routerLink="portfolio/{{title}}" class="body-1 bold color-dark">
             {{ title }}
         </a>
     </div>
-    <div class="actions flex align-ctr margin-top-8 margin-right-24 margin-left-24">
+    <div class="actions flex align-ctr margin-top-auto margin-right-24 margin-left-24">
         <div class="show flex align-ctr caption color-text-tint margin-left-16">
             <app-icon icon="eye" size="20" color="textTint" class="margin-left-4"></app-icon>
             {{ visit }}
@@ -14,6 +14,8 @@
             <app-icon icon="like" size="20" color="textTint" class="margin-left-4"></app-icon>
             {{ like }}
         </div>
+        <div class="like flex align-ctr caption color-text-tint margin-right-auto">
+            {{ date }}
+        </div>
     </div>
-
 </div>
