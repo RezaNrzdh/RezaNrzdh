@@ -1,21 +1,33 @@
-<div id="mainBody" class="background-gray-1 radius-16 laptop padding-32 borderbox">
-    <form [formGroup]="contactForm" (ngSubmit)="OnSubmit()" class="flex column" >
-        <app-textbox title="نام و نام خانوادگی" type="text" name="name" placeholder="نام خود را بنویسید..."></app-textbox>
-        <app-textbox title="ایمیل" type="email" name="name" placeholder="آدرس ایمیل خود را بنویسید..."></app-textbox>
-
-        <label class="color-text-tint">ایمیل</label>
-        <input type="text" name="email" formControlName="email" />
-        <span></span>
-        <br>
-        <label class="color-text-tint">شماره تماس</label>
-        <input type="text" name="phone" formControlName="phone" />
-        <span></span>
-        <br>
-        <label class="color-text-tint">پیغام</label>
-        <input type="text" name="comment" formControlName="comment" />
-        <br>
-        <app-button action="submit" mode="filled" color="secondary">ثبت نظر</app-button>
-    </form>
-</div>
-<span class="padding-bot-64"></span>
-
+<section class="ContactPage laptop margin-top-32">
+    <h1 class="color-dark headline-1 bold margin-bot-16">تماس با من</h1>
+    <p class="color-dark medium body-2 margin-bot-24">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است</p>
+    <div class="container flex column background-white radius-8">
+        <div class="form"></div>
+        <div class="info relative margin-right-auto background-gray-5">
+            <div class="flex relative margin-32 z-index-10">
+                <div>
+                    <h2 class="headline-4 bold color-gray-2 margin-bot-24">اطلاعات تماس</h2>
+                    <ul class="padding-0 margin-0">
+                        <li class="flex align-ctr margin-bot-16">
+                            <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
+                            <span class="margin-right-4 color-gray-3 body-2">شماره تماس: 09112489464</span>
+                        </li>
+                        <li class="flex margin-bot-16">
+                            <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
+                            <span class="margin-right-4  color-gray-3 body-2">آدرس ایمیل: info@rezanrzdh.ir</span>
+                        </li>
+                        <li class="flex">
+                            <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
+                            <span class="margin-right-4  color-gray-3 body-2">شهر باران خانه من است</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="social flex column align-ctr background-gray-5 margin-right-auto padding-top-24 padding-bot-24 radius-8">
+                    <a class="margin-bot-24"><app-icon icon="instagram" size="24" color="white"></app-icon></a>
+                    <a class="margin-bot-24"><app-icon icon="linkedin" size="24" color="white"></app-icon></a>
+                    <a><app-icon icon="github" size="24" color="white"></app-icon></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
