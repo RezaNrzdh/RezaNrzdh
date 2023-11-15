@@ -1,65 +1,76 @@
 @use "src/assets/styles/color";
 @import  "src/assets/styles/typography";
 
-header{
-    display: flex;
-    height: 88px;
-    justify-content: center;
-    position: relative;
-    z-index: 9999;
-    section{
-        display: grid;
-        grid-template-columns: 1fr 650px 1fr;
-        .logo{
+:host{
+    &.internalPages{
+        header{
+            background-color: color.$color-white;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.04);
         }
-        nav{
-            li{
-                display: flex;
-                align-items: center;
-                margin-left: 24px;
-                margin-right: 24px;
-                list-style: none;
-                height: 100%;
-                @include body2;
-                font-weight: 500;
-                a{
-                    position: relative;
-                    color: color.$color-white;
-                    &:after{
-                        display: flex;
-                        position: absolute;
-                        top: 40px;
-                        left: 0;
-                        right: 0;
-                        margin-right: auto;
-                        margin-left: auto;
-                        content: "";
-                        width: 6px;
-                        height: 6px;
-                        border-radius: 3px;
-                        background-color: color.$color-white;
-                        transition: all ease-in-out 0.3s;
-                        opacity: 0;
-                    }
-                    &:hover{
-                        &:after{
-                            top: 30px;
-                            opacity: 1;
-                        }
-                    }
-                    &.active{
+        header section nav li a {
+            color: color.$color-dark;
+        }
+    }
+    header{
+        display: flex;
+        height: 88px;
+        justify-content: center;
+        position: relative;
+        z-index: 9999;
+        section{
+            display: grid;
+            grid-template-columns: 1fr 650px 1fr;
+            .logo{
+            }
+            nav{
+                li{
+                    display: flex;
+                    align-items: center;
+                    margin-left: 24px;
+                    margin-right: 24px;
+                    list-style: none;
+                    height: 100%;
+                    @include body2;
+                    font-weight: 500;
+                    a{
                         position: relative;
-                        color: color.$color-primary;
+                        color: color.$color-white;
                         &:after{
-                            background-color: color.$color-primary;
-                            top: 30px;
-                            opacity: 1;
+                            display: flex;
+                            position: absolute;
+                            top: 40px;
+                            left: 0;
+                            right: 0;
+                            margin-right: auto;
+                            margin-left: auto;
+                            content: "";
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 3px;
+                            background-color: color.$color-white;
+                            transition: all ease-in-out 0.3s;
+                            opacity: 0;
+                        }
+                        &:hover{
+                            &:after{
+                                top: 30px;
+                                opacity: 1;
+                            }
+                        }
+                        &.active{
+                            position: relative;
+                            color: color.$color-primary;
+                            &:after{
+                                background-color: color.$color-primary;
+                                top: 30px;
+                                opacity: 1;
+                            }
                         }
                     }
                 }
             }
-        }
-        .auth{
+            .auth{
+            }
         }
     }
 }
