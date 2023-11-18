@@ -83,9 +83,10 @@
         &[color="white"]{
             button, a{
                 color: color.$color-white;
+                border: 1px solid rgba(255,255,255,0);
                 &:hover{
-                    color: color.$color-dark;
-                    background-color: color.$color-white;
+                    color: color.$color-white;
+                    border: 1px solid color.$color-gray-3;
                 }
             }
         }

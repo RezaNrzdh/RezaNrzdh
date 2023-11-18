@@ -17,7 +17,10 @@
             </ul>
         </nav>
         <div class="flex align-ctr justify-end">
-            <app-button [isLink]="true" mode="ghost" color="white" href="/login">ورود</app-button>
+            <app-button *ngIf="!internalPages; else GhostDark" [isLink]="true" mode="ghost" color="white" href="/login">ورود</app-button>
+            <ng-template #GhostDark>
+                <app-button [isLink]="true" mode="ghost" color="dark" href="/login">ورود</app-button>
+            </ng-template>
             <app-button [isLink]="true" mode="filled" color="primary" href="/register" class="margin-right-16">عضویت</app-button>
         </div>
     </section>
