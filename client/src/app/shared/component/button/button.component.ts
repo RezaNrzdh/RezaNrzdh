@@ -9,8 +9,10 @@ export class ButtonComponent implements OnInit {
 
     @Input() mode: "filled" | "outlined" | "ghost" | "submit";
     @Input() action: "submit" | "button" | "reset";
-    @Input() color: "primary" | "secondary" | "success" | "danger" | "info";
+    @Input() color: "primary" | "secondary" | "dark" | "white";
+    @Input() isLink: true | false = false;
     @Input() disabled: any = "";
+    @Input() href?: string;
     @Output() click: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}
@@ -19,9 +21,6 @@ export class ButtonComponent implements OnInit {
     }
 
     onClick = () => {
-        if(this.click["observers"].length == 0){
-            return;
-        }
         this.click.emit();
     }
 }
