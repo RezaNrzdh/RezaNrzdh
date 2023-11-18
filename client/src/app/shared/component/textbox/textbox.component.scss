@@ -1,27 +1,30 @@
-@import "src/assets/styles/_color.scss";
-@import "src/assets/styles/typography";
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
 
 :host{
     display: flex;
     flex-direction: column;
     &.ng-invalid.ng-touched{
         input{
-            border: 1px solid $color-danger;
+            border: 1px solid color.$color-danger;
         }
-    }
-    label{
-        @include body2;
-        color: $color-text;
     }
     input{
         height: 40px;
         border: none;
         outline: none;
-        font-family: VazirMatnFont;
-        background-color: $color-stroke-1;
+        font-family: PelakFont;
+        border: 1px solid color.$color-gray-2;
+    }
+    textarea{
+        border: none;
+        outline: none;
+        font-family: PelakFont;
+        border: 1px solid color.$color-gray-2;
+        resize: none;
+        overflow: hidden;
     }
     span{
-        @include caption;
-        color: $color-danger;
+        @include typography.caption;
     }
 }

@@ -20,6 +20,8 @@ export class TextboxComponent implements ControlValueAccessor {
     @Input() name: string;
     @Input() placeholder: string = "";
     @Input() formGroup: any = "";
+    @Input() multiLine: true | false = false;
+    @Input() rows: number = 1;
 
     value: string = "";
     onChange: (value: any) => void;
