@@ -10,7 +10,10 @@
                 <app-textbox type="tel" name="phone" title="شماره تماس" formControlName="phone"></app-textbox>
                 <app-textbox type="text" name="subject" title="موضوع" formControlName="subject"></app-textbox>
                 <app-textbox [multiLine]="true" [rows]="4" name="comment" title="نظر شما" formControlName="comment"></app-textbox>
-                <button>Submit</button>
+                <div class="flex">
+                    <app-button [isLink]="false" color="primary" mode="filled" class="margin-left-16">ارسال نظر</app-button>
+                    <app-button [isLink]="true" color="dark" mode="ghost">بازنشانی</app-button>
+                </div>
             </form>
         </div>
         <div class="info relative margin-right-auto background-gray-5">
