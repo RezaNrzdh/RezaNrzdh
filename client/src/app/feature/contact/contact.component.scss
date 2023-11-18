@@ -1,6 +1,12 @@
 @use "src/assets/styles/color";
 @use "src/assets/styles/typography";
 
+app-textbox[name="name"]{ grid-area: name }
+app-textbox[name="email"]{ grid-area: email }
+app-textbox[name="phone"]{ grid-area: phone }
+app-textbox[name="subject"]{ grid-area: subject }
+app-textbox[name="comment"]{ grid-area: comment }
+
 :host{
     position: relative;
     &:after{
@@ -20,10 +26,19 @@
             height: 549px;
             box-shadow: 0 0 128px rgba(0,0,0,0.08);
             .form{
+                .grid{
+                    grid-template-areas:
+                        'name email'
+                        'phone subject'
+                        'comment comment';
+                    grid-column-gap: 32px;
+                    grid-row-gap: 32px;
 
+                }
             }
             .info{
                 width: 426px;
+                min-width: 426px;
                 height: 100%;
                 border-radius: 8px 0 0 8px;
                 background: url("/assets/images/map.jpg");
@@ -34,6 +49,7 @@
                     content: "";
                     width: 100%;
                     height: 60%;
+                    border-radius: 8px 0 0 0;
                     background:linear-gradient(180deg,rgba(34,51,71,1) 30%, rgba(34,51,71,0));
                 }
                 .social{

@@ -1,8 +1,18 @@
 <section class="ContactPage laptop margin-top-32">
     <h1 class="color-dark headline-1 bold margin-bot-16">تماس با من</h1>
     <p class="color-dark medium body-2 margin-bot-24">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است</p>
-    <div class="container flex column background-white radius-8">
-        <div class="form"></div>
+    <div class="container flex background-white radius-8">
+        <div class="form padding-32 width-full borderbox">
+            <h2 class="headline-4 bold color-dark margin-bot-32">ارسال نظر</h2>
+            <form class="grid" [formGroup]="contactForm" (ngSubmit)="GetContactFormData()">
+                <app-textbox type="text" name="name" title="نام و نام خانوادگی" formControlName="name"></app-textbox>
+                <app-textbox type="email" name="email" title="آدرس ایمیل" formControlName="email"></app-textbox>
+                <app-textbox type="tel" name="phone" title="شماره تماس" formControlName="phone"></app-textbox>
+                <app-textbox type="text" name="subject" title="موضوع" formControlName="subject"></app-textbox>
+                <app-textbox [multiLine]="true" [rows]="4" name="comment" title="نظر شما" formControlName="comment"></app-textbox>
+                <button>Submit</button>
+            </form>
+        </div>
         <div class="info relative margin-right-auto background-gray-5">
             <div class="flex relative margin-32 z-index-10">
                 <div>
