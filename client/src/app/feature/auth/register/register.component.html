@@ -1,38 +1,46 @@
 <section class="flex justify-ctr align-ctr height-full">
-    <div class="register flex column align-ctr shadow-24 radius-16 padding-32 borderbox">
-        <label class="margin-bot-16 margin-top-32">سلام، خوش اومدی</label>
-        <span class="margin-bot-40 text-ctr">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex column width-full height-full">
-            <app-textbox
-                    title="ایمیل"
-                    type="text"
-                    name="email"
-                    [formGroup]="registerForm.get('email')"
-                    formControlName="email"
-                    [placeholder]="'مثال: reza.nrzdh@gmail.com'"
-                    class="margin-bot-24 width-full">
-            </app-textbox>
-            <app-textbox
-                    title="رمز عبور"
-                    type="password"
-                    name="password"
-                    [formGroup]="registerForm.get('password')"
-                    formControlName="password"
-                    [placeholder]="'مثال: 4C5rY5tyu'"
-                    class="margin-bot-24 width-full">
-            </app-textbox>
-            <app-button
-                    action="submit"
-                    mode="filled"
-                    color="secondary"
-                    [disabled]="''"
-                    class="flex">
-                عضویت
-            </app-button>
-            <a routerLink="" class="flex justify-ctr align-ctr margin-top-16">
-                <span class="margin-left-8 body-2 color-text-tint">بازگشت به صفحه اول</span>
-                <img src="assets/images/arrow-left.svg" alt="arrow-left" />
-            </a>
-        </form>
+    <div class="container flex hidden background-white radius-8">
+        <div class="flex column width-half height-full borderbox padding-48">
+            <img src="/assets/images/logo-dark.svg" height="24" class="margin-top-8 margin-bot-56" alt="" />
+            <app-textbox title="آدرس ایمیل" type="email" class="margin-bot-32"></app-textbox>
+            <app-textbox title="رمز عبور" type="password" class="margin-bot-32"></app-textbox>
+            <app-button [isLink]="false" mode="filled" color="primary" class="margin-bot-16">عضویت در سایت</app-button>
+            <app-checkbox>شرایط و قوانین رو خوندم و می پذیرم</app-checkbox>
+            <app-button [isLink]="false" mode="outlined" color="dark" class="margin-top-32">عضویت با گوگل</app-button>
+        </div>
+        <div class="width-half height-full background-danger"></div>
     </div>
 </section>
+
+<!--<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex column width-full height-full">-->
+<!--    <app-textbox-->
+<!--        title="ایمیل"-->
+<!--        type="text"-->
+<!--        name="email"-->
+<!--        [formGroup]="registerForm.get('email')"-->
+<!--        formControlName="email"-->
+<!--        [placeholder]="'مثال: reza.nrzdh@gmail.com'"-->
+<!--        class="margin-bot-24 width-full">-->
+<!--    </app-textbox>-->
+<!--    <app-textbox-->
+<!--        title="رمز عبور"-->
+<!--        type="password"-->
+<!--        name="password"-->
+<!--        [formGroup]="registerForm.get('password')"-->
+<!--        formControlName="password"-->
+<!--        [placeholder]="'مثال: 4C5rY5tyu'"-->
+<!--        class="margin-bot-24 width-full">-->
+<!--    </app-textbox>-->
+<!--    <app-button-->
+<!--        action="submit"-->
+<!--        mode="filled"-->
+<!--        color="secondary"-->
+<!--        [disabled]="''"-->
+<!--        class="flex">-->
+<!--        عضویت-->
+<!--    </app-button>-->
+<!--    <a routerLink="" class="flex justify-ctr align-ctr margin-top-16">-->
+<!--        <span class="margin-left-8 body-2 color-text-tint">بازگشت به صفحه اول</span>-->
+<!--        <img src="assets/images/arrow-left.svg" alt="arrow-left" />-->
+<!--    </a>-->
+<!--</form>-->
