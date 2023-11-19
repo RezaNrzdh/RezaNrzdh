@@ -17,24 +17,6 @@
         }
     }
 
-    &[color="success"]{
-        mat-icon{
-            color: color.$color-success;
-        }
-    }
-
-    &[color="danger"]{
-        mat-icon{
-            color: color.$color-danger;
-        }
-    }
-
-    &[color="info"]{
-        mat-icon{
-            color: color.$color-info;
-        }
-    }
-
     &[color="gray1"]{
         mat-icon{
             color: color.$color-gray-1;
@@ -53,15 +35,27 @@
         }
     }
 
+    &[color="gray4"]{
+        mat-icon{
+            color: color.$color-gray-4;
+        }
+    }
+
+    &[color="gray5"]{
+        mat-icon{
+            color: color.$color-gray-5;
+        }
+    }
+
     &[color="white"]{
         mat-icon{
             color: color.$color-white;
         }
     }
 
-    &[color="textTint"]{
+    &[color="dark"]{
         mat-icon{
-            color: color.$color-text-tint;
+            color: color.$color-dark;
         }
     }
 }
@@ -92,6 +86,13 @@
         mat-icon {
             width: 32px;
             height: 32px;
+        }
+    }
+
+    &[size="48"] {
+        mat-icon {
+            width: 48px;
+            height: 48px;
         }
     }
 }

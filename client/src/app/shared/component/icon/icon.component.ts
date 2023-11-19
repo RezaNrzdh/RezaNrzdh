@@ -13,7 +13,7 @@ export class IconComponent implements OnInit {
 
     @Input() icon: string;
     @Input() size: "16" | "20" | "24" | "32" | "48" = "24";
-    @Input() color: "primary" | "secondary" | "success" | "danger" | "info" | "gray1" | "gray2" | "gray3" | "white" | "textTint";
+    @Input() color: "primary" | "secondary" | "gray1" | "gray2" | "gray3" | "gray4" | "gray5" | "white" | "dark";
 
     ngOnInit() {
         this.matIconRegistry.addSvgIcon(
