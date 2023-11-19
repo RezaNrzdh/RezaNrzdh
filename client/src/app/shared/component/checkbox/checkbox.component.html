@@ -1,0 +1,10 @@
+<label class="checkbox flex relative pointer">
+    <input type="checkbox" class="absolute" #checkbox (change)="true"/>
+    <span class="flex relative justify-ctr align-ctr radius-4">
+        <app-icon *ngIf="!checkbox.checked" icon="check" size="16" color="gray4"></app-icon>
+        <app-icon *ngIf="checkbox.checked" icon="check" size="16" color="white"></app-icon>
+    </span>
+    <label class="body-2 medium color-gray-5 margin-right-8">
+        <ng-content></ng-content>
+    </label>
+</label>

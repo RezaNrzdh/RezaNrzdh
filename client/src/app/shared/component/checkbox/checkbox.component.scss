@@ -1,0 +1,25 @@
+@use "src/assets/styles/color";
+
+:host{
+    display: flex;
+    .checkbox{
+        input{
+            width: 0;
+            height: 0;
+            &:checked{
+                ~ span {
+                    background-color: color.$color-success;
+                }
+            }
+        }
+        span{
+            width: 24px;
+            height: 24px;
+            background-color: color.$color-gray-2;
+        }
+        label{
+
+        }
+    }
+
+}
