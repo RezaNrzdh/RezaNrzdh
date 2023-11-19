@@ -11,8 +11,9 @@ export class ButtonComponent implements OnInit {
     @Input() action: "submit" | "button" | "reset";
     @Input() color: "primary" | "secondary" | "dark" | "white";
     @Input() isLink: true | false = false;
-    @Input() disabled: any = "";
+    @Input() icon?: string;
     @Input() href?: string;
+    @Input() disabled: any = "";
     @Output() click: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}

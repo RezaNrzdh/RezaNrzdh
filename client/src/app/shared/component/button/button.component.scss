@@ -62,6 +62,15 @@
                 }
             }
         }
+        &[color="dark"]{
+            button, a{
+                color: color.$color-dark;
+                border: 1px solid color.$color-gray-2;
+                &:hover{
+                    background-color: color.$color-gray-2;
+                }
+            }
+        }
     }
 }
 
