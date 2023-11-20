@@ -1,14 +1,27 @@
 <section class="flex justify-ctr align-ctr height-full">
     <div class="container flex hidden background-white radius-8">
         <div class="flex column width-half height-full borderbox padding-48">
-            <img src="/assets/images/logo-dark.svg" height="24" class="margin-top-8 margin-bot-56" alt="" />
-            <app-textbox title="آدرس ایمیل" type="email" class="margin-bot-32"></app-textbox>
-            <app-textbox title="رمز عبور" type="password" class="margin-bot-32"></app-textbox>
-            <app-button [isLink]="false" mode="filled" color="primary" class="margin-bot-16">عضویت در سایت</app-button>
-            <app-checkbox>شرایط و قوانین رو خوندم و می پذیرم</app-checkbox>
-            <app-button [isLink]="false" mode="outlined" color="dark" class="margin-top-32">عضویت با گوگل</app-button>
+            <a routerLink="/" class="flex justify-ctr margin-top-8 margin-bot-24">
+                <img src="/assets/images/logo-gray.svg" height="24" alt="" />
+            </a>
+            <h1 class="flex justify-ctr headline-5 bold color-gray-4 margin-bot-32">عضویت در سایت</h1>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex column height-full">
+                <app-textbox title="آدرس ایمیل" placeholder="مثال: reza.nrzdh@gmail.com" type="email" class="margin-bot-32" formControlName="email"></app-textbox>
+                <app-textbox title="رمز عبور" type="password" class="margin-bot-32" formControlName="password"></app-textbox>
+                <app-button [isLink]="false" mode="filled" color="primary" class="margin-bot-16">عضویت در سایت</app-button>
+                <app-checkbox formControlName="checkbox">شرایط و قوانین رو خوندم و می پذیرم</app-checkbox>
+                <app-button [isLink]="true" icon="google" mode="outlined" color="dark" class="margin-top-24">عضویت با گوگل</app-button>
+            </form>
         </div>
-        <div class="width-half height-full background-danger"></div>
+        <div class="registerBG flex relative width-half height-full">
+            <div class="flex column width-full height-full padding-48 borderbox">
+                <img src="/assets/images/dot.svg" width="72" height="32" class="z-index-10" alt="" />
+                <a routerLink="/" class="flex align-self-bot margin-top-auto color-white body-2 z-index-10">
+                    <app-icon icon="arrow-right" size="20" class="margin-left-8"></app-icon>
+                    بازگشت به خانه
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 

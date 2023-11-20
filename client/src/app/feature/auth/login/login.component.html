@@ -1,38 +1,25 @@
 <section class="flex justify-ctr align-ctr height-full">
-    <div class="login flex column align-ctr shadow-24 radius-16 padding-32 borderbox">
-        <label class="margin-bot-16 margin-top-32">سلام، خوش اومدی</label>
-        <span class="margin-bot-40 text-ctr">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex column width-full height-full">
-            <app-textbox
-                    title="ایمیل"
-                    type="text"
-                    name="email"
-                    [formGroup]="loginForm.get('email')"
-                    formControlName="email"
-                    [placeholder]="'مثال: reza.nrzdh@gmail.com'"
-                    class="margin-bot-24 width-full">
-            </app-textbox>
-            <app-textbox
-                    title="رمز عبور"
-                    type="password"
-                    name="password"
-                    [formGroup]="loginForm.get('password')"
-                    formControlName="password"
-                    [placeholder]="'مثال: 4C5rY5tyu'"
-                    class="margin-bot-24 width-full">
-            </app-textbox>
-            <app-button
-                    action="submit"
-                    mode="filled"
-                    color="secondary"
-                    [disabled]="''"
-                    class="flex">
-                ورود
-            </app-button>
-            <a routerLink="" class="flex justify-ctr align-ctr margin-top-16">
-                <span class="margin-left-8 body-2 color-text-tint">بازگشت به صفحه اول</span>
-                <img src="assets/images/arrow-left.svg" alt="arrow-left" />
+    <div class="container flex hidden background-white radius-8">
+        <div class="flex column width-half height-full borderbox padding-48">
+            <a routerLink="/" class="flex justify-ctr margin-top-8 margin-bot-24">
+                <img src="/assets/images/logo-gray.svg" height="24" alt="" />
             </a>
-        </form>
+            <h1 class="flex justify-ctr headline-5 bold color-gray-4 margin-bot-32">ورود به سایت</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex column height-full">
+                <app-textbox title="آدرس ایمیل" placeholder="مثال: reza.nrzdh@gmail.com" type="email" class="margin-bot-32" formControlName="email"></app-textbox>
+                <app-textbox title="رمز عبور" type="password" class="margin-bot-32" formControlName="password"></app-textbox>
+                <app-button [isLink]="false" mode="filled" color="secondary" class="margin-bot-16 margin-top-auto">ورود به سایت</app-button>
+                <app-button [isLink]="true" icon="google" mode="outlined" color="dark">ورود با گوگل</app-button>
+            </form>
+        </div>
+        <div class="loginBG flex relative width-half height-full">
+            <div class="flex column width-full height-full padding-48 borderbox">
+                <img src="/assets/images/dot.svg" width="72" height="32" class="z-index-10" alt="" />
+                <a routerLink="/" class="flex align-self-bot margin-top-auto color-white body-2 z-index-10">
+                    <app-icon icon="arrow-right" size="20" class="margin-left-8"></app-icon>
+                    بازگشت به خانه
+                </a>
+            </div>
+        </div>
     </div>
 </section>
