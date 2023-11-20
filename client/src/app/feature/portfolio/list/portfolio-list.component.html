@@ -1,15 +1,34 @@
-<div class="portfolio flex column laptop margin-top-40 margin-bot-64">
-    <h2 class="headline-4 color-text margin-ctr">نمونه کارهای من</h2>
-    <div class="categories margin-bot-32">
-        <ul class="flex margin-0 padding-0 justify-ctr margin-top-16">
-            <li><app-button mode="filled" color="secondary">همه</app-button></li>
-            <li><app-button mode="ghost" color="secondary">طراحی محصول</app-button></li>
-            <li><app-button mode="ghost" color="secondary">برنامه نویسی</app-button></li>
-            <li><app-button mode="ghost" color="secondary">برندینگ</app-button></li>
-            <li><app-button mode="ghost" color="secondary">گرافیک</app-button></li>
+<section class="PortfolioPage laptop margin-top-32 margin-bot-56">
+    <div class="flex align-ctr margin-bot-16">
+        <h1 class="color-dark headline-1 bold margin-left-24">نمونه کارهای من</h1>
+        <img src="assets/images/dot.svg" alt="" />
+    </div>
+    <div class="categories flex margin-top-32 margin-bot-32">
+        <ul class="flex margin-0 padding-0">
+            <li><app-button mode="filled" color="primary">همه</app-button></li>
+            <li><app-button mode="ghost" color="dark">طراحی وب</app-button></li>
+            <li><app-button mode="ghost" color="dark">توسعه وب</app-button></li>
+            <li><app-button mode="ghost" color="dark">بازیسازی</app-button></li>
+            <li><app-button mode="ghost" color="dark">گرافیک</app-button></li>
         </ul>
+        <div class="flex margin-right-auto">
+            <app-button [isLink]="false" mode="filled" color="dark">جدیدترین</app-button>
+            <app-button [isLink]="false" mode="ghost" color="dark" class="margin-right-16">پربازدیدترین</app-button>
+        </div>
     </div>
-    <div class="samples grid">
-        <app-portfoliocard *ngFor="let i of data" [title]="i.title" [visit]="i.visit" [like]="i.like"></app-portfoliocard>
+    <div class="grid">
+        <app-portfoliocard
+            *ngFor="let i of data"
+            [title]="i.title"
+            [visit]="i.visit"
+            [like]="i.like"
+            [imageURL]="i.img"
+            [category]="i.category"
+            [isOutline]="true">
+        </app-portfoliocard>
     </div>
-</div>
+    <div class="flex justify-ctr margin-top-32">
+        <app-button [isLink]="false" mode="outlined" color="dark">نمونه کارهای بیشتر</app-button>
+    </div>
+</section>
+

@@ -10,7 +10,14 @@
         </ul>
     </div>
     <div class="samples grid">
-        <app-portfoliocard *ngFor="let i of data" [title]="i.title" [visit]="i.visit" [like]="i.like"></app-portfoliocard>
+        <app-portfoliocard
+            *ngFor="let i of data"
+            [title]="i.title"
+            [visit]="i.visit"
+            [like]="i.like"
+            [imageURL]="i.img"
+            [category]="i.category">
+        </app-portfoliocard>
     </div>
     <a routerLink="portfolio" class="flex margin-ctr margin-top-32 body-2 color-secondary">
         نمایش نمونه کارهای بیشتر

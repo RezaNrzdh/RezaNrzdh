@@ -13,7 +13,7 @@ export class PortfolioComponent implements OnInit {
     constructor(private portfolioService: PortfolioService ) { }
 
     ngOnInit(): void {
-        this.data = this.portfolioService.myPortfolio();
+        this.data = this.portfolioService.GetTopPortfolio();
     }
 
 }
