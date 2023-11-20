@@ -15,6 +15,7 @@ import { IconDirective } from './directive/icon.directive';
 import {HeaderComponent} from "./component/header/header.component";
 import {NewsletterComponent} from "./component/newsletter/newsletter.component";
 import {CheckboxComponent} from "./component/checkbox/checkbox.component";
+import {TagComponent} from "./component/tag/tag.component";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import {CheckboxComponent} from "./component/checkbox/checkbox.component";
         IconComponent,
         IconDirective,
         NewsletterComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        TagComponent
     ],
     imports: [
         CommonModule,
@@ -44,7 +46,8 @@ import {CheckboxComponent} from "./component/checkbox/checkbox.component";
         IconComponent,
         IconDirective,
         NewsletterComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        TagComponent
     ]
 })
 export class SharedModule {}
