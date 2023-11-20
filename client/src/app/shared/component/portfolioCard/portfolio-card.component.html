@@ -1,7 +1,16 @@
-<div class="flex column hidden radius-8 borderbox background-gray-1 padding-bot-16">
-    <img src="assets/images/sample.jpg" alt="" />
+<div *ngIf="!isOutline" class="flex column hidden radius-8 borderbox background-white padding-bot-16">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+</div>
+<div *ngIf="isOutline" class="isOutline flex column hidden radius-8 padding-bot-16">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+</div>
+
+<ng-template #content>
+    <div class="imageContainer">
+        <img src="{{ imageURL }}" alt="" />
+    </div>
     <div class="flex body-2 margin-top-16 margin-right-24 margin-left-24">
-        <a routerLink="portfolio/{{title}}" class="body-1 bold color-dark">
+        <a routerLink="/portfolio/{{title}}" class="body-1 bold color-dark">
             {{ title }}
         </a>
     </div>
@@ -14,8 +23,6 @@
             <app-icon icon="like" size="20" color="gray4" class="margin-left-4"></app-icon>
             {{ like }}
         </div>
-        <div class="like flex align-ctr caption color-text-tint margin-right-auto">
-            {{ date }}
-        </div>
+        <app-tag *ngIf="category" class="margin-right-auto">{{ category }}</app-tag>
     </div>
-</div>
+</ng-template>
