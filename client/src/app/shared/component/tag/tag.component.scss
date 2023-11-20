@@ -1,0 +1,12 @@
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
+
+:host{
+    display: flex;
+    height: 20px;
+    padding: 0 8px 0 8px;
+    border-radius: 10px;
+    @include typography.caption;
+    color: color.$color-white;
+    background-color: color.$color-secondary;
+}
