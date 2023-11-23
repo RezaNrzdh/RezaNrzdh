@@ -109,8 +109,8 @@ export class PortfolioService {
         return this.data;
     }
 
-    GetTopPortfolio = (): any => {
-        return this.data.slice(0,4);
+    GetTopPortfolio = (value: number = 4): any => {
+        return this.data.slice(0, value);
     }
 
 }

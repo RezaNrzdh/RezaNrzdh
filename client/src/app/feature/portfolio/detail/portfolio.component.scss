@@ -1,5 +1,40 @@
+@use "src/assets/styles/color";
+
+app-textbox[name="name"]{ grid-area: name }
+app-textbox[name="email"]{ grid-area: email }
+app-textbox[name="comment"]{ grid-area: comment }
+
 :host{
     section{
+        .slider{
+            img{
+                width: 1024px;
+                height: 574px;
+                background-color: color.$color-gray-2;
+            }
+        }
+        .desc{
+            grid-template-columns: 1fr 800px 1fr;
+            grid-column-gap: 32px;
+        }
+        .related{
+            .grid{
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-column-gap: 32px;
+            }
+        }
+        .comment{
+            border-bottom: 1px solid color.$color-gray-2;
+            .grid{
+                grid-template-areas:
+                    'name email'
+                    'comment comment';
+                grid-column-gap: 32px;
+                grid-row-gap: 32px;
+            }
+        }
+        .otherComments{
 
+        }
     }
 }
