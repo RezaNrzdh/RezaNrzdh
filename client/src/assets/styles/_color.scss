@@ -29,22 +29,26 @@ $color-secondary-shade: #1BA7A9;
 .background-secondary-tint  { background-color: #74E2E3 }
 .background-secondary-shade { background-color: #1BA7A9 }
 
+
 //Gray Color
-$color-gray-1: #F9FAFB;
-$color-gray-2: #DAE6EE;
-$color-gray-3: #BDC9D1;
-$color-gray-4: #848B90;
-$color-gray-5: #666D73;
-.color-gray-1 { color: #F9FAFB }
-.color-gray-2 { color: #DAE6EE }
-.color-gray-3 { color: #BDC9D1 }
-.color-gray-4 { color: #848B90 }
-.color-gray-5 { color: #666D73 }
-.background-gray-1 { background-color: #F9FAFB }
-.background-gray-2 { background-color: #DAE6EE }
-.background-gray-3 { background-color: #BDC9D1 }
-.background-gray-4 { background-color: #848B90 }
-.background-gray-5 { background-color: #666D73 }
+$color-gray-1:  #F9FAFB;
+$color-gray-1b: #EDF2F8;
+$color-gray-2:  #DAE6EE;
+$color-gray-3:  #BDC9D1;
+$color-gray-4:  #848B90;
+$color-gray-5:  #666D73;
+.color-gray-1  { color: #F9FAFB }
+.color-gray-1b { color: #EDF2F8 }
+.color-gray-2  { color: #DAE6EE }
+.color-gray-3  { color: #BDC9D1 }
+.color-gray-4  { color: #848B90 }
+.color-gray-5  { color: #666D73 }
+.background-gray-1  { background-color: #F9FAFB }
+.background-gray-1b { background-color: #EDF2F8 }
+.background-gray-2  { background-color: #DAE6EE }
+.background-gray-3  { background-color: #BDC9D1 }
+.background-gray-4  { background-color: #848B90 }
+.background-gray-5  { background-color: #666D73 }
 
 //Success Color
 $color-success:      #4BC97C;
