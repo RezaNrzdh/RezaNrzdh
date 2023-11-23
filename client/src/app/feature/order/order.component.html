@@ -1,1 +1,32 @@
-<p class="flex laptop justify-ctr">order works!</p>
+<section class="laptop margin-top-32 margin-bot-32">
+    <div class="flex align-ctr margin-bot-16">
+        <h1 class="color-dark headline-1 bold margin-left-24">سفارش کار</h1>
+        <img src="assets/images/dot.svg" alt=""/>
+    </div>
+    <div class="flex">
+        <div class="side flex radius-8 background-gray-1b borderbox">
+            <div class="main radius-8 background-white padding-top-32 padding-bot-32">
+                <a *ngFor="let item of data; index as i"
+                   (click)="SetSelectedOrder(i)"
+                   [ngClass]="{'active': selectedOrder === i}"
+                   class="flex align-ctr">
+                    <app-icon icon="{{item.icon}}" color="gray3" class="padding-right-32"></app-icon>
+                    <span class="body-2 color-dark medium margin-right-8">{{item.title}}</span>
+                </a>
+            </div>
+            <div class="sub flex column padding-top-32 padding-bot-32">
+                <a *ngFor="let item of data[selectedOrder].options; index as i"
+                   (click)="SetSelectedSubOrder(i)"
+                   [ngClass]="{'active': selectedSubOrder === i}"
+                   class="flex align-ctr body-2 color-dark medium padding-right-32 borderbox">
+                    <span>{{item}}</span>
+                    <app-icon icon="chevron-down" size="16" color="gray3" class="margin-left-16 margin-right-auto"></app-icon>
+                </a>
+            </div>
+        </div>
+        <div class="orders flex column width-full margin-right-32">
+            <h2 class="headline-4 bold color-dark margin-bot-16">{{ data[selectedOrder].options[selectedSubOrder] }}</h2>
+            <p class="lineheight-28 color-dark body-2 medium">در این گونه سایت ها مطالب عمومی، علمی، تخصصی، فیلم و سریال و ...، در قالب مقاله و خبر به کاربران ارائه میشود. از نمونه سایت های مشابه موجود در جهان میتونیم به medium.com و theverge.com و digitaltrends.com و در ایران هم به zoomg.ir و zoomit.ir و vigiato.net اشاره کنیم.</p>
+        </div>
+    </div>
+</section>
