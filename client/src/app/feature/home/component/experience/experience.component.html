@@ -6,7 +6,7 @@
     <div class="cards grid">
         <div *ngFor="let exp of experience" class="card flex column padding-32 background-white radius-8">
             <div class="icon flex justify-ctr align-ctr">
-                <img src="{{ exp.img }}" alt="" />
+                <app-icon icon="{{ exp.img }}" size="48" color="white"></app-icon>
             </div>
             <h3 class="body-1 bold color-dark margin-top-32 margin-bot-16">{{ exp.title }}</h3>
             <p class="body-2 lineheight-24 color-gray-5">{{ exp.desc }}</p>
