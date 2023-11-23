@@ -1,0 +1,37 @@
+<section class="flex column CRTMonitor margin-top-32">
+    <div class="head flex">
+        <div class="avatar red radius-24 flex justify-ctr align-ctr"></div>
+        <div class="flex column justify-ctr margin-right-16">
+            <span class="body-1 bold color-dark">محمد زاهدی</span>
+            <span class="caption medium color-gray-5 margin-top-2">23 اردیبهشت 1433</span>
+        </div>
+        <div class="flex margin-right-auto">
+            <span class="body-2 medium color-dark margin-left-8">5</span>
+            <app-icon icon="like" size="20" color="gray5"></app-icon>
+        </div>
+    </div>
+    <div class="desc margin-top-16 margin-right-64 padding-bot-32">
+        <p class="body-2 medium color-dark lineheight-24 margin-bot-16">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+        <div class="flex">
+            <a class="showReply flex align-ctr margin-left-24" #im (click)="ShowReplyComments(im)">
+                <span class="body-2 medium color-secondary margin-left-4">مشاهده پاسخ ها</span>
+                <app-icon icon="chevron-down" size="16" color="secondary"></app-icon>
+            </a>
+            <a class="flex align-ctr" (click)="ShowReplyForm()">
+                <app-icon icon="comment" size="16" color="secondary"></app-icon>
+                <span class="body-2 medium color-secondary margin-right-4">پاسخ</span>
+            </a>
+        </div>
+        <form *ngIf="!isHide" class="grid margin-top-24">
+            <app-textbox title="نام و نام خانوادگی" name="name" type="text"></app-textbox>
+            <app-textbox title="ایمیل" name="email" type="email"></app-textbox>
+            <app-textbox title="نظر شما" name="comment" [multiLine]="true" [rows]="4"></app-textbox>
+            <div class="flex">
+                <app-button mode="filled" color="primary">ارسال نظر</app-button>
+            </div>
+        </form>
+        <div *ngIf="!replyIsHide">
+            <app-reply *ngFor="let i of [1,1]"></app-reply>
+        </div>
+    </div>
+</section>

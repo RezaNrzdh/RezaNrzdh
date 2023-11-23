@@ -1,0 +1,37 @@
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
+
+app-textbox[name="name"]{ grid-area: name }
+app-textbox[name="email"]{ grid-area: email }
+app-textbox[name="comment"]{ grid-area: comment }
+
+:host{
+    section{
+        .head{
+            .avatar{
+                width: 48px;
+                height: 48px;
+            }
+        }
+        .desc{
+            border-bottom: 1px solid color.$color-gray-2;
+            .showReply{
+                app-icon{
+                    transition: all ease-in-out 0.3s;
+                }
+                &[showreply=true]{
+                    app-icon{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            .grid{
+                grid-template-areas:
+                    'name email'
+                    'comment comment';
+                grid-column-gap: 32px;
+                grid-row-gap: 32px;
+            }
+        }
+    }
+}
