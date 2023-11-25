@@ -71,6 +71,15 @@
                 }
             }
         }
+        &[color="dark2"]{
+            button, a{
+                color: color.$color-dark;
+                border: 1px solid color.$color-dark;
+                &:hover{
+                    background-color: color.$color-gray-2;
+                }
+            }
+        }
     }
 }
 
