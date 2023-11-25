@@ -132,7 +132,7 @@
 .headline-3 { font-size: 1.75rem; font-weight: 500 }
 .headline-4 { font-size: 1.5rem; font-weight: 500 }
 .headline-5 { font-size: 1.25rem; font-weight: 500 }
-.headline-6 { font-size: 1rem; font-weight: 500 }
+.headline-6 { font-size: 1.125rem; font-weight: 500 }
 .body-1     { font-size: 1rem; font-weight: 300 }
 .body-2     { font-size: 0.875rem; font-weight: 300 }
 .caption    { font-size: 0.75rem; font-weight: 300 }
@@ -200,9 +200,11 @@
 .width-half  { width: 50% }
 .width-3q    { width: 75%  }
 .width-full  { width: 100% }
+.width-fit   { width: fit-content }
 .height-half { height: 50% }
 .height-3q   { height: 75%  }
 .height-full { height: 100% }
+.height-fit  { height: fit-content }
 
 /*
 --- Borders / Radius ---
