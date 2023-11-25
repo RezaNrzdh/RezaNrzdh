@@ -1,32 +1,65 @@
 <section class="laptop margin-top-32 margin-bot-32">
-    <div class="flex align-ctr margin-bot-16">
+    <div class="flex align-ctr margin-bot-32">
         <h1 class="color-dark headline-1 bold margin-left-24">سفارش کار</h1>
         <img src="assets/images/dot.svg" alt=""/>
     </div>
-    <div class="flex">
-        <div class="side flex radius-8 background-gray-1b borderbox">
-            <div class="main radius-8 background-white padding-top-32 padding-bot-32">
-                <a *ngFor="let item of data; index as i"
-                   (click)="SetSelectedOrder(i)"
-                   [ngClass]="{'active': selectedOrder === i}"
-                   class="flex align-ctr">
-                    <app-icon icon="{{item.icon}}" color="gray3" class="padding-right-32"></app-icon>
+    <div class="flex column">
+        <div class="tabs flex column radius-8 borderbox">
+            <div class="main flex z-index-10 background-white">
+                <a *ngFor="let item of data; index as i" (click)="SetSelectedOrder(i)" [ngClass]="{'active': selectedOrder === i}" class="flex column align-ctr padding-top-32 padding-bot-32">
+                    <ng-container *ngIf="selectedOrder === i; else alt">
+                        <app-icon icon="{{item.icon}}" color="primary" class="margin-bot-8"></app-icon>
+                    </ng-container>
+                    <ng-template #alt>
+                        <app-icon icon="{{item.icon}}" color="gray3" class="margin-bot-8"></app-icon>
+                    </ng-template>
                     <span class="body-2 color-dark medium margin-right-8">{{item.title}}</span>
                 </a>
             </div>
-            <div class="sub flex column padding-top-32 padding-bot-32">
-                <a *ngFor="let item of data[selectedOrder].options; index as i"
-                   (click)="SetSelectedSubOrder(i)"
-                   [ngClass]="{'active': selectedSubOrder === i}"
-                   class="flex align-ctr body-2 color-dark medium padding-right-32 borderbox">
+            <div class="sub flex background-white margin-top-2">
+                <a *ngFor="let item of data[selectedOrder].options; index as i" (click)="SetSelectedSubOrder(i)" [ngClass]="{'active': selectedSubOrder === i}" class="flex align-ctr justify-ctr body-2 color-dark medium borderbox padding-top-32 padding-bot-32">
                     <span>{{item.title}}</span>
-                    <app-icon icon="chevron-down" size="16" color="gray3" class="margin-left-16 margin-right-auto"></app-icon>
                 </a>
             </div>
         </div>
-        <div class="orders flex column width-full margin-right-32">
-            <h2 class="headline-4 bold color-dark margin-bot-16">{{ data[selectedOrder].options[selectedSubOrder].title }}</h2>
-            <p class="lineheight-28 color-dark body-2 medium">{{ data[selectedOrder].options[selectedSubOrder].desc }}</p>
+        <div class="orders flex column width-full margin-top-32">
+<!--            <h2 class="headline-4 bold color-dark margin-bot-16">{{ data[selectedOrder].options[selectedSubOrder].title }}</h2>-->
+<!--            <p class="lineheight-28 color-dark body-2 medium margin-bot-24">{{ data[selectedOrder].options[selectedSubOrder].desc }}</p>-->
+            <div class="plans grid">
+                <div class="flex column">
+                    <div class="flex column background-gray-1b radius-8 padding-24">
+                        <app-icon icon="info" size="32" color="secondary"></app-icon>
+                        <span class="headline-6 bold color-dark margin-top-8">هیچکدوم از این طرح ها نیازتو پوشش نمیده؟</span>
+                        <span class="body-1 medium color-gray-5 margin-top-8 margin-bot-16">به صورت سفارشی خودت نیازاتو انتخاب کن.</span>
+                        <app-button mode="outlined" color="dark2" class="width-fit">سفارشی سازی</app-button>
+                    </div>
+                    <div class="flex column margin-top-24">
+                        <div *ngFor="let item of data[selectedOrder].options[selectedSubOrder].props" class="properties flex align-ctr body-2 dark medium padding-right-16 borderbox">
+                            {{item}}
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let item of data[selectedOrder].options[selectedSubOrder].plans" class="plan flex column borderbox radius-8">
+                    <div class="flex column padding-24 margin-bot-2">
+                        <app-tag *ngIf="item.popular" class="width-fit align-self-ctr">محبوب ترین</app-tag>
+                        <span class="flex justify-ctr margin-top-32 headline-5 bold color-dark margin-bot-16">{{ item.title }}</span>
+                        <span class="flex justify-ctr body-2 color-gray-5 medium margin-bot-16">{{ item.desc }}</span>
+                        <div class="flex justify-ctr align-ctr margin-bot-16">
+                            <span class="headline-1 bold color-dark">{{ item.price.toLocaleString() }}</span>
+                            <span class="body-2 color-gray-5 margin-right-8">تومان</span>
+                        </div>
+                        <app-button mode="filled" color="primary">انتخاب طرح</app-button>
+                    </div>
+                    <div class="props flex column margin-top-8">
+                        <div *ngFor="let i of item.props" class="flex align-ctr justify-ctr body-2 dark medium borderbox">
+                            <ng-container *ngIf="i !== false">
+                                <app-icon *ngIf="i === true; else alt" icon="check" color="secondary" size="24"></app-icon>
+                                <ng-template #alt>{{i}}</ng-template>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
