@@ -33,6 +33,22 @@
                             }
                         }
                     }
+                    .desc{
+                        border: 1px solid color.$color-gray-2;
+                        height: 300px;
+                        &:before{
+                            display: flex;
+                            content: "";
+                            position: absolute;
+                            top:-15px;
+                            width: 48px;
+                            height: 16px;
+                            background: url("/assets/images/btnarrow-white.png");
+                        }
+                        img{
+                            height: 32px;
+                        }
+                    }
                     &:first-child, &:nth-child(2){
                         &:after{
                             display: flex;
@@ -53,6 +69,15 @@
                             content: "";
                             width: 50%;
                             border-top: 1px dashed color.$color-gray-3;
+                        }
+                    }
+                    &:last-child{
+                        .desc{
+                            border: 1px solid color.$color-dark;
+                            background-color: color.$color-dark;
+                            &:before{
+                                background: url("/assets/images/btnarrow-dark.png");
+                            }
                         }
                     }
                 }
