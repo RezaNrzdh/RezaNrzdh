@@ -80,7 +80,7 @@
             <ng-container *ngFor="let btn of data.skills; index as i">
                 <app-button *ngIf="i === tab; else alt" (click)="SetTabIndex(i)" mode="filled" color="primary" class="margin-left-16">{{btn.title}}</app-button>
                 <ng-template #alt>
-                    <app-button (click)="SetTabIndex(i)" mode="ghost" color="dark" class="margin-left-16">{{btn.title}}</app-button>
+                    <app-button (click)="SetTabIndex(i)" mode="outlined" color="dark" class="margin-left-16">{{btn.title}}</app-button>
                 </ng-template>
             </ng-container>
         </div>

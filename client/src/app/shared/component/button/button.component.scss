@@ -21,6 +21,7 @@
         &[color="primary"]{
             button, a{
                 background-color: color.$color-primary;
+                border: 1px solid color.$color-primary;
                 &:hover{
                     background-color: color.$color-primary-shade;
                 }
@@ -29,6 +30,7 @@
         &[color="secondary"]{
             button, a{
                 background-color: color.$color-secondary;
+                border: 1px solid color.$color-secondary;
                 &:hover{
                     background-color: color.$color-secondary-shade;
                 }
