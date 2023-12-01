@@ -3,13 +3,15 @@ import {PortfolioService} from "./services/portfolio.service";
 import {SkillsService} from "./services/skills.service";
 import {EmployersService} from "./services/employers.service";
 import {OrdersService} from "./services/orders.service";
+import {AboutService} from "./services/about.service";
 
 @NgModule({
     providers:[
         PortfolioService,
         SkillsService,
         EmployersService,
-        OrdersService
+        OrdersService,
+        AboutService
     ],
     imports:[]
 })

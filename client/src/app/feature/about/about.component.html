@@ -8,19 +8,18 @@
             <img src="/assets/images/aboutus.png" class="absolute" alt=""/>
         </div>
         <div class="flex column margin-right-48 width-full">
-            <span class="headline-4 bold color-dark margin-top-56 margin-bot-16">توسعه دهنده و طراح وب</span>
+            <span class="headline-4 bold color-dark margin-top-56 margin-bot-16">{{data.jobtitle}}</span>
             <img src="assets/icons/rezanrzdlogofa.svg" width="321" height="56" alt=""/>
-            <p class="body-2 medium color-dark lineheight-24 margin-top-48">فارغ التحصیل رشته مهندسی کامپیوتر گرایش نرم افزار در سال 1393 از دانشگاه آزاد واحد لاهیجان هستم.
-                علاقه و دانش من عمدتا در حوزه طراحی و توسعه وب است و بیش از 7 سال سابقه فعالیت در این حوزه را دارم.</p>
+            <p class="body-2 medium color-dark lineheight-24 margin-top-48">{{data.aboutme}}</p>
             <div class="flex align-ctr margin-top-32 margin-bot-16">
                 <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
                 <span class="body-2 bold color-dark margin-right-4">شماره تماس:</span>
-                <span class="body-2 medium color-dark margin-right-4">09112489464</span>
+                <span class="body-2 medium color-dark margin-right-4">{{data.phone}}</span>
             </div>
             <div class="flex align-ctr">
                 <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
                 <span class="body-2 bold color-dark margin-right-4">آدرس ایمیل:</span>
-                <span class="body-2 medium color-dark margin-right-4">info@rezanrzdh.ir</span>
+                <span class="body-2 medium color-dark margin-right-4">{{data.email}}</span>
             </div>
         </div>
     </div>
@@ -30,21 +29,21 @@
                 <app-icon icon="cake" size="48"></app-icon>
                 <div class="flex column margin-right-16">
                     <span class="body-1 color-gray-3 margin-bot-4">تاریخ تولد:</span>
-                    <span class="headline-5 bold color-white">17 دی 1368</span>
+                    <span class="headline-5 bold color-white">{{data.birthday}}</span>
                 </div>
             </div>
             <div class="flex align-ctr">
                 <app-icon icon="married" size="48"></app-icon>
                 <div class="flex column margin-right-16">
                     <span class="body-1 color-gray-3 margin-bot-4">وضعیت تاهل:</span>
-                    <span class="headline-5 bold color-white">متاهل هستم</span>
+                    <span class="headline-5 bold color-white">{{data.married}}</span>
                 </div>
             </div>
             <div class="flex align-ctr">
                 <app-icon icon="soldier" size="48"></app-icon>
                 <div class="flex column margin-right-16">
                     <span class="body-1 color-gray-3 margin-bot-4">خدمت سربازی:</span>
-                    <span class="headline-5 bold color-white">پایان خدمت 1396</span>
+                    <span class="headline-5 bold color-white">{{data.militaryservice}}</span>
                 </div>
             </div>
         </div>
@@ -55,23 +54,42 @@
             <img src="assets/images/dot.svg" alt="" />
         </div>
         <div class="grid CRTMonitor">
-            <div *ngFor="let item of [1,1,1]" class="company flex column relative">
+            <div *ngFor="let item of data.experience" class="company flex column relative">
                 <div class="year flex column align-ctr">
-                    <span class="body-1 bold color-dark margin-bot-8">مهر 1396</span>
-                    <span class="flex radius-8"></span>
+                    <span class="body-1 bold color-dark margin-bot-8">{{item.year}}</span>
+                    <span class="dot flex radius-8"></span>
                 </div>
                 <div class="desc flex justify-ctr margin-top-24 relative radius-8 padding-32">
                     <div class="flex column width-full">
-                        <img src="assets/images/sava_arman.png" alt="" class="width-fit"/>
-                        <h3 class="body-1 bold color-dark margin-top-16">ساوا آرمان کیش</h3>
-                        <span class="caption medium color-gray-5 margin-top-2">از سال 1396 تا 1397</span>
-                        <p class="body-2 medium color-dark margin-top-8 lineheight-24">در شرکت ساوا آرمان کیش ابتدا به عنوان موشن گرافیست و سپس طراح UIUX فعالیت کردم. شرکت ساوا آرمان کیش در حوزه ی گردشگری، ارز دیجیتال و درگاه واسط فعالیت داشت.</p>
-                        <span class="caption medium color-dark margin-top-auto">دلیل اتمام همکاری: انتقال شرکت به تهران</span>
+                        <img src="assets/images/{{item.img}}.png" alt="" class="width-fit"/>
+                        <h3 class="body-1 bold color-dark margin-top-16">{{item.companyname}}</h3>
+                        <span class="fromto caption medium color-gray-5 margin-top-2">{{item.from}}</span>
+                        <p class="body-2 medium color-dark margin-top-8 lineheight-24">{{item.desc}}</p>
+                        <span class="reason caption medium color-dark margin-top-auto">{{item.reason}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="skills"></div>
+    <div class="skills background-gray-1 padding-top-56 padding-bot-56">
+        <div class="flex CRTMonitor align-ctr margin-bot-32">
+            <h2 class="color-dark headline-1 bold margin-left-24">مهارت ها</h2>
+            <img src="assets/images/dot.svg" alt="" />
+        </div>
+        <div class="flex CRTMonitor">
+            <ng-container *ngFor="let btn of data.skills; index as i">
+                <app-button *ngIf="i === tab; else alt" (click)="SetTabIndex(i)" mode="filled" color="primary" class="margin-left-16">{{btn.title}}</app-button>
+                <ng-template #alt>
+                    <app-button (click)="SetTabIndex(i)" mode="ghost" color="dark" class="margin-left-16">{{btn.title}}</app-button>
+                </ng-template>
+            </ng-container>
+        </div>
+        <div class="grid CRTMonitor margin-top-32">
+            <div *ngFor="let item of data.skills[tab].skill" class="flex align-ctr">
+                <app-icon icon="chevron-left" size="16" color="secondary"></app-icon>
+                <span class="body-2 medium color-dark margin-right-4">{{item}}</span>
+            </div>
+        </div>
+    </div>
     <div class="language"></div>
 </section>
