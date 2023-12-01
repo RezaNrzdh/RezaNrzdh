@@ -25,12 +25,10 @@
                 grid-column-gap: 32px;
                 .company {
                     .year{
-                        span{
-                            &:nth-child(2){
-                                width: 8px;
-                                height: 8px;
-                                border: 4px solid color.$color-gray-3;
-                            }
+                        .dot{
+                            width: 8px;
+                            height: 8px;
+                            border: 4px solid color.$color-gray-3;
                         }
                     }
                     .desc{
@@ -72,9 +70,21 @@
                         }
                     }
                     &:last-child{
+                        .year .dot{
+                            border-color: color.$color-primary;
+                        }
                         .desc{
                             border: 1px solid color.$color-dark;
                             background-color: color.$color-dark;
+                            h3, .reason{
+                                color: color.$color-secondary;
+                            }
+                            .fromto{
+                                color: color.$color-gray-3;
+                            }
+                            p{
+                                color: color.$color-white;
+                            }
                             &:before{
                                 background: url("/assets/images/btnarrow-dark.png");
                             }
@@ -84,7 +94,11 @@
             }
         }
         .skills{
-
+            .grid{
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-column-gap: 32px;
+                grid-row-gap: 16px;
+            }
         }
         .language{
 
