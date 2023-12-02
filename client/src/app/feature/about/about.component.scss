@@ -4,12 +4,7 @@
     section{
         .aboutme{
             .imageContainer{
-                min-width: 352px;
-                height: 416px;
                 img{
-                    top:-67px;
-                    left: -128px;
-                    object-fit: none;
                 }
             }
         }
@@ -108,7 +103,29 @@
             }
         }
         .language{
-
+            .sections{
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-column-gap: 32px;
+                .levels{
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                    grid-column-gap: 2px;
+                    span{
+                        height: 6px;
+                        &.filled{
+                            background-color: color.$color-primary;
+                        }
+                        &.empty{
+                            background-color: color.$color-gray-2;
+                        }
+                        &:first-child{
+                            border-radius: 0 3px 3px 0;
+                        }
+                        &:last-child{
+                            border-radius: 3px 0 0 3px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

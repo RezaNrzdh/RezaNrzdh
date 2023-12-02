@@ -91,12 +91,35 @@ export class AboutService {
             {
                 title: "بازیسازی",
                 skill:[
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "آشنایی با Unreal Engine",
+                    "توانایی بازیسازی با زبان ++C",
+                    "توانایی ساخت آبجکت های 3D",
+                    "توانایی Rig و Animate کاراکتر",
+                    "توانایی ساخت Texture",
+                    "طراحی Level Design"
                 ]
+            }
+        ],
+        language: [
+            {
+                title: "شنیداری",
+                cefr: "B2",
+                level: 4
+            },
+            {
+                title: "نوشتاری",
+                cefr: "B1",
+                level: 3
+            },
+            {
+                title: "خواندن",
+                cefr: "B2",
+                level: 4
+            },
+            {
+                title: "گفتاری",
+                cefr: "A2",
+                level: 2
             }
         ]
     }

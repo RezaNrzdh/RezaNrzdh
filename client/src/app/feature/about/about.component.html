@@ -1,13 +1,10 @@
-<section class="flex column margin-top-32 margin-bot-56">
-    <div class="flex CRTMonitor align-ctr margin-bot-32">
+<section class="flex column margin-top-32">
+    <div class="flex CRTMonitor align-ctr margin-bot-32 z-index-1">
         <h1 class="color-dark headline-1 bold margin-left-24">درباره من</h1>
         <img src="assets/images/dot.svg" alt="" />
     </div>
     <div class="aboutme CRTMonitor flex margin-bot-56">
-        <div class="imageContainer flex relative">
-            <img src="/assets/images/aboutus.png" class="absolute" alt=""/>
-        </div>
-        <div class="flex column margin-right-48 width-full">
+        <div class="flex column margin-left-32 width-half">
             <span class="headline-4 bold color-dark margin-top-56 margin-bot-16">{{data.jobtitle}}</span>
             <img src="assets/icons/rezanrzdlogofa.svg" width="321" height="56" alt=""/>
             <p class="body-2 medium color-dark lineheight-24 margin-top-48">{{data.aboutme}}</p>
@@ -22,8 +19,11 @@
                 <span class="body-2 medium color-dark margin-right-4">{{data.email}}</span>
             </div>
         </div>
+        <div class="imageContainer flex relative width-half z-index-1">
+            <img src="/assets/images/aboutme.jpg" class="absolute right top" alt=""/>
+        </div>
     </div>
-    <div class="info flex background-dark padding-top-48 padding-bot-48">
+    <div class="info flex background-dark padding-top-48 padding-bot-48 z-index-2">
         <div class="CRTMonitor grid">
             <div class="flex align-ctr">
                 <app-icon icon="cake" size="48"></app-icon>
@@ -54,18 +54,18 @@
             <img src="assets/images/dot.svg" alt="" />
         </div>
         <div class="grid CRTMonitor">
-            <div *ngFor="let item of data.experience" class="company flex column relative">
+            <div *ngFor="let exp of data.experience" class="company flex column relative">
                 <div class="year flex column align-ctr">
-                    <span class="body-1 bold color-dark margin-bot-8">{{item.year}}</span>
+                    <span class="body-1 bold color-dark margin-bot-8">{{exp.year}}</span>
                     <span class="dot flex radius-8"></span>
                 </div>
                 <div class="desc flex justify-ctr margin-top-24 relative radius-8 padding-32">
                     <div class="flex column width-full">
-                        <img src="assets/images/{{item.img}}.png" alt="" class="width-fit"/>
-                        <h3 class="body-1 bold color-dark margin-top-16">{{item.companyname}}</h3>
-                        <span class="fromto caption medium color-gray-5 margin-top-2">{{item.from}}</span>
-                        <p class="body-2 medium color-dark margin-top-8 lineheight-24">{{item.desc}}</p>
-                        <span class="reason caption medium color-dark margin-top-auto">{{item.reason}}</span>
+                        <img src="assets/images/{{exp.img}}.png" alt="" class="width-fit"/>
+                        <h3 class="body-1 bold color-dark margin-top-16">{{exp.companyname}}</h3>
+                        <span class="fromto caption medium color-gray-5 margin-top-2">{{exp.from}}</span>
+                        <p class="body-2 medium color-dark margin-top-8 lineheight-24">{{exp.desc}}</p>
+                        <span class="reason caption medium color-dark margin-top-auto">{{exp.reason}}</span>
                     </div>
                 </div>
             </div>
@@ -84,12 +84,28 @@
                 </ng-template>
             </ng-container>
         </div>
-        <div class="grid CRTMonitor margin-top-32">
-            <div *ngFor="let item of data.skills[tab].skill" class="flex align-ctr">
+        <div class="grid CRTMonitor margin-top-40">
+            <div *ngFor="let skl of data.skills[tab].skill" class="flex align-ctr">
                 <app-icon icon="chevron-left" size="16" color="secondary"></app-icon>
-                <span class="body-2 medium color-dark margin-right-4">{{item}}</span>
+                <span class="body-2 medium color-dark margin-right-4">{{skl}}</span>
             </div>
         </div>
     </div>
-    <div class="language"></div>
+    <div class="language CRTMonitor margin-top-56 margin-bot-56">
+        <div class="flex CRTMonitor align-ctr margin-bot-32">
+            <h2 class="color-dark headline-1 bold margin-left-24">زبان انگلیسی</h2>
+            <img src="assets/images/dot.svg" alt="" />
+        </div>
+        <div class="sections grid margin-top-32">
+            <div *ngFor="let lang of data.language" class="flex column">
+                <div class="flex margin-bot-8">
+                    <span class="body-2 medium color-dark margin-left-4">{{ lang.title }}:</span>
+                    <div class="body-2 medium color-dark">{{ lang.cefr }}</div>
+                </div>
+                <div class="levels grid">
+                    <span *ngFor="let i of [1,2,3,4,5,6]" [ngClass]="i <= lang.level ? 'filled' : 'empty'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
