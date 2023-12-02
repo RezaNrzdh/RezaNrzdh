@@ -4,6 +4,7 @@ import {SkillsService} from "./services/skills.service";
 import {EmployersService} from "./services/employers.service";
 import {OrdersService} from "./services/orders.service";
 import {AboutService} from "./services/about.service";
+import {BlogService} from "./services/blog.service";
 
 @NgModule({
     providers:[
@@ -11,7 +12,8 @@ import {AboutService} from "./services/about.service";
         SkillsService,
         EmployersService,
         OrdersService,
-        AboutService
+        AboutService,
+        BlogService
     ],
     imports:[]
 })

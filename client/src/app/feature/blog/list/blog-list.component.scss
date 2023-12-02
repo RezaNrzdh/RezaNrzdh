@@ -1,0 +1,38 @@
+@use "src/assets/styles/color";
+
+.main { grid-area: main; }
+.top { grid-area: top; }
+.bot { grid-area: bot; }
+
+:host{
+    section{
+        .recent{
+            grid-template-areas:
+                'main main top'
+                'main main bot';
+            grid-column-gap: 8px;
+            grid-row-gap: 8px;
+            .main {
+                width: 680px;
+                height: 480px;
+            }
+            .top, .bot {
+                width: 336px;
+                height: 236px;
+            }
+        }
+        .other{
+            .grid{
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-column-gap: 32px;
+                grid-row-gap: 32px;
+                .container{
+                    border: 1px solid color.$color-gray-2;
+                    img{
+                        border-radius: 8px 8px 0 0;
+                    }
+                }
+            }
+        }
+    }
+}

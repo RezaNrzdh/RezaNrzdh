@@ -1,1 +1,49 @@
-<p class="flex laptop justify-ctr">blog-list works!</p>
+<section class="CRTMonitor margin-top-32">
+    <div class="recent grid margin-top-32">
+        <div class="main flex column borderbox padding-32 radius-8 background-gray-1b">
+            <span class="caption color-dark margin-top-auto">23 اردیبهشت 1433</span>
+            <h2 class="headline-6 bold color-dark margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h2>
+            <div class="flex align-ctr margin-top-16">
+                <app-icon icon="like" size="16" color="gray4"></app-icon>
+                <span class="caption medium margin-left-24 margin-right-8">17</span>
+                <app-icon icon="comment" size="16" color="gray4"></app-icon>
+                <span class="caption medium margin-left-24 margin-right-8">17</span>
+                <span class="caption medium">خواندن 5 دقیقه</span>
+            </div>
+        </div>
+        <div class="top flex column borderbox padding-24 radius-8 background-gray-1b">
+            <span class="caption color-dark margin-top-auto">23 اردیبهشت 1433</span>
+            <h2 class="body-1 bold color-dark margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h2>
+        </div>
+        <div class="bot flex column borderbox padding-24 radius-8 background-gray-1b">
+            <span class="caption color-dark margin-top-auto">23 اردیبهشت 1433</span>
+            <h2 class="body-1 bold color-dark margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h2>
+        </div>
+    </div>
+    <div class="other margin-top-56 margin-bot-56">
+        <div class="flex align-ctr margin-bot-32">
+            <h4 class="color-dark headline-1 bold margin-left-24">مطالب دیگر</h4>
+            <img src="assets/images/dot.svg" alt="" />
+        </div>
+        <div class="grid">
+            <div *ngFor="let i of [1,2,3,4,5,6]" class="container flex column radius-8">
+                <img src="" height="225" alt="" class="background-gray-1b"/>
+                <div class="flex column borderbox padding-24">
+                    <span class="caption color-dark">23 اردیبهشت 1433</span>
+                    <h3 class="body-1 bold color-dark margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h3>
+                    <p class="body-2 medium color-dark margin-top-16 margin-bot-16">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</p>
+                    <div class="flex align-ctr margin-top-16">
+                        <app-icon icon="like" size="16" color="gray4"></app-icon>
+                        <span class="caption medium margin-left-24 margin-right-8">17</span>
+                        <app-icon icon="comment" size="16" color="gray4"></app-icon>
+                        <span class="caption medium margin-left-24 margin-right-8">17</span>
+                        <span class="caption medium margin-right-auto">خواندن 5 دقیقه</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-ctr margin-top-32">
+            <app-button mode="outlined" color="dark">مطالب بیشتر</app-button>
+        </div>
+    </div>
+</section>
