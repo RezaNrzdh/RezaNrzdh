@@ -1,13 +1,17 @@
-.laptop {
+.laptop, .CRTMonitor, .minScreenDesktop {
     box-sizing: border-box;
-    width: 1280px;
     margin-left: auto;
     margin-right: auto;
 }
 
+.laptop {
+    width: 1280px;
+}
+
 .CRTMonitor {
-    box-sizing: border-box;
     width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.minScreenDesktop {
+    width: 960px;
 }
