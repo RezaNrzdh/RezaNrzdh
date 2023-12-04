@@ -1,5 +1,5 @@
 <header>
-    <section class="laptop">
+    <section class="laptop width-full">
         <div class="logo flex align-ctr">
             <a *ngIf="!internalPages; else alt" routerLink="/" class="flex"><img src="assets/images/logo.svg" alt="logo" /></a>
             <ng-template #alt>
@@ -16,7 +16,7 @@
                 <li><a routerLink="/contact" routerLinkActive="active">تماس با من</a></li>
             </ul>
         </nav>
-        <div class="flex align-ctr justify-end">
+        <div class="flex margin-right-auto align-ctr justify-end">
             <app-button *ngIf="!internalPages; else GhostDark" [isLink]="true" mode="ghost" color="white" href="/login">ورود</app-button>
             <ng-template #GhostDark>
                 <app-button [isLink]="true" mode="ghost" color="dark" href="/login">ورود</app-button>
