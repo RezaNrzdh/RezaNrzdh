@@ -2,6 +2,8 @@
 @use "src/assets/styles/typography";
 
 :host {
+    display: flex;
+    justify-content: center;
     .PortfolioPage {
         .categories{
             li{
