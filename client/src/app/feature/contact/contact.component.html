@@ -1,10 +1,10 @@
-<section class="ContactPage laptop margin-top-32">
+<section class="ContactPage laptop width-full margin-top-32">
     <div class="flex align-ctr margin-bot-16">
         <h1 class="color-dark headline-1 bold margin-left-24">تماس با من</h1>
         <img src="assets/images/dot.svg" alt="" />
     </div>
     <p class="color-dark medium body-2 margin-bot-24">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است</p>
-    <div class="container flex background-white radius-8">
+    <div class="container grid background-white radius-8">
         <div class="form padding-32 width-full borderbox">
             <h2 class="headline-4 bold color-dark margin-bot-32">ارسال نظر</h2>
             <form class="grid" [formGroup]="contactForm" (ngSubmit)="GetContactFormData()">
@@ -13,7 +13,7 @@
                 <app-textbox type="tel" name="phone" title="شماره تماس" formControlName="phone"></app-textbox>
                 <app-textbox type="text" name="subject" title="موضوع" formControlName="subject"></app-textbox>
                 <app-textbox [multiLine]="true" [rows]="4" name="comment" title="نظر شما" formControlName="comment"></app-textbox>
-                <div class="flex">
+                <div class="action flex">
                     <app-button [isLink]="false" color="primary" mode="filled" class="margin-left-16">ارسال نظر</app-button>
                     <app-button [isLink]="true" color="dark" mode="ghost">بازنشانی</app-button>
                 </div>
@@ -38,7 +38,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="social flex column align-ctr background-gray-5 margin-right-auto padding-top-24 padding-bot-24 radius-8">
+                <div class="social flex column align-ctr justify-ctr background-gray-5 margin-right-auto padding-top-24 padding-bot-24 radius-8">
                     <a class="margin-bot-24"><app-icon icon="instagram" size="24" color="white"></app-icon></a>
                     <a class="margin-bot-24"><app-icon icon="linkedin" size="24" color="white"></app-icon></a>
                     <a><app-icon icon="github" size="24" color="white"></app-icon></a>

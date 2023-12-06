@@ -6,8 +6,11 @@ app-textbox[name="email"]{ grid-area: email }
 app-textbox[name="phone"]{ grid-area: phone }
 app-textbox[name="subject"]{ grid-area: subject }
 app-textbox[name="comment"]{ grid-area: comment }
+.action{ grid-area: action }
 
 :host{
+    display: flex;
+    justify-content: center;
     position: relative;
     &:after{
         display: flex;
@@ -23,14 +26,16 @@ app-textbox[name="comment"]{ grid-area: comment }
         position: relative;
         z-index: 10;
         .container{
-            height: 549px;
+            grid-template-columns: 2fr 1fr;
+            min-height: 549px;
             box-shadow: 0 0 128px rgba(0,0,0,0.08);
             .form{
                 .grid{
                     grid-template-areas:
                         'name email'
                         'phone subject'
-                        'comment comment';
+                        'comment comment'
+                        'action action';
                     grid-column-gap: 32px;
                     grid-row-gap: 32px;
                     app-button{
@@ -39,11 +44,12 @@ app-textbox[name="comment"]{ grid-area: comment }
                 }
             }
             .info{
-                width: 426px;
-                min-width: 426px;
-                height: 100%;
+                width: 100%;
+                min-height: 100%;
                 border-radius: 8px 0 0 8px;
                 background: url("/assets/images/map.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
                 &:before{
                     display: flex;
                     position: absolute;
@@ -60,5 +66,11 @@ app-textbox[name="comment"]{ grid-area: comment }
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    :host section .info{
+        min-width: 320px;
     }
 }

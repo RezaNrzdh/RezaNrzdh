@@ -75,10 +75,8 @@
     }
 }
 
-@media only screen and (max-width: 1025px) {
-    header {
-        section{
-
-        }
+@media only screen and (max-width: 1100px) {
+    :host header section{
+        display: flex;
     }
 }

@@ -1,12 +1,15 @@
 <header>
     <section class="laptop width-full">
+        <a *ngIf="isMedium" (click)="OnToggleSidebar()" class="flex align-ctr margin-left-16 pointer">
+            <app-icon icon="menu" size="24" color="gray3"></app-icon>
+        </a>
         <div class="logo flex align-ctr">
             <a *ngIf="!internalPages; else alt" routerLink="/" class="flex"><img src="assets/images/logo.svg" alt="logo" /></a>
             <ng-template #alt>
                 <a routerLink="/" class="flex"><img src="assets/images/logo-dark.svg" alt="logo" /></a>
             </ng-template>
         </div>
-        <nav class="flex align-ctr justify-ctr">
+        <nav *ngIf="!isMedium" class="flex align-ctr justify-ctr">
             <ul class="flex height-full padding-0 margin-0">
                 <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">صفحه اصلی</a></li>
                 <li><a routerLink="/portfolio" routerLinkActive="active">نمونه کارها</a></li>
@@ -25,3 +28,4 @@
         </div>
     </section>
 </header>
+<app-sidebar *ngIf="ShowSidebar" (toggle)="OnToggleSidebar()"></app-sidebar>

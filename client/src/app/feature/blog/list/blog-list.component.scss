@@ -5,6 +5,8 @@
 .bot { grid-area: bot; }
 
 :host{
+    display: flex;
+    justify-content: center;
     section{
         .recent{
             grid-template-areas:
@@ -13,11 +15,12 @@
             grid-column-gap: 8px;
             grid-row-gap: 8px;
             .main {
-                width: 680px;
-                height: 480px;
+                max-width: 680px;
+                max-height: 480px;
             }
             .top, .bot {
-                width: 336px;
+                max-width: 336px;
+                max-height: 236px;
                 height: 236px;
             }
         }
@@ -34,5 +37,11 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    :host section .other .grid{
+        grid-template-columns: 1fr 1fr;
     }
 }

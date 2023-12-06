@@ -27,10 +27,9 @@
 }
 
 
-@media screen and (max-width: 1281px) {
+@media screen and (max-width: 1040px) {
     :host{
         .PortfolioPage {
-            width: 1024px;
             .grid{
                 grid-template-columns: 1fr 1fr 1fr;
             }
@@ -38,13 +37,13 @@
     }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 860px) {
     :host{
         .PortfolioPage {
-            width: 960px;
             .grid{
-                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
     }
 }
+
