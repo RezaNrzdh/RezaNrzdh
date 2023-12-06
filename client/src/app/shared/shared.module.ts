@@ -16,6 +16,7 @@ import {HeaderComponent} from "./component/header/header.component";
 import {NewsletterComponent} from "./component/newsletter/newsletter.component";
 import {CheckboxComponent} from "./component/checkbox/checkbox.component";
 import {TagComponent} from "./component/tag/tag.component";
+import {SidebarComponent} from "./component/sidebar/sidebar.component";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {TagComponent} from "./component/tag/tag.component";
         IconDirective,
         NewsletterComponent,
         CheckboxComponent,
-        TagComponent
+        TagComponent,
+        SidebarComponent
     ],
     imports: [
         CommonModule,
@@ -47,7 +49,8 @@ import {TagComponent} from "./component/tag/tag.component";
         IconDirective,
         NewsletterComponent,
         CheckboxComponent,
-        TagComponent
+        TagComponent,
+        SidebarComponent
     ]
 })
 export class SharedModule {}

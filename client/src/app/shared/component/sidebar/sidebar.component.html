@@ -1,0 +1,29 @@
+<section class="flex borderbox padding-32 background-white z-index-1" [ngClass]="{ 'slidein': isVisible, 'slideout': !isVisible }">
+    <ul class="flex column height-full padding-0 margin-0">
+        <li class="flex align-ctr">
+            <app-icon icon="chevron-left" size="16" color="primary" class="margin-left-8"></app-icon>
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="OnToggle()">صفحه اصلی</a>
+        </li>
+        <li class="flex align-ctr">
+            <app-icon icon="chevron-left" size="16" color="primary" class="margin-left-8"></app-icon>
+            <a routerLink="/portfolio" routerLinkActive="active" (click)="OnToggle()">نمونه کارها</a>
+        </li>
+        <li class="flex align-ctr">
+            <app-icon icon="chevron-left" size="16" color="primary" class="margin-left-8"></app-icon>
+            <a routerLink="/order" routerLinkActive="active" (click)="OnToggle()">سفارش کار</a>
+        </li>
+        <li class="flex align-ctr">
+            <app-icon icon="chevron-left" size="16" color="primary" class="margin-left-8"></app-icon>
+            <a routerLink="/blog" routerLinkActive="active" (click)="OnToggle()">بلاگ</a>
+        </li>
+        <li class="flex align-ctr">
+            <app-icon icon="chevron-left" size="16" color="primary" class="margin-left-8"></app-icon>
+            <a routerLink="/about" routerLinkActive="active" (click)="OnToggle()">درباره من</a>
+        </li>
+        <li class="flex align-ctr">
+            <app-icon icon="chevron-left" size="16" color="primary" class="margin-left-8"></app-icon>
+            <a routerLink="/contact" routerLinkActive="active" (click)="OnToggle()">تماس با من</a>
+        </li>
+    </ul>
+</section>
+<div class="scrim fixed top pointer" [ngClass]="{ 'fadein': isVisible, 'fadeout': !isVisible }" (click)="OnToggle()"></div>
