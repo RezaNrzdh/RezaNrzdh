@@ -3,6 +3,8 @@
 
 
 :host{
+    display: flex;
+    justify-content: center;
     background-color: color.$color-dark;
     .portfolio{
         .categories{
@@ -31,3 +33,24 @@
         }
     }
 }
+
+@media screen and (max-width: 1100px) {
+    :host{
+        .portfolio{
+            .samples{
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 620px) {
+    :host{
+        .portfolio{
+            .samples{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+

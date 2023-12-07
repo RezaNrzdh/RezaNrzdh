@@ -1,6 +1,8 @@
 @use "src/assets/styles/color";
 
 :host{
+    display: flex;
+    justify-content: center;
     height: 160px;
     background-color: color.$color-gray-1;
     section{
