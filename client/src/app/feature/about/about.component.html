@@ -1,30 +1,32 @@
 <section class="flex column margin-top-32">
-    <div class="flex CRTMonitor align-ctr margin-bot-32 z-index-1">
-        <h1 class="color-dark headline-1 bold margin-left-24">درباره من</h1>
-        <img src="assets/images/dot.svg" alt="" />
-    </div>
-    <div class="aboutme CRTMonitor flex margin-bot-56">
-        <div class="flex column margin-left-32 width-half">
-            <span class="headline-4 bold color-dark margin-top-56 margin-bot-16">{{data.jobtitle}}</span>
-            <img src="assets/icons/rezanrzdlogofa.svg" width="321" height="56" alt=""/>
-            <p class="body-2 medium color-dark lineheight-24 margin-top-48">{{data.aboutme}}</p>
-            <div class="flex align-ctr margin-top-32 margin-bot-16">
-                <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
-                <span class="body-2 bold color-dark margin-right-4">شماره تماس:</span>
-                <span class="body-2 medium color-dark margin-right-4">{{data.phone}}</span>
+    <div class="aboutme CRTMonitor flex column justify-ctr align-self-ctr">
+        <div class="flex align-ctr">
+            <h1 class="color-dark headline-1 bold margin-left-24">درباره من</h1>
+            <img src="assets/images/dot.svg" alt="" />
+        </div>
+        <div class="flex">
+            <div class="flex column margin-left-32 margin-bot-56 width-half">
+                <span class="jobtitle headline-4 bold color-dark margin-top-56 margin-bot-16">{{data.jobtitle}}</span>
+                <img class="logofa" src="assets/icons/rezanrzdlogofa.svg" width="321" height="56" alt=""/>
+                <p class="body-2 medium color-dark lineheight-24 margin-top-48">{{data.aboutme}}</p>
+                <div class="flex align-ctr margin-top-32 margin-bot-16">
+                    <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
+                    <span class="body-2 bold color-dark margin-right-4">شماره تماس:</span>
+                    <span class="body-2 medium color-dark margin-right-4">{{data.phone}}</span>
+                </div>
+                <div class="flex align-ctr">
+                    <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
+                    <span class="body-2 bold color-dark margin-right-4">آدرس ایمیل:</span>
+                    <span class="body-2 medium color-dark margin-right-4">{{data.email}}</span>
+                </div>
             </div>
-            <div class="flex align-ctr">
-                <app-icon icon="chevron-left" size="16" color="primary"></app-icon>
-                <span class="body-2 bold color-dark margin-right-4">آدرس ایمیل:</span>
-                <span class="body-2 medium color-dark margin-right-4">{{data.email}}</span>
+            <div class="imageContainer flex relative width-half z-index-1">
+                <img src="assets/images/aboutme.png" class="relative flex align-self-bot" />
             </div>
         </div>
-        <div class="imageContainer flex relative width-half z-index-1">
-            <img src="/assets/images/aboutme.jpg" class="absolute right top" alt=""/>
-        </div>
     </div>
-    <div class="info flex background-dark padding-top-48 padding-bot-48 z-index-2">
-        <div class="CRTMonitor grid">
+    <div class="info flex align background-dark padding-top-48 padding-bot-48 z-index-2">
+        <div class="CRTMonitor grid margin-right-auto margin-left-auto">
             <div class="flex align-ctr">
                 <app-icon icon="cake" size="48"></app-icon>
                 <div class="flex column margin-right-16">
@@ -48,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="experience margin-top-56 margin-bot-56">
+    <div class="experience align-self-ctr margin-top-56 margin-bot-56">
         <div class="flex CRTMonitor align-ctr margin-bot-32">
             <h2 class="color-dark headline-1 bold margin-left-24">سوابق کاری</h2>
             <img src="assets/images/dot.svg" alt="" />
@@ -71,28 +73,30 @@
             </div>
         </div>
     </div>
-    <div class="skills background-gray-1 padding-top-56 padding-bot-56">
-        <div class="flex CRTMonitor align-ctr margin-bot-32">
-            <h2 class="color-dark headline-1 bold margin-left-24">مهارت ها</h2>
-            <img src="assets/images/dot.svg" alt="" />
-        </div>
-        <div class="flex CRTMonitor">
-            <ng-container *ngFor="let btn of data.skills; index as i">
-                <app-button *ngIf="i === tab; else alt" (click)="SetTabIndex(i)" mode="filled" color="primary" class="margin-left-16">{{btn.title}}</app-button>
-                <ng-template #alt>
-                    <app-button (click)="SetTabIndex(i)" mode="outlined" color="dark" class="margin-left-16">{{btn.title}}</app-button>
-                </ng-template>
-            </ng-container>
-        </div>
-        <div class="grid CRTMonitor margin-top-40">
-            <div *ngFor="let skl of data.skills[tab].skill" class="flex align-ctr">
-                <app-icon icon="chevron-left" size="16" color="secondary"></app-icon>
-                <span class="body-2 medium color-dark margin-right-4">{{skl}}</span>
+    <div class="skills flex justify-ctr background-gray-1 padding-top-56 padding-bot-56">
+        <div class="CRTMonitor width-full">
+            <div class="flex align-ctr margin-bot-32">
+                <h2 class="color-dark headline-1 bold margin-left-24">مهارت ها</h2>
+                <img src="assets/images/dot.svg" alt="" />
+            </div>
+            <div class="flex">
+                <ng-container *ngFor="let btn of data.skills; index as i">
+                    <app-button *ngIf="i === tab; else alt" (click)="SetTabIndex(i)" mode="filled" color="primary" class="margin-left-16">{{btn.title}}</app-button>
+                    <ng-template #alt>
+                        <app-button (click)="SetTabIndex(i)" mode="outlined" color="dark" class="margin-left-16">{{btn.title}}</app-button>
+                    </ng-template>
+                </ng-container>
+            </div>
+            <div class="grid margin-top-40">
+                <div *ngFor="let skl of data.skills[tab].skill" class="flex align-ctr">
+                    <app-icon icon="chevron-left" size="16" color="secondary"></app-icon>
+                    <span class="body-2 medium color-dark margin-right-4">{{skl}}</span>
+                </div>
             </div>
         </div>
     </div>
-    <div class="language CRTMonitor margin-top-56 margin-bot-56">
-        <div class="flex CRTMonitor align-ctr margin-bot-32">
+    <div class="language CRTMonitor align-self-ctr width-full margin-top-56 margin-bot-56">
+        <div class="flex align-ctr margin-bot-32">
             <h2 class="color-dark headline-1 bold margin-left-24">زبان انگلیسی</h2>
             <img src="assets/images/dot.svg" alt="" />
         </div>
