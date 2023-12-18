@@ -47,3 +47,23 @@
     }
 }
 
+@media screen and (max-width: 620px) {
+    :host{
+        .PortfolioPage {
+            .grid{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :host{
+        h1{
+            font-size: 24px;
+        }
+    }
+}
+
+
+
