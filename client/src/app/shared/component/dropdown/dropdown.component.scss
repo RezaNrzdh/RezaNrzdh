@@ -1,0 +1,14 @@
+@use "src/assets/styles/color";
+
+div{
+    width: 96px;
+    height: 40px;
+    border: 1px solid color.$color-gray-2;
+    select{
+        width: inherit;
+        height: inherit;
+        font-family: PelakFont;
+        border: none;
+        outline: none;
+    }
+}
