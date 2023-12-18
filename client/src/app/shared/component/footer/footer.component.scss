@@ -60,3 +60,23 @@
         }
     }
 }
+
+@media screen and (max-width: 620px) {
+    :host{
+        footer{
+            .grid{
+                ul{
+                    margin-top:24px;
+                    margin-bottom: 24px;
+                    flex-direction: column;
+                    li{
+                        margin-bottom: 16px;
+                        flex-direction: column;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
