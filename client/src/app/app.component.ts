@@ -14,8 +14,9 @@ export class AppComponent {
     title = 'RezaNrzdh';
 
     constructor(private reponsiveService: ResponsiveService ,private breakpointObserver: BreakpointObserver) {
-        let responsiveArray = [ResponsiveEnum.SMALL, ResponsiveEnum.MEDIUM, ResponsiveEnum.LARGE];
+        let responsiveArray = [ResponsiveEnum.XSMALL, ResponsiveEnum.SMALL, ResponsiveEnum.MEDIUM, ResponsiveEnum.LARGE];
         this.breakpointObserver.observe(responsiveArray).subscribe((value) => {
+            this.reponsiveService.setXSmall = value.breakpoints[ResponsiveEnum.XSMALL];
             this.reponsiveService.setSmall  = value.breakpoints[ResponsiveEnum.SMALL];
             this.reponsiveService.setMedium = value.breakpoints[ResponsiveEnum.MEDIUM];
             this.reponsiveService.setLarge  = value.breakpoints[ResponsiveEnum.LARGE];
