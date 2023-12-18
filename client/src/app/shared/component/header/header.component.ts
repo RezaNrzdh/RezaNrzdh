@@ -12,6 +12,7 @@ export class HeaderComponent implements DoCheck {
     internalPages: boolean = false;
     ShowSidebar: boolean = false;
 
+    isXSmall: boolean = false;
     isSmall: boolean = false;
     isMedium: boolean = false;
     isLarge: boolean = false;
@@ -23,6 +24,7 @@ export class HeaderComponent implements DoCheck {
     @HostBinding('class.internalPages') get t() { return this.internalPages };
 
     ngDoCheck() {
+        this.isXSmall = this.responsiveService.getXSmall;
         this.isSmall = this.responsiveService.getSmall;
         this.isMedium = this.responsiveService.getMedium;
         this.isLarge = this.responsiveService.getLarge;

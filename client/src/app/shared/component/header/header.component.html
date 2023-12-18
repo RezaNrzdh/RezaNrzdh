@@ -19,12 +19,15 @@
                 <li><a routerLink="/contact" routerLinkActive="active">تماس با من</a></li>
             </ul>
         </nav>
-        <div class="flex margin-right-auto align-ctr justify-end">
+        <div *ngIf="!isXSmall" class="flex margin-right-auto align-ctr justify-end">
             <app-button *ngIf="!internalPages; else GhostDark" [isLink]="true" mode="ghost" color="white" href="/login">ورود</app-button>
             <ng-template #GhostDark>
                 <app-button [isLink]="true" mode="ghost" color="dark" href="/login">ورود</app-button>
             </ng-template>
             <app-button [isLink]="true" mode="filled" color="primary" href="/register" class="margin-right-16">عضویت</app-button>
+        </div>
+        <div *ngIf="isXSmall" class="flex margin-right-auto align-ctr justify-end">
+            <a><app-icon icon="user" size="24" color="gray3"></app-icon></a>
         </div>
     </section>
 </header>
