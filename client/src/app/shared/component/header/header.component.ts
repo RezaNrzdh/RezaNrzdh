@@ -17,7 +17,6 @@ export class HeaderComponent implements DoCheck {
     isLarge: boolean = false;
 
     constructor(private router: Router, private responsiveService: ResponsiveService) {
-
         this.IsInternalPage(this.router);
     }
 
