@@ -1,10 +1,12 @@
 <section class="flex column width-full align-ctr">
     <div class="flex column CRTMonitor margin-top-56 margin-bot-56">
         <h1 class="headline-1 bold color-dark margin-bot-16">طراحی اپلیکیشن فضای مجازی Flavortome</h1>
-        <div class="flex align-ctr margin-bot-32">
+        <div class="info flex align-ctr margin-bot-32">
             <app-tag>طراحی وب</app-tag>
-            <span class="body-2 color-dark medium margin-right-16">تاریخ انتشار:</span>
-            <span class="body-2 color-dark medium margin-right-8">23 اردیبهشت 1433</span>
+            <div>
+                <span class="body-2 color-dark medium margin-right-16">تاریخ انتشار:</span>
+                <span class="body-2 color-dark medium margin-right-8">23 اردیبهشت 1433</span>
+            </div>
         </div>
         <div class="slider flex column">
             <img src="assets/images/posts/post.jpg" class="radius-8" alt=""/>
@@ -17,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="desc grid margin-top-40">
+        <div class="desc grid margin-top-40 margin-left-32 margin-right-32">
             <div class="flex column align-ctr">
                 <a><app-icon icon="share" size="24" color="gray4"></app-icon></a>
                 <div class="flex column align-ctr margin-top-32">
@@ -47,25 +49,29 @@
             </div>
         </div>
     </div>
-    <div class="comment width-full CRTMonitor padding-bot-32 margin-top-56">
-        <div class="flex align-ctr margin-bot-32">
-            <h2 class="color-dark headline-4 bold margin-left-24">نظر شما</h2>
-            <img src="assets/images/dot.svg" alt="" />
-        </div>
-        <form class="grid" [formGroup]="commentForm" (ngSubmit)="OnSubmit()">
-            <app-textbox title="نام و نام خانوادگی" name="name" type="text"></app-textbox>
-            <app-textbox title="ایمیل" name="email" type="email"></app-textbox>
-            <app-textbox title="نظر شما" name="comment" [multiLine]="true" [rows]="4"></app-textbox>
-            <div class="flex">
-                <app-button mode="filled" color="primary">ارسال نظر</app-button>
+    <div class="width-full flex justify-ctr">
+        <div class="comment width-full CRTMonitor padding-bot-32 margin-top-56">
+            <div class="flex align-ctr margin-bot-32">
+                <h2 class="color-dark headline-4 bold margin-left-24">نظر شما</h2>
+                <img src="assets/images/dot.svg" alt="" />
             </div>
-        </form>
-    </div>
-    <div class="otherComments CRTMonitor margin-top-32">
-        <div class="flex align-ctr margin-bot-32">
-            <h2 class="color-dark headline-4 bold margin-left-24">نظر کاربران</h2>
-            <img src="assets/images/dot.svg" alt="" />
+            <form class="grid" [formGroup]="commentForm" (ngSubmit)="OnSubmit()">
+                <app-textbox title="نام و نام خانوادگی" name="name" type="text"></app-textbox>
+                <app-textbox title="ایمیل" name="email" type="email"></app-textbox>
+                <app-textbox title="نظر شما" name="comment" [multiLine]="true" [rows]="4"></app-textbox>
+                <div class="flex">
+                    <app-button mode="filled" color="primary">ارسال نظر</app-button>
+                </div>
+            </form>
         </div>
     </div>
-    <app-comment *ngFor="let i of [1,1,1]"></app-comment>
+    <div>
+        <div class="otherComments CRTMonitor margin-top-32">
+            <div class="flex align-ctr margin-bot-32">
+                <h2 class="color-dark headline-4 bold margin-left-24">نظر کاربران</h2>
+                <img src="assets/images/dot.svg" alt="" />
+            </div>
+        </div>
+        <app-comment *ngFor="let i of [1,1,1]"></app-comment>
+    </div>
 </section>

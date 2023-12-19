@@ -35,3 +35,29 @@ app-textbox[name="comment"]{ grid-area: comment }
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    :host{
+        section{
+            .desc{
+                .grid{
+                    grid-template-areas:
+                    'name'
+                    'email'
+                    'comment';
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    :host{
+        section{
+            .desc{
+                margin-right: 0;
+            }
+        }
+    }
+}
