@@ -4,6 +4,17 @@ div{
     width: 96px;
     height: 40px;
     border: 1px solid color.$color-gray-2;
+    background-color: white;
+    &.darkmode{
+        background-color: transparent;
+        select{
+            background-color: transparent;
+            color: white;
+            option{
+                color: color.$color-dark;
+            }
+        }
+    }
     select{
         width: inherit;
         height: inherit;
