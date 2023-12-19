@@ -1,13 +1,14 @@
 <section class="portfolio flex column laptop margin-top-56 margin-bot-56">
     <h2 class="headline-4 bold color-text margin-ctr">نمونه کارهای من</h2>
     <div class="categories margin-bot-32">
-        <ul class="flex margin-0 padding-0 justify-ctr margin-top-32">
+        <ul *ngIf="!isSmall" class="flex margin-0 padding-0 justify-ctr margin-top-32">
             <li><app-button mode="filled" color="primary">طراحی وب</app-button></li>
             <li><app-button mode="ghost" color="white">توسعه وب</app-button></li>
             <li><app-button mode="ghost" color="white">بازیسازی</app-button></li>
             <li><app-button mode="ghost" color="white">برندینگ</app-button></li>
             <li><app-button mode="ghost" color="white">گرافیک</app-button></li>
         </ul>
+        <app-dropdown *ngIf="isSmall" [options]="options" [darkmode]="true" class="flex margin-0 padding-0 justify-ctr margin-top-32"></app-dropdown>
     </div>
     <div class="samples grid">
         <app-portfoliocard
