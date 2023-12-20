@@ -13,3 +13,17 @@
         }
     }
 }
+
+@media screen and (max-width: 640px) {
+    :host{
+        height: fit-content;
+        section {
+            margin-top: 56px;
+            margin-bottom: 56px;
+            flex-direction: column;
+            img:nth-child(1), img:nth-child(2) {
+                margin-bottom: 24px;
+            }
+        }
+    }
+}
