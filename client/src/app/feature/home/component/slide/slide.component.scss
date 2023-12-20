@@ -30,7 +30,7 @@
         image-rendering: pixelated;
         .comment{
             position: absolute;
-            margin-top: 345px;
+            margin-top: 415px;
             margin-right: 92px;
             width: 210px;
             box-shadow: 0 16px 48px rgba(0,0,0,0.25);
@@ -52,6 +52,48 @@
             a{
                 margin-right: 24px;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    :host{
+        section{
+            background: url("/assets/images/heroimg_medium.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            image-rendering: pixelated;
+            .comment{
+                margin-top: 450px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 860px) {
+    :host{
+        section{
+            background: url("/assets/images/heroimg_small.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            image-rendering: pixelated;
+            .comment{
+                display: none;
+            }
+            .socialmedia{
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :host{
+        section{
+            background: url("/assets/images/heroimg_xsmall.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            image-rendering: pixelated;
         }
     }
 }
