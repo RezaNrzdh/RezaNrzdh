@@ -15,3 +15,20 @@
 .minScreenDesktop {
     min-width: 960px;
 }
+
+@media screen and (max-width: 768px) {
+    .laptop, .CRTMonitor, .minScreenDesktop {
+        box-sizing: border-box;
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .laptop, .CRTMonitor, .minScreenDesktop {
+        box-sizing: border-box;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
