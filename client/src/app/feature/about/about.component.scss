@@ -29,14 +29,7 @@
                     }
                     .desc{
                         border: 1px solid color.$color-gray-2;
-                        height: 300px;
-                        top: 0;
-                        transition: all ease-in-out 0.3s;
-                        &:hover{
-                            transform: scale(1.05);
-                            top:8px;
-                            box-shadow: 0 0 128px rgba(0,0,0,0.08);
-                        }
+                        height: 100%;
                         &:before{
                             display: flex;
                             content: "";
@@ -107,6 +100,7 @@
             .sections{
                 grid-template-columns: 1fr 1fr 1fr 1fr;
                 grid-column-gap: 32px;
+                grid-row-gap: 32px;
                 .levels{
                     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
                     grid-column-gap: 2px;
@@ -172,6 +166,34 @@
                     }
                 }
             }
+            .experience{
+                .grid {
+                    grid-template-columns: 1fr;
+                    grid-row-gap: 32px;
+                    .company {
+                        height: fit-content;
+                        .year {
+                            flex-direction: row-reverse;
+                            justify-content: flex-end;
+                            span:nth-child(1) {
+                                margin-right: 12px;
+                                margin-bottom: 0;
+                            }
+                        }
+                        .desc{
+                            margin-top: 16px;
+                            &:before{
+                                display: none;
+                            }
+                        }
+                        &:nth-child(n){
+                            &:after, &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -194,6 +216,12 @@
                     }
                 }
             }
+            .skills .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .language .sections {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     }
 }
@@ -214,6 +242,16 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :host {
+        section {
+            .skills .grid {
+                grid-template-columns: 1fr;
             }
         }
     }

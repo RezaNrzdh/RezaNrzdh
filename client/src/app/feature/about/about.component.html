@@ -66,7 +66,7 @@
                         <img src="assets/images/{{exp.img}}.png" alt="" class="width-fit"/>
                         <h3 class="body-1 bold color-dark margin-top-16">{{exp.companyname}}</h3>
                         <span class="fromto caption medium color-gray-5 margin-top-2">{{exp.from}}</span>
-                        <p class="body-2 medium color-dark margin-top-8 lineheight-24">{{exp.desc}}</p>
+                        <p class="body-2 medium color-dark margin-top-8 lineheight-24 margin-bot-32">{{exp.desc}}</p>
                         <span class="reason caption medium color-dark margin-top-auto">{{exp.reason}}</span>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                 <h2 class="color-dark headline-1 bold margin-left-24">مهارت ها</h2>
                 <img src="assets/images/dot.svg" alt="" />
             </div>
-            <div class="flex">
+            <div *ngIf="!isSmall" class="flex">
                 <ng-container *ngFor="let btn of data.skills; index as i">
                     <app-button *ngIf="i === tab; else alt" (click)="SetTabIndex(i)" mode="filled" color="primary" class="margin-left-16">{{btn.title}}</app-button>
                     <ng-template #alt>
@@ -87,6 +87,7 @@
                     </ng-template>
                 </ng-container>
             </div>
+            <app-dropdown *ngIf="isSmall" [options]="options"></app-dropdown>
             <div class="grid margin-top-40">
                 <div *ngFor="let skl of data.skills[tab].skill" class="flex align-ctr">
                     <app-icon icon="chevron-left" size="16" color="secondary"></app-icon>
@@ -95,19 +96,21 @@
             </div>
         </div>
     </div>
-    <div class="language CRTMonitor align-self-ctr width-full margin-top-56 margin-bot-56">
-        <div class="flex align-ctr margin-bot-32">
-            <h2 class="color-dark headline-1 bold margin-left-24">زبان انگلیسی</h2>
-            <img src="assets/images/dot.svg" alt="" />
-        </div>
-        <div class="sections grid margin-top-32">
-            <div *ngFor="let lang of data.language" class="flex column">
-                <div class="flex margin-bot-8">
-                    <span class="body-2 medium color-dark margin-left-4">{{ lang.title }}:</span>
-                    <div class="body-2 medium color-dark">{{ lang.cefr }}</div>
-                </div>
-                <div class="levels grid">
-                    <span *ngFor="let i of [1,2,3,4,5,6]" [ngClass]="i <= lang.level ? 'filled' : 'empty'"></span>
+    <div class="language flex justify-ctr width-full margin-top-56 margin-bot-56">
+        <div class="CRTMonitor width-full">
+            <div class="flex align-ctr margin-bot-32">
+                <h2 class="color-dark headline-1 bold margin-left-24">زبان انگلیسی</h2>
+                <img src="assets/images/dot.svg" alt="" />
+            </div>
+            <div class="sections grid margin-top-32">
+                <div *ngFor="let lang of data.language" class="flex column">
+                    <div class="flex margin-bot-8">
+                        <span class="body-2 medium color-dark margin-left-4">{{ lang.title }}:</span>
+                        <div class="body-2 medium color-dark">{{ lang.cefr }}</div>
+                    </div>
+                    <div class="levels grid">
+                        <span *ngFor="let i of [1,2,3,4,5,6]" [ngClass]="i <= lang.level ? 'filled' : 'empty'"></span>
+                    </div>
                 </div>
             </div>
         </div>
