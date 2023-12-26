@@ -16,6 +16,9 @@ import {ReplyComponent} from "./detail/reply/reply.component";
         ReplyComponent
     ],
     providers: [],
+    exports: [
+        CommentComponent
+    ],
     imports: [
         PortfolioRoutingModule,
         SharedModule,
