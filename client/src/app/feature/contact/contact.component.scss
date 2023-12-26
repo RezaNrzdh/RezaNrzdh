@@ -31,11 +31,7 @@ app-textbox[name="comment"]{ grid-area: comment }
             box-shadow: 0 0 128px rgba(0,0,0,0.08);
             .form{
                 .grid{
-                    grid-template-areas:
-                        'name email'
-                        'phone subject'
-                        'comment comment'
-                        'action action';
+                    grid-template-areas: 'name email''phone subject''comment comment''action action';
                     grid-column-gap: 32px;
                     grid-row-gap: 32px;
                     app-button{
@@ -70,7 +66,57 @@ app-textbox[name="comment"]{ grid-area: comment }
 }
 
 @media screen and (max-width: 1024px) {
-    :host section .info{
+    :host section .container .info{
         min-width: 320px;
     }
 }
+
+@media screen and (max-width: 900px) {
+    :host section .container{
+        grid-template-columns: 1fr;
+        .info {
+            border-radius: 0 0 8px 8px;
+            background: url("/assets/images/map-hor.jpg");
+            background-position: center center;
+            &:before {
+                width: 80%;
+                height: 100%;
+                border-radius: 0 0 8px 8px;
+                background:linear-gradient(-90deg,rgba(34,51,71,1) 30%, rgba(34,51,71,0));
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :host section .container .form .grid {
+        grid-template-areas: 'name''email''phone''subject''comment''action';
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :host section .container .info {
+        min-width: auto;
+        &:before {
+            width: 100%;
+            background:linear-gradient(-90deg,rgba(34,51,71,1) 30%, rgba(34,51,71,0.5));
+        }
+        > div {
+            flex-direction: column;
+            .social {
+                margin-top:24px;
+                width: 100%;
+                margin-right: 0;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                flex-direction: row;
+                a {
+                    margin-bottom: 0;
+                    margin-right: 8px;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}
+
