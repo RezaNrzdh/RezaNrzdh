@@ -4,6 +4,8 @@ import {BlogComponent} from "./detail/blog.component";
 import {BlogListComponent} from "./list/blog-list.component";
 import {SharedModule} from "../../shared/shared.module";
 import {BlogRoutingModule} from "./blog-routing.module";
+import {ReactiveFormsModule} from "@angular/forms";
+import {PortfolioModule} from "../portfolio/portfolio.module";
 
 @NgModule({
     declarations: [
@@ -13,7 +15,9 @@ import {BlogRoutingModule} from "./blog-routing.module";
     imports: [
         CommonModule,
         SharedModule,
-        BlogRoutingModule
+        BlogRoutingModule,
+        ReactiveFormsModule,
+        PortfolioModule
     ]
 })
 export class BlogModule { }
