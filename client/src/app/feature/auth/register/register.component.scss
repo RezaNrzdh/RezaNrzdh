@@ -3,8 +3,8 @@
 
 section{
     .container{
+        grid-template-columns: 1fr 1fr;
         width: 1024px;
-        height: 550px;
         box-shadow: 0 0 128px rgba(0,0,0,0.08);
         .registerBG{
             &:before{
@@ -15,6 +15,26 @@ section{
                 content: "";
                 background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,1) 100%), url("/assets/images/authbg.jpg");
             }
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :host section .container {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :host section .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :host section .container {
+        .form, .registerBG div {
+            padding: 24px;
         }
     }
 }
