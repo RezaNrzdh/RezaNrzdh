@@ -12,7 +12,7 @@ export class IconComponent implements OnInit {
     constructor(private matIconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {}
 
     @Input() icon: string;
-    @Input() size: "16" | "20" | "24" | "32" | "48" = "24";
+    @Input() size: "16" | "20" | "24" | "32" | "48" | "72" = "24";
     @Input() color: "primary" | "secondary" | "gray1" | "gray2" | "gray3" | "gray4" | "gray5" | "white" | "dark";
 
     ngOnInit() {

@@ -95,4 +95,11 @@
             height: 48px;
         }
     }
+
+    &[size="72"] {
+        mat-icon {
+            width: 72px;
+            height: 72px;
+        }
+    }
 }
