@@ -1,45 +1,45 @@
-<section class="laptop margin-top-32 margin-bot-32">
+<section class="CRTMonitor margin-top-32 margin-bot-32">
     <div class="flex align-ctr margin-bot-32">
         <h1 class="color-dark headline-1 bold margin-left-24">سفارش کار</h1>
         <img src="assets/images/dot.svg" alt=""/>
     </div>
     <div class="flex column">
-        <div class="tabs flex column radius-8 borderbox">
-            <div class="main flex z-index-10 background-white">
-                <a *ngFor="let item of data; index as i" (click)="SetSelectedOrder(i)" [ngClass]="{'active': selectedOrder === i}" class="flex column align-ctr padding-top-32 padding-bot-32">
-                    <ng-container *ngIf="selectedOrder === i; else alt">
-                        <app-icon icon="{{item.icon}}" color="primary" class="margin-bot-8"></app-icon>
+        <div class="customPlan flex align-ctr padding-24 radius-8 background-gray-1b margin-bot-16">
+            <app-icon icon="info" size="32" color="secondary"></app-icon>
+            <div class="flex column margin-right-16">
+                <span class="headline-6 bold color-dark">هیچکدوم از این پلن ها نیازتو پوشش نمیده؟</span>
+                <span class="body-1 medium color-gray-5 margin-top-4">به صورت سفارشی خودت پلنت رو بساز.</span>
+            </div>
+            <app-button mode="outlined" color="dark2" class="margin-right-auto">ساخت پلن سفارشی</app-button>
+        </div>
+        <div class="tabs grid">
+            <a *ngFor="let item of data; index as i" (click)="SetSelectedOrder(i)" [ngClass]="{'active': selectedOrder === i}" class="flex column align-ctr radius-8 borderbox padding-32">
+                <ng-container *ngIf="selectedOrder === i; else alt">
+                    <app-icon icon="{{item.icon}}" size="72" color="primary" class="tt margin-bot-40"></app-icon>
+                </ng-container>
+                <ng-template #alt>
+                    <app-icon icon="{{item.icon}}" size="72" color="gray3" class="tt margin-bot-40"></app-icon>
+                </ng-template>
+                <h2 class="color-dark headline-6 bold margin-bot-16 text-ctr">{{ item.title }}</h2>
+                <span class="body-2 color-dark text-ctr">{{ item.desc }}</span>
+            </a>
+        </div>
+        <div class="flex justify-ctr subtabs margin-top-64">
+            <ul class="flex margin-0 padding-0">
+                <li *ngFor="let item of data[selectedOrder].options; index as i" (click)="SetSelectedSubOrder(i)">
+                    <ng-container *ngIf="selectedSubOrder === i; else alt">
+                        <app-button mode="filled" color="primary">{{ item.title }}</app-button>
                     </ng-container>
                     <ng-template #alt>
-                        <app-icon icon="{{item.icon}}" color="gray3" class="margin-bot-8"></app-icon>
+                        <app-button mode="outlined" color="dark">{{ item.title }}</app-button>
                     </ng-template>
-                    <span class="body-2 color-dark medium margin-right-8">{{item.title}}</span>
-                </a>
-            </div>
-            <div class="sub flex background-white margin-top-2">
-                <a *ngFor="let item of data[selectedOrder].options; index as i" (click)="SetSelectedSubOrder(i)" [ngClass]="{'active': selectedSubOrder === i}" class="flex align-ctr justify-ctr body-2 color-dark medium borderbox padding-top-32 padding-bot-32">
-                    <span>{{item.title}}</span>
-                </a>
-            </div>
+                </li>
+            </ul>
         </div>
         <div class="orders flex column width-full margin-top-32">
-<!--            <h2 class="headline-4 bold color-dark margin-bot-16">{{ data[selectedOrder].options[selectedSubOrder].title }}</h2>-->
-<!--            <p class="lineheight-28 color-dark body-2 medium margin-bot-24">{{ data[selectedOrder].options[selectedSubOrder].desc }}</p>-->
             <div class="plans grid">
-                <div class="flex column">
-                    <div class="flex column background-gray-1b radius-8 padding-24">
-                        <app-icon icon="info" size="32" color="secondary"></app-icon>
-                        <span class="headline-6 bold color-dark margin-top-8">هیچکدوم از این طرح ها نیازتو پوشش نمیده؟</span>
-                        <span class="body-1 medium color-gray-5 margin-top-8 margin-bot-16">به صورت سفارشی خودت نیازاتو انتخاب کن.</span>
-                        <app-button mode="outlined" color="dark2" class="width-fit">سفارشی سازی</app-button>
-                    </div>
-                    <div class="flex column margin-top-24">
-                        <div *ngFor="let item of data[selectedOrder].options[selectedSubOrder].props" class="properties flex align-ctr body-2 dark medium padding-right-16 borderbox">
-                            {{item}}
-                        </div>
-                    </div>
-                </div>
-                <div *ngFor="let item of data[selectedOrder].options[selectedSubOrder].plans" class="plan flex column borderbox radius-8">
+                <div *ngFor="let item of data[selectedOrder].options[selectedSubOrder].plans" class="plan flex column borderbox radius-8 hidden">
+                    <div class="width-full padding-bot-8 background-gray-2"></div>
                     <div class="flex column padding-24 margin-bot-2">
                         <app-tag *ngIf="item.popular" class="width-fit align-self-ctr">محبوب ترین</app-tag>
                         <span class="flex justify-ctr margin-top-32 headline-5 bold color-dark margin-bot-16">{{ item.title }}</span>
@@ -50,13 +50,8 @@
                         </div>
                         <app-button mode="filled" color="primary">انتخاب طرح</app-button>
                     </div>
-                    <div class="props flex column margin-top-8">
-                        <div *ngFor="let i of item.props" class="flex align-ctr justify-ctr body-2 dark medium borderbox">
-                            <ng-container *ngIf="i !== false">
-                                <app-icon *ngIf="i === true; else alt" icon="check" color="secondary" size="24"></app-icon>
-                                <ng-template #alt>{{i}}</ng-template>
-                            </ng-container>
-                        </div>
+                    <div class="props flex column margin-top-8 margin-bot-32">
+                        <div *ngFor="let i of item.props" class="flex align-ctr text-ctr justify-ctr body-2 dark medium borderbox margin-right-32 margin-left-32">{{i}}</div>
                     </div>
                 </div>
             </div>
