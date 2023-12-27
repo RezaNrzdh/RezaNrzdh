@@ -15,7 +15,14 @@ export class PortfolioComponent implements OnInit {
     constructor(private PortfolioService: PortfolioService) {}
 
     ngOnInit() {
-        this.data = this.PortfolioService.GetTopPortfolio();
+        this.data = this.PortfolioService.GetTopPortfolio().subscribe({
+            next: ((value: any) => {
+                this.data = value;
+            }),
+            error: ((error: any) => {
+                console.log(error);
+            })
+        });
 
         this.commentForm = new FormGroup({
             "name": new FormControl("null"),

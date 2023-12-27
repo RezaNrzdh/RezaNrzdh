@@ -16,7 +16,14 @@ export class PortfolioComponent implements OnInit, DoCheck {
     constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService ) { }
 
     ngOnInit(): void {
-        this.data = this.portfolioService.GetTopPortfolio();
+        this.data = this.portfolioService.GetTopPortfolio().subscribe({
+            next: ((value: any) => {
+                this.data = value;
+            }),
+            error: ((error: any) => {
+                console.log(error)
+            })
+        });
     }
 
     ngDoCheck() {
