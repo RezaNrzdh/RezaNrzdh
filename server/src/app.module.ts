@@ -10,6 +10,8 @@ import {OrdersService} from "./service/orders.service";
 import {OrdersController} from "./controller/orders.controller";
 import {PortfolioService} from "./service/portfolio.service";
 import {PortfolioController} from "./controller/portfolio.controller";
+import {SkillsService} from "./service/skills.service";
+import {SkillsController} from "./controller/skills.controller";
 
 @Module({
   imports: [],
@@ -18,14 +20,16 @@ import {PortfolioController} from "./controller/portfolio.controller";
       AboutController,
       EmployersController,
       OrdersController,
-      PortfolioController
+      PortfolioController,
+      SkillsController
   ],
   providers: [
       AppService,
       AboutService,
       EmployersService,
       OrdersService,
-      PortfolioService
+      PortfolioService,
+      SkillsService
   ],
 })
 export class AppModule {}
