@@ -15,6 +15,13 @@ export class ExperienceComponent implements OnInit {
     constructor(private skillService: SkillsService) { }
 
     ngOnInit(): void {
-        this.experience = this.skillService.getSkills();
+        this.experience = this.skillService.getSkills().subscribe({
+            next: ((value: any) => {
+                this.experience = value;
+            }),
+            error: ((error: any) => {
+                console.log(error)
+            })
+        });
     }
 }
