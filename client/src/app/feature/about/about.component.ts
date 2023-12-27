@@ -17,8 +17,14 @@ export class AboutComponent implements OnInit, DoCheck {
     constructor(private AboutService: AboutService, private responsiveService: ResponsiveService) { }
 
     ngOnInit(): void {
-        this.data = this.AboutService.GetAbout();
-        console.log(this.data);
+        this.AboutService.GetAbout().subscribe({
+            next: ((value: any) => {
+                this.data = value;
+            }),
+            error: ((error: any) => {
+                console.log(error);
+            })
+        });
     }
 
     SetTabIndex(value: number): void {
