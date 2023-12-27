@@ -12,6 +12,8 @@ import {PortfolioService} from "./service/portfolio.service";
 import {PortfolioController} from "./controller/portfolio.controller";
 import {SkillsService} from "./service/skills.service";
 import {SkillsController} from "./controller/skills.controller";
+import {BlogService} from "./service/blog.service";
+import {BlogController} from "./controller/blog.controller";
 
 @Module({
   imports: [],
@@ -21,7 +23,8 @@ import {SkillsController} from "./controller/skills.controller";
       EmployersController,
       OrdersController,
       PortfolioController,
-      SkillsController
+      SkillsController,
+      BlogController
   ],
   providers: [
       AppService,
@@ -29,7 +32,8 @@ import {SkillsController} from "./controller/skills.controller";
       EmployersService,
       OrdersService,
       PortfolioService,
-      SkillsService
+      SkillsService,
+      BlogService
   ],
 })
 export class AppModule {}

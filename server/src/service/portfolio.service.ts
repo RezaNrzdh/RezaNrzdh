@@ -3,6 +3,14 @@ import {Injectable} from "@nestjs/common";
 @Injectable()
 export class PortfolioService {
 
+    GetAllPortfolios(): Array<object> {
+        return this.data;
+    }
+
+    GetTopPortfolios(value: number = 4): Array<object> {
+        return this.data.slice(0, value);
+    }
+
     data: any = [
         {
             title: "طراحی اپلیکیشن مدیریت کارمندان",
@@ -101,12 +109,4 @@ export class PortfolioService {
             category: "توسعه وب"
         }
     ];
-
-    GetAllPortfolios(): Array<object> {
-        return this.data;
-    }
-
-    GetTopPortfolios(value: number = 4): Array<object> {
-        return this.data.slice(0, value);
-    }
 }
