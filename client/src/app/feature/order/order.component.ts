@@ -18,7 +18,14 @@ export class OrderComponent implements OnInit, DoCheck {
     constructor(private orderService: OrdersService, private responsiveService: ResponsiveService) {}
 
     ngOnInit(): void {
-        this.data = this.orderService.getOrders();
+        this.data = this.orderService.getOrders().subscribe({
+            next: ((value: any) => {
+                this.data = value;
+            }),
+            error: ((error: any) => {
+                console.log(error);
+            })
+        });
     }
 
     ngDoCheck() {
