@@ -1,34 +1,14 @@
 import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class EmployersService {
 
-    data: any = [
-        {
-            name: "عماد بیات",
-            company: "مدیر سامانه های مدرن توسن",
-            desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز"
-        },
-        {
-            name: "علی عدالت فیض",
-            company: "بنیانگذار پلازا",
-            desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز"
-        },
-        {
-            name: "اعظم بجاری",
-            company: "بنیانگذار نردبون",
-            desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز"
-        },
-        {
-            name: "نیما خوانساری",
-            company: "بنیانگذار Water World",
-            desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز"
-        }
-    ]
+    constructor(private http: HttpClient) {}
 
-    constructor() {}
-
-    GetEmployersComment(): any {
-        return this.data;
+    GetEmployersComment(): Observable<any> {
+        return this.http.get(`${environment.server}/employers`);
     }
 }

@@ -13,7 +13,14 @@ export class EmployersComponent implements OnInit {
     constructor(private EmployerService: EmployersService) { }
 
     ngOnInit(): void {
-        this.data = this.EmployerService.GetEmployersComment();
+        this.data = this.EmployerService.GetEmployersComment().subscribe({
+            next: ((value: any) => {
+                this.data = value;
+            }),
+            error: ((error: any) => {
+                console.log(error)
+            })
+        });
     }
 
 }
