@@ -14,9 +14,18 @@ import {SkillsService} from "./service/skills.service";
 import {SkillsController} from "./controller/skills.controller";
 import {BlogService} from "./service/blog.service";
 import {BlogController} from "./controller/blog.controller";
+import {AuthController} from "./controller/auth.controller";
+import {AuthService} from "./service/auth.service";
+import {JwtModule} from "@nestjs/jwt";
 
 @Module({
-  imports: [],
+  imports: [
+      JwtModule.register({
+          global: true,
+          secret: "rytsdkahdewruweif",
+          signOptions: { expiresIn: '1800s' }
+      })
+  ],
   controllers: [
       AppController,
       AboutController,
@@ -24,7 +33,8 @@ import {BlogController} from "./controller/blog.controller";
       OrdersController,
       PortfolioController,
       SkillsController,
-      BlogController
+      BlogController,
+      AuthController
   ],
   providers: [
       AppService,
@@ -33,7 +43,8 @@ import {BlogController} from "./controller/blog.controller";
       OrdersService,
       PortfolioService,
       SkillsService,
-      BlogService
+      BlogService,
+      AuthService
   ],
 })
 export class AppModule {}
