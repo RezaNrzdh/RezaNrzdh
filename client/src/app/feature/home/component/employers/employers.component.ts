@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployersService} from "../../../../core/services/employers.service";
+import {EmployersModel} from "../../../../core/models/employers.model";
 
 @Component({
     selector: 'app-home-employers',
@@ -8,12 +9,12 @@ import {EmployersService} from "../../../../core/services/employers.service";
 })
 export class EmployersComponent implements OnInit {
 
-    data: any;
+    data: Array<EmployersModel>;
 
     constructor(private EmployerService: EmployersService) { }
 
     ngOnInit(): void {
-        this.data = this.EmployerService.GetEmployersComment().subscribe({
+        this.EmployerService.GetEmployersComment().subscribe({
             next: ((value: any) => {
                 this.data = value;
             }),

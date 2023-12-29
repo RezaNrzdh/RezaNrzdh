@@ -1,6 +1,7 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {ResponsiveService} from "../../../core/services/responsive.service";
+import {PortfolioModel} from "../../../core/models/portfolio.model";
 
 @Component({
     selector: 'app-portfolio-list',
@@ -9,7 +10,7 @@ import {ResponsiveService} from "../../../core/services/responsive.service";
 })
 export class PortfolioListComponent implements OnInit, DoCheck {
 
-    data: any;
+    data: Array<PortfolioModel>;
     isXSmall: boolean = false;
     isSmall: boolean = false;
     isMedium: boolean = false;
@@ -20,7 +21,7 @@ export class PortfolioListComponent implements OnInit, DoCheck {
     constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService) { }
 
     ngOnInit(): void {
-        this.data = this.portfolioService.GetAllPortfolio().subscribe({
+        this.portfolioService.GetAllPortfolio().subscribe({
             next: ((value: any) => {
                 this.data = value;
             }),

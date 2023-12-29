@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OrdersService} from "../../core/services/orders.service";
 import {ResponsiveService} from "../../core/services/responsive.service";
+import {OrderModel} from "../../core/models/order.model";
 
 @Component({
     selector: 'app-order',
@@ -9,14 +10,14 @@ import {ResponsiveService} from "../../core/services/responsive.service";
 })
 export class OrderComponent implements OnInit {
 
-    data: any;
+    data: Array<OrderModel>;
     selectedOrder: number = 0;
     selectedSubOrder: number = 0;
 
     constructor(private orderService: OrdersService, private responsiveService: ResponsiveService) {}
 
     ngOnInit(): void {
-        this.data = this.orderService.getOrders().subscribe({
+        this.orderService.getOrders().subscribe({
             next: ((value: any) => {
                 this.data = value;
             }),

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SkillsService} from "../../../../core/services/skills.service";
+import {ExperienceModel} from "../../../../core/models/experience.model";
 
 @Component({
     selector: 'app--home-experience',
@@ -10,12 +11,12 @@ export class ExperienceComponent implements OnInit {
 
     @Input() isMobile: boolean;
 
-    experience: any;
+    experience: Array<ExperienceModel>;
 
     constructor(private skillService: SkillsService) { }
 
     ngOnInit(): void {
-        this.experience = this.skillService.getSkills().subscribe({
+        this.skillService.getSkills().subscribe({
             next: ((value: any) => {
                 this.experience = value;
             }),

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {PortfolioModel} from "../../../core/models/portfolio.model";
 
 @Component({
     selector: "app-portfolio",
@@ -9,13 +10,13 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class PortfolioComponent implements OnInit {
 
-    data: any;
+    data: Array<PortfolioModel>;
     commentForm: FormGroup;
 
     constructor(private PortfolioService: PortfolioService) {}
 
     ngOnInit() {
-        this.data = this.PortfolioService.GetTopPortfolio().subscribe({
+        this.PortfolioService.GetTopPortfolio().subscribe({
             next: ((value: any) => {
                 this.data = value;
             }),

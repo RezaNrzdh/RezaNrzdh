@@ -1,6 +1,7 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {AboutService} from "../../core/services/about.service";
 import {ResponsiveService} from "../../core/services/responsive.service";
+import {AboutModel} from "../../core/models/about.model";
 
 @Component({
     selector: 'app-about',
@@ -9,7 +10,7 @@ import {ResponsiveService} from "../../core/services/responsive.service";
 })
 export class AboutComponent implements OnInit, DoCheck {
 
-    data: any;
+    data: AboutModel = new AboutModel();
     tab: number = 0;
     isSmall: boolean = false;
     options: Array<string> = ['طراحی UIUX','برنامه نویسی','گرافیک دو بعدی','گرافیک سه بعدی','بازیسازی'];
