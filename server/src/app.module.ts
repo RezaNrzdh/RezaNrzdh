@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './controller/app.controller';
 import { AppService } from './service/app.service';
+import { JwtModule } from "@nestjs/jwt";
 
 import {AboutController} from "./controller/about.controller";
 import {EmployersController} from "./controller/employers.controller";
@@ -16,7 +17,8 @@ import {BlogService} from "./service/blog.service";
 import {BlogController} from "./controller/blog.controller";
 import {AuthController} from "./controller/auth.controller";
 import {AuthService} from "./service/auth.service";
-import {JwtModule} from "@nestjs/jwt";
+import {ContactController} from "./controller/contact.controller";
+import {ContactService} from "./service/contact.service";
 
 @Module({
   imports: [
@@ -34,7 +36,8 @@ import {JwtModule} from "@nestjs/jwt";
       PortfolioController,
       SkillsController,
       BlogController,
-      AuthController
+      AuthController,
+      ContactController
   ],
   providers: [
       AppService,
@@ -44,7 +47,8 @@ import {JwtModule} from "@nestjs/jwt";
       PortfolioService,
       SkillsService,
       BlogService,
-      AuthService
+      AuthService,
+      ContactService
   ],
 })
 export class AppModule {}
