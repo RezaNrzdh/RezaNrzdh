@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('client_appComp');
         this.authService.Verify().subscribe({
             next: ((value: any) => {
                 console.log(value);
