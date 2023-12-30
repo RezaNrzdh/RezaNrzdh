@@ -11,6 +11,7 @@ import {OrderModel} from "../../core/models/order.model";
 export class OrderComponent implements OnInit {
 
     data: Array<OrderModel>;
+    show: boolean = false;
     selectedOrder: number = 0;
     selectedSubOrder: number = 0;
 
@@ -20,6 +21,7 @@ export class OrderComponent implements OnInit {
         this.orderService.getOrders().subscribe({
             next: ((value: any) => {
                 this.data = value;
+                this.show = true;
             }),
             error: ((error: any) => {
                 console.log(error);

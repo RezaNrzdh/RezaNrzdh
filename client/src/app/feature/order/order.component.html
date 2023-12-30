@@ -26,34 +26,38 @@
         </div>
         <div class="flex justify-ctr subtabs margin-top-64">
             <ul class="flex margin-0 padding-0">
-                <li *ngFor="let item of data[selectedOrder].options; index as i" (click)="SetSelectedSubOrder(i)">
-                    <ng-container *ngIf="selectedSubOrder === i; else alt">
-                        <app-button mode="filled" color="primary">{{ item.title }}</app-button>
-                    </ng-container>
-                    <ng-template #alt>
-                        <app-button mode="outlined" color="dark">{{ item.title }}</app-button>
-                    </ng-template>
-                </li>
+                <ng-container *ngIf="show">
+                    <li *ngFor="let item of data[selectedOrder].options; index as i" (click)="SetSelectedSubOrder(i)">
+                        <ng-container *ngIf="selectedSubOrder === i; else alt">
+                            <app-button mode="filled" color="primary">{{ item.title }}</app-button>
+                        </ng-container>
+                        <ng-template #alt>
+                            <app-button mode="outlined" color="dark">{{ item.title }}</app-button>
+                        </ng-template>
+                    </li>
+                </ng-container>
             </ul>
         </div>
         <div class="orders flex column width-full margin-top-32">
             <div class="plans grid">
-                <div *ngFor="let item of data[selectedOrder].options[selectedSubOrder].plans" class="plan flex column borderbox radius-8 hidden">
-                    <div class="width-full padding-bot-8 background-gray-2"></div>
-                    <div class="flex column padding-24 margin-bot-2">
-                        <app-tag *ngIf="item.popular" class="width-fit align-self-ctr">محبوب ترین</app-tag>
-                        <span class="flex justify-ctr margin-top-32 headline-5 bold color-dark margin-bot-16">{{ item.title }}</span>
-                        <span class="flex justify-ctr body-2 color-gray-5 medium margin-bot-16">{{ item.desc }}</span>
-                        <div class="flex justify-ctr align-ctr margin-bot-16">
-                            <span class="headline-1 bold color-dark">{{ item.price.toLocaleString() }}</span>
-                            <span class="body-2 color-gray-5 margin-right-8">تومان</span>
+                <ng-container *ngIf="show">
+                    <div *ngFor="let item of data[selectedOrder].options[selectedSubOrder].plans" class="plan flex column borderbox radius-8 hidden">
+                        <div class="width-full padding-bot-8 background-gray-2"></div>
+                        <div class="flex column padding-24 margin-bot-2">
+                            <app-tag *ngIf="item.popular" class="width-fit align-self-ctr">محبوب ترین</app-tag>
+                            <span class="flex justify-ctr margin-top-32 headline-5 bold color-dark margin-bot-16">{{ item.title }}</span>
+                            <span class="flex justify-ctr body-2 color-gray-5 medium margin-bot-16">{{ item.desc }}</span>
+                            <div class="flex justify-ctr align-ctr margin-bot-16">
+                                <span class="headline-1 bold color-dark">{{ item.price.toLocaleString() }}</span>
+                                <span class="body-2 color-gray-5 margin-right-8">تومان</span>
+                            </div>
+                            <app-button mode="filled" color="primary">انتخاب طرح</app-button>
                         </div>
-                        <app-button mode="filled" color="primary">انتخاب طرح</app-button>
+                        <div class="props flex column margin-top-8 margin-bot-32">
+                            <div *ngFor="let i of item.props" class="flex align-ctr text-ctr justify-ctr body-2 dark medium borderbox margin-right-32 margin-left-32">{{i}}</div>
+                        </div>
                     </div>
-                    <div class="props flex column margin-top-8 margin-bot-32">
-                        <div *ngFor="let i of item.props" class="flex align-ctr text-ctr justify-ctr body-2 dark medium borderbox margin-right-32 margin-left-32">{{i}}</div>
-                    </div>
-                </div>
+                </ng-container>
             </div>
         </div>
     </div>

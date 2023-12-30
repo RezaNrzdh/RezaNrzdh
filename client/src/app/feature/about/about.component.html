@@ -89,10 +89,12 @@
             </div>
             <app-dropdown *ngIf="isSmall" [options]="options"></app-dropdown>
             <div class="grid margin-top-40">
-                <div *ngFor="let skl of data.skills[tab].skill" class="flex align-ctr">
-                    <app-icon icon="chevron-left" size="16" color="secondary"></app-icon>
-                    <span class="body-2 medium color-dark margin-right-4">{{skl}}</span>
-                </div>
+                <ng-container *ngIf="show">
+                    <div *ngFor="let skl of data.skills[tab].skill" class="flex align-ctr">
+                        <app-icon icon="chevron-left" size="16" color="secondary"></app-icon>
+                        <span class="body-2 medium color-dark margin-right-4">{{skl}}</span>
+                    </div>
+                </ng-container>
             </div>
         </div>
     </div>
