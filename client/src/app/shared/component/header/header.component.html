@@ -19,16 +19,30 @@
                 <li><a routerLink="/contact" routerLinkActive="active">تماس با من</a></li>
             </ul>
         </nav>
-        <div *ngIf="!isXSmall" class="flex margin-right-auto align-ctr justify-end">
-            <app-button *ngIf="!internalPages; else GhostDark" [isLink]="true" mode="ghost" color="white" href="/login">ورود</app-button>
-            <ng-template #GhostDark>
-                <app-button [isLink]="true" mode="ghost" color="dark" href="/login">ورود</app-button>
+        <ng-container *ngIf="!isLoggedIn; else loggedIn">
+            <div *ngIf="!isXSmall" class="flex margin-right-auto align-ctr justify-end">
+                <app-button *ngIf="!internalPages; else GhostDark" [isLink]="true" mode="ghost" color="white" href="/login">ورود</app-button>
+                <ng-template #GhostDark>
+                    <app-button [isLink]="true" mode="ghost" color="dark" href="/login">ورود</app-button>
+                </ng-template>
+                <app-button [isLink]="true" mode="filled" color="primary" href="/register" class="margin-right-16">عضویت</app-button>
+            </div>
+            <div *ngIf="isXSmall" class="flex margin-right-auto align-ctr justify-end">
+                <a><app-icon icon="user" size="24" color="gray3"></app-icon></a>
+            </div>
+        </ng-container>
+        <ng-template #loggedIn>
+            <div *ngIf="internalPages; else indexPage" class="loggedin flex align-ctr margin-right-auto">
+                <div class="padding-24 radius-24 background-gray-3 margin-left-8"></div>
+                <app-icon icon="chevron-down" size="16"></app-icon>
+            </div>
+            <ng-template #indexPage>
+                <div class="loggedin flex align-ctr margin-right-auto">
+                    <div class="padding-24 radius-24 background-gray-3 margin-left-8"></div>
+                    <app-icon icon="chevron-down" size="16" color="white"></app-icon>
+                </div>
             </ng-template>
-            <app-button [isLink]="true" mode="filled" color="primary" href="/register" class="margin-right-16">عضویت</app-button>
-        </div>
-        <div *ngIf="isXSmall" class="flex margin-right-auto align-ctr justify-end">
-            <a><app-icon icon="user" size="24" color="gray3"></app-icon></a>
-        </div>
+        </ng-template>
     </section>
 </header>
 <app-sidebar *ngIf="ShowSidebar" (toggle)="OnToggleSidebar()"></app-sidebar>

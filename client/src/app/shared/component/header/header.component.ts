@@ -10,12 +10,13 @@ import {ResponsiveService} from "../../../core/services/responsive.service";
 export class HeaderComponent implements DoCheck {
 
     internalPages: boolean = false;
-    ShowSidebar: boolean = false;
+    ShowSidebar: boolean   = false;
+    isLoggedIn: boolean    = false;
 
     isXSmall: boolean = false;
-    isSmall: boolean = false;
+    isSmall: boolean  = false;
     isMedium: boolean = false;
-    isLarge: boolean = false;
+    isLarge: boolean  = false;
 
     constructor(private router: Router, private responsiveService: ResponsiveService) {
         this.IsInternalPage(this.router);

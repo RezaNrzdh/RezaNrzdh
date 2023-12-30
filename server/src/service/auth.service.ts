@@ -10,13 +10,13 @@ export class AuthService {
 
     }
 
-    async SignIn(): Promise<string> {
+    async SignIn(): Promise<any> {
         const payload = { uid: 1, name: 'johndoe@mail.com', role: 'user' };
         return this.jwtService.sign(payload);
     }
 
-    VerifyJWT(): any {
-
+    Verify(token: string){
+        return this.jwtService.verify(token, {secret: "rytsdkahdewruweif"});
     }
 
     SignOut(): any {

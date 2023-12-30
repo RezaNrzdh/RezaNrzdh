@@ -8,6 +8,7 @@ import {BlogService} from "./services/blog.service";
 import {ResponsiveService} from "./services/responsive.service";
 import {AboutModel} from "./models/about.model";
 import {ContactService} from "./services/contact.service";
+import {AuthService} from "./services/auth.service";
 
 @NgModule({
     providers:[
@@ -19,6 +20,7 @@ import {ContactService} from "./services/contact.service";
         BlogService,
         ResponsiveService,
         ContactService,
+        AuthService,
         AboutModel
     ],
     imports:[]

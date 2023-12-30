@@ -12,15 +12,18 @@ export class AuthController {
     }
 
     @Post("signin")
-    SignIn(@Body() body: object, @Res({passthrough: true}) res: Response): any {
-        this.authService.SignIn().then((value) => {
-            res.cookie("jwt", value, {httpOnly: true});
-        });
+    async SignIn(@Body() body: object, @Res({passthrough: true}) res: Response): Promise<any> {
+        const value = await this.authService.SignIn();
+        res.cookie("jwt", value, {httpOnly: true, secure: true});
     }
 
     @Get("verify")
-    VerifyJWT(): any {
-        return true;
+    Verify(@Req() req: Request): any {
+        if(!req.cookies.jwt){
+            return false;
+        }
+        const isValid = this.authService.Verify(req.cookies.jwt);
+        return isValid;
     }
 
     @Get("signout")

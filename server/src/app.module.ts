@@ -26,7 +26,7 @@ import {ContactService} from "./service/contact.service";
           global: true,
           secret: "rytsdkahdewruweif",
           signOptions: { expiresIn: '1800s' }
-      })
+      }),
   ],
   controllers: [
       AppController,
