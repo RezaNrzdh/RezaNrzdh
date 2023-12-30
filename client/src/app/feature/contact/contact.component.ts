@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {ContactService} from "../../core/services/contact.service";
 
 @Component({
     selector: 'app-contact',
@@ -8,7 +9,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ContactComponent implements OnInit {
 
-    constructor() { }
+    constructor(private contactService: ContactService) { }
 
     contactForm: FormGroup;
 
@@ -23,6 +24,13 @@ export class ContactComponent implements OnInit {
     }
 
     GetContactFormData() {
-        console.log(this.contactForm.value);
+        this.contactService.CreateComment(this.contactForm.value).subscribe({
+            next: ((value: any) => {
+                console.log(value);
+            }),
+            error: ((error: any) => {
+                console.log(error);
+            })
+        });
     }
 }

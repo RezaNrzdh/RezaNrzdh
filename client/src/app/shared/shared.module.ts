@@ -11,7 +11,6 @@ import {TextboxComponent} from "./component/textbox/textbox.component";
 import {FooterComponent} from "./component/footer/footer.component";
 import {PortfolioCardComponent} from "./component/portfolioCard/portfolio-card.component";
 import {IconComponent} from "./component/icon/icon.component";
-import { IconDirective } from './directive/icon.directive';
 import {HeaderComponent} from "./component/header/header.component";
 import {NewsletterComponent} from "./component/newsletter/newsletter.component";
 import {CheckboxComponent} from "./component/checkbox/checkbox.component";
@@ -27,7 +26,6 @@ import {DropdownComponent} from "./component/dropdown/dropdown.component";
         TextboxComponent,
         PortfolioCardComponent,
         IconComponent,
-        IconDirective,
         NewsletterComponent,
         CheckboxComponent,
         TagComponent,
@@ -48,7 +46,6 @@ import {DropdownComponent} from "./component/dropdown/dropdown.component";
         TextboxComponent,
         PortfolioCardComponent,
         IconComponent,
-        IconDirective,
         NewsletterComponent,
         CheckboxComponent,
         TagComponent,

@@ -1,13 +1,13 @@
-import {Controller, Post} from "@nestjs/common";
+import {Body, Controller, Post} from "@nestjs/common";
 import {ContactService} from "../service/contact.service";
 
-@Controller("contact")
+@Controller("api/v1/contact")
 export class ContactController {
     constructor(private contactService: ContactService) {
     }
 
     @Post("comment")
-    CreateComment(): object {
-        return {};
+    CreateComment(@Body() body: object): object {
+        return body;
     }
 }
