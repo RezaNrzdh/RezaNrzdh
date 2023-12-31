@@ -19,11 +19,12 @@ export class AuthController {
 
     @Get("verify")
     Verify(@Req() req: Request): any {
-        if(!req.cookies.jwt){
-            return false;
-        }
-        const isValid = this.authService.Verify(req.cookies.jwt);
-        return isValid;
+        if(!req.cookies.jwt) return false;
+
+        const value = this.authService.Verify(req.cookies.jwt);
+
+        if(value){ return value; }
+        else { return false; }
     }
 
     @Get("signout")
