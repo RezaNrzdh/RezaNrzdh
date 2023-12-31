@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     onSubmit = () => {
         this.authService.SignIn(this.loginForm.value).subscribe({
             next: ((value: any) => {
-                console.log(document.cookie);
+                console.log(value);
             }),
             error: ((error: any) => {
                 console.log(error)
