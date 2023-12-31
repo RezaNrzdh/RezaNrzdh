@@ -10,6 +10,16 @@ import {AboutModel} from "./models/about.model";
 import {ContactService} from "./services/contact.service";
 import {AuthService} from "./services/auth.service";
 
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {HttpInterceptorService} from "./interceptor/http.interceptor";
+import {UserService} from "./services/user.service";
+
+const HttpInterceptor = {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+}
+
 @NgModule({
     providers:[
         PortfolioService,
@@ -21,6 +31,8 @@ import {AuthService} from "./services/auth.service";
         ResponsiveService,
         ContactService,
         AuthService,
+        HttpInterceptor,
+        UserService,
         AboutModel
     ],
     imports:[]
