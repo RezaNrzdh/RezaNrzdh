@@ -33,12 +33,12 @@
         </ng-container>
         <ng-template #loggedIn>
             <div *ngIf="internalPages; else indexPage" class="loggedin flex align-ctr margin-right-auto">
-                <div class="padding-24 radius-24 background-gray-3 margin-left-8"></div>
+                <div class="loggedin background-gray-3 margin-left-8"></div>
                 <app-icon icon="chevron-down" size="16"></app-icon>
             </div>
             <ng-template #indexPage>
                 <div class="loggedin flex align-ctr margin-right-auto">
-                    <div class="padding-24 radius-24 background-gray-3 margin-left-8"></div>
+                    <div class="background-gray-3 margin-left-8"></div>
                     <app-icon icon="chevron-down" size="16" color="white"></app-icon>
                 </div>
             </ng-template>

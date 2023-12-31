@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
 import {JwtService} from "@nestjs/jwt";
-import {jwtConstants} from "../constant";
+import {constants} from "../constant";
 
 @Injectable()
 export class AuthService {
@@ -18,7 +18,7 @@ export class AuthService {
 
     Verify(token: string){
         try{
-            return this.jwtService.verify(token, {secret: jwtConstants.secret});
+            return this.jwtService.verify(token, {secret: constants.secret});
         }
         catch (error) {
             return false;

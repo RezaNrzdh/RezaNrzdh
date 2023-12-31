@@ -1,6 +1,7 @@
 import {Body, Controller, Get, Post, Req, Res} from "@nestjs/common";
 import {Request, Response} from "express";
 import {AuthService} from "../service/auth.service";
+import {constants} from "../constant";
 
 @Controller("api/v1/auth")
 export class AuthController {
@@ -14,7 +15,7 @@ export class AuthController {
     @Post("signin")
     async SignIn(@Body() body: object, @Res({passthrough: true}) res: Response): Promise<any> {
         const value = await this.authService.SignIn();
-        res.cookie("jwt", value, {httpOnly: true, secure: true});
+        res.cookie("jwt", value, {httpOnly: true, secure: true, maxAge: constants.expires * 1000});
     }
 
     @Get("verify")
