@@ -19,12 +19,13 @@ import {AuthController} from "./controller/auth.controller";
 import {AuthService} from "./service/auth.service";
 import {ContactController} from "./controller/contact.controller";
 import {ContactService} from "./service/contact.service";
+import {jwtConstants} from "./constant";
 
 @Module({
   imports: [
       JwtModule.register({
           global: true,
-          secret: "rytsdkahdewruweif",
+          secret: jwtConstants.secret,
           signOptions: { expiresIn: '1800s' }
       }),
   ],
