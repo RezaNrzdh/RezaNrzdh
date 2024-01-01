@@ -1,11 +1,13 @@
 import {NgModule} from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import {MainLayoutComponent} from "./shared/layout/main-layout/main-layout.component";
+import {CheckTokenService} from "./core/resolver/checkToken.service";
 
 const routes: Routes = [
     {
         path: "",
         component: MainLayoutComponent,
+        resolve: { data: CheckTokenService },
         children: [
             { path: "", loadChildren: () => import("./feature/home/home.module").then(m => m.HomeModule) },
             { path: "portfolio", loadChildren: () => import("./feature/portfolio/portfolio.module").then(m => m.PortfolioModule) },

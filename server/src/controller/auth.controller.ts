@@ -15,7 +15,7 @@ export class AuthController {
     @Post("signin")
     async SignIn(@Body() body: object, @Res({passthrough: true}) res: Response): Promise<any> {
         const value = await this.authService.SignIn();
-        res.cookie("jwt", value, {httpOnly: true, secure: true, maxAge: constants.expires * 1000});
+        res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
     }
 
     @Get("verify")
