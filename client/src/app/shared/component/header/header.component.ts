@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private userService: UserService)
     {
         this.IsInternalPage(this.router);
-
         this.subUserService = this.userService.userInfo.subscribe({
             next: ((value: any) => {
                 value ? this.isLoggedIn = true : this.isLoggedIn = false;
@@ -42,13 +41,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
         this.subBreakpoint = this.responsiveService.breakpoint.subscribe({
             next: ((value: any) => {
+                console.log(3);
                 value[ResponsiveEnum.XSMALL] ? this.isXSmall = true : this.isXSmall = false;
                 value[ResponsiveEnum.MEDIUM] ? this.isMedium = true : this.isMedium = false;
             }),
             error: ((err: any) => {
                 console.log(err);
             })
-        })
+        });
     }
 
     @HostBinding('class.internalPages') get t() { return this.internalPages };

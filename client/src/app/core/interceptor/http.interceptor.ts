@@ -14,9 +14,6 @@ export class HttpInterceptorService implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         req = req.clone({
             withCredentials: true,
-            setHeaders: {
-                test: `bearer${document.cookie}`
-            }
         })
         return next.handle(req);
     }

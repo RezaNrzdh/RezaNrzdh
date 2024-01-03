@@ -15,7 +15,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     data: AboutModel = new AboutModel();
     show: boolean = false;
     tab: number = 0;
-    isSmall: boolean = false;
+    isSmall: boolean = true;
     options: Array<string> = ['طراحی UIUX','برنامه نویسی','گرافیک دو بعدی','گرافیک سه بعدی','بازیسازی'];
     sub: Subscription;
 
