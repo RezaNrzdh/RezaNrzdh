@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import {MainLayoutComponent} from "./shared/layout/main-layout/main-layout.component";
 import {CheckTokenService} from "./core/resolver/checkToken.service";
-import {CheckBreakpointService} from "./core/resolver/CheckBreakpoint.service";
+import {CheckBreakpointService} from "./core/resolver/checkBreakpoint.service";
 
 const routes: Routes = [
     {

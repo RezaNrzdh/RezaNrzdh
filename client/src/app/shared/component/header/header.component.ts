@@ -41,7 +41,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
         this.subBreakpoint = this.responsiveService.breakpoint.subscribe({
             next: ((value: any) => {
-                console.log(3);
                 value[ResponsiveEnum.XSMALL] ? this.isXSmall = true : this.isXSmall = false;
                 value[ResponsiveEnum.MEDIUM] ? this.isMedium = true : this.isMedium = false;
             }),

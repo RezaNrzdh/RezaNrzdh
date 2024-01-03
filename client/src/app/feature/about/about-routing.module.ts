@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {AboutComponent} from "./about.component";
-import {CheckBreakpointService} from "../../core/resolver/CheckBreakpoint.service";
+import {CheckBreakpointService} from "../../core/resolver/checkBreakpoint.service";
 
 const routes: Routes = [
     { path: "", component: AboutComponent, resolve: { data: CheckBreakpointService }}
