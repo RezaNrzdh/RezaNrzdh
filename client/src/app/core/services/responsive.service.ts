@@ -1,13 +1,12 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class ResponsiveService {
 
-    breakpoint = new Subject<object>();
+    breakpoint = new BehaviorSubject<object>({});
 
     ChangeResolution(value: object) {
-        console.log(2);
         this.breakpoint.next(value);
     }
 }
