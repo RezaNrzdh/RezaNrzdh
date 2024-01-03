@@ -1,44 +1,12 @@
 import {Injectable} from "@angular/core";
+import {Subject} from "rxjs";
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class ResponsiveService {
 
-    private isXSmall: boolean;
-    private isSmall: boolean;
-    private isMedium: boolean;
-    private isLarge: boolean;
+    breakpoint = new Subject<object>()
 
-    constructor() {}
-
-    get getXSmall() {
-        return this.isXSmall;
-    }
-
-    set setXSmall(value: any) {
-        this.isXSmall = value;
-    }
-
-    get getSmall() {
-        return this.isSmall;
-    }
-
-    set setSmall(value: any) {
-        this.isSmall = value;
-    }
-
-    get getMedium() {
-        return this.isMedium;
-    }
-
-    set setMedium(value: any) {
-        this.isMedium = value;
-    }
-
-    get getLarge() {
-        return this.isLarge;
-    }
-
-    set setLarge(value: any) {
-        this.isLarge = value;
+    ChangeResolution(value: object): void {
+        this.breakpoint.next(value);
     }
 }

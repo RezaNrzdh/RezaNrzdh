@@ -1,24 +1,32 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
+import {Subscription} from "rxjs";
+import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
 
 @Component({
     selector: 'app-portfolio-list',
     templateUrl: './portfolio-list.component.html',
     styleUrls: ['./portfolio-list.component.scss']
 })
-export class PortfolioListComponent implements OnInit, DoCheck {
+export class PortfolioListComponent implements OnInit, OnDestroy {
 
     data: Array<PortfolioModel>;
     isXSmall: boolean = false;
     isSmall: boolean = false;
-    isMedium: boolean = false;
-    isLarge: boolean = false;
     options: Array<string> = ['همه','طراحی وب','توسعه وب','بازیسازی','گرافیک'];
-    sorts: Array<string> = ['جدیدترین','پربازدیدترین']
+    sorts: Array<string> = ['جدیدترین','پربازدیدترین'];
+    sub: Subscription;
 
-    constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService) { }
+    constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService) {
+        this.sub = this.responsiveService.breakpoint.subscribe({
+            next: ((value: any) => {
+                value[ResponsiveEnum.SMALL] ? this.isSmall = true : this.isSmall = false;
+                value[ResponsiveEnum.XSMALL] ? this.isXSmall = true : this.isXSmall = false;
+            })
+        })
+    }
 
     ngOnInit(): void {
         this.portfolioService.GetAllPortfolio().subscribe({
@@ -31,11 +39,8 @@ export class PortfolioListComponent implements OnInit, DoCheck {
         });
     }
 
-    ngDoCheck() {
-        this.isXSmall = this.responsiveService.getXSmall;
-        this.isSmall = this.responsiveService.getSmall;
-        this.isMedium = this.responsiveService.getMedium;
-        this.isLarge = this.responsiveService.getLarge;
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
 }

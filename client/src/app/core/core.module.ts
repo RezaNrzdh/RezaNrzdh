@@ -12,7 +12,6 @@ import {AuthService} from "./services/auth.service";
 
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {HttpInterceptorService} from "./interceptor/http.interceptor";
-import {UserService} from "./services/user.service";
 
 const HttpInterceptor = {
     provide: HTTP_INTERCEPTORS,
@@ -32,7 +31,6 @@ const HttpInterceptor = {
         ContactService,
         AuthService,
         HttpInterceptor,
-        UserService,
         AboutModel
     ],
     imports:[]
