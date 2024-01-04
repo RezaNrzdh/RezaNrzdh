@@ -12,6 +12,7 @@ export class OrderComponent implements OnInit {
 
     data: Array<OrderModel>;
     show: boolean = false;
+    isLoading: boolean = false;
     selectedOrder: number = 0;
     selectedSubOrder: number = 0;
 
@@ -22,6 +23,7 @@ export class OrderComponent implements OnInit {
             next: ((value: any) => {
                 this.data = value;
                 this.show = true;
+                this.Delay();
             }),
             error: ((error: any) => {
                 console.log(error);
@@ -30,11 +32,21 @@ export class OrderComponent implements OnInit {
     }
 
     SetSelectedOrder(value: number): void{
+        this.Delay();
         this.selectedOrder = value;
         this.selectedSubOrder = 0;
     }
 
     SetSelectedSubOrder(value: number): void{
+        this.Delay();
         this.selectedSubOrder = value;
+    }
+
+    Delay() {
+        this.isLoading = true;
+        const delay = setTimeout(() => {
+            this.isLoading = false;
+            clearTimeout(delay);
+        }, 1000);
     }
 }
