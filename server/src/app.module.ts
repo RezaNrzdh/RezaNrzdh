@@ -20,6 +20,7 @@ import {AuthService} from "./service/auth.service";
 import {ContactController} from "./controller/contact.controller";
 import {ContactService} from "./service/contact.service";
 import {constants} from "./constant";
+import {MongooseModule} from "@nestjs/mongoose";
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import {constants} from "./constant";
           secret: constants.secret,
           signOptions: { expiresIn: constants.expires }
       }),
+      MongooseModule.forRoot("mongodb://localhost:27017/rezanrzdh")
   ],
   controllers: [
       AppController,
