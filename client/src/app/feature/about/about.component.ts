@@ -30,7 +30,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.AboutService.GetAbout().subscribe({
             next: ((value: any) => {
-                this.data = value;
+                this.data = value[0];
                 this.show = true;
             }),
             error: ((error: any) => {
