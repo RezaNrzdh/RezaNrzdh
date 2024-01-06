@@ -1,17 +1,17 @@
 import {Body, Controller, Get, Param, Post} from "@nestjs/common";
-import {PortfolioService} from "../service/portfolio.service";
+import {PortfolioService} from "./portfolio.service";
 
 @Controller("api/v1/portfolio")
 export class PortfolioController {
     constructor(private portfolioService: PortfolioService) {}
 
     @Get()
-    GetAllPortfolios(): Array<object> {
+    GetAllPortfolios(): any {
         return this.portfolioService.GetAllPortfolios();
     }
 
     @Get("top/:number")
-    GetTopPortfolios(@Param('number') number): Array<object> {
+    GetTopPortfolios(@Param('number') number): any {
         return this.portfolioService.GetTopPortfolios(number);
     }
 

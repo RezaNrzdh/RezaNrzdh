@@ -1,26 +1,21 @@
-import {Module, NestModule, MiddlewareConsumer} from '@nestjs/common';
-import { AppController } from './controller/app.controller';
-import { AppService } from './service/app.service';
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { JwtModule } from "@nestjs/jwt";
 
-import {AboutController} from "./controller/about.controller";
-import {EmployersController} from "./controller/employers.controller";
-import {AboutService} from "./service/about.service";
-import {EmployersService} from "./service/employers.service";
-import {OrdersService} from "./service/orders.service";
-import {OrdersController} from "./controller/orders.controller";
-import {PortfolioService} from "./service/portfolio.service";
-import {PortfolioController} from "./controller/portfolio.controller";
-import {SkillsService} from "./service/skills.service";
-import {SkillsController} from "./controller/skills.controller";
-import {BlogService} from "./service/blog.service";
-import {BlogController} from "./controller/blog.controller";
-import {AuthController} from "./controller/auth.controller";
-import {AuthService} from "./service/auth.service";
-import {ContactController} from "./controller/contact.controller";
-import {ContactService} from "./service/contact.service";
-import {constants} from "./constant";
+import {BlogService} from "./blog/blog.service";
+import {BlogController} from "./blog/blog.controller";
+import {AuthController} from "./auth/auth.controller";
+import {AuthService} from "./auth/auth.service";
+import {ContactController} from "./contact/contact.controller";
+import {ContactService} from "./contact/contact.service";
 import {MongooseModule} from "@nestjs/mongoose";
+import {constants} from "./constant";
+import {EmployerModule} from "./employer/employer.module";
+import {SkillModule} from "./skill/skill.module";
+import {PortfolioModule} from "./portfolio/portfolio.module";
+import {AboutModule} from "./about/about.module";
+import {OrderModule} from "./order/order.module";
 
 @Module({
   imports: [
@@ -29,26 +24,21 @@ import {MongooseModule} from "@nestjs/mongoose";
           secret: constants.secret,
           signOptions: { expiresIn: constants.expires }
       }),
-      MongooseModule.forRoot("mongodb://localhost:27017/rezanrzdh")
+      MongooseModule.forRoot(constants.uri),
+      EmployerModule,
+      SkillModule,
+      PortfolioModule,
+      AboutModule,
+      OrderModule
   ],
   controllers: [
       AppController,
-      AboutController,
-      EmployersController,
-      OrdersController,
-      PortfolioController,
-      SkillsController,
       BlogController,
       AuthController,
       ContactController
   ],
   providers: [
       AppService,
-      AboutService,
-      EmployersService,
-      OrdersService,
-      PortfolioService,
-      SkillsService,
       BlogService,
       AuthService,
       ContactService

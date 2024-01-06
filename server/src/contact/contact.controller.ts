@@ -1,5 +1,5 @@
 import {Body, Controller, Post} from "@nestjs/common";
-import {ContactService} from "../service/contact.service";
+import {ContactService} from "./contact.service";
 
 @Controller("api/v1/contact")
 export class ContactController {
