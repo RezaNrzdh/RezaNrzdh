@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {ContactService} from "../../core/services/contact.service";
+import {AboutModel} from "../../core/models/about.model";
 
 @Component({
     selector: 'app-contact',
@@ -9,9 +10,10 @@ import {ContactService} from "../../core/services/contact.service";
 })
 export class ContactComponent implements OnInit {
 
-    constructor(private contactService: ContactService) { }
-
+    data: AboutModel = new AboutModel();
     contactForm: FormGroup;
+
+    constructor(private contactService: ContactService) { }
 
     ngOnInit(): void {
         this.contactForm = new FormGroup({
@@ -20,7 +22,16 @@ export class ContactComponent implements OnInit {
             "phone": new FormControl("null"),
             "subject": new FormControl("null"),
             "comment": new FormControl("null"),
-        })
+        });
+
+        this.contactService.GetInformation().subscribe({
+            next: ((value: any) => {
+                this.data = value[0];
+            }),
+            error:((err: any) => {
+                console.log(err);
+            })
+        });
     }
 
     GetContactFormData() {

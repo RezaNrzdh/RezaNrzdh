@@ -16,6 +16,7 @@ import {SkillModule} from "./skill/skill.module";
 import {PortfolioModule} from "./portfolio/portfolio.module";
 import {AboutModule} from "./about/about.module";
 import {OrderModule} from "./order/order.module";
+import {ContactModule} from "./contact/contact.module";
 
 @Module({
   imports: [
@@ -29,19 +30,18 @@ import {OrderModule} from "./order/order.module";
       SkillModule,
       PortfolioModule,
       AboutModule,
-      OrderModule
+      OrderModule,
+      ContactModule
   ],
   controllers: [
       AppController,
       BlogController,
-      AuthController,
-      ContactController
+      AuthController
   ],
   providers: [
       AppService,
       BlogService,
-      AuthService,
-      ContactService
+      AuthService
   ],
 })
 export class AppModule {}

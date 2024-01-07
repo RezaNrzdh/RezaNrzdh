@@ -10,4 +10,8 @@ export class ContactService {
     CreateComment(body: object): Observable<any> {
         return this.http.post(`${environment.server}/contact/comment`, body);
     }
+
+    GetInformation(): any {
+        return this.http.get(`${environment.server}/contact`);
+    }
 }
