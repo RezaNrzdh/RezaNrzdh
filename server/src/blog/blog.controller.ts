@@ -6,7 +6,7 @@ export class BlogController {
     constructor(private blogService: BlogService) {}
 
     @Get()
-    GetAllArticles(): Array<object> {
+    GetAllArticles(): any {
         return this.blogService.GetAllArticles();
     }
 

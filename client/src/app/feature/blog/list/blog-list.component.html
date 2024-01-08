@@ -1,38 +1,38 @@
-<section class="CRTMonitor margin-top-32">
+<section *ngIf="!isLoading" class="CRTMonitor margin-top-32">
     <div class="recent grid">
         <div class="mainImg flex column relative radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-32 z-index-10">
-                <span class="caption color-white margin-top-auto">23 اردیبهشت 1433</span>
+                <span class="caption color-white margin-top-auto">{{ data[0].date | PersianCalendar }}</span>
                 <a routerLink="/blog/abcd">
-                    <h2 class="headline-6 bold color-white margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h2>
+                    <h2 class="headline-6 bold color-white margin-top-8">{{ data[0].title }}</h2>
                 </a>
                 <div class="flex align-ctr margin-top-16">
                     <app-icon icon="like" size="16" color="gray4"></app-icon>
-                    <span class="caption medium margin-left-24 margin-right-8 color-white">17</span>
+                    <span class="caption medium margin-left-24 margin-right-8 color-white">{{ data[0].like }}</span>
                     <app-icon icon="comment" size="16" color="gray4"></app-icon>
-                    <span class="caption medium margin-left-24 margin-right-8 color-white">17</span>
-                    <span class="caption medium color-white">خواندن 5 دقیقه</span>
+                    <span class="caption medium margin-left-24 margin-right-8 color-white">{{ data[0].comment.length }}</span>
+                    <span class="caption medium color-white">خواندن {{ data[0].read }} دقیقه</span>
                 </div>
             </div>
-            <img src="assets/images/posts/blogpost.jpg" class="radius-8 z-index-1" alt=""/>
+            <img src="{{ data[0].img }}" class="radius-8 z-index-1" alt=""/>
         </div>
         <div class="topImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
-                <span class="caption color-white margin-top-auto">23 اردیبهشت 1433</span>
+                <span class="caption color-white margin-top-auto">{{ data[1].date | PersianCalendar }}</span>
                 <a routerLink="/blog/abcd">
-                    <h2 class="body-1 bold color-white margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h2>
+                    <h2 class="body-1 bold color-white margin-top-8">{{ data[1].title }}</h2>
                 </a>
             </div>
-            <img src="assets/images/posts/blogpost.jpg" class="radius-8 z-index-1" alt=""/>
+            <img src="{{ data[1].img }}" class="radius-8 z-index-1" alt=""/>
         </div>
         <div class="botImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
-                <span class="caption color-white margin-top-auto">23 اردیبهشت 1433</span>
+                <span class="caption color-white margin-top-auto">{{ data[2].date | PersianCalendar }}</span>
                 <a routerLink="/blog/abcd">
-                    <h2 class="body-1 bold color-white margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h2>
+                    <h2 class="body-1 bold color-white margin-top-8">{{ data[2].title }}</h2>
                 </a>
             </div>
-            <img src="assets/images/posts/blogpost.jpg" class="radius-8 z-index-1" alt=""/>
+            <img src="{{ data[2].img }}" class="radius-8 z-index-1" alt=""/>
         </div>
     </div>
     <div class="other margin-top-56 margin-bot-56">
@@ -41,20 +41,20 @@
             <img src="assets/images/dot.svg" alt="" />
         </div>
         <div class="grid">
-            <div *ngFor="let i of [1,2,3,4,5,6]" class="container flex column radius-8">
-                <img src="assets/images/posts/blogpost.jpg" height="225" alt="" class="background-gray-1b"/>
+            <div *ngFor="let i of otherData" class="container flex column radius-8">
+                <img src="{{i.img}}" height="225" alt="" class="background-gray-1b"/>
                 <div class="flex column borderbox padding-24">
-                    <span class="caption color-dark">23 اردیبهشت 1433</span>
+                    <span class="caption color-dark">{{ i.date | PersianCalendar }}</span>
                     <a routerLink="/blog/abcd">
-                        <h3 class="body-1 bold color-dark margin-top-8">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</h3>
+                        <h3 class="body-1 bold color-dark margin-top-8">{{ i.title }}</h3>
                     </a>
                     <p class="body-2 medium color-dark margin-top-16 margin-bot-16">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</p>
                     <div class="flex align-ctr margin-top-16">
                         <app-icon icon="like" size="16" color="gray4"></app-icon>
-                        <span class="caption medium margin-left-24 margin-right-8">17</span>
+                        <span class="caption medium margin-left-24 margin-right-8">{{ i.like }}</span>
                         <app-icon icon="comment" size="16" color="gray4"></app-icon>
-                        <span class="caption medium margin-left-24 margin-right-8">17</span>
-                        <span class="caption medium margin-right-auto">خواندن 5 دقیقه</span>
+                        <span class="caption medium margin-left-24 margin-right-8">{{ i.comment.length }}</span>
+                        <span class="caption medium margin-right-auto">خواندن {{ i.read }} دقیقه</span>
                     </div>
                 </div>
             </div>

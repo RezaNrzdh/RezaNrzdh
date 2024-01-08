@@ -1,19 +1,15 @@
 import {Injectable} from "@angular/core";
+import {Observable, take} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class BlogService {
 
-    data: any = [
-        {
-            title: ""
+    constructor(private http: HttpClient){}
 
-        }
-    ]
-
-    constructor(){}
-
-    GetBlogList(): any {
-        return this.data;
+    GetAllArticles(): Observable<any> {
+        return this.http.get(`${environment.server}/blog`);
     }
 
 }

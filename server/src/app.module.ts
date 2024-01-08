@@ -17,6 +17,7 @@ import {PortfolioModule} from "./portfolio/portfolio.module";
 import {AboutModule} from "./about/about.module";
 import {OrderModule} from "./order/order.module";
 import {ContactModule} from "./contact/contact.module";
+import {BlogModule} from "./blog/blog.module";
 
 @Module({
   imports: [
@@ -31,16 +32,15 @@ import {ContactModule} from "./contact/contact.module";
       PortfolioModule,
       AboutModule,
       OrderModule,
-      ContactModule
+      ContactModule,
+      BlogModule
   ],
   controllers: [
       AppController,
-      BlogController,
       AuthController
   ],
   providers: [
       AppService,
-      BlogService,
       AuthService
   ],
 })

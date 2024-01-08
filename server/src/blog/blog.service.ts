@@ -1,10 +1,15 @@
 import {Injectable} from "@nestjs/common";
+import {InjectModel} from "@nestjs/mongoose";
+import {Model} from "mongoose";
+import {Blog} from "./blog.schema";
 
 @Injectable()
 export class BlogService {
 
-    GetAllArticles(): Array<object> {
-        return this.data;
+    constructor(@InjectModel("Blog") private blogModel: Model<Blog>) {}
+
+    async GetAllArticles(): Promise<any> {
+        return this.blogModel.find().exec();
     }
 
     GetRecentArticles(): Array<object> {
@@ -18,133 +23,4 @@ export class BlogService {
     GetArticle(): object {
         return {title: 'One Article'};
     }
-
-    data: any = [
-        {
-            id: 1,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: "test"
-        },
-        {
-            id: 2,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        },
-        {
-            id: 3,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        },
-        {
-            id: 4,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        },
-        {
-            id: 5,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        },
-        {
-            id: 6,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        },
-        {
-            id:7,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        },
-        {
-            id: 8,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        },
-        {
-            id: 9,
-            title: "reza",
-            img: "",
-            createdAt: "",
-            like: 17,
-            readtime: 5,
-            comments: [
-                {},
-                {},
-                {}
-            ],
-            desc: ""
-        }
-    ]
 }
