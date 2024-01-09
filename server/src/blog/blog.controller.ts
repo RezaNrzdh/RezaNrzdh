@@ -20,8 +20,8 @@ export class BlogController {
         return this.blogService.GetOtherArticles();
     }
 
-    @Get(":id")
-    GetArticle(@Param("id") id): object {
-        return this.blogService.GetArticle();
+    @Get(":slug")
+    GetArticle(@Param("slug") slug): any {
+        return this.blogService.GetArticle(slug);
     }
 }

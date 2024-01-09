@@ -9,6 +9,9 @@ export class Blog {
     title: String;
 
     @Prop()
+    slug: String;
+
+    @Prop()
     date: Number;
 
     @Prop()

@@ -12,4 +12,8 @@ export class BlogService {
         return this.http.get(`${environment.server}/blog`);
     }
 
+    GetArticle(slug: string): Observable<any> {
+        return this.http.get(`${environment.server}/blog/${slug}`);
+    }
+
 }

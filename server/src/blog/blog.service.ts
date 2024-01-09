@@ -20,7 +20,7 @@ export class BlogService {
         return [{title: 'Other Articles'}];
     }
 
-    GetArticle(): object {
-        return {title: 'One Article'};
+    async GetArticle(slug: string): Promise<any> {
+        return this.blogModel.findOne({ slug: { $regex: slug } }).exec();
     }
 }

@@ -3,7 +3,7 @@
         <div class="mainImg flex column relative radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-32 z-index-10">
                 <span class="caption color-white margin-top-auto">{{ data[0].date | PersianCalendar }}</span>
-                <a routerLink="/blog/abcd">
+                <a routerLink="/blog/{{ data[0].slug }}">
                     <h2 class="headline-6 bold color-white margin-top-8">{{ data[0].title }}</h2>
                 </a>
                 <div class="flex align-ctr margin-top-16">
@@ -19,7 +19,7 @@
         <div class="topImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
                 <span class="caption color-white margin-top-auto">{{ data[1].date | PersianCalendar }}</span>
-                <a routerLink="/blog/abcd">
+                <a routerLink="/blog/{{ data[1].slug }}">
                     <h2 class="body-1 bold color-white margin-top-8">{{ data[1].title }}</h2>
                 </a>
             </div>
@@ -28,7 +28,7 @@
         <div class="botImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
                 <span class="caption color-white margin-top-auto">{{ data[2].date | PersianCalendar }}</span>
-                <a routerLink="/blog/abcd">
+                <a routerLink="/blog/{{ data[2].slug }}">
                     <h2 class="body-1 bold color-white margin-top-8">{{ data[2].title }}</h2>
                 </a>
             </div>
@@ -45,7 +45,7 @@
                 <img src="{{i.img}}" height="225" alt="" class="background-gray-1b"/>
                 <div class="flex column borderbox padding-24">
                     <span class="caption color-dark">{{ i.date | PersianCalendar }}</span>
-                    <a routerLink="/blog/abcd">
+                    <a routerLink="/blog/{{ i.slug }}">
                         <h3 class="body-1 bold color-dark margin-top-8">{{ i.title }}</h3>
                     </a>
                     <p class="body-2 medium color-dark margin-top-16 margin-bot-16">خدایا تو خود میدانی که انسان بودن و ماندن در این دنیا چه دشوار است</p>
