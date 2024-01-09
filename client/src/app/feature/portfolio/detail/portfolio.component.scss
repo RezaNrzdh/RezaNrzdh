@@ -25,7 +25,6 @@ app-textbox[name="comment"]{ grid-area: comment }
             }
         }
         .comment{
-            width: inherit;
             border-bottom: 1px solid color.$color-gray-2;
             .grid{
                 grid-template-areas:
@@ -34,9 +33,6 @@ app-textbox[name="comment"]{ grid-area: comment }
                 grid-column-gap: 32px;
                 grid-row-gap: 32px;
             }
-        }
-        .otherComments{
-
         }
     }
 }

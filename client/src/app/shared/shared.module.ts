@@ -18,11 +18,13 @@ import {TagComponent} from "./component/tag/tag.component";
 import {SidebarComponent} from "./component/sidebar/sidebar.component";
 import {DropdownComponent} from "./component/dropdown/dropdown.component";
 import {CalendarPipe} from "./pipe/calendar.pipe";
+import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.component";
 
 @NgModule({
     declarations: [
         HeaderComponent,
         FooterComponent,
+        AdminHeaderComponent,
         ButtonComponent,
         TextboxComponent,
         PortfolioCardComponent,
@@ -44,6 +46,7 @@ import {CalendarPipe} from "./pipe/calendar.pipe";
     exports: [
         HeaderComponent,
         FooterComponent,
+        AdminHeaderComponent,
         ButtonComponent,
         TextboxComponent,
         PortfolioCardComponent,

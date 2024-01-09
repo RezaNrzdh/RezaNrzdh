@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import {MainLayoutComponent} from "./shared/layout/main-layout/main-layout.component";
 import {CheckTokenService} from "./core/resolver/checkToken.service";
 import {CheckBreakpointService} from "./core/resolver/checkBreakpoint.service";
+import {AdminLayoutComponent} from "./shared/layout/admin-layout/admin-layout.component";
 
 const routes: Routes = [
     {
@@ -19,7 +20,14 @@ const routes: Routes = [
         ]
     },
     { path: "login", loadChildren: () => import("./feature/auth/login/login.module").then(m => m.LoginModule) },
-    { path: "register", loadChildren: () => import("./feature/auth/register/register.module").then(m => m.RegisterModule) }
+    { path: "register", loadChildren: () => import("./feature/auth/register/register.module").then(m => m.RegisterModule) },
+    {
+        path: "admin",
+        component: AdminLayoutComponent,
+        children: [
+            { path: "", loadChildren: () => import("./admin/dashboard/dashboard.module").then(m => m.DashboardModule) }
+        ]
+    }
 ];
 
 @NgModule({

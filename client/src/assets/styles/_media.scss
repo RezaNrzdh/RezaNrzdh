@@ -16,8 +16,12 @@
     min-width: 960px;
 }
 
+.tablet{
+    max-width: 768px;
+}
+
 @media screen and (max-width: 768px) {
-    .laptop, .CRTMonitor, .minScreenDesktop {
+    .laptop, .CRTMonitor, .minScreenDesktop, .tablet {
         box-sizing: border-box;
         margin-left: 24px;
         margin-right: 24px;
@@ -26,7 +30,7 @@
 
 
 @media screen and (max-width: 480px) {
-    .laptop, .CRTMonitor, .minScreenDesktop {
+    .laptop, .CRTMonitor, .minScreenDesktop, .tablet {
         box-sizing: border-box;
         margin-left: 16px;
         margin-right: 16px;
