@@ -6,7 +6,7 @@
             </a>
             <h1 class="flex justify-ctr headline-5 bold color-gray-4 margin-bot-32">عضویت در سایت</h1>
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex column height-full">
-                <app-textbox title="آدرس ایمیل" placeholder="مثال: reza.nrzdh@gmail.com" type="email" class="margin-bot-32" formControlName="email"></app-textbox>
+                <app-textbox title="آدرس ایمیل" type="email" class="margin-bot-32" formControlName="email"></app-textbox>
                 <app-textbox title="رمز عبور" type="password" class="margin-bot-32" formControlName="password"></app-textbox>
                 <app-button [isLink]="false" mode="filled" color="primary" class="margin-bot-16">عضویت در سایت</app-button>
                 <app-checkbox formControlName="checkbox">شرایط و قوانین رو خوندم و می پذیرم</app-checkbox>

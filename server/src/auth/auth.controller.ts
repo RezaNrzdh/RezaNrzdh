@@ -8,8 +8,14 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Post("signup")
-    SignUp(@Body() body: object, @Req() req: Request): object {
-        return body;
+    async SignUp(@Body() body: object, @Res({passthrough: true}) res: Response): Promise<any> {
+        const value = await this.authService.SignUp(body);
+        if(value){
+            res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000})
+        }
+        else{
+            return false;
+        }
     }
 
     @Post("signin")
