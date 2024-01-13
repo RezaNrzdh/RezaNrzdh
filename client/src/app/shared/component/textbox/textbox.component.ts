@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {AlertEnum} from "../../../core/enum/alert.enum";
 
 @Component({
     selector: 'app-textbox',
@@ -23,6 +24,7 @@ export class TextboxComponent implements ControlValueAccessor {
     @Input() multiLine: true | false = false;
     @Input() rows: number = 1;
 
+    alertMessage: any = AlertEnum;
     value: string = "";
     onChange: (value: any) => void;
     onTouched: () => void;

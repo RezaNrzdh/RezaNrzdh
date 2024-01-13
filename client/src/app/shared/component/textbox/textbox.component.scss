@@ -3,6 +3,7 @@
 
 :host{
     display: flex;
+    min-height: 85px;
     flex-direction: column;
     &.ng-invalid.ng-touched{
         input{

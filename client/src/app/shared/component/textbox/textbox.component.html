@@ -19,4 +19,4 @@
         ngModel>
     </textarea>
 </ng-template>
-<span *ngIf="formGroup.invalid && formGroup.touched" class="margin-top-4 margin-right-8 color-danger">Alert_Message</span>
+<span *ngIf="formGroup.invalid && formGroup.touched" class="margin-top-4 margin-right-8 color-danger">{{alertMessage[name]}}</span>

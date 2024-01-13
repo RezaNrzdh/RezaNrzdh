@@ -16,13 +16,14 @@ export class RegisterComponent implements OnInit {
     ngOnInit(): void {
         this.registerForm = new FormGroup({
             "email": new FormControl(null, [Validators.required, Validators.email]),
-            "password": new FormControl(null, Validators.required),
-            "checkbox": new FormControl(null, Validators.requiredTrue)
+            "password": new FormControl(null, [Validators.required, Validators.minLength(6)]),
+            "checkbox": new FormControl(false, Validators.requiredTrue)
         })
     }
 
     onSubmit = () => {
-        console.log(this.registerForm.value);
+        if(this.registerForm.status === "INVALID") return;
+
         this.authService.SignUp(this.registerForm.value).subscribe({
             next: ((value: any) => {
                 console.log(value);

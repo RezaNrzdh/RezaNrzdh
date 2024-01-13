@@ -6,8 +6,8 @@
             </a>
             <h1 class="flex justify-ctr headline-5 bold color-gray-4 margin-bot-32">ورود به سایت</h1>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex column height-full">
-                <app-textbox title="آدرس ایمیل" type="email" class="margin-bot-32" formControlName="email"></app-textbox>
-                <app-textbox title="رمز عبور" type="password" class="margin-bot-32" formControlName="password"></app-textbox>
+                <app-textbox title="آدرس ایمیل" type="email" class="margin-bot-16" formControlName="email"></app-textbox>
+                <app-textbox title="رمز عبور" type="password" class="margin-bot-16" formControlName="password"></app-textbox>
                 <app-button [isLink]="false" mode="filled" color="secondary" class="margin-bot-16 margin-top-auto">ورود به سایت</app-button>
                 <app-button [isLink]="true" icon="google" mode="outlined" color="dark">ورود با گوگل</app-button>
             </form>

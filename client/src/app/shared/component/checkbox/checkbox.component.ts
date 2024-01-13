@@ -17,7 +17,7 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
     constructor() {}
 
-    value: string = "";
+    value: boolean = false;
     onChange: (value: any) => void;
     onTouched: () => void;
 
