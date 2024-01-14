@@ -38,17 +38,26 @@ export class LoginComponent implements OnInit {
         this.authService.SignIn(this.loginForm.value).subscribe({
             next: ((value: any) => {
                 if(value){
-                    this.alertbox = { type: "success", msg: AlertEnum.successLogin };
+                    this.alertbox = {
+                        type: "success",
+                        msg: AlertEnum.successLogin
+                    };
                     this.ActiveAlertBox(value, 1000);
                 }
                 else {
-                    this.alertbox = { type: "danger", msg: AlertEnum.errorLogin };
+                    this.alertbox = {
+                        type: "danger",
+                        msg: AlertEnum.errorLogin
+                    };
                     this.isSpin = false;
                     this.ActiveAlertBox(value, 3000);
                 }
             }),
-            error: ((error: any) => {
-                this.alertbox = { type: "danger", msg: AlertEnum.fatalError };
+            error: (() => {
+                this.alertbox = {
+                    type: "danger",
+                    msg: AlertEnum.fatalError
+                };
                 this.isSpin = false;
                 this.ActiveAlertBox(false, 3000);
             })
