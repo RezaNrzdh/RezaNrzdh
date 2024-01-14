@@ -1,6 +1,18 @@
 @use "src/assets/styles/color";
 @import "src/assets/styles/typography";
 
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 :host{
     button, a{
         @include body2;
@@ -9,6 +21,22 @@
         padding: 0 16px;
         transition: all ease-in-out 0.3s;
         font-weight: 500;
+        i{
+            display: flex;
+            position: absolute;
+            content: "";
+            width: 16px;
+            height: 16px;
+            border-radius: 32px;
+            border: 3px solid transparent;
+            border-bottom-color: white;
+            border-right-color: white;
+            border-left-color: white;
+            animation-name: spinner;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
     }
 }
 

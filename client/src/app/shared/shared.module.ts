@@ -19,6 +19,7 @@ import {SidebarComponent} from "./component/sidebar/sidebar.component";
 import {DropdownComponent} from "./component/dropdown/dropdown.component";
 import {CalendarPipe} from "./pipe/calendar.pipe";
 import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.component";
+import {AlertboxComponent} from "./component/alertbox/alertbox.component";
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.componen
         TagComponent,
         SidebarComponent,
         DropdownComponent,
-        CalendarPipe
+        CalendarPipe,
+        AlertboxComponent
     ],
     imports: [
         CommonModule,
@@ -56,7 +58,8 @@ import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.componen
         TagComponent,
         SidebarComponent,
         DropdownComponent,
-        CalendarPipe
+        CalendarPipe,
+        AlertboxComponent
     ]
 })
 export class SharedModule {}

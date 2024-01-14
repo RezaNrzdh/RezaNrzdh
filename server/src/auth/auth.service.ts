@@ -28,8 +28,14 @@ export class AuthService {
         });
     }
 
-    async SignIn(): Promise<any> {
-        const payload = { uid: 1, name: 'johndoe@mail.com', role: 'user' };
+    async SignIn(body: any): Promise<any> {
+        const user = await this.authModel.findOne({email: { $regex: body.email}});
+        if (!user) return;
+
+        const compare = await bcrypt.compare(body.password, user.password.toString());
+        if (!compare) return;
+
+        const payload = { uid: user._id, email: user.email, role: user.role };
         return this.jwtService.sign(payload);
     }
 

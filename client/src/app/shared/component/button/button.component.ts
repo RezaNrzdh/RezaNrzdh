@@ -14,6 +14,7 @@ export class ButtonComponent implements OnInit {
     @Input() icon?: string;
     @Input() href?: string;
     @Input() disabled: any = "";
+    @Input() spin: boolean = false;
     @Output() click: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}

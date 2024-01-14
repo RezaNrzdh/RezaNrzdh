@@ -6,6 +6,9 @@
 </a>
 
 <ng-template #outlet>
-    <app-icon *ngIf="icon" icon="{{ icon }}" size="20" class="margin-left-8"></app-icon>
-    <ng-content></ng-content>
+    <i *ngIf="spin; else alt"></i>
+    <ng-template #alt>
+        <app-icon *ngIf="icon" icon="{{ icon }}" size="20" class="margin-left-8"></app-icon>
+        <ng-content></ng-content>
+    </ng-template>
 </ng-template>

@@ -1,3 +1,4 @@
+<app-alertbox *ngIf="isAlertboxActive" type="{{ alertbox.type }}">{{ alertbox.msg }}</app-alertbox>
 <section class="flex justify-ctr align-ctr height-full">
     <div class="container grid hidden background-white radius-8">
         <div class="flex form column height-full borderbox padding-48">
@@ -6,9 +7,9 @@
             </a>
             <h1 class="flex justify-ctr headline-5 bold color-gray-4 margin-bot-32">ورود به سایت</h1>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex column height-full">
-                <app-textbox title="آدرس ایمیل" type="email" class="margin-bot-16" formControlName="email"></app-textbox>
-                <app-textbox title="رمز عبور" type="password" class="margin-bot-16" formControlName="password"></app-textbox>
-                <app-button [isLink]="false" mode="filled" color="secondary" class="margin-bot-16 margin-top-auto">ورود به سایت</app-button>
+                <app-textbox title="آدرس ایمیل" type="email" name="email" class="margin-bot-16" formControlName="email" [formGroup]="loginForm.get('email')"></app-textbox>
+                <app-textbox title="رمز عبور" type="password" name="password" class="margin-bot-16" formControlName="password"[formGroup]="loginForm.get('password')"></app-textbox>
+                <app-button [isLink]="false" [spin]="isSpin" mode="filled" color="secondary" class="margin-bot-16 margin-top-auto">ورود به سایت</app-button>
                 <app-button [isLink]="true" icon="google" mode="outlined" color="dark">ورود با گوگل</app-button>
             </form>
         </div>
