@@ -48,7 +48,9 @@ export class LoginComponent implements OnInit {
                 }
             }),
             error: ((error: any) => {
-                console.log(error)
+                this.alertbox = { type: "danger", msg: AlertEnum.fatalError };
+                this.isSpin = false;
+                this.ActiveAlertBox(false, 3000);
             })
         });
     }
