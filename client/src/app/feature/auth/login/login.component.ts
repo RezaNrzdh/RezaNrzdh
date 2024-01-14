@@ -37,11 +37,15 @@ export class LoginComponent implements OnInit {
 
         this.authService.SignIn(this.loginForm.value).subscribe({
             next: ((value: any) => {
-                if(value) this.alertbox = { type: "success", msg: AlertEnum.successLogin };
-                else this.alertbox = { type: "danger", msg: AlertEnum.errorLogin };
-
-                this.isSpin = false;
-                this.ActiveAlertBox();
+                if(value){
+                    this.alertbox = { type: "success", msg: AlertEnum.successLogin };
+                    this.ActiveAlertBox(value, 1000);
+                }
+                else {
+                    this.alertbox = { type: "danger", msg: AlertEnum.errorLogin };
+                    this.isSpin = false;
+                    this.ActiveAlertBox(value, 3000);
+                }
             }),
             error: ((error: any) => {
                 console.log(error)
@@ -49,11 +53,12 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    ActiveAlertBox(): any {
+    ActiveAlertBox(value: any, time: number): void {
         this.isAlertboxActive = true;
         const timeout = setTimeout(() => {
-            this.isAlertboxActive = false;
             clearTimeout(timeout);
-        },5000);
+            this.isAlertboxActive = false;
+            value ? this.router.navigate(["/"]) : null;
+        },time);
     }
 }
