@@ -8,7 +8,7 @@ export class ContactController {
 
     @Post("comment")
     CreateComment(@Body() body: object): object {
-        return body;
+        return this.contactService.CreateComment(body);
     }
 
     @Get()

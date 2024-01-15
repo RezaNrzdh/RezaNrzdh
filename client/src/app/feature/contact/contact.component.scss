@@ -33,9 +33,9 @@ app-textbox[name="comment"]{ grid-area: comment }
                 .grid{
                     grid-template-areas: 'name email''phone subject''comment comment''action action';
                     grid-column-gap: 32px;
-                    grid-row-gap: 32px;
+                    grid-row-gap: 16px;
                     app-button{
-                        width: fit-content;
+                        min-width: 96px;
                     }
                 }
             }
