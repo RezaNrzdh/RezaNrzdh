@@ -8,7 +8,8 @@ import {Component, Input, OnInit} from "@angular/core";
 export class PortfolioCardComponent implements OnInit {
 
     @Input() isOutline: boolean = false;
-    @Input() title: string = "لورم ایپسوم";
+    @Input() title: string;
+    @Input() slug: string;
     @Input() category: string;
     @Input() visit: number = 0;
     @Input() like:  number = 0;

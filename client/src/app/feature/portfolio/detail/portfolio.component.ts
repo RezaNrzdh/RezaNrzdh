@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: "app-portfolio",
@@ -10,18 +11,22 @@ import {PortfolioModel} from "../../../core/models/portfolio.model";
 })
 export class PortfolioComponent implements OnInit {
 
-    data: Array<PortfolioModel>;
+    data: PortfolioModel;
+    topPortfolio: Array<PortfolioModel>;
     commentForm: FormGroup;
 
-    constructor(private PortfolioService: PortfolioService) {}
+    constructor(private PortfolioService: PortfolioService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
-        this.PortfolioService.GetTopPortfolio().subscribe({
+        this.PortfolioService.GetPortfolio(this.activatedRoute.snapshot.params["slug"]).subscribe({
             next: ((value: any) => {
                 this.data = value;
-            }),
-            error: ((error: any) => {
-                console.log(error);
+            })
+        })
+
+        this.PortfolioService.GetTopPortfolio().subscribe({
+            next: ((value: any) => {
+                this.topPortfolio = value;
             })
         });
 

@@ -1,15 +1,15 @@
-<section class="flex column width-full align-ctr">
+<section *ngIf="data" class="flex column width-full align-ctr">
     <div class="flex column CRTMonitor margin-top-56 margin-bot-56">
-        <h1 class="headline-1 bold color-dark margin-bot-16">طراحی اپلیکیشن فضای مجازی Flavortome</h1>
+        <h1 class="headline-1 bold color-dark margin-bot-16">{{ data.title }}</h1>
         <div class="info flex align-ctr margin-bot-32">
-            <app-tag>طراحی وب</app-tag>
+            <app-tag>{{ data.category }}</app-tag>
             <div>
                 <span class="body-2 color-dark medium margin-right-16">تاریخ انتشار:</span>
-                <span class="body-2 color-dark medium margin-right-8">23 اردیبهشت 1433</span>
+                <span class="body-2 color-dark medium margin-right-8">{{ data.date | PersianCalendar }}</span>
             </div>
         </div>
         <div class="slider flex column">
-            <img src="assets/images/posts/post.jpg" class="radius-8" alt=""/>
+            <img src="{{ data.img }}" class="radius-8" alt=""/>
             <div class="flex justify-ctr align-ctr margin-top-24">
                 <div class="flex">
                     <span class="padding-4 radius-8 background-gray-2 margin-left-4 margin-right-4"></span>
@@ -24,11 +24,11 @@
                 <a><app-icon icon="share" size="24" color="gray4"></app-icon></a>
                 <div class="flex column align-ctr margin-top-32">
                     <app-icon icon="like" size="24" color="gray4"></app-icon>
-                    <span class="body-2 medium color-gray-4 margin-top-4">958</span>
+                    <span class="body-2 medium color-gray-4 margin-top-4">{{ data.like }}</span>
                 </div>
             </div>
             <div class="lineheight-32 color-dark">
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                <p>{{ data.desc }}</p>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="grid">
                 <app-portfoliocard
-                    *ngFor="let i of data"
+                    *ngFor="let i of topPortfolio"
                     [title]="i.title"
                     [visit]="i.visit"
                     [like]="i.like"

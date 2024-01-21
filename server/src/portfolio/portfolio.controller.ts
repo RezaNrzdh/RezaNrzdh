@@ -10,6 +10,11 @@ export class PortfolioController {
         return this.portfolioService.GetAllPortfolios();
     }
 
+    @Get(":slug")
+    GetPortfolio(@Param("slug") slug): any {
+        return this.portfolioService.GetPortfolio(slug);
+    }
+
     @Get("top/:number")
     GetTopPortfolios(@Param('number') number): any {
         return this.portfolioService.GetTopPortfolios(number);

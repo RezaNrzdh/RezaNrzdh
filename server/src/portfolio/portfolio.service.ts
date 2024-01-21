@@ -15,4 +15,8 @@ export class PortfolioService {
     async GetTopPortfolios(value: number = 4): Promise<any> {
         return await this.portfolioModel.find().limit(value).sort({ _id: -1 });
     }
+
+    async GetPortfolio(slug: string): Promise<any> {
+        return await this.portfolioModel.findOne({ slug: { $regex: slug } }).exec();
+    }
 }

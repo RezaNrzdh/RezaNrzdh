@@ -16,4 +16,7 @@ export class PortfolioService {
         return this.http.get(`${environment.server}/portfolio/top/${value}`)
     }
 
+    GetPortfolio(slug: string): Observable<any> {
+        return this.http.get(`${environment.server}/portfolio/${slug}`)
+    }
 }

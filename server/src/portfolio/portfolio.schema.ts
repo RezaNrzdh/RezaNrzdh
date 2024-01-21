@@ -9,6 +9,9 @@ export class Portfolio {
     title: String;
 
     @Prop()
+    slug: String;
+
+    @Prop()
     visit: Number;
 
     @Prop()
@@ -19,6 +22,9 @@ export class Portfolio {
 
     @Prop()
     url: String;
+
+    @Prop()
+    desc: String;
 
     @Prop()
     category: String;
