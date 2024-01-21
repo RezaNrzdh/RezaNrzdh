@@ -9,13 +9,13 @@
             </div>
         </div>
         <div class="slider flex column">
-            <img src="{{ data.img }}" class="radius-8" alt=""/>
+            <img src="{{ data.img[currentImage] }}" class="radius-8" alt=""/>
             <div class="flex justify-ctr align-ctr margin-top-24">
                 <div class="flex">
-                    <span class="padding-4 radius-8 background-gray-2 margin-left-4 margin-right-4"></span>
-                    <span class="padding-4 radius-8 background-gray-2 margin-left-4 margin-right-4"></span>
-                    <span class="padding-4 radius-8 background-gray-2 margin-left-4 margin-right-4"></span>
-                    <span class="padding-4 radius-8 background-primary margin-left-4 margin-right-4"></span>
+                    <a *ngFor="let dot of [].constructor(data.img.length); index as i"
+                       (click)="SetCurrentImage(i)"
+                       [ngClass]="currentImage === i ? 'background-primary' : 'background-gray-2'"
+                       class="flex margin-left-4 margin-right-4 padding-4 radius-8"></a>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                     [title]="i.title"
                     [visit]="i.visit"
                     [like]="i.like"
-                    [imageURL]="i.img"
+                    [imageURL]="i.thumbnail"
                     [category]="i.category">
                 </app-portfoliocard>
             </div>

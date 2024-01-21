@@ -18,10 +18,7 @@ export class Portfolio {
     like: Number;
 
     @Prop()
-    img: String;
-
-    @Prop()
-    url: String;
+    img: [string];
 
     @Prop()
     desc: String;

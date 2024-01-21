@@ -13,6 +13,7 @@ export class PortfolioComponent implements OnInit {
 
     data: PortfolioModel;
     topPortfolio: Array<PortfolioModel>;
+    currentImage: number = 0;
     commentForm: FormGroup;
 
     constructor(private PortfolioService: PortfolioService, private activatedRoute: ActivatedRoute) {}
@@ -39,5 +40,9 @@ export class PortfolioComponent implements OnInit {
 
     OnSubmit(): void {
         console.log(this.commentForm.value);
+    }
+
+    SetCurrentImage(value: number): void {
+        this.currentImage = value;
     }
 }
