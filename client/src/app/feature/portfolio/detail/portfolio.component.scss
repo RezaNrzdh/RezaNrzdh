@@ -37,7 +37,7 @@ app-textbox[name="comment"]{ grid-area: comment }
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1100px) {
     :host{
         section {
             .related .grid{
@@ -46,6 +46,17 @@ app-textbox[name="comment"]{ grid-area: comment }
         }
     }
 }
+
+@media screen and (max-width: 900px) {
+    :host{
+        section {
+            .related .grid{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
 
 @media screen and (max-width: 600px) {
     :host{

@@ -1,28 +1,22 @@
-<div *ngIf="!isOutline" class="flex column hidden radius-8 borderbox background-white padding-bot-16">
-    <ng-container *ngTemplateOutlet="content"></ng-container>
-</div>
-<div *ngIf="isOutline" class="isOutline flex column hidden radius-8 padding-bot-16">
-    <ng-container *ngTemplateOutlet="content"></ng-container>
-</div>
-
-<ng-template #content>
-    <div class="imageContainer">
-        <img src="{{ imageURL }}" alt="" />
-    </div>
-    <div class="title flex body-2 margin-top-16 margin-right-24 margin-left-24 margin-bot-16">
-        <a routerLink="/portfolio/{{slug}}" class="body-1 bold color-dark">
-            {{ title }}
-        </a>
-    </div>
-    <div class="actions flex align-ctr margin-top-auto margin-right-24 margin-left-24">
-        <div class="show flex align-ctr caption color-text-tint margin-left-16">
-            <app-icon icon="eye" size="20" color="gray4" class="margin-left-4"></app-icon>
-            {{ visit }}
+<div [ngClass]="{ 'isOutline': isOutline, 'isList': isList, 'isGrid': !isList }"
+     class="flex hidden radius-8 borderbox background-white">
+    <img src="{{ imageURL }}" alt="" />
+    <div class="width-full flex column">
+        <div class="title flex body-2 margin-top-16 margin-right-24 margin-left-24 margin-bot-16">
+            <a routerLink="/portfolio/{{slug}}" class="body-1 bold color-dark">
+                {{ title }}
+            </a>
         </div>
-        <div class="like flex align-ctr caption color-text-tint">
-            <app-icon icon="like" size="20" color="gray4" class="margin-left-4"></app-icon>
-            {{ like }}
+        <div class="actions flex align-ctr margin-top-auto margin-right-24 margin-left-24 padding-bot-16">
+            <div class="show flex align-ctr caption color-text-tint margin-left-16">
+                <app-icon icon="eye" size="20" color="gray4" class="margin-left-4"></app-icon>
+                {{ visit }}
+            </div>
+            <div class="like flex align-ctr caption color-text-tint">
+                <app-icon icon="like" size="20" color="gray4" class="margin-left-4"></app-icon>
+                {{ like }}
+            </div>
+            <app-tag *ngIf="category" class="margin-right-auto">{{ category }}</app-tag>
         </div>
-        <app-tag *ngIf="category" class="margin-right-auto">{{ category }}</app-tag>
     </div>
-</ng-template>
+</div>

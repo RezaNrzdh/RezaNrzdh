@@ -33,18 +33,19 @@
         </div>
     </div>
     <div class="related flex background-gray-1b width-full justify-ctr">
-        <div class="flex column laptop margin-top-56 margin-bot-56">
+        <div class="flex column laptop margin-top-56 margin-bot-56 width-full">
             <div class="flex justify-ctr align-ctr margin-bot-32">
                 <h2 class="color-dark headline-4 bold margin-left-24">نمونه کارهای مشابه</h2>
             </div>
-            <div class="grid">
+            <div class="grid width-full">
                 <app-portfoliocard
                     *ngFor="let i of topPortfolio"
                     [title]="i.title"
                     [visit]="i.visit"
                     [like]="i.like"
                     [imageURL]="i.thumbnail"
-                    [category]="i.category">
+                    [category]="i.category"
+                    [isList]="isMedium">
                 </app-portfoliocard>
             </div>
         </div>

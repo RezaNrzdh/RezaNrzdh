@@ -1,4 +1,4 @@
-<section class="PortfolioPage laptop margin-top-32 margin-bot-56">
+<section class="PortfolioPage laptop margin-top-32 margin-bot-56 width-full">
     <div class="flex align-ctr margin-bot-16">
         <h1 class="color-dark headline-1 bold margin-left-24">نمونه کارهای من</h1>
         <img src="assets/images/dot.svg" alt="" />
@@ -27,7 +27,8 @@
             [visit]="i.visit"
             [imageURL]="i.thumbnail"
             [category]="i.category"
-            [isOutline]="true">
+            [isOutline]="true"
+            [isList]="isSmall">
         </app-portfoliocard>
     </div>
     <div class="flex justify-ctr margin-top-32">

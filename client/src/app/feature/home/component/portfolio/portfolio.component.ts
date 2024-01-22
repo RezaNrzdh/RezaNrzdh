@@ -13,6 +13,7 @@ import {ResponsiveEnum} from "../../../../core/enum/responsive.enum";
 export class PortfolioComponent implements OnInit, OnDestroy {
 
     data: Array<PortfolioModel>;
+    isMedium: boolean = false;
     isSmall: boolean = false;
     options: Array<string> = ['طراحی وب','توسعه وب','بازیسازی','برندینگ','گرافیک'];
     sub: Subscription;
@@ -20,6 +21,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService ) {
         this.sub = this.responsiveService.breakpoint.subscribe({
             next: ((value: any) => {
+                value[ResponsiveEnum.MEDIUM] ? this.isMedium = true : this.isMedium = false;
                 value[ResponsiveEnum.SMALL] ? this.isSmall = true : this.isSmall = false;
             })
         })
