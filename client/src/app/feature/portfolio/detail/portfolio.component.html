@@ -41,6 +41,7 @@
                 <app-portfoliocard
                     *ngFor="let i of topPortfolio"
                     [title]="i.title"
+                    [slug]="i.slug"
                     [visit]="i.visit"
                     [like]="i.like"
                     [imageURL]="i.thumbnail"
