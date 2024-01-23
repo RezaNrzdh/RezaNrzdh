@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Renderer2} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
@@ -16,15 +16,18 @@ export class PortfolioComponent implements OnInit {
 
     data: PortfolioModel;
     topPortfolio: Array<PortfolioModel>;
-    currentImage: number = 0;
     commentForm: FormGroup;
     isMedium: boolean = false;
     isSmall: boolean = false;
     sub: Subscription;
 
+    currentImage: number = 0;
+    transformX: number = 0;
+
     constructor(
         private PortfolioService: PortfolioService,
         private responsiveService: ResponsiveService,
+        private renderer: Renderer2,
         private activatedRoute: ActivatedRoute)
     {
         this.sub = responsiveService.breakpoint.subscribe({
@@ -59,7 +62,17 @@ export class PortfolioComponent implements OnInit {
         console.log(this.commentForm.value);
     }
 
-    SetCurrentImage(value: number): void {
-        this.currentImage = value;
+    ShowNextImage(value: any): void {
+        if(this.currentImage >= this.data.img.length - 1) return;
+        this.transformX += 100;
+        this.renderer.setStyle(value,'transform',`translate3d(${ this.transformX }%,0,0)`);
+        this.currentImage++;
+    }
+
+    ShowPrevImage(value: any): void {
+        if(this.currentImage <= 0) return;
+        this.transformX -= 100;
+        this.renderer.setStyle(value,'transform',`translate3d(${ this.transformX }%,0,0)`);
+        this.currentImage--;
     }
 }
