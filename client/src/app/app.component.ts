@@ -1,6 +1,6 @@
 import {Component, enableProdMode, OnInit} from '@angular/core';
 
-enableProdMode();
+//enableProdMode()
 
 @Component({
     selector: 'app-root',
