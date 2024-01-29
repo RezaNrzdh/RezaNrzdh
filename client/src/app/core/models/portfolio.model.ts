@@ -5,8 +5,8 @@ export class PortfolioModel {
     like: number;
     visit: number;
     thumbnail: string;
-    img: Array<string>;
+    img: Array<string> = [];
     desc: string;
-    category: string;
+    category: number;
     comment: Array<object>;
 }

@@ -18,13 +18,13 @@ export class Portfolio {
     like: Number;
 
     @Prop()
-    img: [string];
+    img: [String];
 
     @Prop()
     desc: String;
 
     @Prop()
-    category: String;
+    category: Number;
 }
 
 export const PortfolioSchema = SchemaFactory.createForClass(Portfolio);

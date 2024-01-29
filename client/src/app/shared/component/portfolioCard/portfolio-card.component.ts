@@ -9,7 +9,7 @@ export class PortfolioCardComponent implements OnInit {
 
     @Input() title: string;
     @Input() slug: string;
-    @Input() category: string;
+    @Input() category: number;
     @Input() visit: number = 0;
     @Input() like:  number = 0;
     @Input() imageURL: string;

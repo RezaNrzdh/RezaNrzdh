@@ -1,8 +1,8 @@
-import {Component, OnInit, Renderer2} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
@@ -12,9 +12,9 @@ import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
     templateUrl: "portfolio.component.html",
     styleUrls: ["portfolio.component.scss"]
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, AfterViewInit {
 
-    data: PortfolioModel;
+    data: PortfolioModel = new PortfolioModel();
     topPortfolio: Array<PortfolioModel>;
     commentForm: FormGroup;
     isMedium: boolean = false;
@@ -23,11 +23,13 @@ export class PortfolioComponent implements OnInit {
 
     currentImage: number = 0;
     transformX: number = 0;
+    @ViewChild('sliderWrapper') sliderWrapper: ElementRef;
 
     constructor(
         private PortfolioService: PortfolioService,
         private responsiveService: ResponsiveService,
         private renderer: Renderer2,
+        private route: Router,
         private activatedRoute: ActivatedRoute)
     {
         this.sub = responsiveService.breakpoint.subscribe({
@@ -35,13 +37,20 @@ export class PortfolioComponent implements OnInit {
                 value[ResponsiveEnum.MEDIUM] ? this.isMedium = true : this.isMedium = false;
                 value[ResponsiveEnum.SMALL] ? this.isSmall = true : this.isSmall = false;
             })
-        })
+        });
     }
 
     ngOnInit() {
-        this.PortfolioService.GetPortfolio(this.activatedRoute.snapshot.params["slug"]).subscribe({
+        this.activatedRoute.params.subscribe({
             next: ((value: any) => {
-                this.data = value;
+                this.transformX = 0;
+                this.currentImage = 0;
+                this.PortfolioService.GetPortfolio(value.slug).subscribe({
+                    next: ((value: any) => {
+                        this.data = value;
+                        this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
+                    })
+                });
             })
         })
 
@@ -58,8 +67,8 @@ export class PortfolioComponent implements OnInit {
         })
     }
 
-    OnSubmit(): void {
-        console.log(this.commentForm.value);
+    ngAfterViewInit() {
+        console.log(this.sliderWrapper.nativeElement);
     }
 
     ShowNextImage(value: any): void {
@@ -74,5 +83,13 @@ export class PortfolioComponent implements OnInit {
         this.transformX -= 100;
         this.renderer.setStyle(value,'transform',`translate3d(${ this.transformX }%,0,0)`);
         this.currentImage--;
+    }
+
+    OnSubmit(): void {
+        console.log(this.commentForm.value);
+    }
+
+    OnChange(): void {
+        console.log(1);
     }
 }

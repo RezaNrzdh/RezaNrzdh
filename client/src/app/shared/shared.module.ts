@@ -20,6 +20,7 @@ import {DropdownComponent} from "./component/dropdown/dropdown.component";
 import {CalendarPipe} from "./pipe/calendar.pipe";
 import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.component";
 import {AlertboxComponent} from "./component/alertbox/alertbox.component";
+import {CategoryPipe} from "./pipe/category.pipe";
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import {AlertboxComponent} from "./component/alertbox/alertbox.component";
         SidebarComponent,
         DropdownComponent,
         CalendarPipe,
+        CategoryPipe,
         AlertboxComponent
     ],
     imports: [
@@ -59,6 +61,7 @@ import {AlertboxComponent} from "./component/alertbox/alertbox.component";
         SidebarComponent,
         DropdownComponent,
         CalendarPipe,
+        CategoryPipe,
         AlertboxComponent
     ]
 })
