@@ -2,7 +2,7 @@
     <div class="flex column CRTMonitor margin-top-56 margin-bot-56">
         <h1 class="headline-1 bold color-dark margin-bot-16">{{ data.title }}</h1>
         <div class="info flex align-ctr margin-bot-32">
-            <app-tag>{{ data.category }}</app-tag>
+            <app-tag>{{ data.category | CategoryPipe }}</app-tag>
             <div>
                 <span class="body-2 color-dark medium margin-right-16">تاریخ انتشار:</span>
                 <span class="body-2 color-dark medium margin-right-8">{{ data.date | PersianCalendar }}</span>
