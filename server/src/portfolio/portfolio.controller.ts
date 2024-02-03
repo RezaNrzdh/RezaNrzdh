@@ -1,13 +1,13 @@
-import {Body, Controller, Get, Param, Post} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post, Query} from "@nestjs/common";
 import {PortfolioService} from "./portfolio.service";
 
 @Controller("api/v1/portfolio")
 export class PortfolioController {
     constructor(private portfolioService: PortfolioService) {}
 
-    @Get()
-    GetAllPortfolios(): any {
-        return this.portfolioService.GetAllPortfolios();
+    @Get('limit')
+    GetAllPortfolios(@Query() query): any {
+        return this.portfolioService.GetAllPortfolios(query.lt, query.limit);
     }
 
     @Get(":slug")
@@ -28,5 +28,10 @@ export class PortfolioController {
     @Post("reply")
     CreateReply(@Body() body: object): object {
         return Body;
+    }
+
+    @Get("category/:number")
+    GetPortfolioByCategory(@Param('number') number): any {
+        return this.portfolioService.GetPortfolioByCategory(number);
     }
 }

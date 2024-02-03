@@ -8,8 +8,11 @@ export class PortfolioService {
 
     constructor(@InjectModel("Portfolio") private portfolioModel: Model<Portfolio>) {}
 
-    async GetAllPortfolios(): Promise<any> {
-        return await this.portfolioModel.find().exec();
+    async GetAllPortfolios(lt: number, limit: number): Promise<any> {
+        if(lt == 0)
+            return await this.portfolioModel.find().limit(limit).sort({ _id: -1}).exec();
+        else
+            return await this.portfolioModel.find({ _id: { $lt: lt } }).limit(limit).sort({ _id: -1}).exec();
     }
 
     async GetTopPortfolios(value: number = 4): Promise<any> {
@@ -18,5 +21,9 @@ export class PortfolioService {
 
     async GetPortfolio(slug: string): Promise<any> {
         return await this.portfolioModel.findOne({ slug: { $regex: slug } }).exec();
+    }
+
+    async GetPortfolioByCategory(value: number): Promise<any> {
+        return await this.portfolioModel.find({ category: value }).sort({ _id: -1 }).exec();
     }
 }
