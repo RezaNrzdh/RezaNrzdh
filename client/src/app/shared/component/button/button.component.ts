@@ -15,14 +15,9 @@ export class ButtonComponent implements OnInit {
     @Input() href?: string;
     @Input() disabled: any = "";
     @Input() spin: boolean = false;
-    @Output() click: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}
 
     ngOnInit() {
-    }
-
-    onClick = () => {
-        this.click.emit();
     }
 }

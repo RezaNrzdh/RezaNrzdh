@@ -1,4 +1,4 @@
-<button *ngIf="!isLink" type="{{ action }}" (click)="onClick()" class="flex justify-ctr align-ctr radius-8">
+<button *ngIf="!isLink" type="{{ action }}" class="flex justify-ctr align-ctr radius-8">
     <ng-container *ngTemplateOutlet="outlet"></ng-container>
 </button>
 <a *ngIf="isLink" routerLink="{{ href }}" class="flex align-ctr justify-ctr borderbox radius-8">
