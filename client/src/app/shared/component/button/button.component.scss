@@ -34,102 +34,74 @@
     }
 }
 
-:host{
-    &[mode="filled"]{
-        button, a{
-            color: color.$color-text-shade;
-            border: none;
+button, a{
+    &.filled{
+        color: color.$color-text-shade;
+        border: none;
+        &.primary{
+            background-color: color.$color-primary;
+            border: 1px solid color.$color-primary;
+            &:hover{
+                background-color: color.$color-primary-shade;
+            }
         }
-        &[color="primary"]{
-            button, a{
+        &.secondary{
+            background-color: color.$color-secondary;
+            border: 1px solid color.$color-secondary;
+            &:hover{
+                background-color: color.$color-secondary-shade;
+            }
+        }
+    }
+    &.outlined{
+        color: color.$color-text;
+        background-color: transparent;
+        border: 1px solid color.$color-text;
+        &.primary{
+            &:hover{
+                color: color.$color-text-shade;
                 background-color: color.$color-primary;
                 border: 1px solid color.$color-primary;
-                &:hover{
-                    background-color: color.$color-primary-shade;
-                }
             }
         }
-        &[color="secondary"]{
-            button, a{
+        &.secondary{
+            &:hover{
+                color: color.$color-text-shade;
                 background-color: color.$color-secondary;
                 border: 1px solid color.$color-secondary;
-                &:hover{
-                    background-color: color.$color-secondary-shade;
-                }
+            }
+        }
+        &.dark{
+            color: color.$color-dark;
+            border: 1px solid color.$color-gray-2;
+            &:hover{
+                background-color: color.$color-gray-2;
+            }
+        }
+        &.dark2{
+            color: color.$color-dark;
+            border: 1px solid color.$color-dark;
+            &:hover{
+                background-color: color.$color-gray-2;
             }
         }
     }
-}
-
-:host{
-    &[mode="outlined"]{
-        button, a{
-            color: color.$color-text;
-            background-color: transparent;
-            border: 1px solid color.$color-text;
-        }
-        &[color="primary"]{
-            button, a{
-                &:hover{
-                    color: color.$color-text-shade;
-                    background-color: color.$color-primary;
-                    border: 1px solid color.$color-primary;
-                }
+    &.ghost{
+        background-color: transparent;
+        border: 1px solid rgba(255,255,255,0);
+        &.white{
+            color: color.$color-white;
+            border: 1px solid rgba(255,255,255,0);
+            &:hover{
+                color: color.$color-white;
+                border: 1px solid color.$color-gray-3;
             }
         }
-        &[color="secondary"]{
-            button, a{
-                &:hover{
-                    color: color.$color-text-shade;
-                    background-color: color.$color-secondary;
-                    border: 1px solid color.$color-secondary;
-                }
-            }
-        }
-        &[color="dark"]{
-            button, a{
+        &.dark{
+            color: color.$color-dark;
+            &:hover{
                 color: color.$color-dark;
                 border: 1px solid color.$color-gray-2;
-                &:hover{
-                    background-color: color.$color-gray-2;
-                }
-            }
-        }
-        &[color="dark2"]{
-            button, a{
-                color: color.$color-dark;
-                border: 1px solid color.$color-dark;
-                &:hover{
-                    background-color: color.$color-gray-2;
-                }
-            }
-        }
-    }
-}
-
-:host{
-    &[mode="ghost"]{
-        button, a{
-            background-color: transparent;
-            border: 1px solid rgba(255,255,255,0);
-        }
-        &[color="dark"]{
-            button, a{
-                color: color.$color-dark;
-                &:hover{
-                    color: color.$color-dark;
-                    border: 1px solid color.$color-gray-2;
-                }
-            }
-        }
-        &[color="white"]{
-            button, a{
-                color: color.$color-white;
-                border: 1px solid rgba(255,255,255,0);
-                &:hover{
-                    color: color.$color-white;
-                    border: 1px solid color.$color-gray-3;
-                }
             }
         }
     }
