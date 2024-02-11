@@ -9,8 +9,6 @@ export class PortfolioService {
     constructor(@InjectModel("Portfolio") private portfolioModel: Model<Portfolio>) {}
 
     async GetAllPortfolios(query: any): Promise<any> {
-        console.log(query);
-
         let _sort: Record<any, any>;
         let _filter: Record<any, any>;
 
@@ -18,19 +16,23 @@ export class PortfolioService {
             ? _sort = {_id: -1}
             : _sort = {visit: -1};
 
-        query.lt != 0
-            ? _filter = { _id: { $lt: query.lt } }
-            : null;
+        // query.skip != 0
+        //     ? _filter = { _id: { $lt: query.lt } }
+        //     : null;
 
         query.cat
-            ? _filter = { ..._filter, category: query.cat }
+            ? _filter = {category: query.cat }
             : null;
 
-        return await this.portfolioModel
+        const count = await this.portfolioModel.find(_filter).countDocuments();
+        const data = await this.portfolioModel
             .find(_filter)
+            .skip(query.skip)
             .limit(query.limit)
             .sort(_sort)
             .exec();
+
+        return { count: count, data: data }
     }
 
     async GetTopPortfolios(value: number = 4): Promise<any> {

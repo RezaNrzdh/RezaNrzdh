@@ -26,8 +26,9 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
 
     currentTab: number = 0;
     isLastPage: boolean = false;
-    lt: number = 0;
-    limit: number = 16;
+    skip: number = 0;
+    count: number = 9999;
+    limit: number = 3;
     sortBy: string = "id";
     query: any = {};
 
@@ -47,7 +48,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     }
 
     OnGetAllPortfolio(cat?: number): void {
-        this.lt = 0;
+        this.skip = 0;
         this.query = {};
 
         if (cat != null) {
@@ -57,27 +58,38 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
             this.SetTabIndex(cat);
         }
 
-        this.query.lt = this.lt;
+        this.query.skip = this.skip;
         this.query.limit = this.limit;
         this.query.sortBy = this.sortBy;
 
         this.portfolioService.GetAllPortfolio(this.query).subscribe({
             next: ((value: any) => {
-                if(this.CheckIsLastPage(value.length)) return;
-                this.data = value;
-                this.lt = value[this.data.length - 1]._id;
+                this.data = value.data;
+                this.count = value.count - this.limit;
+                this.skip = this.skip + this.limit;
+                this.IsLastPage();
             })
         });
     }
 
     OnGetMorePortofilo(): void {
+        this.query = { ...this.query, skip: this.skip };
         this.portfolioService.GetAllPortfolio(this.query).subscribe({
             next: ((value: any) => {
-                if(this.CheckIsLastPage(value.length)) return;
-                this.data = this.data.concat(value);
-                this.lt = value[value.length - 1]._id;
+                this.data = this.data.concat(value.data);
+                this.skip = this.skip + this.limit;
+                this.count = this.count - value.data.length;
+                this.IsLastPage();
             })
         });
+    }
+
+    IsLastPage(): void {
+        if(this.count == 0){
+            this.isLastPage = true;
+        }else{
+            this.isLastPage = false;
+        }
     }
 
     SetSort(value: number): void {
@@ -95,20 +107,6 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
 
     SetTabIndex(value: number): void{
         this.currentTab = value;
-    }
-
-    CheckIsLastPage(value: number): boolean {
-        if(value == 0){
-            this.isLastPage = true;
-            return true;
-        }
-        else if (value < this.limit || this.lt - this.limit == 1) {
-            this.isLastPage = true;
-            return false;
-        }
-        else {
-            return false;
-        }
     }
 
     OnNewestPortfolio(): void {
