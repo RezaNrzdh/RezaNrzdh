@@ -37,7 +37,7 @@
 button, a{
     &.filled{
         color: color.$color-text-shade;
-        border: none;
+        border: 1px solid transparent;
         &.primary{
             background-color: color.$color-primary;
             border: 1px solid color.$color-primary;
@@ -88,7 +88,7 @@ button, a{
     }
     &.ghost{
         background-color: transparent;
-        border: 1px solid rgba(255,255,255,0);
+        border: 1px solid transparent;
         &.white{
             color: color.$color-white;
             border: 1px solid rgba(255,255,255,0);
