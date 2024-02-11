@@ -8,8 +8,8 @@ export class PortfolioService {
 
     constructor (private http: HttpClient) {}
 
-    GetAllPortfolio(lt: number, limit: number): Observable<any> {
-        return this.http.get(`${environment.server}/portfolio/limit`, { params: { lt: lt, limit: limit }});
+    GetAllPortfolio(query: any): Observable<any> {
+        return this.http.get(`${environment.server}/portfolio/limit`, { params: query });
     }
 
     GetTopPortfolio(value: number = 4): Observable<any> {
@@ -18,9 +18,5 @@ export class PortfolioService {
 
     GetPortfolio(slug: string): Observable<any> {
         return this.http.get(`${environment.server}/portfolio/${slug}`)
-    }
-
-    GetPortfolioByCategory(value: number): Observable<any> {
-        return this.http.get(`${environment.server}/portfolio/category/${value}`);
     }
 }

@@ -5,9 +5,9 @@ import {PortfolioService} from "./portfolio.service";
 export class PortfolioController {
     constructor(private portfolioService: PortfolioService) {}
 
-    @Get('limit')
+    @Get("limit")
     GetAllPortfolios(@Query() query): any {
-        return this.portfolioService.GetAllPortfolios(query.lt, query.limit);
+        return this.portfolioService.GetAllPortfolios(query);
     }
 
     @Get(":slug")
@@ -28,10 +28,5 @@ export class PortfolioController {
     @Post("reply")
     CreateReply(@Body() body: object): object {
         return Body;
-    }
-
-    @Get("category/:number")
-    GetPortfolioByCategory(@Param('number') number): any {
-        return this.portfolioService.GetPortfolioByCategory(number);
     }
 }

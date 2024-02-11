@@ -5,24 +5,49 @@
     </div>
     <div class="categories flex margin-top-32 margin-bot-32">
         <ul *ngIf="!isSmall" class="flex margin-0 padding-0">
-            <ng-container>
-                <li><app-button (click)="OnGetAllPortfolio()" mode="filled" color="primary">همه</app-button></li>
-                <ng-template>
-
+            <ng-container *ngFor="let opt of options; index as i">
+                <li>
+                    <app-button
+                        *ngIf="i === currentTab; else alt"
+                        mode="filled"
+                        color="primary">
+                            {{ opt }}
+                    </app-button>
+                </li>
+                <ng-template #alt>
+                    <li>
+                        <app-button
+                            (click)="OnGetAllPortfolio(i)"
+                            mode="ghost"
+                            color="dark">
+                                {{ opt }}
+                        </app-button>
+                    </li>
                 </ng-template>
             </ng-container>
-
-            <li><app-button (click)="OnGetPortfolioByCategory(1)" mode="ghost" color="dark">طراحی وب</app-button></li>
-            <li><app-button (click)="OnGetPortfolioByCategory(2)" mode="ghost" color="dark">توسعه وب</app-button></li>
-            <li><app-button (click)="OnGetPortfolioByCategory(3)" mode="ghost" color="dark">بازیسازی</app-button></li>
-            <li><app-button (click)="OnGetPortfolioByCategory(4)" mode="ghost" color="dark">گرافیک</app-button></li>
         </ul>
         <app-dropdown *ngIf="isSmall" [options]="options"></app-dropdown>
         <div *ngIf="!isXSmall" class="flex margin-right-auto">
-            <app-button (click)="SetSort(1)" [isLink]="false" mode="filled" color="dark">جدیدترین</app-button>
-            <app-button (click)="SetSort(2)" [isLink]="false" mode="ghost" color="dark" class="margin-right-16">پربازدیدترین</app-button>
+            <app-button
+                (click)="SetSort(1)"
+                [isLink]="false"
+                [mode]="sortNum == 1 ? 'filled' : 'ghost'"
+                [color]="'dark'">
+                جدیدترین
+            </app-button>
+            <app-button
+                (click)="SetSort(2)"
+                [isLink]="false"
+                [mode]="sortNum == 2 ? 'filled' : 'ghost'"
+                [color]="'dark'" class="margin-right-16">
+                پربازدیدترین
+            </app-button>
         </div>
-        <app-dropdown *ngIf="isXSmall" [options]="sorts" class="flex margin-right-auto"></app-dropdown>
+        <app-dropdown
+            *ngIf="isXSmall"
+            [options]="sortName"
+            class="flex margin-right-auto">
+        </app-dropdown>
     </div>
     <div class="grid">
         <app-portfoliocard
@@ -38,7 +63,14 @@
         </app-portfoliocard>
     </div>
     <div class="flex justify-ctr margin-top-32">
-        <app-button *ngIf="lt > 1" (click)="OnGetMorePortofilo()" [isLink]="false" mode="outlined" color="dark">نمونه کارهای بیشتر</app-button>
+        <app-button
+            *ngIf="!isLastPage"
+            (click)="OnGetMorePortofilo()"
+            [isLink]="false"
+            mode="outlined"
+            color="dark">
+            نمونه کارهای بیشتر
+        </app-button>
     </div>
 </section>
 

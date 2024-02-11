@@ -16,14 +16,21 @@ import {SortConstant} from "../../../core/constant/sort.constant";
 export class PortfolioListComponent implements OnInit, OnDestroy {
 
     data: Array<PortfolioModel>;
+
     isXSmall: boolean = false;
     isSmall: boolean = false;
-    sortNum: SortEnum = SortEnum.NEWEST;
+
     options: Array<string> = ['همه', ...CategoryConstant];
-    sorts: Array<string> = SortConstant;
+    sortName: Array<string> = SortConstant;
+    sortNum: SortEnum = SortEnum.NEWEST;
+
+    currentTab: number = 0;
+    isLastPage: boolean = false;
     lt: number = 0;
-    pagination: number = 8;
-    tab: number = 0;
+    limit: number = 16;
+    sortBy: string = "id";
+    query: any = {};
+
     sub: Subscription;
 
     constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService) {
@@ -39,18 +46,24 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
         this.OnGetAllPortfolio();
     }
 
-    OnGetPortfolioByCategory(value: number): void {
+    OnGetAllPortfolio(cat?: number): void {
         this.lt = 0;
-        this.portfolioService.GetPortfolioByCategory(value).subscribe({
-            next: ((value: any) => {
-                this.data = value;
-            })
-        })
-    }
+        this.query = {};
 
-    OnGetAllPortfolio(): void {
-        this.portfolioService.GetAllPortfolio(this.lt, this.pagination).subscribe({
+        if (cat != null) {
+            if(cat != 0){
+                this.query.cat = cat;
+            }
+            this.SetTabIndex(cat);
+        }
+
+        this.query.lt = this.lt;
+        this.query.limit = this.limit;
+        this.query.sortBy = this.sortBy;
+
+        this.portfolioService.GetAllPortfolio(this.query).subscribe({
             next: ((value: any) => {
+                if(this.CheckIsLastPage(value.length)) return;
                 this.data = value;
                 this.lt = value[this.data.length - 1]._id;
             })
@@ -58,23 +71,57 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     }
 
     OnGetMorePortofilo(): void {
-        this.portfolioService.GetAllPortfolio(this.lt, this.pagination).subscribe({
+        this.portfolioService.GetAllPortfolio(this.query).subscribe({
             next: ((value: any) => {
+                if(this.CheckIsLastPage(value.length)) return;
                 this.data = this.data.concat(value);
                 this.lt = value[value.length - 1]._id;
             })
         });
     }
 
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
-
     SetSort(value: number): void {
         switch (value){
-            case 1: this.sortNum = SortEnum.NEWEST; break;
-            case 2: this.sortNum = SortEnum.MOSTVISITED; break;
+            case 1:
+                this.sortNum = SortEnum.NEWEST;
+                this.OnNewestPortfolio();
+                break;
+            case 2:
+                this.sortNum = SortEnum.MOSTVISITED;
+                this.OnMostVisitedPortfolio();
+                break;
         }
     }
 
+    SetTabIndex(value: number): void{
+        this.currentTab = value;
+    }
+
+    CheckIsLastPage(value: number): boolean {
+        if(value == 0){
+            this.isLastPage = true;
+            return true;
+        }
+        else if (value < this.limit || this.lt - this.limit == 1) {
+            this.isLastPage = true;
+            return false;
+        }
+        else {
+            return false;
+        }
+    }
+
+    OnNewestPortfolio(): void {
+        this.sortBy = 'id';
+        this.OnGetAllPortfolio(this.currentTab);
+    }
+
+    OnMostVisitedPortfolio(): void {
+        this.sortBy = 'visit';
+        this.OnGetAllPortfolio(this.currentTab);
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
 }
