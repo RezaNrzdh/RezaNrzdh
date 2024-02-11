@@ -16,10 +16,6 @@ export class PortfolioService {
             ? _sort = {_id: -1}
             : _sort = {visit: -1};
 
-        // query.skip != 0
-        //     ? _filter = { _id: { $lt: query.lt } }
-        //     : null;
-
         query.cat
             ? _filter = {category: query.cat }
             : null;

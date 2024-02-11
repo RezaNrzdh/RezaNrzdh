@@ -28,7 +28,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     isLastPage: boolean = false;
     skip: number = 0;
     count: number = 9999;
-    limit: number = 3;
+    limit: number = 8;
     sortBy: string = "id";
     query: any = {};
 
@@ -67,6 +67,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
                 this.data = value.data;
                 this.count = value.count - this.limit;
                 this.skip = this.skip + this.limit;
+                console.log(this.count);
                 this.IsLastPage();
             })
         });
@@ -85,7 +86,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     }
 
     IsLastPage(): void {
-        if(this.count == 0){
+        if(this.count <= 0){
             this.isLastPage = true;
         }else{
             this.isLastPage = false;
