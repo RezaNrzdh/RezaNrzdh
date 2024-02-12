@@ -7,7 +7,6 @@ export class PortfolioController {
 
     @Get("limit")
     GetAllPortfolios(@Query() query): any {
-        console.log(query);
         return this.portfolioService.GetAllPortfolios(query);
     }
 

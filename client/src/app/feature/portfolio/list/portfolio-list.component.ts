@@ -67,7 +67,6 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
                 this.data = value.data;
                 this.count = value.count - this.limit;
                 this.skip = this.skip + this.limit;
-                console.log(this.count);
                 this.IsLastPage();
             })
         });
