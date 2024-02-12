@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
@@ -12,7 +12,7 @@ import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
     templateUrl: "portfolio.component.html",
     styleUrls: ["portfolio.component.scss"]
 })
-export class PortfolioComponent implements OnInit, AfterViewInit {
+export class PortfolioComponent implements OnInit {
 
     data: PortfolioModel = new PortfolioModel();
     topPortfolio: Array<PortfolioModel>;
@@ -41,6 +41,15 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
+        this.OnGetPortfolio();
+        this.commentForm = new FormGroup({
+            "name": new FormControl("null"),
+            "email": new FormControl("null"),
+            "comment": new FormControl("null")
+        })
+    }
+
+    OnGetPortfolio(): void{
         this.activatedRoute.params.subscribe({
             next: ((value: any) => {
                 this.transformX = 0;
@@ -49,26 +58,20 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
                     next: ((value: any) => {
                         this.data = value;
                         this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
+                        this.OnGetTopPortfolio(this.data.category);
                     })
                 });
             })
-        })
+        });
+    }
 
-        this.PortfolioService.GetTopPortfolio().subscribe({
+    OnGetTopPortfolio(value: number): void{
+        console.log(this.data.category);
+        this.PortfolioService.GetTopPortfolio(value).subscribe({
             next: ((value: any) => {
                 this.topPortfolio = value;
             })
         });
-
-        this.commentForm = new FormGroup({
-            "name": new FormControl("null"),
-            "email": new FormControl("null"),
-            "comment": new FormControl("null")
-        })
-    }
-
-    ngAfterViewInit() {
-        console.log(this.sliderWrapper.nativeElement);
     }
 
     ShowNextImage(value: any): void {
@@ -87,9 +90,5 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
     OnSubmit(): void {
         console.log(this.commentForm.value);
-    }
-
-    OnChange(): void {
-        console.log(1);
     }
 }

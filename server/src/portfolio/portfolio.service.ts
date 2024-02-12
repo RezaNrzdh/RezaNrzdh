@@ -31,10 +31,10 @@ export class PortfolioService {
         return { count: count, data: data }
     }
 
-    async GetTopPortfolios(value: number = 4): Promise<any> {
+    async GetTopPortfolios(cat: number): Promise<any> {
         return await this.portfolioModel
-            .find()
-            .limit(value)
+            .find({ category: cat })
+            .limit(4)
             .sort({ _id: -1 })
             .exec();
     }

@@ -12,8 +12,8 @@ export class PortfolioService {
         return this.http.get(`${environment.server}/portfolio/limit`, { params: query });
     }
 
-    GetTopPortfolio(value: number = 4): Observable<any> {
-        return this.http.get(`${environment.server}/portfolio/top/${value}`)
+    GetTopPortfolio(cat: number): Observable<any> {
+        return this.http.get(`${environment.server}/portfolio/top/${cat}`)
     }
 
     GetPortfolio(slug: string): Observable<any> {

@@ -2,13 +2,21 @@
     <h2 class="headline-4 bold color-text margin-ctr">نمونه کارهای من</h2>
     <div class="categories margin-bot-32">
         <ul *ngIf="!isSmall" class="flex margin-0 padding-0 justify-ctr margin-top-32">
-            <li><app-button mode="filled" color="primary">طراحی وب</app-button></li>
-            <li><app-button mode="ghost" color="white">توسعه وب</app-button></li>
-            <li><app-button mode="ghost" color="white">بازیسازی</app-button></li>
-            <li><app-button mode="ghost" color="white">برندینگ</app-button></li>
-            <li><app-button mode="ghost" color="white">گرافیک</app-button></li>
+            <li *ngFor="let opt of options; index as i">
+                <app-button
+                    (click)="SetCurrentTab(i)"
+                    [mode]="tab == i ? 'filled' : 'ghost'"
+                    [color]="tab == i ? 'primary' : 'white'">
+                    {{ opt }}
+                </app-button>
+            </li>
         </ul>
-        <app-dropdown *ngIf="isSmall" [options]="options" [darkmode]="true" class="flex margin-0 padding-0 justify-ctr margin-top-32"></app-dropdown>
+        <app-dropdown
+            *ngIf="isSmall"
+            [options]="options"
+            [darkmode]="true"
+            class="flex margin-0 padding-0 justify-ctr margin-top-32">
+        </app-dropdown>
     </div>
     <div class="samples grid">
         <app-portfoliocard

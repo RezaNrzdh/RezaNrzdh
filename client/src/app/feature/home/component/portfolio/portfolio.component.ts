@@ -4,6 +4,7 @@ import {ResponsiveService} from "../../../../core/services/responsive.service";
 import {PortfolioModel} from "../../../../core/models/portfolio.model";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../../../core/enum/responsive.enum";
+import {CategoryConstant} from "../../../../core/constant/category.constant";
 
 @Component({
     selector: 'app-home-portfolio',
@@ -13,9 +14,14 @@ import {ResponsiveEnum} from "../../../../core/enum/responsive.enum";
 export class PortfolioComponent implements OnInit, OnDestroy {
 
     data: Array<PortfolioModel>;
+
     isMedium: boolean = false;
     isSmall: boolean = false;
-    options: Array<string> = ['طراحی وب','توسعه وب','بازیسازی','برندینگ','گرافیک'];
+
+    options: Array<string> = [...CategoryConstant];
+    tab: number = 0;
+    query: any = {};
+
     sub: Subscription;
 
     constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService ) {
@@ -28,7 +34,11 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.portfolioService.GetTopPortfolio().subscribe({
+        this.OnGetTopPortfolio();
+    }
+
+    OnGetTopPortfolio(cat: number = 1): void {
+        this.portfolioService.GetTopPortfolio(cat).subscribe({
             next: ((value: any) => {
                 this.data = value;
             }),
@@ -38,8 +48,13 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         });
     }
 
+    SetCurrentTab(value: number): void {
+        if(this.tab == value) return;
+        this.tab = value;
+        this.OnGetTopPortfolio(this.tab + 1);
+    }
+
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
-
 }
