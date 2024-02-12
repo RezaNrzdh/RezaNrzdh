@@ -3,8 +3,11 @@
 :host{
     section{
         .aboutme{
-            .imageContainer{
+            .imageContaier{
+                background-color: color.$color-gray-2;
                 img{
+                    max-width: 100%;
+                    max-height: 256px;
                 }
             }
         }
@@ -129,12 +132,6 @@
     :host {
         section {
             .aboutme {
-                .imageContainer{
-                    img{
-                        width: 100%;
-                        height: fit-content;
-                    }
-                }
             }
         }
     }
@@ -206,13 +203,6 @@
                     flex-direction: column;
                     > div{
                         width: 100%;
-                    }
-                }
-                .imageContainer{
-                    justify-content: center;
-                    img{
-                        max-width: fit-content;
-                        max-height: fit-content;
                     }
                 }
             }
