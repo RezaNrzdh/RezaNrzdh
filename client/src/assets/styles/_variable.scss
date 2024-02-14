@@ -201,6 +201,8 @@
 .width-3q    { width: 75%  }
 .width-full  { width: 100% }
 .width-fit   { width: fit-content }
+.width-fill-webkit { width: -webkit-fill-available }
+.width-fill-moz { width: -moz-available }
 .height-half { height: 50% }
 .height-3q   { height: 75%  }
 .height-full { height: 100% }
