@@ -7,5 +7,5 @@ export class BlogModel {
     read: number;
     img: string;
     desc: string;
-    comment: Array<object>;
+    comment: Array<object> = [];
 }
