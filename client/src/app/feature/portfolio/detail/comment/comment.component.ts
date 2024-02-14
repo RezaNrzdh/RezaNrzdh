@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 
 @Component({
     selector: 'app-comment',
@@ -7,15 +7,14 @@ import {Component, OnInit} from "@angular/core";
 })
 export class CommentComponent implements OnInit {
 
+    @Input() comment: any;
+
     isHide: boolean = true;
     replyIsHide: boolean = true;
-    comment: any;
 
     constructor(){}
 
-    ngOnInit():void {
-
-    }
+    ngOnInit():void {}
 
     ShowReplyForm(): void{
         this.isHide = !this.isHide;

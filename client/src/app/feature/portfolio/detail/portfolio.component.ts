@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
@@ -16,7 +16,7 @@ export class PortfolioComponent implements OnInit {
 
     data: PortfolioModel = new PortfolioModel();
     topPortfolio: Array<PortfolioModel>;
-    commentForm: FormGroup;
+    commentForm: FormGroup | any;
     isMedium: boolean = false;
     isSmall: boolean = false;
     sub: Subscription;
@@ -43,9 +43,9 @@ export class PortfolioComponent implements OnInit {
     ngOnInit() {
         this.OnGetPortfolio();
         this.commentForm = new FormGroup({
-            "name": new FormControl("null"),
-            "email": new FormControl("null"),
-            "comment": new FormControl("null")
+            "name": new FormControl(null),
+            "email": new FormControl(null),
+            "comment": new FormControl(null)
         })
     }
 
@@ -57,6 +57,7 @@ export class PortfolioComponent implements OnInit {
                 this.PortfolioService.GetPortfolio(value.slug).subscribe({
                     next: ((value: any) => {
                         this.data = value;
+                        console.log(this.data.comment.length);
                         this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
                         this.OnGetTopPortfolio(this.data.category);
                     })
@@ -66,7 +67,6 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnGetTopPortfolio(value: number): void{
-        console.log(this.data.category);
         this.PortfolioService.GetTopPortfolio(value).subscribe({
             next: ((value: any) => {
                 this.topPortfolio = value;
@@ -89,6 +89,14 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnSubmit(): void {
-        console.log(this.commentForm.value);
+        const query = {
+            pid: this.data._id,
+            body: this.commentForm.value
+        }
+        this.PortfolioService.CreateComment(query).subscribe({
+            next:((value: any) => {
+                console.log(value);
+            })
+        })
     }
 }

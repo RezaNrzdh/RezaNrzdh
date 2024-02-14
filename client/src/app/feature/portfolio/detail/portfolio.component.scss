@@ -6,6 +6,8 @@ app-textbox[name="comment"]{ grid-area: comment }
 
 :host{
     section{
+        grid-template-columns: 2fr 1fr;
+        grid-column-gap: 32px;
         .slider{
             img{
                 max-width: 100%;

@@ -40,8 +40,36 @@ export class PortfolioService {
     }
 
     async GetPortfolio(slug: string): Promise<any> {
-        return await this.portfolioModel
-            .findOne({ slug: { $regex: slug } })
+        const a = await this.portfolioModel
+            .aggregate([
+                { $match: { slug: slug }},
+                { $unwind: "$comment" },
+                { $match: { "comment.confirmed": true } },
+                {
+                    $group:
+                        {
+                            _id: "$_id",
+                            title: { "$first": "$title"},
+                            slug: { "$first": "$slug" },
+                            date: { "$first": "$date" },
+                            visit: { "$first": "$visit" },
+                            like: { "$first": "$like" },
+                            img: { "$first": "$img" },
+                            thumbnail: { "$first": "$thumbnail" },
+                            desc: { "$first": "$desc" },
+                            category: { "$first": "$category" },
+                            comment: { $push: "$comment" }
+                        }
+                }
+            ])
             .exec();
+        return a[0];
+    }
+
+    async CreateComment(body: any): Promise<any> {
+        return await this.portfolioModel
+            .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
+            .exec();
+
     }
 }

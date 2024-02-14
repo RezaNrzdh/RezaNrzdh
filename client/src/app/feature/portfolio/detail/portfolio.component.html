@@ -69,22 +69,41 @@
                 <img src="assets/images/dot.svg" alt="" />
             </div>
             <form class="grid" [formGroup]="commentForm" (ngSubmit)="OnSubmit()">
-                <app-textbox title="نام و نام خانوادگی" name="name" type="text"></app-textbox>
-                <app-textbox title="ایمیل" name="email" type="email"></app-textbox>
-                <app-textbox title="نظر شما" name="comment" [multiLine]="true" [rows]="4"></app-textbox>
+                <app-textbox
+                    title="نام و نام خانوادگی"
+                    name="name"
+                    type="text"
+                    formControlName="name"
+                    [formGroup]="commentForm.get('name')">
+                </app-textbox>
+                <app-textbox
+                    title="ایمیل"
+                    name="email"
+                    type="email"
+                    formControlName="email"
+                    [formGroup]="commentForm.get('email')">
+                </app-textbox>
+                <app-textbox
+                    title="نظر شما"
+                    name="comment"
+                    [multiLine]="true"
+                    [rows]="4"
+                    formControlName="comment"
+                    [formGroup]="commentForm.get('comment')">
+                </app-textbox>
                 <div class="flex">
                     <app-button mode="filled" color="primary">ارسال نظر</app-button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="tablet">
-        <div class="margin-top-32">
-            <div class="flex align-ctr margin-bot-32">
+    <div *ngIf="data.comment.length > 0" class="tablet width-fill-webkit width-fill-moz margin-bot-56">
+        <div class="flex justify-ctr margin-top-32">
+            <div class="flex width-full align-ctr margin-bot-32">
                 <h2 class="color-dark headline-4 bold margin-left-24">نظر کاربران</h2>
                 <img src="assets/images/dot.svg" alt="" />
             </div>
         </div>
-        <app-comment *ngFor="let i of [1,1,1]"></app-comment>
+        <app-comment *ngFor="let cm of data.comment" [comment]="cm" class="width-full"></app-comment>
     </div>
 </section>

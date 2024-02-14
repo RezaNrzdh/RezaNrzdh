@@ -13,10 +13,14 @@ export class PortfolioService {
     }
 
     GetTopPortfolio(cat: number): Observable<any> {
-        return this.http.get(`${environment.server}/portfolio/top/${cat}`)
+        return this.http.get(`${environment.server}/portfolio/top/${cat}`);
     }
 
     GetPortfolio(slug: string): Observable<any> {
-        return this.http.get(`${environment.server}/portfolio/${slug}`)
+        return this.http.get(`${environment.server}/portfolio/${slug}`);
+    }
+
+    CreateComment(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/portfolio/comment`, body);
     }
 }

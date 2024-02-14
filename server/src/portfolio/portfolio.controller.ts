@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Query} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post, Query, Patch} from "@nestjs/common";
 import {PortfolioService} from "./portfolio.service";
 
 @Controller("api/v1/portfolio")
@@ -20,9 +20,9 @@ export class PortfolioController {
         return this.portfolioService.GetTopPortfolios(number);
     }
 
-    @Post("comment")
-    CreateComment(@Body() body: object): object {
-        return body;
+    @Patch("comment")
+    CreateComment(@Body() body: object): any {
+        return this.portfolioService.CreateComment(body);
     }
 
     @Post("reply")
