@@ -43,26 +43,25 @@ export class PortfolioService {
         const a = await this.portfolioModel
             .aggregate([
                 { $match: { slug: slug }},
-                { $unwind: "$comment" },
-                { $match: { "comment.confirmed": true } },
                 {
-                    $group:
-                        {
-                            _id: "$_id",
-                            title: { "$first": "$title"},
-                            slug: { "$first": "$slug" },
-                            date: { "$first": "$date" },
-                            visit: { "$first": "$visit" },
-                            like: { "$first": "$like" },
-                            img: { "$first": "$img" },
-                            thumbnail: { "$first": "$thumbnail" },
-                            desc: { "$first": "$desc" },
-                            category: { "$first": "$category" },
-                            comment: { $push: "$comment" }
+                    $project: {
+                        title: "$title",
+                        slug: "$slug",
+                        date: "$date",
+                        visit: "$visit",
+                        like: "$like",
+                        img: "$img",
+                        thumbnail: "$thumbnail",
+                        desc: "$desc",
+                        category: "$category",
+                        "comment": {
+                            $filter: { input: "$comment", as: "cm", cond: { $eq: [ "$$cm.confirmed", true ] }}
                         }
+                    }
                 }
             ])
             .exec();
+        console.log(a);
         return a[0];
     }
 
