@@ -55,7 +55,13 @@ export class PortfolioService {
                         desc: "$desc",
                         category: "$category",
                         "comment": {
-                            $filter: { input: "$comment", as: "cm", cond: { $eq: [ "$$cm.confirmed", true ] }}
+                            $filter: {
+                                input: "$comment",
+                                as: "cm",
+                                cond: {
+                                    $eq: [ "$$cm.confirmed", true ]
+                                }
+                            }
                         }
                     }
                 }
