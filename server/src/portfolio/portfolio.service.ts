@@ -54,7 +54,7 @@ export class PortfolioService {
                         thumbnail: "$thumbnail",
                         desc: "$desc",
                         category: "$category",
-                        "comment": {
+                        comment: {
                             $filter: {
                                 input: "$comment",
                                 as: "cm",
