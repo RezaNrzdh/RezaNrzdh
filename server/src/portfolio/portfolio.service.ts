@@ -64,6 +64,43 @@ export class PortfolioService {
                             }
                         }
                     }
+                },
+                {
+                    $project: {
+                        title: "$title",
+                        slug: "$slug",
+                        date: "$date",
+                        visit: "$visit",
+                        like: "$like",
+                        img: "$img",
+                        thumbnail: "$thumbnail",
+                        desc: "$desc",
+                        category: "$category",
+                        comment: {
+                            $map: {
+                                input: "$comment",
+                                as: "cm",
+                                in: {
+                                    "_id": "$$cm._id",
+                                    name: "$$cm.name",
+                                    email: "$$cm.email",
+                                    comment: "$$cm.comment",
+                                    like: "$$cm.like",
+                                    confirmed: "$$cm.confirmed",
+                                    date: "$$cm.date",
+                                    reply: {
+                                        $filter: {
+                                            input: "$$cm.reply",
+                                            as: "cm2",
+                                            cond: {
+                                                $eq: [ "$$cm2.confirmed", true ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             ])
             .exec();
