@@ -67,7 +67,6 @@ export class PortfolioService {
                 }
             ])
             .exec();
-        console.log(a);
         return a[0];
     }
 
@@ -76,5 +75,14 @@ export class PortfolioService {
             .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
             .exec();
 
+    }
+
+    async CreateReply(body: any): Promise<any> {
+        return await this.portfolioModel
+            .updateOne(
+                { _id: body.portfolioId },
+                { $push: { "comment.$[cm].reply": body } },
+                {arrayFilters: [{ "cm._id": body.replyId }]})
+            .exec();
     }
 }

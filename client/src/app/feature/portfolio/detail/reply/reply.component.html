@@ -1,25 +1,31 @@
 <section class="margin-top-32">
     <div class="head flex">
-        <div class="avatar red radius-24 flex justify-ctr align-ctr"></div>
+        <div class="avatar background-gray-2 radius-24 flex justify-ctr align-ctr">
+            <app-icon icon="user2" size="24" color="gray5"></app-icon>
+        </div>
         <div class="flex column justify-ctr margin-right-16">
-            <span class="body-1 bold color-dark">محمد زاهدی</span>
-            <span class="caption medium color-gray-5 margin-top-2">23 اردیبهشت 1433</span>
+            <span class="body-1 bold color-dark">{{ reply.name }}</span>
+            <div class="flex  margin-top-2">
+                <span class="flex caption medium color-gray-5">در پاسخ: {{ reply.replyName }}</span>
+                <span class="flex caption medium color-gray-5 margin-left-8 margin-right-8">-</span>
+                <span class="flex caption medium color-gray-5 ">{{ reply.date | PersianCalendar }}</span>
+            </div>
         </div>
         <div class="flex margin-right-auto">
-            <span class="body-2 medium color-dark margin-left-8">5</span>
+            <span class="body-2 medium color-dark margin-left-8">{{ reply.like }}</span>
             <app-icon icon="like" size="20" color="gray5"></app-icon>
         </div>
     </div>
     <div class="desc margin-top-16 margin-right-64">
-        <p class="body-2 medium color-dark lineheight-24 margin-bot-16">تست میشود</p>
+        <p class="body-2 medium color-dark lineheight-24 margin-bot-16">{{ reply.comment }}</p>
         <a class="flex align-ctr" (click)="ShowReplyForm()">
             <app-icon icon="comment" size="16" color="secondary"></app-icon>
             <span class="body-2 medium color-secondary margin-right-4">پاسخ</span>
         </a>
-        <form *ngIf="!isHide" class="grid margin-top-24">
-            <app-textbox title="نام و نام خانوادگی" name="name" type="text"></app-textbox>
-            <app-textbox title="ایمیل" name="email" type="email"></app-textbox>
-            <app-textbox title="نظر شما" name="comment" [multiLine]="true" [rows]="4"></app-textbox>
+        <form *ngIf="!isHide" [formGroup]="replyForm" (ngSubmit)="OnSubmit()" class="grid margin-top-24">
+            <app-textbox title="نام و نام خانوادگی" name="name" type="text" formControlName="name" [formGroup]="replyForm.get('name')"></app-textbox>
+            <app-textbox title="ایمیل" name="email" type="email" formControlName="email" [formGroup]="replyForm.get('email')"></app-textbox>
+            <app-textbox title="نظر شما" name="comment" [multiLine]="true" [rows]="4" formControlName="comment" [formGroup]="replyForm.get('comment')"></app-textbox>
             <div class="flex">
                 <app-button mode="filled" color="primary">ارسال نظر</app-button>
             </div>

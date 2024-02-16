@@ -3,6 +3,9 @@ import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 @Schema()
 class Reply {
     @Prop()
+    replyName: String;
+
+    @Prop()
     name: String;
 
     @Prop()

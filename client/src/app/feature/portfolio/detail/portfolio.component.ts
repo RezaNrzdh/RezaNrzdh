@@ -43,10 +43,10 @@ export class PortfolioComponent implements OnInit {
     ngOnInit() {
         this.OnGetPortfolio();
         this.commentForm = new FormGroup({
-            "name": new FormControl(null),
-            "email": new FormControl(null),
-            "comment": new FormControl(null)
-        })
+            "name": new FormControl(null, [Validators.required]),
+            "email": new FormControl(null, [Validators.required, Validators.email]),
+            "comment": new FormControl(null, [Validators.required])
+        });
     }
 
     OnGetPortfolio(): void{
@@ -89,6 +89,8 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnSubmit(): void {
+        if(this.commentForm.status === "INVALID") return;
+
         const query = {
             pid: this.data._id,
             body: this.commentForm.value

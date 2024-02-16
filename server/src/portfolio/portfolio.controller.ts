@@ -25,8 +25,8 @@ export class PortfolioController {
         return this.portfolioService.CreateComment(body);
     }
 
-    @Post("reply")
+    @Patch("reply")
     CreateReply(@Body() body: object): object {
-        return Body;
+        return this.portfolioService.CreateReply(body);
     }
 }

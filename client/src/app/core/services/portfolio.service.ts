@@ -23,4 +23,8 @@ export class PortfolioService {
     CreateComment(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/portfolio/comment`, body);
     }
+
+    CreateReply(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/portfolio/reply`, body);
+    }
 }

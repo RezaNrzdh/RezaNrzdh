@@ -104,6 +104,6 @@
                 <img src="assets/images/dot.svg" alt="" />
             </div>
         </div>
-        <app-comment *ngFor="let cm of data.comment" [comment]="cm" class="width-full"></app-comment>
+        <app-comment *ngFor="let cm of data.comment" [comment]="cm" [portfolioID]="data._id" class="width-full"></app-comment>
     </div>
 </section>
