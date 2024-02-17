@@ -1,4 +1,4 @@
-import {Controller, Get, Param} from "@nestjs/common";
+import {Query, Controller, Get, Param} from "@nestjs/common";
 import {BlogService} from "./blog.service";
 
 @Controller("api/v1/blog")
@@ -6,8 +6,8 @@ export class BlogController {
     constructor(private blogService: BlogService) {}
 
     @Get()
-    GetAllArticles(): any {
-        return this.blogService.GetAllArticles();
+    GetAllArticles(@Query() query): any {
+        return this.blogService.GetAllArticles(query);
     }
 
     @Get("/recent")

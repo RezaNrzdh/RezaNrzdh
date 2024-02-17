@@ -59,8 +59,8 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-ctr margin-top-32">
-            <app-button mode="outlined" color="dark">مطالب بیشتر</app-button>
+        <div *ngIf="count > 0" class="flex justify-ctr margin-top-32">
+            <app-button mode="outlined" color="dark" (click)="GetMoreArticle()">مطالب بیشتر</app-button>
         </div>
     </div>
 </section>
