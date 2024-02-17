@@ -8,8 +8,8 @@ export class BlogService {
 
     constructor(private http: HttpClient){}
 
-    GetAllArticles(): Observable<any> {
-        return this.http.get(`${environment.server}/blog`);
+    GetAllArticles(query: any): Observable<any> {
+        return this.http.get(`${environment.server}/blog`, { params: query });
     }
 
     GetArticle(slug: string): Observable<any> {

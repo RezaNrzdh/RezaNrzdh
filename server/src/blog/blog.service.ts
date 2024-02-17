@@ -8,8 +8,10 @@ export class BlogService {
 
     constructor(@InjectModel("Blog") private blogModel: Model<Blog>) {}
 
-    async GetAllArticles(): Promise<any> {
-        return this.blogModel.find().exec();
+    async GetAllArticles(query: any): Promise<any> {
+        const count = await this.blogModel.find().countDocuments();
+        const data  = await this.blogModel.find().skip(query.offset).limit(query.limit).sort({ _id: -1 }).exec();
+        return { count: count, data: data }
     }
 
     GetRecentArticles(): Array<object> {
