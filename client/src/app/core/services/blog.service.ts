@@ -16,4 +16,11 @@ export class BlogService {
         return this.http.get(`${environment.server}/blog/${slug}`);
     }
 
+    CreateComment(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/blog/comment`, body);
+    }
+
+    CreateReply(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/blog/reply`, body);
+    }
 }

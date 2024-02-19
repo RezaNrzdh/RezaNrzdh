@@ -1,4 +1,4 @@
-import {Query, Controller, Get, Param} from "@nestjs/common";
+import {Query, Controller, Get, Param, Patch, Body} from "@nestjs/common";
 import {BlogService} from "./blog.service";
 
 @Controller("api/v1/blog")
@@ -10,18 +10,18 @@ export class BlogController {
         return this.blogService.GetAllArticles(query);
     }
 
-    @Get("/recent")
-    GetRecentArticles(): Array<object> {
-        return this.blogService.GetRecentArticles();
-    }
-
-    @Get("/other")
-    GetOtherArticles(): Array<object> {
-        return this.blogService.GetOtherArticles();
-    }
-
     @Get(":slug")
     GetArticle(@Param("slug") slug): any {
         return this.blogService.GetArticle(slug);
+    }
+
+    @Patch("/comment")
+    CreateComment(@Body() body: any): any {
+        return this.blogService.CreateComment(body);
+    }
+
+    @Patch("/reply")
+    CreateReply(@Body() body: any): any {
+        return this.blogService.CreateReply(body);
     }
 }

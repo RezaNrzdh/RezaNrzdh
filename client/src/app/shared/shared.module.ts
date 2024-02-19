@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 
 import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from '@angular/material/icon';
@@ -21,6 +21,8 @@ import {CalendarPipe} from "./pipe/calendar.pipe";
 import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.component";
 import {AlertboxComponent} from "./component/alertbox/alertbox.component";
 import {CategoryPipe} from "./pipe/category.pipe";
+import {CommentComponent} from "./component/comment/comment.component";
+import {ReplyComponent} from "./component/reply/reply.component";
 
 @NgModule({
     declarations: [
@@ -38,11 +40,14 @@ import {CategoryPipe} from "./pipe/category.pipe";
         DropdownComponent,
         CalendarPipe,
         CategoryPipe,
-        AlertboxComponent
+        AlertboxComponent,
+        CommentComponent,
+        ReplyComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule,
         HttpClientModule,
         MatIconModule
@@ -62,7 +67,9 @@ import {CategoryPipe} from "./pipe/category.pipe";
         DropdownComponent,
         CalendarPipe,
         CategoryPipe,
-        AlertboxComponent
+        AlertboxComponent,
+        CommentComponent,
+        ReplyComponent
     ]
 })
 export class SharedModule {}

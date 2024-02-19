@@ -14,15 +14,24 @@ export class BlogService {
         return { count: count, data: data }
     }
 
-    GetRecentArticles(): Array<object> {
-        return [{title: 'Recent Articles'}];
-    }
-
-    GetOtherArticles(): Array<object> {
-        return [{title: 'Other Articles'}];
-    }
-
     async GetArticle(slug: string): Promise<any> {
         return this.blogModel.findOne({ slug: { $regex: slug } }).exec();
+    }
+
+    async CreateComment(body: any): Promise<any> {
+        return await this.blogModel
+            .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
+            .exec();
+
+    }
+
+    async CreateReply(body: any): Promise<any> {
+        console.log(body);
+        return await this.blogModel
+            .updateOne(
+                { _id: body.pid },
+                { $push: { "comment.$[cm].reply": body } },
+                {arrayFilters: [{ "cm._id": body.replyId }]})
+            .exec();
     }
 }

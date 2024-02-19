@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "../../../core/services/blog.service";
 import {BlogModel} from "../../../core/models/blog.model";
@@ -12,29 +12,54 @@ import {BlogModel} from "../../../core/models/blog.model";
 export class BlogComponent implements OnInit {
 
     data: BlogModel = new BlogModel();
-    commentForm: FormGroup;
+    commentForm: FormGroup | any;
 
     constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService) { }
 
     ngOnInit(): void {
         this.commentForm = new FormGroup({
-            "name": new FormControl("null"),
-            "email": new FormControl("null"),
-            "comment": new FormControl("null")
+            "name": new FormControl(null, [Validators.required]),
+            "email": new FormControl(null, [Validators.required, Validators.email]),
+            "comment": new FormControl(null, [Validators.required])
         });
+        this.OnGetArticle();
+    }
 
-        this.blogService.GetArticle(this.activatedRoute.snapshot.params["slug"]).subscribe({
+    OnGetArticle(): void{
+        this.activatedRoute.params.subscribe({
             next: ((value: any) => {
-                this.data = value;
-            }),
-            error: ((err: any) => {
-                console.log(err);
+                this.blogService.GetArticle(value.slug).subscribe({
+                    next:((value: any) => {
+                        this.data = value;
+                    })
+                })
+            })
+        });
+    }
+
+    OnSubmit(): void {
+        if(this.commentForm.status === "INVALID") return;
+
+        const query ={
+            pid: this.data._id,
+            body: this.commentForm.value
+        }
+        this.blogService.CreateComment(query).subscribe({
+            next: ((value: any) => {
+                this.commentForm.markAsPristine();
+                this.commentForm.markAsUntouched();
+                this.commentForm.reset({ name: "", email: "", comment: "" });
             })
         })
     }
 
-    OnSubmit(): void {
-        console.log(this.commentForm.value);
+    OnCreateReply(body: any): void {
+        this.blogService.CreateReply(body).subscribe({
+            next: ((value: any) => {
+                this.commentForm.markAsPristine();
+                this.commentForm.markAsUntouched();
+                this.commentForm.reset({ name: "", email: "", comment: "" });
+            })
+        });
     }
-
 }

@@ -26,7 +26,7 @@ export class PortfolioComponent implements OnInit {
     @ViewChild('sliderWrapper') sliderWrapper: ElementRef;
 
     constructor(
-        private PortfolioService: PortfolioService,
+        private portfolioService: PortfolioService,
         private responsiveService: ResponsiveService,
         private renderer: Renderer2,
         private route: Router,
@@ -54,10 +54,10 @@ export class PortfolioComponent implements OnInit {
             next: ((value: any) => {
                 this.transformX = 0;
                 this.currentImage = 0;
-                this.PortfolioService.GetPortfolio(value.slug).subscribe({
+                this.portfolioService.GetPortfolio(value.slug).subscribe({
                     next: ((value: any) => {
                         this.data = value;
-                        console.log(this.data.comment.length);
+                        this.data = value;
                         this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
                         this.OnGetTopPortfolio(this.data.category);
                     })
@@ -67,9 +67,35 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnGetTopPortfolio(value: number): void{
-        this.PortfolioService.GetTopPortfolio(value).subscribe({
+        this.portfolioService.GetTopPortfolio(value).subscribe({
             next: ((value: any) => {
                 this.topPortfolio = value;
+            })
+        });
+    }
+
+    OnSubmit(): void {
+        if(this.commentForm.status === "INVALID") return;
+
+        const query = {
+            pid: this.data._id,
+            body: this.commentForm.value
+        }
+        this.portfolioService.CreateComment(query).subscribe({
+            next:((value: any) => {
+                this.commentForm.markAsPristine();
+                this.commentForm.markAsUntouched();
+                this.commentForm.reset({ name: "", email: "", comment: "" });
+            })
+        })
+    }
+
+    OnCreateReply(body: any): void {
+        this.portfolioService.CreateReply(body).subscribe({
+            next: ((value: any) => {
+                this.commentForm.markAsPristine();
+                this.commentForm.markAsUntouched();
+                this.commentForm.reset({ name: "", email: "", comment: "" });
             })
         });
     }
@@ -88,17 +114,4 @@ export class PortfolioComponent implements OnInit {
         this.currentImage--;
     }
 
-    OnSubmit(): void {
-        if(this.commentForm.status === "INVALID") return;
-
-        const query = {
-            pid: this.data._id,
-            body: this.commentForm.value
-        }
-        this.PortfolioService.CreateComment(query).subscribe({
-            next:((value: any) => {
-                console.log(value);
-            })
-        })
-    }
 }

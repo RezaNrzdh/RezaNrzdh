@@ -22,7 +22,7 @@ export class PortfolioService {
 
         const count = await this.portfolioModel.find(_filter).countDocuments();
         const data = await this.portfolioModel
-            .find(_filter)
+            .find(_filter, { category: 1, like: 1, slug: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
             .skip(query.skip)
             .limit(query.limit)
             .sort(_sort)
@@ -33,7 +33,7 @@ export class PortfolioService {
 
     async GetTopPortfolios(cat: number): Promise<any> {
         return await this.portfolioModel
-            .find({ category: cat })
+            .find({ category: cat },{ category: 1, like: 1, slug: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
             .limit(4)
             .sort({ _id: -1 })
             .exec();
@@ -115,9 +115,10 @@ export class PortfolioService {
     }
 
     async CreateReply(body: any): Promise<any> {
+        console.log(body);
         return await this.portfolioModel
             .updateOne(
-                { _id: body.portfolioId },
+                { _id: body.pid },
                 { $push: { "comment.$[cm].reply": body } },
                 {arrayFilters: [{ "cm._id": body.replyId }]})
             .exec();
