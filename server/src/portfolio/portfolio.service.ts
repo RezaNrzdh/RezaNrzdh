@@ -81,7 +81,7 @@ export class PortfolioService {
                                 input: "$comment",
                                 as: "cm",
                                 in: {
-                                    "_id": "$$cm._id",
+                                    _id: "$$cm._id",
                                     name: "$$cm.name",
                                     email: "$$cm.email",
                                     comment: "$$cm.comment",
