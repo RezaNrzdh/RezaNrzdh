@@ -21,6 +21,9 @@
         &.isOutline{
             border: 1px solid color.$color-gray-2;
         }
+        &:not(.isOutline){
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+        }
         &.isList {
             img{
                 min-width: 160px;
