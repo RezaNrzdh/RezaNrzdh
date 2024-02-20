@@ -33,7 +33,10 @@ export class AuthService {
         if (!user) return;
 
         const compare = await bcrypt.compare(body.password, user.password.toString());
-        if (!compare) return;
+        if (!compare) {
+            await this.authModel.updateOne({email: { $regex: body.email}}, { $inc: { attempt: 1 } });
+            return;
+        }
 
         const payload = { uid: user._id, email: user.email, role: user.role };
         return this.jwtService.sign(payload);
