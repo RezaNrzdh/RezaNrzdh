@@ -31,13 +31,13 @@
                         }
                     }
                     .desc{
-                        border: 1px solid color.$color-gray-2;
                         height: 100%;
+                        background-color: #E9EDC9;
                         &:before{
                             display: flex;
                             content: "";
                             position: absolute;
-                            top:-15px;
+                            top:-14px;
                             width: 48px;
                             height: 16px;
                             background: url("/assets/images/btnarrow-white.png");
@@ -54,7 +54,8 @@
                             left: -16px;
                             content: "";
                             width: 50%;
-                            border-top: 1px dashed color.$color-gray-3;
+                            height: 1px;
+                            background: linear-gradient(90deg, rgba(218,230,238,1) 0%, rgba(218,230,238,0) 100%);
                         }
                     }
                     &:nth-child(2), &:last-child{
@@ -65,7 +66,8 @@
                             right: -16px;
                             content: "";
                             width: 50%;
-                            border-top: 1px dashed color.$color-gray-3;
+                            height: 1px;
+                            background: linear-gradient(90deg, rgba(218,230,238,0) 0%, rgba(218,230,238,1) 100%);
                         }
                     }
                     &:last-child{
