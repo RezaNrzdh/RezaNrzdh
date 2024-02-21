@@ -31,6 +31,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     limit: number = 8;
     sortBy: string = "id";
     query: any = {};
+    isSpin: boolean = false;
 
     sub: Subscription;
 
@@ -74,11 +75,13 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
 
     OnGetMorePortofilo(): void {
         this.query = { ...this.query, skip: this.skip };
+        this.isSpin = true;
         this.portfolioService.GetAllPortfolio(this.query).subscribe({
             next: ((value: any) => {
                 this.data = this.data.concat(value.data);
                 this.skip = this.skip + this.limit;
                 this.count = this.count - value.data.length;
+                this.isSpin = false;
                 this.IsLastPage();
             })
         });
