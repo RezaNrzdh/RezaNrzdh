@@ -23,6 +23,7 @@ import {AlertboxComponent} from "./component/alertbox/alertbox.component";
 import {CategoryPipe} from "./pipe/category.pipe";
 import {CommentComponent} from "./component/comment/comment.component";
 import {ReplyComponent} from "./component/reply/reply.component";
+import {ClickoutsideDirective} from "./directive/clickoutside.directive";
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import {ReplyComponent} from "./component/reply/reply.component";
         CategoryPipe,
         AlertboxComponent,
         CommentComponent,
-        ReplyComponent
+        ReplyComponent,
+        ClickoutsideDirective
     ],
     imports: [
         CommonModule,
@@ -69,7 +71,8 @@ import {ReplyComponent} from "./component/reply/reply.component";
         CategoryPipe,
         AlertboxComponent,
         CommentComponent,
-        ReplyComponent
+        ReplyComponent,
+        ClickoutsideDirective
     ]
 })
 export class SharedModule {}
