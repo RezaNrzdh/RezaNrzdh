@@ -40,7 +40,11 @@ export class ContactComponent implements OnInit {
     }
 
     CreateComment(): void {
-        if(this.contactForm.status === "INVALID" || this.isSpin) return;
+        if(this.contactForm.status === "INVALID" || this.isSpin){
+            console.log(this.contactForm);
+            return;
+        }
+        console.log(1);
         this.isSpin = true;
 
         this.contactService.CreateComment(this.contactForm.value).subscribe({
