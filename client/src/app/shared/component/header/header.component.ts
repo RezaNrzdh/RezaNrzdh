@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnDestroy, OnInit} from "@angular/core";
+import {Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {AuthService} from "../../../core/services/auth.service";
@@ -19,15 +19,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
     internalPages: boolean = false;
     ShowSidebar: boolean   = false;
     isLoggedIn: boolean    = false;
+    displayMenu: boolean    = false;
 
     isXSmall: boolean = false;
     isMedium: boolean = false;
+
+    handler: any;
+
+    @HostBinding('class.internalPages') get t() { return this.internalPages };
+    @ViewChild("popup") popuop: ElementRef;
+    // @HostListener('document:click', ['$event']) test(t: any) {
+    //     console.log(t.target);
+    // }
 
     constructor(
         private router: Router,
         private responsiveService: ResponsiveService,
         private authService: AuthService,
-        private userService: UserService)
+        private userService: UserService,
+        private renderer: Renderer2)
     {
         this.IsInternalPage(this.router);
         this.subUserService = this.userService.userInfo.subscribe({
@@ -50,8 +60,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         });
     }
 
-    @HostBinding('class.internalPages') get t() { return this.internalPages };
-
     ngOnInit(): void {}
 
     OnToggleSidebar(): void {
@@ -64,6 +72,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 router.url === "/" ? this.internalPages = false : this.internalPages = true;
             }
         });
+    }
+
+    OnDisplayMenu(): void {
+        this.displayMenu = !this.displayMenu;
+        if(this.displayMenu){
+            this.handler = this.renderer.listen(document,"click", (t:any) => {
+                if(!this.popuop.nativeElement.contains(t.target)){
+                    this.displayMenu = false;
+                    this.handler();
+                }
+            })
+        }else{
+            this.handler();
+        }
     }
 
     ngOnDestroy() {

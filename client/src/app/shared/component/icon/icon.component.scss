@@ -58,6 +58,12 @@
             color: color.$color-dark;
         }
     }
+
+    &[color="danger"]{
+        mat-icon{
+            color: color.$color-danger;
+        }
+    }
 }
 
 :host {

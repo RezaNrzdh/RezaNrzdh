@@ -70,10 +70,21 @@
                 }
             }
             .loggedin{
-                div{
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 20px;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+            }
+            .menu {
+                grid-template-columns: 1fr;
+                width: 192px;
+                left: 0;
+                top: 72px;
+                box-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.3);
+                a{
+                    transition: all ease-in-out 0.2s;
+                    &:hover {
+                        background-color: color.$color-gray-1b;
+                    }
                 }
             }
         }
