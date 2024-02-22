@@ -28,9 +28,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     @HostBinding('class.internalPages') get t() { return this.internalPages };
     @ViewChild("popup") popuop: ElementRef;
-    // @HostListener('document:click', ['$event']) test(t: any) {
-    //     console.log(t.target);
-    // }
 
     constructor(
         private router: Router,
