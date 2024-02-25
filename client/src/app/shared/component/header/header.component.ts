@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {Component, ElementRef, HostBinding, OnDestroy, Renderer2, ViewChild} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {AuthService} from "../../../core/services/auth.service";
@@ -11,7 +11,7 @@ import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
     templateUrl: "header.component.html",
     styleUrls: ["header.component.scss"]
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnDestroy {
 
     subUserService: Subscription;
     subBreakpoint: Subscription;
@@ -56,8 +56,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
             })
         });
     }
-
-    ngOnInit(): void {}
 
     OnToggleSidebar(): void {
         this.ShowSidebar = !this.ShowSidebar;
