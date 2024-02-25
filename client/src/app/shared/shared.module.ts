@@ -6,6 +6,9 @@ import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from '@angular/material/icon';
 
+import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.component";
+import {AdminSideComponent} from "./component/adminSide/adminSide.component";
+
 import {ButtonComponent} from "./component/button/button.component";
 import {TextboxComponent} from "./component/textbox/textbox.component";
 import {FooterComponent} from "./component/footer/footer.component";
@@ -18,7 +21,6 @@ import {TagComponent} from "./component/tag/tag.component";
 import {SidebarComponent} from "./component/sidebar/sidebar.component";
 import {DropdownComponent} from "./component/dropdown/dropdown.component";
 import {CalendarPipe} from "./pipe/calendar.pipe";
-import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.component";
 import {AlertboxComponent} from "./component/alertbox/alertbox.component";
 import {CategoryPipe} from "./pipe/category.pipe";
 import {CommentComponent} from "./component/comment/comment.component";
@@ -30,6 +32,7 @@ import {ClickoutsideDirective} from "./directive/clickoutside.directive";
         HeaderComponent,
         FooterComponent,
         AdminHeaderComponent,
+        AdminSideComponent,
         ButtonComponent,
         TextboxComponent,
         PortfolioCardComponent,
@@ -58,6 +61,7 @@ import {ClickoutsideDirective} from "./directive/clickoutside.directive";
         HeaderComponent,
         FooterComponent,
         AdminHeaderComponent,
+        AdminSideComponent,
         ButtonComponent,
         TextboxComponent,
         PortfolioCardComponent,
