@@ -1,5 +1,6 @@
 <div class="padding-left-8 padding-right-8 radius-8" [ngClass]="{ 'darkmode': darkmode }">
-    <select class="">
-        <option *ngFor="let opt of options" [value]="opt">{{ opt }}</option>
+    <select class="" (blur)="onTouched()" (input)="onChange($event.target.value)">
+        <option></option>
+        <option *ngFor="let opt of options; index as i" [value]="i+1">{{ opt }}</option>
     </select>
 </div>

@@ -22,7 +22,7 @@ export class PortfolioService {
 
         const count = await this.portfolioModel.find(_filter).countDocuments();
         const data = await this.portfolioModel
-            .find(_filter, { category: 1, like: 1, slug: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
+            .find(_filter, { category: 1, like: 1, slug: 1, date: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
             .skip(query.skip)
             .limit(query.limit)
             .sort(_sort)
@@ -107,6 +107,13 @@ export class PortfolioService {
         return a[0];
     }
 
+    async CreatePortfolio(body: any): Promise<any> {
+        const count = await this.portfolioModel.find().countDocuments();
+        const obj = { ...body, _id: count+1, slug: `${count+1}-${body.slug}` };
+        return await this.portfolioModel
+            .create(obj);
+    }
+
     async CreateComment(body: any): Promise<any> {
         return await this.portfolioModel
             .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
@@ -115,7 +122,6 @@ export class PortfolioService {
     }
 
     async CreateReply(body: any): Promise<any> {
-        console.log(body);
         return await this.portfolioModel
             .updateOne(
                 { _id: body.pid },

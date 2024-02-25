@@ -1,0 +1,6 @@
+<label class="flex column justify-ctr align-ctr relative radius-8 pointer">
+    <input type="file" class="absolute" (change)="OnSaveImage($event)" />
+    <app-icon *ngIf="!isLoading" icon="plus" size="20" color="gray4"></app-icon>
+    <i *ngIf="isLoading"></i>
+    <span class="caption bold color-dark margin-top-12">افزودن عکس</span>
+</label>

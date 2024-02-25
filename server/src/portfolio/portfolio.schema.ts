@@ -62,10 +62,10 @@ export class Portfolio {
     @Prop({ default: Date.now })
     date: Number;
 
-    @Prop()
+    @Prop({ default: 0 })
     visit: Number;
 
-    @Prop()
+    @Prop({ default: 0 })
     like: Number;
 
     @Prop()

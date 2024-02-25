@@ -1,0 +1,41 @@
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
+
+@keyframes spinner {
+    0%   { transform: rotate(0deg); }
+    50%  { transform: rotate(180deg);}
+    100% { transform: rotate(360deg); }
+}
+
+:host{
+    label{
+        width: 120px;
+        height: 120px;
+        border: 1px dashed color.$color-gray-3;
+        transition: all ease-in-out 0.2s;
+        &:hover{
+            border: 1px solid color.$color-info;
+            background-color: color.$color-info-tint;
+        }
+        input {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+        i{
+            display: flex;
+            content: "";
+            width: 16px;
+            height: 16px;
+            border-radius: 32px;
+            border: 3px solid transparent;
+            animation-name: spinner;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            border-bottom-color: color.$color-info;
+            border-right-color: color.$color-info;
+            border-left-color: color.$color-info;
+        }
+    }
+}

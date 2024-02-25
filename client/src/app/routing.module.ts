@@ -25,7 +25,8 @@ const routes: Routes = [
         path: "admin",
         component: AdminLayoutComponent,
         children: [
-            { path: "", loadChildren: () => import("./admin/dashboard/dashboard.module").then(m => m.DashboardModule) }
+            { path: "", loadChildren: () => import("./admin/dashboard/dashboard.module").then(m => m.DashboardModule) },
+            { path: "portfolio", loadChildren: () => import("./admin/portfolio/portfolio.module").then(m => m.PortfolioModule) }
         ]
     }
 ];

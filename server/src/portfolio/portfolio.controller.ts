@@ -1,5 +1,20 @@
-import {Body, Controller, Get, Param, Post, Query, Patch} from "@nestjs/common";
+import {
+    Body,
+    Controller,
+    Get,
+    Param,
+    Post,
+    Query,
+    Patch,
+    UseInterceptors,
+    UploadedFile,
+    ParseFilePipe, MaxFileSizeValidator, FileTypeValidator
+} from "@nestjs/common";
 import {PortfolioService} from "./portfolio.service";
+import {Express} from "express";
+import {FileInterceptor} from "@nestjs/platform-express";
+import {createWriteStream} from "fs";
+
 
 @Controller("api/v1/portfolio")
 export class PortfolioController {
@@ -18,6 +33,26 @@ export class PortfolioController {
     @Get("top/:number")
     GetTopPortfolios(@Param('number') number): any {
         return this.portfolioService.GetTopPortfolios(number);
+    }
+
+    @Post()
+    CreatePortfolio(@Body() body: object): any {
+        return this.portfolioService.CreatePortfolio(body);
+    }
+
+    @Post('saveImg')
+    @UseInterceptors(FileInterceptor('file'))
+    SaveImage(@UploadedFile(new ParseFilePipe({ validators: [
+            new MaxFileSizeValidator({ maxSize: 500000 }),
+            new FileTypeValidator({ fileType: "image/jpeg" })
+        ]})) file) {
+        const filename = `img-${Date.now()}`;
+        const ws = createWriteStream(`../uploads/${filename}.jpg`);
+        ws.write(file.buffer);
+        return {
+            state: true,
+            filename: filename
+        }
     }
 
     @Patch("comment")

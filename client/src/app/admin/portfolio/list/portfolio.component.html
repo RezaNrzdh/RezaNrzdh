@@ -1,0 +1,34 @@
+<section class="CRTMonitor width-full">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">نمونه کارها</h1>
+        <app-button href="new" [isLink]="true" class="margin-right-auto">نمونه کار جدید</app-button>
+    </div>
+    <div class="flex column background-white radius-8 shadow-24 padding-24 margin-bot-32">
+        <div class="headerTable sticky top background-white width-full grid body-2 bold color-dark padding-top-16 padding-bot-16">
+            <span>عنوان</span>
+            <span>تاریخ انتشار</span>
+            <span>ویزیت</span>
+            <span>لایک</span>
+            <span>دسته بندی</span>
+            <span>تعداد کامنت</span>
+            <span></span>
+        </div>
+        <div *ngFor="let i of data" class="rowTable flex align-ctr width-full grid body-2 medium color-dark padding-top-16 padding-bot-16 margin-top-8">
+            <div class="flex align-ctr">
+                <img src="{{i.thumbnail}}" width="40" height="40" class="radius-4" />
+                <span class="margin-right-16">{{i.title}}</span>
+            </div>
+            <span>{{i.date | PersianCalendar}}</span>
+            <span>{{i.visit}}</span>
+            <span>{{i.like}}</span>
+            <div class="flex">
+                <app-tag>{{i.category | CategoryPipe}}</app-tag>
+            </div>
+            <span>3</span>
+            <div class="flex">
+                <a routerLink="{{i.slug}}"><app-icon icon="edit" size="20" color="dark"></app-icon></a>
+                <a href="/portfolio/{{i.slug}}" target="_blank"><app-icon icon="open" size="20" color="dark"></app-icon></a>
+            </div>
+        </div>
+    </div>
+</section>

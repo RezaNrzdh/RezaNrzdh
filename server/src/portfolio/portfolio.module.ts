@@ -5,7 +5,9 @@ import {PortfolioController} from "./portfolio.controller";
 import {PortfolioService} from "./portfolio.service";
 
 @Module({
-    imports: [ MongooseModule.forFeature([{ name: "Portfolio", schema: PortfolioSchema }]) ],
+    imports: [
+        MongooseModule.forFeature([{ name: "Portfolio", schema: PortfolioSchema }])
+    ],
     controllers: [ PortfolioController ],
     providers: [ PortfolioService ]
 })

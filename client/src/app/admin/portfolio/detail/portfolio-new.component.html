@@ -1,0 +1,43 @@
+<section class="CRTMonitor width-full">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">نمونه کار جدید</h1>
+    </div>
+    <div class="flex column background-white radius-8 shadow-24 padding-24 margin-bot-32">
+        <form [formGroup]="portfolioForm" (ngSubmit)="OnSubmit()" class="flex column">
+            <app-textbox
+                title="عنوان"
+                class="width-half margin-bot-8"
+                formControlName="title"
+                [formGroup]="portfolioForm.get('title')">
+            </app-textbox>
+            <app-textbox
+                title="اسلاگ"
+                class="width-half margin-bot-8"
+                formControlName="slug"
+                [formGroup]="portfolioForm.get('slug')">
+            </app-textbox>
+            <label class="body-2 medium color-dark margin-bot-4">دسته بندی</label>
+            <app-dropdown
+                [options]="option"
+                formControlName="category"
+                [formGroup]="portfolioForm.get('category')"
+                class="margin-bot-8">
+            </app-dropdown>
+            <app-textbox
+                title="توضیحات"
+                [multiLine]="true"
+                class="margin-top-24 margin-bot-4"
+                [rows]="12"
+                formControlName="desc"
+                [formGroup]="portfolioForm.get('desc')">
+            </app-textbox>
+            <div class="flex margin-top-24">
+                <app-uploadfile (outData)="OnAddImages($event)"></app-uploadfile>
+                <div class="imagelist flex margin-right-16">
+                    <div *ngFor="let img of images" class="margin-left-8 radius-8"></div>
+                </div>
+            </div>
+            <app-button class="width-fit margin-top-24">ثبت نمونه کار</app-button>
+        </form>
+    </div>
+</section>
