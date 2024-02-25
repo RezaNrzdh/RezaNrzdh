@@ -50,8 +50,4 @@ export class AuthService {
             return false;
         }
     }
-
-    SignOut(): any {
-
-    }
 }

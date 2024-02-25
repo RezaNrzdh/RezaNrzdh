@@ -38,7 +38,8 @@ export class AuthController {
     }
 
     @Get("signout")
-    SignOut(): any {
-        return true;
+    SignOut(@Res({passthrough: true}) res: Response): any {
+        res.clearCookie("jwt");
+        return false;
     }
 }

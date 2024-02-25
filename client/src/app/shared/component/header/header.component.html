@@ -37,15 +37,15 @@
                     <app-icon icon="user2" size="20" color="white"></app-icon>
                 </a>
                 <div *ngIf="displayMenu" class="menu grid borderbox absolute background-white radius-8 padding-top-16 padding-bot-16">
-                    <a class="flex align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
+                    <a routerLink="/profile" class="flex color-dark align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
                         <app-icon icon="user2" size="20" color="secondary"></app-icon>
                         <span class="padding-right-8 body-2 medium">پروفایل</span>
                     </a>
-                    <a class="flex align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
+                    <a routerLink="/admin" class="flex color-dark align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
                         <app-icon icon="dashboard" size="20" color="secondary"></app-icon>
                         <span class="padding-right-8 body-2 medium">داشبورد ادمین</span>
                     </a>
-                    <a class="flex align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
+                    <a (click)="OnSignOut()" class="flex color-dark align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
                         <app-icon icon="logout" size="20" color="danger"></app-icon>
                         <span class="padding-right-8 body-2 medium">خروج از حساب</span>
                     </a>

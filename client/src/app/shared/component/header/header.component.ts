@@ -85,6 +85,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
     }
 
+    OnSignOut(): void {
+        this.authService.SignOut().subscribe({
+            next: ((value: any) => {
+                this.isLoggedIn = value;
+            })
+        })
+    }
+
     ngOnDestroy() {
         this.subUserService.unsubscribe();
         this.subBreakpoint.unsubscribe();

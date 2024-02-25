@@ -21,7 +21,7 @@ export class AuthService {
     }
 
 
-    SignOut(): any {
-
+    SignOut(): Observable<any> {
+        return this.http.get(`${environment.server}/auth/signout`);
     }
 }
