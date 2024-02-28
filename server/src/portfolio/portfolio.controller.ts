@@ -47,7 +47,7 @@ export class PortfolioController {
             new FileTypeValidator({ fileType: "image/jpeg" })
         ]})) file) {
         const filename = `img-${Date.now()}`;
-        const ws = createWriteStream(`../uploads/${filename}.jpg`);
+        const ws = createWriteStream(`./public/${filename}.jpg`);
         ws.write(file.buffer);
         return {
             state: true,
