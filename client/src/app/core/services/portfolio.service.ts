@@ -24,15 +24,19 @@ export class PortfolioService {
         return this.http.post(`${environment.server}/portfolio`, body);
     }
 
-    SaveImage(formData: any): Observable<any> {
-        return this.http.post(`${environment.server}/portfolio/saveImg`, formData)
-    }
-
     CreateComment(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/portfolio/comment`, body);
     }
 
     CreateReply(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/portfolio/reply`, body);
+    }
+
+    SaveImage(formData: any): Observable<any> {
+        return this.http.post(`${environment.server}/portfolio/saveImg`, formData);
+    }
+
+    DeleteImage(image: string): Observable<any> {
+        return this.http.delete(`${environment.static}/public/delete/${image}`);
     }
 }

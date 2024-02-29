@@ -12,10 +12,15 @@ import {OrderModule} from "./order/order.module";
 import {ContactModule} from "./contact/contact.module";
 import {BlogModule} from "./blog/blog.module";
 import {AuthModule} from "./auth/auth.module";
+import {ServeStaticModule} from "@nestjs/serve-static";
+import {join} from "path";
 
 @Module({
   imports: [
       MongooseModule.forRoot(constants.uri),
+      ServeStaticModule.forRoot({
+          rootPath: join(__dirname, '..', 'public')
+      }),
       EmployerModule,
       SkillModule,
       PortfolioModule,

@@ -8,12 +8,14 @@ import {
     Patch,
     UseInterceptors,
     UploadedFile,
-    ParseFilePipe, MaxFileSizeValidator, FileTypeValidator
+    ParseFilePipe,
+    MaxFileSizeValidator,
+    FileTypeValidator,
 } from "@nestjs/common";
+import {FileInterceptor} from "@nestjs/platform-express";
 import {PortfolioService} from "./portfolio.service";
 import {Express} from "express";
-import {FileInterceptor} from "@nestjs/platform-express";
-import {createWriteStream} from "fs";
+import {diskStorage} from "multer";
 
 
 @Controller("api/v1/portfolio")
@@ -41,18 +43,22 @@ export class PortfolioController {
     }
 
     @Post('saveImg')
-    @UseInterceptors(FileInterceptor('file'))
-    SaveImage(@UploadedFile(new ParseFilePipe({ validators: [
-            new MaxFileSizeValidator({ maxSize: 500000 }),
+    @UseInterceptors(FileInterceptor("file", {
+        storage: diskStorage({
+            destination: "public",
+            filename: (req, file, callback) => {
+                const name = `img-${Date.now()}.jpg`;
+                callback(null, name);
+            }
+        })
+    }))
+    SaveImage(@UploadedFile(new ParseFilePipe({
+        validators: [
+            new MaxFileSizeValidator(   { maxSize: 500000 }),
             new FileTypeValidator({ fileType: "image/jpeg" })
-        ]})) file) {
-        const filename = `img-${Date.now()}`;
-        const ws = createWriteStream(`./public/${filename}.jpg`);
-        ws.write(file.buffer);
-        return {
-            state: true,
-            filename: filename
-        }
+        ]
+    })) file: Express.Multer.File) {
+        return file;
     }
 
     @Patch("comment")
