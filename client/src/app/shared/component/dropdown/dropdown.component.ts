@@ -16,6 +16,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 export class DropdownComponent implements OnInit, ControlValueAccessor {
 
     @Input() options: Array<string>;
+    @Input() numValue: boolean = true;
     @Input() darkmode: boolean = false;
 
     value: string = "";
