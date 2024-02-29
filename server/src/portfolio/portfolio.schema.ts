@@ -62,6 +62,9 @@ export class Portfolio {
     @Prop({ default: Date.now })
     date: Number;
 
+    @Prop()
+    publish: Number;
+
     @Prop({ default: 0 })
     visit: Number;
 
