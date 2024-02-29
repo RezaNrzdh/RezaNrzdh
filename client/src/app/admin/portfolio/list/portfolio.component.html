@@ -1,15 +1,16 @@
-<section class="CRTMonitor width-full">
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
     <div class="flex align-ctr margin-bot-24">
         <h1 class="color-dark headline-5 bold">نمونه کارها</h1>
         <app-button href="new" [isLink]="true" class="margin-right-auto">نمونه کار جدید</app-button>
     </div>
-    <div class="flex column background-white radius-8 shadow-24 padding-24 margin-bot-32">
-        <div class="headerTable sticky top background-white width-full grid body-2 bold color-dark padding-top-16 padding-bot-16">
+    <div class="flex column background-white radius-8 shadow-16 padding-24 margin-bot-32">
+        <div class="headerTable sticky background-white width-full grid body-2 bold color-dark padding-top-16 padding-bot-16">
             <span>عنوان</span>
             <span>تاریخ انتشار</span>
             <span>ویزیت</span>
             <span>لایک</span>
             <span>دسته بندی</span>
+            <span>انتشار</span>
             <span>تعداد کامنت</span>
             <span></span>
         </div>
@@ -24,6 +25,7 @@
             <div class="flex">
                 <app-tag>{{i.category | CategoryPipe}}</app-tag>
             </div>
+            <span></span>
             <span>3</span>
             <div class="flex">
                 <a routerLink="{{i.slug}}"><app-icon icon="edit" size="20" color="dark"></app-icon></a>

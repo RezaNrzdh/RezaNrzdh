@@ -14,6 +14,9 @@ export class PortfolioNewComponent {
     portfolioForm: FormGroup | any;
     option: Array<string> = [...CategoryConstant];
     images: Array<string> = [];
+    category: number;
+    publish: number;
+
     env: any;
 
     constructor(private portfolioService: PortfolioService) {
@@ -21,16 +24,21 @@ export class PortfolioNewComponent {
         this.portfolioForm = new FormGroup({
             "title": new FormControl(null, [Validators.required]),
             "slug": new FormControl(null, [Validators.required]),
-            "category": new FormControl(null, [Validators.required]),
-            "file": new FormControl(null),
-            "desc": new FormControl(null, [Validators.required])
+            "category": new FormControl(1, [Validators.required]),
+            "publish": new FormControl(1, [Validators.required]),
+            "desc": new FormControl(null, [Validators.required]),
+            "thumbnail": new FormControl(null)
         });
     }
 
     OnSubmit(): void {
         if(this.portfolioForm.status === "INVALID") return;
 
-        this.portfolioService.CreatePortfolio(this.portfolioForm.value).subscribe({
+        const query = {
+            ...this.portfolioForm.value,
+            img: this.images
+        }
+        this.portfolioService.CreatePortfolio(query).subscribe({
             next: ((value: any) => {
                 console.log(value);
             })
@@ -50,5 +58,9 @@ export class PortfolioNewComponent {
                 }
             })
         })
+    }
+
+    OnTest(event: any): void{
+        console.log(event);
     }
 }
