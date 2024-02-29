@@ -6,6 +6,9 @@ import {unlink} from "fs";
 export class AppController {
     constructor(private readonly appService: AppService) {}
 
+    @Get()
+    getHello(): void {}
+
     @Get('public/:img')
     async ServeImage(@Param('img') img, @Res() res): Promise<any> {
         res.header("Cross-Origin-Resource-Policy", "same-site");
