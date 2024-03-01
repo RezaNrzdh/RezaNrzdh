@@ -3,11 +3,11 @@ import {PortfolioService} from "../../../core/services/portfolio.service";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
 
 @Component({
-    selector: "admin-portfolio",
-    templateUrl: "portfolio.component.html",
-    styleUrls: ["portfolio.component.scss"]
+    selector: "admin-portfolio-list",
+    templateUrl: "portfolio-list.component.html",
+    styleUrls: ["portfolio-list.component.scss"]
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioListComponent implements OnInit {
 
     data: Array<PortfolioModel>;
     skip: number = 0;

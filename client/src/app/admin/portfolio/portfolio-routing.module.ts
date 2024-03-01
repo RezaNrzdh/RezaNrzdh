@@ -1,12 +1,12 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {PortfolioComponent} from "./list/portfolio.component";
-import {PortfolioNewComponent} from "./detail/portfolio-new.component";
+import {PortfolioListComponent} from "./list/portfolio-list.component";
+import {PortfolioComponent} from "./detail/portfolio.component";
 
 const routes: Routes = [
-    { path: "", component: PortfolioComponent },
-    { path: ":slug", component: PortfolioNewComponent },
-    { path: "new", component: PortfolioNewComponent }
+    { path: "", component: PortfolioListComponent },
+    { path: ":slug", component: PortfolioComponent },
+    { path: "new", component: PortfolioComponent }
 ]
 
 @NgModule({

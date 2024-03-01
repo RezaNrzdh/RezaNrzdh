@@ -14,6 +14,7 @@ import {BlogModule} from "./blog/blog.module";
 import {AuthModule} from "./auth/auth.module";
 import {ServeStaticModule} from "@nestjs/serve-static";
 import {join} from "path";
+import {UserModule} from "./user/user.module";
 
 @Module({
   imports: [
@@ -28,7 +29,8 @@ import {join} from "path";
       OrderModule,
       ContactModule,
       BlogModule,
-      AuthModule
+      AuthModule,
+      UserModule
   ],
   controllers: [
       AppController,

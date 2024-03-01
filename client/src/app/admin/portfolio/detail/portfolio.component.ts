@@ -5,11 +5,11 @@ import {PortfolioService} from "../../../core/services/portfolio.service";
 import {environment} from "../../../../environments/environment"
 
 @Component({
-    selector: "admin-portfolio-new",
-    templateUrl: "portfolio-new.component.html",
-    styleUrls: ["portfolio-new.component.scss"]
+    selector: "admin-portfolio",
+    templateUrl: "portfolio.component.html",
+    styleUrls: ["portfolio.component.scss"]
 })
-export class PortfolioNewComponent {
+export class PortfolioComponent {
 
     portfolioForm: FormGroup | any;
     option: Array<string> = [...CategoryConstant];

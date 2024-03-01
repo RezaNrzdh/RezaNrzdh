@@ -8,6 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import {AdminHeaderComponent} from "./component/adminHeader/adminHeader.component";
 import {AdminSideComponent} from "./component/adminSide/adminSide.component";
+import {TableComponent} from "./component/table/table.component";
 
 import {ButtonComponent} from "./component/button/button.component";
 import {TextboxComponent} from "./component/textbox/textbox.component";
@@ -34,6 +35,7 @@ import {UploadfileComponent} from "./component/uploadfile/uploadfile.component";
         FooterComponent,
         AdminHeaderComponent,
         AdminSideComponent,
+        TableComponent,
         ButtonComponent,
         TextboxComponent,
         PortfolioCardComponent,
@@ -64,6 +66,7 @@ import {UploadfileComponent} from "./component/uploadfile/uploadfile.component";
         FooterComponent,
         AdminHeaderComponent,
         AdminSideComponent,
+        TableComponent,
         ButtonComponent,
         TextboxComponent,
         PortfolioCardComponent,
