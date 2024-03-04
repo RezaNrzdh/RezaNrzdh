@@ -46,23 +46,14 @@ export class PortfolioService {
     async GetPortfolio(slug: string): Promise<any> {
         const a = await this.portfolioModel
             .aggregate([
-                { $match: { slug: slug }},
+                { $match: { slug: slug, publish: 2 }},
                 {
                     $project: {
-                        title: "$title",
-                        slug: "$slug",
-                        date: "$date",
-                        publish: "$publish",
-                        visit: "$visit",
-                        like: "$like",
-                        img: "$img",
-                        thumbnail: "$thumbnail",
-                        desc: "$desc",
-                        category: "$category",
+                        title: "$title", slug: "$slug", date: "$date", publish: "$publish", visit: "$visit",
+                        like: "$like", img: "$img", thumbnail: "$thumbnail", desc: "$desc", category: "$category",
                         comment: {
                             $filter: {
-                                input: "$comment",
-                                as: "cm",
+                                input: "$comment", as: "cm",
                                 cond: {
                                     $eq: [ "$$cm.confirmed", true ]
                                 }
@@ -72,32 +63,17 @@ export class PortfolioService {
                 },
                 {
                     $project: {
-                        title: "$title",
-                        slug: "$slug",
-                        date: "$date",
-                        publish: "$publish",
-                        visit: "$visit",
-                        like: "$like",
-                        img: "$img",
-                        thumbnail: "$thumbnail",
-                        desc: "$desc",
-                        category: "$category",
+                        title: "$title", slug: "$slug", date: "$date", publish: "$publish", visit: "$visit",
+                        like: "$like", img: "$img", thumbnail: "$thumbnail", desc: "$desc", category: "$category",
                         comment: {
                             $map: {
-                                input: "$comment",
-                                as: "cm",
+                                input: "$comment", as: "cm",
                                 in: {
-                                    _id: "$$cm._id",
-                                    name: "$$cm.name",
-                                    email: "$$cm.email",
-                                    comment: "$$cm.comment",
-                                    like: "$$cm.like",
-                                    confirmed: "$$cm.confirmed",
-                                    date: "$$cm.date",
+                                    _id: "$$cm._id", name: "$$cm.name", email: "$$cm.email", comment: "$$cm.comment",
+                                    like: "$$cm.like", confirmed: "$$cm.confirmed", date: "$$cm.date",
                                     reply: {
                                         $filter: {
-                                            input: "$$cm.reply",
-                                            as: "cm2",
+                                            input: "$$cm.reply", as: "cm2",
                                             cond: {
                                                 $eq: [ "$$cm2.confirmed", true ]
                                             }
@@ -111,6 +87,14 @@ export class PortfolioService {
             ])
             .exec();
         return a[0];
+    }
+
+    async GetPortfolioForAdmin(slug: string): Promise<any> {
+        return await this.portfolioModel
+            .findOne(
+                { slug: slug },
+                { category: 1, date: 1, desc: 1, img: 1, publish: 1, slug: 1, thumbnail: 1, title: 1, _id: 1 })
+            .exec();
     }
 
     async CreatePortfolio(body: any): Promise<any> {

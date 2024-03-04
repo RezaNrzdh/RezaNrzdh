@@ -1,16 +1,7 @@
 import {
-    Body,
-    Controller,
-    Get,
-    Param,
-    Post,
-    Query,
-    Patch,
-    UseInterceptors,
-    UploadedFile,
-    ParseFilePipe,
-    MaxFileSizeValidator,
-    FileTypeValidator,
+    Body, Controller, Get, Param, Post,
+    Query, Patch, UseInterceptors, UploadedFile,
+    ParseFilePipe, MaxFileSizeValidator, FileTypeValidator,
 } from "@nestjs/common";
 import {FileInterceptor} from "@nestjs/platform-express";
 import {PortfolioService} from "./portfolio.service";
@@ -30,6 +21,12 @@ export class PortfolioController {
     @Get(":slug")
     GetPortfolio(@Param("slug") slug): any {
         return this.portfolioService.GetPortfolio(slug);
+    }
+
+    @Get("admin/:slug")
+    GetPortfolioForAdmin(@Param("slug") slug): any {
+        console.log(slug);
+        return this.portfolioService.GetPortfolioForAdmin(slug);
     }
 
     @Get("top/:number")

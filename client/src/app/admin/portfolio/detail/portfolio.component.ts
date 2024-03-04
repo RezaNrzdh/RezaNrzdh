@@ -36,7 +36,7 @@ export class PortfolioComponent implements OnInit {
 
     ngOnInit() {
         if(this.activatedRoute.snapshot.params["slug"] !== "new"){
-            this.portfolioService.GetPortfolio(this.activatedRoute.snapshot.params["slug"]).subscribe({
+            this.portfolioService.GetPortfolioForAdmin(this.activatedRoute.snapshot.params["slug"]).subscribe({
                 next: ((value: any) => {
                     this.portfolioForm.patchValue({
                         title: value.title,

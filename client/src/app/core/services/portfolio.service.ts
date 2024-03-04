@@ -20,6 +20,10 @@ export class PortfolioService {
         return this.http.get(`${environment.server}/portfolio/${slug}`);
     }
 
+    GetPortfolioForAdmin(slug: string): Observable<any> {
+        return this.http.get(`${environment.server}/portfolio/admin/${slug}`);
+    }
+
     CreatePortfolio(body: object): Observable<any> {
         return this.http.post(`${environment.server}/portfolio`, body);
     }
