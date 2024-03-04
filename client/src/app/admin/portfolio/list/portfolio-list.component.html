@@ -32,5 +32,8 @@
                 <a href="/portfolio/{{i.slug}}" target="_blank"><app-icon icon="open" size="20" color="dark"></app-icon></a>
             </div>
         </div>
+        <div *ngIf="count > 0" class="flex justify-ctr margin-top-24">
+            <app-button mode="outlined" color="dark" (click)="OnGetMorePortfolio()">مطالب بیشتر</app-button>
+        </div>
     </div>
 </section>

@@ -11,6 +11,7 @@ import {environment} from "../../../../environments/environment";
 export class PortfolioListComponent implements OnInit {
 
     data: Array<PortfolioModel>;
+    count: number = 0;
     skip: number = 0;
     limit: number = 16;
     sortBy: string = "id";
@@ -26,8 +27,25 @@ export class PortfolioListComponent implements OnInit {
         }
         this.portfolioService.GetAllPortfolio(query).subscribe({
             next: ((value: any) => {
-                this.data = value.data;
+                this.count = value.count - this.limit;
+                this.skip  = this.limit;
+                this.data  = value.data;
             })
-        })
+        });
+    }
+
+    OnGetMorePortfolio(): void {
+        const query = {
+            skip: this.skip,
+            limit: this.limit,
+            sortBy: this.sortBy
+        }
+        this.portfolioService.GetAllPortfolio(query).subscribe({
+            next: ((value: any) => {
+                this.count = this.count - value.data.length;
+                this.skip  = this.limit + this.skip;
+                this.data  = this.data.concat(value.data);
+            })
+        });
     }
 }
