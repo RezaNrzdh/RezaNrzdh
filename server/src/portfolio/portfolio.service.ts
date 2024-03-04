@@ -48,6 +48,7 @@ export class PortfolioService {
                         title: "$title",
                         slug: "$slug",
                         date: "$date",
+                        publish: "$publish",
                         visit: "$visit",
                         like: "$like",
                         img: "$img",
@@ -70,6 +71,7 @@ export class PortfolioService {
                         title: "$title",
                         slug: "$slug",
                         date: "$date",
+                        publish: "$publish",
                         visit: "$visit",
                         like: "$like",
                         img: "$img",
@@ -112,6 +114,10 @@ export class PortfolioService {
         const obj = { ...body, _id: count+1, slug: `${count+1}-${body.slug}` };
         return await this.portfolioModel
             .create(obj);
+    }
+
+    async ModifyPortfolio(): Promise<any> {
+
     }
 
     async CreateComment(body: any): Promise<any> {

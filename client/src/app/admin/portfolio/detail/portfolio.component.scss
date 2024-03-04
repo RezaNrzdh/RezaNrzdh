@@ -8,7 +8,7 @@
         .grid{
             grid-template-columns: 1fr 250px;
             grid-column-gap: 24px;
-            .imagelist {
+            .imagelist, .thumbnailImageContainer {
                 div {
                     width: 120px;
                     height: 120px;

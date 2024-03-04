@@ -1,34 +1,54 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {CategoryConstant} from "../../../core/constant/category.constant";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {environment} from "../../../../environments/environment"
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: "admin-portfolio",
     templateUrl: "portfolio.component.html",
     styleUrls: ["portfolio.component.scss"]
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements OnInit {
 
     portfolioForm: FormGroup | any;
     option: Array<string> = [...CategoryConstant];
     images: Array<string> = [];
-    category: number;
-    publish: number;
+    thumbnail: string;
 
-    env: any;
+    env: string = environment.static;
 
-    constructor(private portfolioService: PortfolioService) {
-        this.env = environment.static;
+    constructor(
+        private portfolioService: PortfolioService,
+        private activatedRoute: ActivatedRoute)
+    {
         this.portfolioForm = new FormGroup({
             "title": new FormControl(null, [Validators.required]),
             "slug": new FormControl(null, [Validators.required]),
             "category": new FormControl(1, [Validators.required]),
             "publish": new FormControl(1, [Validators.required]),
-            "desc": new FormControl(null, [Validators.required]),
-            "thumbnail": new FormControl(null)
+            "desc": new FormControl(null, [Validators.required])
         });
+    }
+
+    ngOnInit() {
+        if(this.activatedRoute.snapshot.params["slug"] !== "new"){
+            this.portfolioService.GetPortfolio(this.activatedRoute.snapshot.params["slug"]).subscribe({
+                next: ((value: any) => {
+                    console.log(value);
+                    this.portfolioForm.patchValue({
+                        title: value.title,
+                        slug: value.slug,
+                        desc: value.desc,
+                        category: value.category,
+                        publish: value.publish
+                    });
+                    this.thumbnail = value.thumbnail;
+                    this.images = [...this.images, ...value.img];
+                })
+            })
+        }
     }
 
     OnSubmit(): void {
@@ -36,13 +56,24 @@ export class PortfolioComponent {
 
         const query = {
             ...this.portfolioForm.value,
-            img: this.images
+            img: this.images,
+            thumbnail: this.thumbnail
         }
+        if(this.activatedRoute.snapshot.params["slug"] == "new") this.OnCreateNewPortfolio(query);
+        else this.OnModifyPortfolio(query);
+
+    }
+
+    OnCreateNewPortfolio(query: object): void {
         this.portfolioService.CreatePortfolio(query).subscribe({
             next: ((value: any) => {
                 console.log(value);
             })
         })
+    }
+
+    OnModifyPortfolio(query: object): void {
+        console.log(query);
     }
 
     OnAddImages(value: any): void {
@@ -60,7 +91,17 @@ export class PortfolioComponent {
         })
     }
 
-    OnTest(event: any): void{
-        console.log(event);
+    OnAddThumbnail(value: any): void {
+        this.thumbnail = value.filename;
+    }
+
+    OnDeleteThumbnail(imageName: string): void {
+        this.portfolioService.DeleteImage(imageName).subscribe({
+            next: ((state: any) => {
+                if(state){
+                    this.thumbnail = "";
+                }
+            })
+        })
     }
 }
