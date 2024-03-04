@@ -59,9 +59,10 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
             this.SetTabIndex(cat);
         }
 
-        this.query.skip = this.skip;
-        this.query.limit = this.limit;
-        this.query.sortBy = this.sortBy;
+        this.query.skip    = this.skip;
+        this.query.limit   = this.limit;
+        this.query.sortBy  = this.sortBy;
+        this.query.publish = 2;
 
         this.portfolioService.GetAllPortfolio(this.query).subscribe({
             next: ((value: any) => {

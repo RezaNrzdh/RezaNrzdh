@@ -3,6 +3,7 @@ export class PortfolioModel {
     title: string;
     slug: string;
     date: number;
+    publish: number;
     like: number;
     visit: number;
     thumbnail: string;

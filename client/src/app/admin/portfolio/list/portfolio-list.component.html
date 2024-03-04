@@ -25,7 +25,10 @@
             <div class="flex">
                 <app-tag>{{i.category | CategoryPipe}}</app-tag>
             </div>
-            <span></span>
+            <span>
+                <app-tag *ngIf="i.publish === 2; else altPublish" color="success">{{i.publish| Publish}}</app-tag>
+                <ng-template #altPublish><app-tag color="danger">{{i.publish| Publish}}</app-tag></ng-template>
+            </span>
             <span>3</span>
             <div class="flex">
                 <a routerLink="{{i.slug}}"><app-icon icon="edit" size="20" color="dark"></app-icon></a>

@@ -12,17 +12,21 @@ export class PortfolioService {
         let _sort: Record<any, any>;
         let _filter: Record<any, any>;
 
+        query.publish
+            ? _filter = { publish: 2 }
+            : null;
+
         query.sortBy === "id"
             ? _sort = {_id: -1}
             : _sort = {visit: -1};
 
         query.cat
-            ? _filter = {category: query.cat }
+            ? _filter = {..._filter, category: query.cat }
             : null;
 
         const count = await this.portfolioModel.find(_filter).countDocuments();
         const data = await this.portfolioModel
-            .find(_filter, { category: 1, like: 1, slug: 1, date: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
+            .find(_filter, { category: 1, like: 1, slug: 1, date: 1, publish: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
             .skip(query.skip)
             .limit(query.limit)
             .sort(_sort)
@@ -33,7 +37,7 @@ export class PortfolioService {
 
     async GetTopPortfolios(cat: number): Promise<any> {
         return await this.portfolioModel
-            .find({ category: cat },{ category: 1, like: 1, slug: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
+            .find({ category: cat, publish: 2 },{ category: 1, like: 1, slug: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
             .limit(4)
             .sort({ _id: -1 })
             .exec();

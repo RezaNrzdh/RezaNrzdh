@@ -27,6 +27,7 @@ export class PortfolioListComponent implements OnInit {
         }
         this.portfolioService.GetAllPortfolio(query).subscribe({
             next: ((value: any) => {
+                console.log(value);
                 this.count = value.count - this.limit;
                 this.skip  = this.limit;
                 this.data  = value.data;
