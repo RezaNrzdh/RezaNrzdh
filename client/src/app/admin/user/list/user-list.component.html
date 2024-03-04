@@ -11,5 +11,22 @@
             <span>نقش</span>
             <span></span>
         </div>
+        <div *ngFor="let i of data" class="rowTable flex align-ctr width-full grid body-2 medium color-dark padding-top-16 padding-bot-16 margin-top-8">
+            <div class="flex align-ctr">
+                <div class="avatar background-gray-3 radius-24 flex justify-ctr align-ctr">
+                    <app-icon icon="user2" size="20" color="dark"></app-icon>
+                </div>
+                <span class="margin-right-16">{{i.email}}</span>
+            </div>
+            <span>{{i.registerDate | PersianCalendar}}</span>
+            <div class="flex">
+                <app-tag>فعال</app-tag>
+            </div>
+            <span>{{i.role}}</span>
+            <div class="flex justify-end">
+                <a routerLink="{{i.slug}}"><app-icon icon="edit" size="20" color="dark"></app-icon></a>
+                <a href="/portfolio/{{i.slug}}" target="_blank"><app-icon icon="open" size="20" color="dark"></app-icon></a>
+            </div>
+        </div>
     </div>
 </section>

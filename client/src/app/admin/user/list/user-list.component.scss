@@ -15,6 +15,10 @@
             grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
             grid-column-gap: 16px;
             border-bottom: 1px solid color.$color-gray-1b;
+            .avatar{
+                width: 40px;
+                height: 40px;
+            }
             .like {
                 min-width: 20px;
                 min-height: 24px;
