@@ -1,6 +1,9 @@
 <div class="padding-left-8 padding-right-8 radius-8" [ngClass]="{ 'darkmode': darkmode }">
     <select class="width-fill-webkit width-fill-moz" (blur)="onTouched()" (input)="onChange($event.target.value)">
-        <option></option>
-        <option *ngFor="let opt of options; index as i" [value]="numValue ? i+1 : opt">{{ opt }}</option>
+        <option *ngFor="let opt of options; index as i"
+                [selected]="value === i+1 ? true : false"
+                [value]="numValue ? i+1 : opt">
+            {{ opt }}
+        </option>
     </select>
 </div>

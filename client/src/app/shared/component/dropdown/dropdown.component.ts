@@ -19,9 +19,9 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
     @Input() numValue: boolean = true;
     @Input() darkmode: boolean = false;
 
-    value: string = "";
+    value: number;
 
-    onChange: (value: any) => void;
+    onChange: any;
     onTouched: () => void;
 
     constructor() {
