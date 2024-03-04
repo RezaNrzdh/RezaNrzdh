@@ -15,6 +15,6 @@ export class UserService {
     constructor(private http: HttpClient) {}
 
     GetAllUsers(): Observable<any> {
-        return this.http.get(`${environment.server}`);
+        return this.http.get(`${environment.server}/users`);
     }
 }
