@@ -120,8 +120,22 @@ export class PortfolioService {
             .create(obj);
     }
 
-    async ModifyPortfolio(): Promise<any> {
-
+    async ModifyPortfolio(body: any): Promise<any> {
+        return await  this.portfolioModel
+            .updateOne(
+                { slug: body.slug },
+                {
+                    $set: {
+                        title: body.title,
+                        slug: body.slug,
+                        category: body.category,
+                        publish: body.publish,
+                        thumbnail: body.thumbnail,
+                        img: body.img,
+                        desc: body.desc
+                    }
+                })
+            .exec()
     }
 
     async CreateComment(body: any): Promise<any> {

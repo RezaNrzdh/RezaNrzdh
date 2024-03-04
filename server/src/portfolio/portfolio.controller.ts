@@ -42,6 +42,11 @@ export class PortfolioController {
         return this.portfolioService.CreatePortfolio(body);
     }
 
+    @Patch()
+    ModifyPortfolio(@Body() body: object): any {
+        return this.portfolioService.ModifyPortfolio(body);
+    }
+
     @Post('saveImg')
     @UseInterceptors(FileInterceptor("file", {
         storage: diskStorage({

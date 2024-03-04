@@ -51,7 +51,7 @@
                 <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
                     <label class="body-2 medium color-dark margin-bot-4">وضعیت انتشار</label>
                     <app-dropdown
-                        [options]="['پیش نویس','انتشار']"
+                        [options]="publish"
                         class="margin-bot-8"
                         formControlName="publish"
                         [formGroup]="portfolioForm.get('publish')">

@@ -24,6 +24,10 @@ export class PortfolioService {
         return this.http.post(`${environment.server}/portfolio`, body);
     }
 
+    ModifyPortfolio(body: object): Observable<any> {
+        return this.http.patch(`${environment.server}/portfolio`, body);
+    }
+
     CreateComment(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/portfolio/comment`, body);
     }

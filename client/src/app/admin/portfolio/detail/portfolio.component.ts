@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {environment} from "../../../../environments/environment"
 import {ActivatedRoute} from "@angular/router";
+import {PublishConstant} from "../../../core/constant/publish.constant";
 
 @Component({
     selector: "admin-portfolio",
@@ -14,6 +15,7 @@ export class PortfolioComponent implements OnInit {
 
     portfolioForm: FormGroup | any;
     option: Array<string> = [...CategoryConstant];
+    publish: Array<string> = [...PublishConstant];
     images: Array<string> = [];
     thumbnail: string;
 
@@ -36,7 +38,6 @@ export class PortfolioComponent implements OnInit {
         if(this.activatedRoute.snapshot.params["slug"] !== "new"){
             this.portfolioService.GetPortfolio(this.activatedRoute.snapshot.params["slug"]).subscribe({
                 next: ((value: any) => {
-                    console.log(value);
                     this.portfolioForm.patchValue({
                         title: value.title,
                         slug: value.slug,
@@ -73,7 +74,11 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnModifyPortfolio(query: object): void {
-        console.log(query);
+        this.portfolioService.ModifyPortfolio(query).subscribe({
+            next: ((value: any) => {
+                console.log(value);
+            })
+        })
     }
 
     OnAddImages(value: any): void {
