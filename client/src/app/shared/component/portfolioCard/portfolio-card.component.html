@@ -1,6 +1,6 @@
 <div [ngClass]="{ 'isOutline': isOutline, 'isList': isList, 'isGrid': !isList }"
      class="flex hidden radius-8 borderbox background-white">
-    <img src="{{ imageURL }}" alt="" />
+    <img src="{{env}}/public/{{ imageURL }}" alt="" />
     <div class="width-full flex column">
         <div class="title flex body-2 margin-top-16 margin-right-24 margin-left-24 margin-bot-16">
             <a routerLink="/portfolio/{{slug}}" class="body-1 bold color-dark">

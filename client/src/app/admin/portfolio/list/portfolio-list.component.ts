@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
+import {environment} from "../../../../environments/environment";
 
 @Component({
     selector: "admin-portfolio-list",
@@ -13,6 +14,7 @@ export class PortfolioListComponent implements OnInit {
     skip: number = 0;
     limit: number = 16;
     sortBy: string = "id";
+    env: string = environment.static;
 
     constructor(private portfolioService: PortfolioService) {}
 

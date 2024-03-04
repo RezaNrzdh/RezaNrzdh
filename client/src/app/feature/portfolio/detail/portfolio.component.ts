@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
+import {environment} from "../../../../environments/environment";
 
 @Component({
     selector: "app-portfolio",
@@ -19,6 +20,7 @@ export class PortfolioComponent implements OnInit {
     commentForm: FormGroup | any;
     isMedium: boolean = false;
     isSmall: boolean = false;
+    env: string = environment.static;
     sub: Subscription;
 
     currentImage: number = 0;

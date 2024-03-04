@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
+import {environment} from "../../../../environments/environment";
 
 @Component({
     selector: "app-portfoliocard",
@@ -16,6 +17,8 @@ export class PortfolioCardComponent implements OnInit {
 
     @Input() isOutline: boolean = false;
     @Input() isList: boolean = true;
+
+    env: string = environment.static;
 
     constructor() {}
 

@@ -15,7 +15,7 @@
                 </a>
                 <div class="flex radius-8 hidden">
                     <div class="sliderWeapper flex" #sliderWrapper>
-                        <img *ngFor="let img of data.img" src="{{ img }}" alt=""/>
+                        <img *ngFor="let img of data.img" src="{{env}}/public/{{ img }}" alt=""/>
                     </div>
                 </div>
                 <a (click)="ShowNextImage(sliderWrapper)" class="prev absolute left margin-left-24 padding-8 background-white radius-8 opacity-60">
