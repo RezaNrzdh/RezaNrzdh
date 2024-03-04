@@ -28,6 +28,7 @@ import {CommentComponent} from "./component/comment/comment.component";
 import {ReplyComponent} from "./component/reply/reply.component";
 import {ClickoutsideDirective} from "./directive/clickoutside.directive";
 import {UploadfileComponent} from "./component/uploadfile/uploadfile.component";
+import {PublishPipe} from "./pipe/publish.pipe";
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import {UploadfileComponent} from "./component/uploadfile/uploadfile.component";
         DropdownComponent,
         CalendarPipe,
         CategoryPipe,
+        PublishPipe,
         AlertboxComponent,
         CommentComponent,
         ReplyComponent,
@@ -78,6 +80,7 @@ import {UploadfileComponent} from "./component/uploadfile/uploadfile.component";
         DropdownComponent,
         CalendarPipe,
         CategoryPipe,
+        PublishPipe,
         AlertboxComponent,
         CommentComponent,
         ReplyComponent,
