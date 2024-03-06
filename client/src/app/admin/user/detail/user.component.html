@@ -1,0 +1,59 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">
+            ویرایش کاربر
+            {{username}}
+        </h1>
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)="OnSubmit()">
+        <div class="grid">
+            <div class="flex column background-white radius-8 shadow-16 padding-24 margin-bot-32">
+                <app-textbox
+                    title="ایمیل"
+                    class="width-half margin-bot-8"
+                    formControlName="email"
+                    [formGroup]="userForm.get('email')">
+                </app-textbox>
+                <app-textbox
+                    title="نام کاربر"
+                    class="width-half margin-bot-8"
+                    formControlName="name"
+                    [formGroup]="userForm.get('name')">
+                </app-textbox>
+                <app-textbox
+                    title="شماره موبایل"
+                    class="width-half margin-bot-8"
+                    formControlName="phone"
+                    [formGroup]="userForm.get('phone')">
+                </app-textbox>
+                <app-button class="width-fit">ویرایش کاربر</app-button>
+            </div>
+            <div>
+                <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
+                    <label class="body-1 medium color-dark margin-bot-4">اطلاعات کلی</label>
+                    <div class="margin-top-8">
+                        <span class="body-2 color-dark">تعداد ورود ناموفق:</span>
+                        <span class="body-2 color-dark margin-right-12">{{attempt}}</span>
+                    </div>
+                    <div class="margin-top-8">
+                        <span class="body-2 color-dark">تاریخ عضویت:</span>
+                        <span class="body-2 color-dark margin-right-12">{{registerDate | PersianCalendar}}</span>
+                    </div>
+                </div>
+                <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
+                    <label class="body-1 medium color-dark margin-bot-4">نقش کاربر</label>
+                    <app-dropdown
+                        [options]="role"
+                        class="margin-bot-8"
+                        formControlName="role"
+                        [formGroup]="userForm.get('role')">
+                    </app-dropdown>
+                </div>
+                <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
+                    <label class="body-1 medium color-dark margin-bot-4">وضعیت کاربر</label>
+                    <app-dropdown [options]="['','']"></app-dropdown>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

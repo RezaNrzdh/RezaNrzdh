@@ -23,6 +23,9 @@ export class User {
     @Prop()
     attempt: Number;
 
+    @Prop({ default: 1 })
+    available: Number;
+
     @Prop({ default: Date.now })
     registerDate: Number;
 }

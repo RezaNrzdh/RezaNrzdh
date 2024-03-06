@@ -11,4 +11,13 @@ export class UserService {
     async GetAllUsers(): Promise<any> {
         return this.userModel.find().exec();
     }
+
+    async GetUser(username: string): Promise<any> {
+        return await this.userModel
+            .findOne(
+                { email: username },
+                {attempt: 1, email: 1, name: 1, phone: 1, registerDate: 1, available: 1, role: 1}
+            )
+            .exec();
+    }
 }

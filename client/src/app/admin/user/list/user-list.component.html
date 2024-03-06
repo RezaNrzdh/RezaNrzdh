@@ -20,12 +20,15 @@
             </div>
             <span>{{i.registerDate | PersianCalendar}}</span>
             <div class="flex">
-                <app-tag>فعال</app-tag>
+                <app-tag *ngIf="i.available === 1; else altAvailable" color="success">فعال</app-tag>
+                <ng-template #altAvailable><app-tag color="danger">غیرفعال</app-tag></ng-template>
             </div>
-            <span>{{i.role}}</span>
+            <span>
+                <app-tag *ngIf="i.role === 2; else altRole" color="primary">{{i.role | Role}}</app-tag>
+                <ng-template #altRole><app-tag color="secondary">{{i.role | Role}}</app-tag></ng-template>
+            </span>
             <div class="flex justify-end">
-                <a routerLink="{{i.slug}}"><app-icon icon="edit" size="20" color="dark"></app-icon></a>
-                <a href="/portfolio/{{i.slug}}" target="_blank"><app-icon icon="open" size="20" color="dark"></app-icon></a>
+                <a routerLink="{{i.email}}"><app-icon icon="edit" size="20" color="dark"></app-icon></a>
             </div>
         </div>
     </div>

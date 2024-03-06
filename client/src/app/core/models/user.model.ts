@@ -6,5 +6,6 @@ export class UserModel {
     role: number;
     phone: number;
     attempt: number;
+    available: number;
     registerDate: number;
 }
