@@ -1,6 +1,6 @@
 import {Controller, Delete, Get, Param, Res} from '@nestjs/common';
 import { AppService } from './app.service';
-import {unlink} from "fs";
+import {unlink, readdir} from "fs";
 
 @Controller()
 export class AppController {
@@ -18,11 +18,21 @@ export class AppController {
     @Delete('public/delete/:file')
     async DeleteImage(@Param('file') file, @Res() res): Promise<any> {
 
-        unlink(`./public/${file}`, OnError);
+        unlink(`./public/${file}`, Callback);
 
-        function OnError(err) {
+        function Callback(err) {
             if(err) res.send(false);
             else res.send(true);
+        }
+    }
+
+    @Get("public/read/files")
+    async ReadImages(@Res() res): Promise<any> {
+        readdir("./public", null, Callback);
+
+        function Callback(err, files) {
+            if(err) res.send(err);
+            else res.send(files)
         }
     }
 

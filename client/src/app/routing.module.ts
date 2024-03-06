@@ -27,7 +27,8 @@ const routes: Routes = [
         children: [
             { path: "", loadChildren: () => import("./admin/dashboard/dashboard.module").then(m => m.DashboardModule) },
             { path: "portfolio", loadChildren: () => import("./admin/portfolio/portfolio.module").then(m => m.PortfolioModule) },
-            { path: "user", loadChildren: () => import("./admin/user/user.module").then(m=> m.UserModule) }
+            { path: "user", loadChildren: () => import("./admin/user/user.module").then(m=> m.UserModule) },
+            { path: "images", loadChildren: () => import("./admin/images/images.module").then(m => m.ImagesModule) }
         ]
     }
 ];

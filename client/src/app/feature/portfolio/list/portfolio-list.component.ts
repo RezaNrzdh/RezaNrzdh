@@ -7,6 +7,7 @@ import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
 import {SortEnum} from "../../../core/enum/sort.enum";
 import {CategoryConstant} from "../../../core/constant/category.constant";
 import {SortConstant} from "../../../core/constant/sort.constant";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-portfolio-list',
@@ -35,7 +36,8 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
 
     sub: Subscription;
 
-    constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService) {
+    constructor(private portfolioService: PortfolioService, private responsiveService: ResponsiveService, private titleService: Title) {
+        this.titleService.setTitle("RezaNrzdh - Portfolio");
         this.sub = this.responsiveService.breakpoint.subscribe({
             next: ((value: any) => {
                 value[ResponsiveEnum.SMALL] ? this.isSmall = true : this.isSmall = false;

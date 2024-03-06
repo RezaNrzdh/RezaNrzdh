@@ -19,6 +19,8 @@ export class PortfolioComponent implements OnInit {
     images: Array<string> = [];
     thumbnail: string;
 
+    alertbox: boolean = false;
+    isSpin: boolean = false;
     env: string = environment.static;
 
     constructor(
@@ -53,7 +55,7 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnSubmit(): void {
-        if(this.portfolioForm.status === "INVALID") return;
+        if(this.portfolioForm.status === "INVALID" || this.isSpin) return;
 
         const query = {
             ...this.portfolioForm.value,
@@ -66,19 +68,27 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnCreateNewPortfolio(query: object): void {
+        this.isSpin = true;
         this.portfolioService.CreatePortfolio(query).subscribe({
             next: ((value: any) => {
-                console.log(value);
+                this.isSpin = false;
+                this.alertbox = true;
             })
         })
     }
 
     OnModifyPortfolio(query: object): void {
+        this.isSpin = true;
         this.portfolioService.ModifyPortfolio(query).subscribe({
             next: ((value: any) => {
-                console.log(value);
+                this.isSpin = false;
+                this.alertbox = true;
             })
         })
+    }
+
+    OnAlertBoxHide(value: boolean): void {
+        this.alertbox = value;
     }
 
     OnAddImages(value: any): void {
