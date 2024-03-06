@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BlogService} from "../../../core/services/blog.service";
 import {BlogModel} from "../../../core/models/blog.model";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-blog-list',
@@ -18,7 +19,8 @@ export class BlogListComponent implements OnInit {
     limit: number = 9;
     offset: number = 0;
 
-    constructor(private blogService: BlogService) {
+    constructor(private blogService: BlogService, private titleService: Title) {
+        this.titleService.setTitle("RezaNrzdh - Blog");
         this.isLoading = true;
     }
 

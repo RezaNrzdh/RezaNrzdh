@@ -3,12 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../core/services/auth.service";
 import {Router} from "@angular/router";
 import {AlertEnum} from "../../../core/enum/alert.enum";
-
-interface AlertboxInterface {
-    type: string;
-    msg: string;
-}
-
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-login',
@@ -22,7 +17,9 @@ export class LoginComponent implements OnInit {
     alertbox: {type: string, msg: string};
     loginForm: FormGroup | any;
 
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private authService: AuthService, private router: Router, private titleService: Title) {
+        this.titleService.setTitle("RezaNrzdh - Login");
+    }
 
     ngOnInit(): void {
         this.loginForm = new FormGroup({

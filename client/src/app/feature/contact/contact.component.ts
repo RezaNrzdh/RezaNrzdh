@@ -4,6 +4,7 @@ import {ContactService} from "../../core/services/contact.service";
 import {AboutModel} from "../../core/models/about.model";
 import {AlertboxModel} from "../../core/models/alertbox.model";
 import {AlertEnum} from "../../core/enum/alert.enum";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-contact',
@@ -18,7 +19,9 @@ export class ContactComponent implements OnInit {
     data: AboutModel = new AboutModel();
     contactForm: FormGroup | any;
 
-    constructor(private contactService: ContactService) { }
+    constructor(private contactService: ContactService, private titleService: Title) {
+        this.titleService.setTitle("RezaNrzdh - Contact Me");
+    }
 
     ngOnInit(): void {
         this.contactForm = new FormGroup({

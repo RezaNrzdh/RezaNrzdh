@@ -4,6 +4,7 @@ import {ResponsiveService} from "../../core/services/responsive.service";
 import {AboutModel} from "../../core/models/about.model";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../core/enum/responsive.enum";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-about',
@@ -19,7 +20,8 @@ export class AboutComponent implements OnInit, OnDestroy {
     options: Array<string> = ['طراحی UIUX','برنامه نویسی','گرافیک دو بعدی','گرافیک سه بعدی','بازیسازی'];
     sub: Subscription;
 
-    constructor(private AboutService: AboutService, private responsiveService: ResponsiveService) {
+    constructor(private AboutService: AboutService, private responsiveService: ResponsiveService, private titleService: Title) {
+        this.titleService.setTitle("RezaNrzdh - About Me");
         this.sub = this.responsiveService.breakpoint.subscribe({
             next: ((value: any) => {
                 value[ResponsiveEnum.SMALL] ? this.isSmall = true : this.isSmall = false;

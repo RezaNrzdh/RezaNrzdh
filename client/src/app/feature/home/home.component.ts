@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: "app-home",
@@ -11,7 +12,8 @@ export class HomeComponent implements OnInit {
     isMobile: boolean = false;
     pattern = /mobile/i;
 
-    constructor() {
+    constructor(private titleService: Title) {
+        this.titleService.setTitle("RezaNrzdh - Home")
     }
 
     ngOnInit() {
