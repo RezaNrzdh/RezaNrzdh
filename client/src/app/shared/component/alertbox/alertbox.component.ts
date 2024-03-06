@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 @Component({
     selector: "app-alertbox",
@@ -6,6 +6,16 @@ import {Component, Input} from "@angular/core";
     styleUrls: ["alertbox.component.scss"]
 })
 export class AlertboxComponent{
+    @Input() msg: string;
     @Input() type: string = "success";
-    constructor() {}
+    @Input() time: number = 3;
+    @Input() location: "TopCenter" | "BotCenter" | "BotLeft" | "BotRight" | "TopLeft" | "TopRight" = "TopCenter";
+    @Output() output = new EventEmitter<any>();
+
+    constructor() {
+        const timeout = setTimeout(() => {
+            clearTimeout(timeout);
+            this.output.emit(false);
+        },this.time * 1000);
+    }
 }
