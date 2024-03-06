@@ -11,7 +11,7 @@ export class Auth {
     @Prop({ minLength: 6 })
     password: String;
 
-    @Prop({ default: 0 })
+    @Prop({ default: 1 })
     role: Number;
 
     @Prop({ default: 0 })

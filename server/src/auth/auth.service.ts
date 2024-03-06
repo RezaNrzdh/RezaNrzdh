@@ -29,7 +29,7 @@ export class AuthService {
     }
 
     async SignIn(body: any): Promise<any> {
-        const user = await this.authModel.findOne({email: { $regex: body.email}});
+        const user = await this.authModel.findOne({email: body.email});
         if (!user) return;
 
         const compare = await bcrypt.compare(body.password, user.password.toString());
