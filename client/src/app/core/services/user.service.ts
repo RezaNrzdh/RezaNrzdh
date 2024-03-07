@@ -21,4 +21,8 @@ export class UserService {
     GetUser(username: string): Observable<any> {
         return this.http.get(`${environment.server}/user/${username}`);
     }
+
+    ModifyUser(body: object): Observable<any> {
+        return this.http.patch(`${environment.server}/user`, body);
+    }
 }

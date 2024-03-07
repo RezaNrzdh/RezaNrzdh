@@ -1,4 +1,4 @@
-import {Controller, Get, Param} from "@nestjs/common";
+import {Body, Controller, Get, Param, Patch} from "@nestjs/common";
 import {UserService} from "./user.service";
 
 @Controller("api/v1/user")
@@ -13,5 +13,10 @@ export class UserController {
     @Get(":username")
     GetUser(@Param("username") username): any {
         return this.userService.GetUser(username);
+    }
+
+    @Patch()
+    ModifyUser(@Body() body: object): any {
+        return this.userService.ModifyUser(body);
     }
 }

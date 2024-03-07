@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {UserModel} from "../../../core/models/user.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {RoleConstant} from "../../../core/constant/role.constant";
+import {UserStateConstant} from "../../../core/constant/user-state.constant";
 
 @Component({
     selector: "admin-user",
@@ -15,18 +16,21 @@ export class UserComponent implements OnInit {
     username: string;
     data: UserModel;
     role: Array<string> = [...RoleConstant];
+    userState: Array<string> = [...UserStateConstant];
     userForm: FormGroup | any;
 
     attempt: number;
     available: number;
     registerDate: number;
+    id: any;
 
     constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
         this.userForm = new FormGroup({
             "email": new FormControl(null),
             "name": new FormControl(null),
             "phone": new FormControl(null),
-            "role": new FormControl(null)
+            "role": new FormControl(null),
+            "available": new FormControl(false),
         });
     }
 
@@ -40,14 +44,24 @@ export class UserComponent implements OnInit {
                     phone: value.phone,
                     role: value.role
                 });
+                this.id = value._id;
                 this.attempt = value.attempt;
-                this.available = 1;
+                this.available = value.available;
                 this.registerDate = value.registerDate;
             })
         })
     }
 
     OnSubmit(): void {
-        console.log(this.userForm.value);
+        const form = {
+            _id: this.id,
+            ...this.userForm.value,
+            available: this.userForm.value.available == 2
+        }
+        this.userService.ModifyUser(form).subscribe({
+            next: ((value: any) => {
+                console.log(value);
+            })
+        })
     }
 }

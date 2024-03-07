@@ -3,9 +3,6 @@ import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 @Schema({collection: "user"})
 export class User {
     @Prop()
-    _id: Number;
-
-    @Prop()
     email: String;
 
     @Prop()
@@ -23,8 +20,8 @@ export class User {
     @Prop()
     attempt: Number;
 
-    @Prop({ default: 1 })
-    available: Number;
+    @Prop({ default: true })
+    available: Boolean;
 
     @Prop({ default: Date.now })
     registerDate: Number;

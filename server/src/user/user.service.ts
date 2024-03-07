@@ -16,7 +16,27 @@ export class UserService {
         return await this.userModel
             .findOne(
                 { email: username },
-                {attempt: 1, email: 1, name: 1, phone: 1, registerDate: 1, available: 1, role: 1}
+                {_id: 1, attempt: 1, email: 1, name: 1, phone: 1, registerDate: 1, available: 1, role: 1}
+            )
+            .exec();
+    }
+
+    async ModifyUser(body: any): Promise<any> {
+        console.log(body);
+        return this.userModel
+            .updateOne(
+                {
+                    _id: body._id
+                },
+                {
+                    $set: {
+                        email: body.email,
+                        name: body.name,
+                        role: body.role,
+                        phone: body.phone,
+                        available: body.available
+                    }
+                }
             )
             .exec();
     }

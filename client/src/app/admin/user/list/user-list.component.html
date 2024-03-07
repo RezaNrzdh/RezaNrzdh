@@ -1,7 +1,6 @@
 <section class="width-full padding-top-24 padding-right-24 padding-left-32">
     <div class="flex align-ctr margin-bot-24">
         <h1 class="color-dark headline-5 bold">کاربران سایت</h1>
-        <app-button href="new" [isLink]="true" class="margin-right-auto">کاربر جدید</app-button>
     </div>
     <div class="flex column background-white radius-8 shadow-16 padding-24 margin-bot-32">
         <div class="headerTable sticky background-white width-full grid body-2 bold color-dark padding-top-16 padding-bot-16">
@@ -20,7 +19,7 @@
             </div>
             <span>{{i.registerDate | PersianCalendar}}</span>
             <div class="flex">
-                <app-tag *ngIf="i.available === 1; else altAvailable" color="success">فعال</app-tag>
+                <app-tag *ngIf="i.available; else altAvailable" color="success">فعال</app-tag>
                 <ng-template #altAvailable><app-tag color="danger">غیرفعال</app-tag></ng-template>
             </div>
             <span>
