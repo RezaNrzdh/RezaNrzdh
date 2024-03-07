@@ -26,7 +26,7 @@
                     formControlName="phone"
                     [formGroup]="userForm.get('phone')">
                 </app-textbox>
-                <app-button class="width-fit">ویرایش کاربر</app-button>
+                <app-button class="width-fit margin-top-auto">ویرایش کاربر</app-button>
             </div>
             <div>
                 <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
@@ -51,7 +51,12 @@
                 </div>
                 <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
                     <label class="body-1 medium color-dark margin-bot-4">وضعیت کاربر</label>
-                    <app-dropdown [options]="['','']"></app-dropdown>
+                    <app-dropdown
+                        [options]="userState"
+                        class="margin-bot-8"
+                        formControlName="available"
+                        [formGroup]="userForm.get('available')">
+                    </app-dropdown>
                 </div>
             </div>
         </div>
