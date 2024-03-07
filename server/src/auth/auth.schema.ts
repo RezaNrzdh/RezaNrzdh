@@ -20,6 +20,9 @@ export class Auth {
     @Prop({ default: Date.now })
     registerDate: Number;
 
+    @Prop({ default: true })
+    available: Boolean
+
     @Prop({ default: 0, max: 5 })
     attempt: Number;
 }
