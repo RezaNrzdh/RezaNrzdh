@@ -17,6 +17,11 @@
                         padding-right:16px;
                         background-color: color.$color-gray-1b;
                     }
+                    &.active {
+                        padding-right:16px;
+                        color: white;
+                        background-color: color.$color-gray-5;
+                    }
                 }
             }
         }
