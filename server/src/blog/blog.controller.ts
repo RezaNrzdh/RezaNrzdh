@@ -15,6 +15,11 @@ export class BlogController {
         return this.blogService.GetArticle(slug);
     }
 
+    @Get("admin/:slug")
+    GetArticleForAdmin(@Param("slug") slug): any {
+        return this.blogService.GetArticleForAdmin(slug);
+    }
+
     @Patch("/comment")
     CreateComment(@Body() body: any): any {
         return this.blogService.CreateComment(body);

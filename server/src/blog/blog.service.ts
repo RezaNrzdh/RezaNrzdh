@@ -80,6 +80,15 @@ export class BlogService {
         return filter[0];
     }
 
+    async GetArticleForAdmin(slug: string): Promise<any> {
+        return this.blogModel
+            .findOne(
+                { slug: slug },
+                {}
+            )
+            .exec();
+    }
+
     async CreateComment(body: any): Promise<any> {
         return await this.blogModel
             .updateOne({ _id: body.pid }, { $push: { comment: body.body }})

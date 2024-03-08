@@ -51,9 +51,6 @@ class Comment {
 @Schema({ collection: "article" })
 export class Blog {
     @Prop()
-    _id: Number;
-
-    @Prop()
     title: String;
 
     @Prop()
