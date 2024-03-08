@@ -19,4 +19,12 @@ export class ContactService {
     async GetInformation(): Promise<any> {
         return this.aboutModel.find().exec();
     }
+
+    async GetContact(slug: any): Promise<any> {
+        return this.contactModel.findOne({ _id: slug }).exec();
+    }
+
+    async GetAllContacts(): Promise<any> {
+        return this.contactModel.find().sort({_id: -1}).exec();
+    }
 }

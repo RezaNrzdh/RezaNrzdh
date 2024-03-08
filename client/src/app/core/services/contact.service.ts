@@ -11,7 +11,15 @@ export class ContactService {
         return this.http.post(`${environment.server}/contact/comment`, body);
     }
 
-    GetInformation(): any {
-        return this.http.get(`${environment.server}/contact`);
+    GetInformation(): Observable<any> {
+        return this.http.get(`${environment.server}/contact/info`);
+    }
+
+    GetAllContacts(): Observable<any> {
+        return this.http.get(`${environment.server}/contact/find/all`);
+    }
+
+    GetContact(param: any): Observable<any> {
+        return this.http.get(`${environment.server}/contact/${param}`);
     }
 }

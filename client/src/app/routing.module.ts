@@ -28,7 +28,8 @@ const routes: Routes = [
             { path: "", loadChildren: () => import("./admin/dashboard/dashboard.module").then(m => m.DashboardModule) },
             { path: "portfolio", loadChildren: () => import("./admin/portfolio/portfolio.module").then(m => m.PortfolioModule) },
             { path: "user", loadChildren: () => import("./admin/user/user.module").then(m=> m.UserModule) },
-            { path: "images", loadChildren: () => import("./admin/images/images.module").then(m => m.ImagesModule) }
+            { path: "images", loadChildren: () => import("./admin/images/images.module").then(m => m.ImagesModule) },
+            { path: "contact", loadChildren: () => import("./admin/contact/contact.module").then(m => m.ContactModule) }
         ]
     }
 ];

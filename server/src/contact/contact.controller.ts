@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post} from "@nestjs/common";
 import {ContactService} from "./contact.service";
 
 @Controller("api/v1/contact")
@@ -11,8 +11,18 @@ export class ContactController {
         return this.contactService.CreateComment(body);
     }
 
-    @Get()
+    @Get("info")
     GetInformation(): any {
         return this.contactService.GetInformation();
+    }
+
+    @Get(":slug")
+    GetContact(@Param("slug") slug: any): any {
+        return this.contactService.GetContact(slug);
+    }
+
+    @Get("find/all")
+    GetAllContacts(): any {
+        return this.contactService.GetAllContacts();
     }
 }

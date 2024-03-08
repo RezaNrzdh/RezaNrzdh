@@ -9,6 +9,9 @@ export class Contact {
     @Prop()
     email: String;
 
+    @Prop({ default: Date.now })
+    registerDate: Number;
+
     @Prop()
     phone: Number;
 

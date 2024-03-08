@@ -1,0 +1,25 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">نظرات کاربران</h1>
+    </div>
+    <div class="flex column background-white radius-8 shadow-16 padding-24 margin-bot-32">
+        <div class="headerTable sticky background-white width-full grid body-2 bold color-dark padding-top-16 padding-bot-16">
+            <span>نام و نام خانوادگی</span>
+            <span>موضوع</span>
+            <span>تاریخ ارسال</span>
+            <span>آدرس ایمیل</span>
+            <span>شماره تماس</span>
+            <span></span>
+        </div>
+        <div *ngFor="let i of data" class="rowTable flex align-ctr width-full grid body-2 medium color-dark padding-top-16 padding-bot-16 margin-top-8">
+            <span>{{ i.name }}</span>
+            <span>{{ i.subject }}</span>
+            <span>{{ i.registerDate | PersianCalendar }}</span>
+            <span>{{ i.email }}</span>
+            <span>{{ i.phone }}</span>
+            <div class="flex margin-right-auto">
+                <a routerLink="{{i._id}}"><app-icon icon="open" size="20" color="dark"></app-icon></a>
+            </div>
+        </div>
+    </div>
+</section>
