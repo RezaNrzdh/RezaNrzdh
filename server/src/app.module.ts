@@ -36,7 +36,7 @@ import {UserModule} from "./user/user.module";
       AppController,
   ],
   providers: [
-      AppService,
+      AppService
   ],
 })
 export class AppModule {}
