@@ -1,12 +1,13 @@
 import {
     Body, Controller, Get, Param, Post,
     Query, Patch, UseInterceptors, UploadedFile,
-    ParseFilePipe, MaxFileSizeValidator, FileTypeValidator,
+    ParseFilePipe, MaxFileSizeValidator, FileTypeValidator, UseGuards,
 } from "@nestjs/common";
 import {FileInterceptor} from "@nestjs/platform-express";
 import {PortfolioService} from "./portfolio.service";
 import {Express} from "express";
 import {diskStorage} from "multer";
+import {AuthGuard} from "../guard/auth.guard";
 
 
 @Controller("api/v1/portfolio")
@@ -24,6 +25,7 @@ export class PortfolioController {
     }
 
     @Get("admin/:slug")
+    @UseGuards(AuthGuard)
     GetPortfolioForAdmin(@Param("slug") slug): any {
         console.log(slug);
         return this.portfolioService.GetPortfolioForAdmin(slug);
@@ -35,16 +37,19 @@ export class PortfolioController {
     }
 
     @Post()
+    @UseGuards(AuthGuard)
     CreatePortfolio(@Body() body: object): any {
         return this.portfolioService.CreatePortfolio(body);
     }
 
     @Patch()
+    @UseGuards(AuthGuard)
     ModifyPortfolio(@Body() body: object): any {
         return this.portfolioService.ModifyPortfolio(body);
     }
 
     @Post('saveImg')
+    @UseGuards(AuthGuard)
     @UseInterceptors(FileInterceptor("file", {
         storage: diskStorage({
             destination: "public",
