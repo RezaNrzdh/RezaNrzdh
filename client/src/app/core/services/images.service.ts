@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class ImagesService {
     constructor(private http: HttpClient) {}
 

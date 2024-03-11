@@ -1,11 +1,12 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
 
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
-import { CoreModule } from './app/core/core.module';
 import { RoutingModule } from './app/routing.module';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+
+import {HttpInterceptorService} from "./app/core/interceptor/http.interceptor";
 
 if (environment.production) {
   enableProdMode();
@@ -13,8 +14,13 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, RoutingModule, CoreModule),
+        importProvidersFrom(BrowserModule, RoutingModule),
         provideHttpClient(withInterceptorsFromDi()),
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpInterceptorService,
+            multi: true
+        }
     ]
 })
   .catch(err => console.error(err));

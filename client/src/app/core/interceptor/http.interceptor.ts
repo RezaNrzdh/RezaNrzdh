@@ -8,7 +8,7 @@ import {
 import {Observable} from "rxjs";
 
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class HttpInterceptorService implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         req = req.clone({
