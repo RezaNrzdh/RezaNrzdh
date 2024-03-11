@@ -51,13 +51,19 @@ class Comment {
 @Schema({ collection: "article" })
 export class Blog {
     @Prop()
+    _id: Number;
+
+    @Prop()
     title: String;
 
     @Prop()
     slug: String;
 
-    @Prop()
+    @Prop({ default: Date.now })
     date: Number;
+
+    @Prop({ default: false })
+    publish: Boolean;
 
     @Prop()
     like: Number;
@@ -70,6 +76,9 @@ export class Blog {
 
     @Prop()
     img: String;
+
+    @Prop()
+    thumbnail: String;
 
     @Prop()
     desc: String;

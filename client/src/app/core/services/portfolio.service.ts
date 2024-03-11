@@ -40,10 +40,6 @@ export class PortfolioService {
         return this.http.patch(`${environment.server}/portfolio/reply`, body);
     }
 
-    SaveImage(formData: any): Observable<any> {
-        return this.http.post(`${environment.server}/portfolio/saveImg`, formData);
-    }
-
     DeleteImage(image: string): Observable<any> {
         return this.http.delete(`${environment.static}/public/delete/${image}`);
     }

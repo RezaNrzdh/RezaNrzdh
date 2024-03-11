@@ -20,7 +20,6 @@ export class AuthService {
         return this.http.get(`${environment.server}/auth/verify`);
     }
 
-
     SignOut(): Observable<any> {
         return this.http.get(`${environment.server}/auth/signout`);
     }

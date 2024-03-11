@@ -1,5 +1,6 @@
-import {Query, Controller, Get, Param, Patch, Body} from "@nestjs/common";
+import {Query, Controller, Get, Param, Patch, Body, UseGuards, Post} from "@nestjs/common";
 import {BlogService} from "./blog.service";
+import {AuthGuard} from "../guard/auth.guard";
 
 @Controller("api/v1/blog")
 export class BlogController {
@@ -15,9 +16,28 @@ export class BlogController {
         return this.blogService.GetArticle(slug);
     }
 
+    @Get("admin/find/all")
+    @UseGuards(AuthGuard)
+    GetAllArticlesForAdmin(@Query() query): any {
+        return this.blogService.GetAllArticlesForAdmin(query);
+    }
+
     @Get("admin/:slug")
+    @UseGuards(AuthGuard)
     GetArticleForAdmin(@Param("slug") slug): any {
         return this.blogService.GetArticleForAdmin(slug);
+    }
+
+    @Post()
+    @UseGuards(AuthGuard)
+    CreateArticle(@Body() body: object): any {
+        return this.blogService.CreateArticle(body);
+    }
+
+    @Patch()
+    @UseGuards(AuthGuard)
+    ModifyArticle(@Body() body: object): any {
+        return this.blogService.ModifyArticle(body);
     }
 
     @Patch("/comment")

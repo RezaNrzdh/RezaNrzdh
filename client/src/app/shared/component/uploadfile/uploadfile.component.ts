@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
+import {ImagesService} from "../../../core/services/images.service";
 
 @Component({
     selector: "app-uploadfile",
@@ -13,7 +14,7 @@ export class UploadfileComponent implements OnInit {
     isLoading: boolean = false;
     formData: FormData = new FormData();
 
-    constructor(private portfolioService: PortfolioService) {}
+    constructor(private imageService: ImagesService) {}
 
     ngOnInit() {
     }
@@ -21,7 +22,7 @@ export class UploadfileComponent implements OnInit {
     OnSaveImage(event: any): void {
         this.isLoading = true;
         this.formData.append("file", event.target.files[0]);
-        this.portfolioService.SaveImage(this.formData).subscribe({
+        this.imageService.SaveImage(this.formData).subscribe({
             next: ((value: any) => {
                 this.outData.emit(value);
                 this.isLoading = false;

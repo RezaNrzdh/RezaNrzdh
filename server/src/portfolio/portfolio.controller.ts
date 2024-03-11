@@ -48,26 +48,6 @@ export class PortfolioController {
         return this.portfolioService.ModifyPortfolio(body);
     }
 
-    @Post('saveImg')
-    @UseGuards(AuthGuard)
-    @UseInterceptors(FileInterceptor("file", {
-        storage: diskStorage({
-            destination: "public",
-            filename: (req, file, callback) => {
-                const name = `img-${Date.now()}.jpg`;
-                callback(null, name);
-            }
-        })
-    }))
-    SaveImage(@UploadedFile(new ParseFilePipe({
-        validators: [
-            new MaxFileSizeValidator(   { maxSize: 500000 }),
-            new FileTypeValidator({ fileType: "image/jpeg" })
-        ]
-    })) file: Express.Multer.File) {
-        return file;
-    }
-
     @Patch("comment")
     CreateComment(@Body() body: object): any {
         return this.portfolioService.CreateComment(body);

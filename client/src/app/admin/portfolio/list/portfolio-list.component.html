@@ -16,7 +16,7 @@
         </div>
         <div *ngFor="let i of data" class="rowTable flex align-ctr width-full grid body-2 medium color-dark padding-top-16 padding-bot-16 margin-top-8">
             <div class="flex align-ctr">
-                <img src="{{env}}/public/{{i.thumbnail}}" width="40" height="40" class="radius-4" />
+                <img src="{{i.thumbnail | ImagePath}}" width="40" height="40" class="radius-4" />
                 <span class="margin-right-16">{{i.title}}</span>
             </div>
             <span>{{i.date | PersianCalendar}}</span>

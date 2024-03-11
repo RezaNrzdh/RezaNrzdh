@@ -10,6 +10,12 @@ export class BlogService {
 
     async GetAllArticles(query: any): Promise<any> {
         const count = await this.blogModel.find().countDocuments();
+        const data  = await this.blogModel.find({ publish: true }).skip(query.offset).limit(query.limit).sort({ _id: -1 }).exec();
+        return { count: count, data: data }
+    }
+
+    async GetAllArticlesForAdmin(query: any): Promise<any> {
+        const count = await this.blogModel.find().countDocuments();
         const data  = await this.blogModel.find().skip(query.offset).limit(query.limit).sort({ _id: -1 }).exec();
         return { count: count, data: data }
     }
@@ -17,15 +23,17 @@ export class BlogService {
     async GetArticle(slug: string): Promise<any> {
         const filter = await this.blogModel
             .aggregate([
-                { $match: { slug: slug } },
+                { $match: { slug: slug, publish: true } },
                 {
                     $project: {
                         title: "$title",
                         slug: "$slug",
                         read: "$read",
+                        publish: "$publish",
                         visit: "$visit",
                         like: "$like",
                         img: "$img",
+                        thumbnail: "$thumbnail",
                         desc: "$desc",
                         date: "$date",
                         comment: {
@@ -44,9 +52,11 @@ export class BlogService {
                         title: "$title",
                         slug: "$slug",
                         read: "$read",
+                        publish: "$publish",
                         visit: "$visit",
                         like: "$like",
                         img: "$img",
+                        thumbnail: "$thumbnail",
                         desc: "$desc",
                         date: "$date",
                         comment: {
@@ -85,6 +95,32 @@ export class BlogService {
             .findOne(
                 { slug: slug },
                 {}
+            )
+            .exec();
+    }
+
+    async CreateArticle(body: any): Promise<any> {
+        const count = await this.blogModel.find().countDocuments();
+        const obj = { ...body, _id: count+1, slug: `${count+1}-${body.slug}` };
+        return await this.blogModel.create(obj);
+    }
+
+    async ModifyArticle(body: any): Promise<any> {
+        console.log(body);
+        return await  this.blogModel
+            .updateOne(
+                { slug: body.slug },
+                {
+                    $set: {
+                        title: body.title,
+                        slug: body.slug,
+                        img: body.img,
+                        read: body.read,
+                        thumbnail: body.thumbnail,
+                        desc: body.desc,
+                        publish: body.publish
+                    }
+                }
             )
             .exec();
     }

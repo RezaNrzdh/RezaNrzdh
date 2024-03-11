@@ -30,6 +30,7 @@ import {ClickoutsideDirective} from "./directive/clickoutside.directive";
 import {UploadfileComponent} from "./component/uploadfile/uploadfile.component";
 import {PublishPipe} from "./pipe/publish.pipe";
 import {RolePipe} from "./pipe/role.pipe";
+import {ImagePathPipe} from "./pipe/image-path.pipe";
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import {RolePipe} from "./pipe/role.pipe";
         CategoryPipe,
         PublishPipe,
         RolePipe,
+        ImagePathPipe,
         AlertboxComponent,
         CommentComponent,
         ReplyComponent,
@@ -84,6 +86,7 @@ import {RolePipe} from "./pipe/role.pipe";
         CategoryPipe,
         PublishPipe,
         RolePipe,
+        ImagePathPipe,
         AlertboxComponent,
         CommentComponent,
         ReplyComponent,

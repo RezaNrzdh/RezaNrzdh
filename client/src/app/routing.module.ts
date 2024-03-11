@@ -4,6 +4,7 @@ import {MainLayoutComponent} from "./shared/layout/main-layout/main-layout.compo
 import {CheckTokenService} from "./core/resolver/checkToken.service";
 import {CheckBreakpointService} from "./core/resolver/checkBreakpoint.service";
 import {AdminLayoutComponent} from "./shared/layout/admin-layout/admin-layout.component";
+import {AuthGuard} from "./core/guard/auth.guard";
 
 const routes: Routes = [
     {
@@ -23,6 +24,7 @@ const routes: Routes = [
     { path: "register", loadChildren: () => import("./feature/auth/register/register.module").then(m => m.RegisterModule) },
     {
         path: "admin",
+        canActivate: [AuthGuard],
         component: AdminLayoutComponent,
         children: [
             { path: "", loadChildren: () => import("./admin/dashboard/dashboard.module").then(m => m.DashboardModule) },

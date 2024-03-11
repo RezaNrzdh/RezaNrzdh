@@ -1,0 +1,71 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">نمونه کار جدید</h1>
+    </div>
+    <form [formGroup]="blogForm" (ngSubmit)="OnSubmit()">
+        <div class="grid">
+            <div class="main flex column background-white radius-8 shadow-16 padding-24 margin-bot-32">
+                <app-textbox
+                    title="عنوان"
+                    class="width-half margin-bot-8"
+                    formControlName="title"
+                    [formGroup]="blogForm.get('title')">
+                </app-textbox>
+                <app-textbox
+                    title="اسلاگ"
+                    class="width-half margin-bot-8"
+                    formControlName="slug"
+                    [formGroup]="blogForm.get('slug')">
+                </app-textbox>
+                <app-textbox
+                    title="مدت زمان مطالعه"
+                    class="width-half margin-bot-8"
+                    formControlName="read"
+                    [formGroup]="blogForm.get('read')">
+                </app-textbox>
+                <app-textbox
+                    title="توضیحات"
+                    [multiLine]="true"
+                    class="margin-bot-4"
+                    [rows]="12"
+                    formControlName="desc"
+                    [formGroup]="blogForm.get('desc')">
+                </app-textbox>
+                <span class="caption medium color-gray-5 margin-top-24 margin-bot-4">اندازه عکس باید حداقل 1024 در 574 پیکسل باشد.</span>
+                <span class="caption medium color-gray-5 margin-bot-12">حجم هر عکس حداکثر باید 500 کیلوبایت باشد.</span>
+                <div class="flex">
+                    <app-uploadfile *ngIf="!image" (outData)="OnAddImages($event)"></app-uploadfile>
+                    <div *ngIf="image" class="imagelist flex">
+                        <div class="flex relative margin-left-8 radius-8 hidden">
+                            <a (click)="OnDeleteImages(image)" class="absolute bot margin-bot-12 margin-right-12"><app-icon icon="trash" color="white" size="20"></app-icon></a>
+                            <img src="{{image | ImagePath}}" class="radius-8" />
+                        </div>
+                    </div>
+                </div>
+                <app-button [spin]="isSpin" class="width-fit margin-top-24">ثبت مقاله</app-button>
+            </div>
+            <div>
+                <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
+                    <label class="body-2 medium color-dark margin-bot-4">وضعیت انتشار</label>
+                    <app-dropdown
+                        [options]="publish"
+                        class="margin-bot-8"
+                        formControlName="publish"
+                        [formGroup]="blogForm.get('publish')">
+                    </app-dropdown>
+                </div>
+                <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
+                    <label class="body-2 medium color-dark margin-bot-4">عکس Thumbnail</label>
+                    <span class="caption medium color-gray-5 margin-top-8 margin-bot-8">اندازه عکس تامنیل باید 296 در 296 پیکسل باشد.</span>
+                    <app-uploadfile *ngIf="!thumbnail" (outData)="OnAddThumbnail($event)"></app-uploadfile>
+                    <div *ngIf="thumbnail" class="thumbnailImageContainer">
+                        <div class="flex relative margin-left-8 radius-8 hidden">
+                            <a (click)="OnDeleteThumbnail(thumbnail)" class="absolute bot margin-bot-12 margin-right-12"><app-icon icon="trash" color="white" size="20"></app-icon></a>
+                            <img src="{{thumbnail | ImagePath}}" class="radius-8" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

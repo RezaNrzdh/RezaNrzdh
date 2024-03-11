@@ -100,8 +100,7 @@ export class PortfolioService {
     async CreatePortfolio(body: any): Promise<any> {
         const count = await this.portfolioModel.find().countDocuments();
         const obj = { ...body, _id: count+1, slug: `${count+1}-${body.slug}` };
-        return await this.portfolioModel
-            .create(obj);
+        return await this.portfolioModel.create(obj);
     }
 
     async ModifyPortfolio(body: any): Promise<any> {

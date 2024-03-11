@@ -14,7 +14,7 @@
                     <span class="caption medium color-white">خواندن {{ data[0].read }} دقیقه</span>
                 </div>
             </div>
-            <img src="{{ data[0].img }}" class="radius-8 z-index-1" alt=""/>
+            <img src="{{ data[0].img | ImagePath }}" class="radius-8 z-index-1" alt=""/>
         </div>
         <div class="topImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
@@ -23,7 +23,7 @@
                     <h2 class="body-1 bold color-white margin-top-8">{{ data[1].title }}</h2>
                 </a>
             </div>
-            <img src="{{ data[1].img }}" class="radius-8 z-index-1" alt=""/>
+            <img src="{{ data[1].img | ImagePath }}" class="radius-8 z-index-1" alt=""/>
         </div>
         <div class="botImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
@@ -32,7 +32,7 @@
                     <h2 class="body-1 bold color-white margin-top-8">{{ data[2].title }}</h2>
                 </a>
             </div>
-            <img src="{{ data[2].img }}" class="radius-8 z-index-1" alt=""/>
+            <img src="{{ data[2].img | ImagePath }}" class="radius-8 z-index-1" alt=""/>
         </div>
     </div>
     <div class="other margin-top-56 margin-bot-56">
@@ -42,7 +42,7 @@
         </div>
         <div class="grid">
             <div *ngFor="let i of otherData" class="container flex column radius-8">
-                <img src="{{i.img}}" height="225" alt="" class="background-gray-1b"/>
+                <img src="{{i.img | ImagePath}}" height="225" alt="" class="background-gray-1b"/>
                 <div class="flex column borderbox padding-24">
                     <span class="caption color-dark">{{ i.date | PersianCalendar }}</span>
                     <a routerLink="/blog/{{ i.slug }}">

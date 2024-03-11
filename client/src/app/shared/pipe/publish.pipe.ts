@@ -6,6 +6,14 @@ import {PublishConstant} from "../../core/constant/publish.constant";
 })
 export class PublishPipe implements PipeTransform {
     transform(value: any): any {
-        return PublishConstant[value - 1];
+        if(typeof value == "number"){
+            return PublishConstant[value - 1];
+        }
+        else {
+            switch (value){
+                case true: return PublishConstant[1];
+                case false: return PublishConstant[0];
+            }
+        }
     }
 }

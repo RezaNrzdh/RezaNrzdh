@@ -1,6 +1,21 @@
-import {Controller, Delete, Get, Param, Res} from '@nestjs/common';
+import {
+    Controller,
+    Delete, FileTypeValidator,
+    Get, MaxFileSizeValidator,
+    Param,
+    ParseFilePipe,
+    Post,
+    Res,
+    UploadedFile,
+    UseGuards,
+    UseInterceptors
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import {unlink, readdir} from "fs";
+import {AuthGuard} from "./guard/auth.guard";
+import {FileInterceptor} from "@nestjs/platform-express";
+import {diskStorage} from "multer";
+import {Express} from "express";
 
 @Controller()
 export class AppController {
@@ -9,6 +24,26 @@ export class AppController {
     @Get()
     getHello(): void {}
 
+    @Post('api/v1/saveImg')
+    @UseGuards(AuthGuard)
+    @UseInterceptors(FileInterceptor("file", {
+        storage: diskStorage({
+            destination: "public",
+            filename: (req, file, callback) => {
+                const name = `img-${Date.now()}.jpg`;
+                callback(null, name);
+            }
+        })
+    }))
+    SaveImage(@UploadedFile(new ParseFilePipe({
+        validators: [
+            new MaxFileSizeValidator(   { maxSize: 500000 }),
+            new FileTypeValidator({ fileType: "image/jpeg" })
+        ]
+    })) file: Express.Multer.File) {
+        return file;
+    }
+
     @Get('public/:img')
     async ServeImage(@Param('img') img, @Res() res): Promise<any> {
         res.header("Cross-Origin-Resource-Policy", "same-site");
@@ -16,6 +51,7 @@ export class AppController {
     }
 
     @Delete('public/delete/:file')
+    @UseGuards(AuthGuard)
     async DeleteImage(@Param('file') file, @Res() res): Promise<any> {
 
         unlink(`./public/${file}`, Callback);
@@ -27,6 +63,7 @@ export class AppController {
     }
 
     @Get("public/read/files")
+    @UseGuards(AuthGuard)
     async ReadImages(@Res() res): Promise<any> {
         readdir("./public", null, Callback);
 
