@@ -2,11 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import {BlogService} from "../../../core/services/blog.service";
 import {BlogModel} from "../../../core/models/blog.model";
 import {Title} from "@angular/platform-browser";
+import { ImagePathPipe } from '../../../shared/pipe/image-path.pipe';
+import { CalendarPipe } from '../../../shared/pipe/calendar.pipe';
+import { ButtonComponent } from '../../../shared/component/button/button.component';
+import { IconComponent } from '../../../shared/component/icon/icon.component';
+import { RouterLink } from '@angular/router';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-blog-list',
     templateUrl: './blog-list.component.html',
-    styleUrls: ['./blog-list.component.scss']
+    styleUrls: ['./blog-list.component.scss'],
+    standalone: true,
+    imports: [NgIf, RouterLink, IconComponent, NgFor, ButtonComponent, CalendarPipe, ImagePathPipe]
 })
 export class BlogListComponent implements OnInit {
 

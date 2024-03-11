@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {AuthService} from "../../../core/services/auth.service";
-import {Router} from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import {AlertEnum} from "../../../core/enum/alert.enum";
 import {Title} from "@angular/platform-browser";
+import { IconComponent } from '../../../shared/component/icon/icon.component';
+import { ButtonComponent } from '../../../shared/component/button/button.component';
+import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
+import { AlertboxComponent } from '../../../shared/component/alertbox/alertbox.component';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
+    standalone: true,
+    imports: [NgIf, AlertboxComponent, RouterLink, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, IconComponent]
 })
 export class LoginComponent implements OnInit {
 

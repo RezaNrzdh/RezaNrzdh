@@ -2,14 +2,20 @@ import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../../core/services/user.service";
 import {ActivatedRoute} from "@angular/router";
 import {UserModel} from "../../../core/models/user.model";
-import {FormControl, FormGroup} from "@angular/forms";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {RoleConstant} from "../../../core/constant/role.constant";
 import {UserStateConstant} from "../../../core/constant/user-state.constant";
+import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
+import { DropdownComponent } from "../../../shared/component/dropdown/dropdown.component";
+import { ButtonComponent } from "../../../shared/component/button/button.component";
+import { TextboxComponent } from "../../../shared/component/textbox/textbox.component";
 
 @Component({
     selector: "admin-user",
     templateUrl: "user.component.html",
-    styleUrls: ["user.component.scss"]
+    styleUrls: ["user.component.scss"],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, DropdownComponent, CalendarPipe]
 })
 export class UserComponent implements OnInit {
 

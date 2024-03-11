@@ -5,7 +5,8 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
     selector: "admin-contact",
     templateUrl: "contact.component.html",
-    styleUrls: ["contact.component.scss"]
+    styleUrls: ["contact.component.scss"],
+    standalone: true
 })
 export class ContactComponent implements OnInit {
 

@@ -1,12 +1,20 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {BlogService} from "../../../core/services/blog.service";
+import { CalendarPipe } from "../../pipe/calendar.pipe";
+import { ReplyComponent } from "../reply/reply.component";
+import { ButtonComponent } from "../button/button.component";
+import { TextboxComponent } from "../textbox/textbox.component";
+import { NgIf, NgFor } from "@angular/common";
+import { IconComponent } from "../icon/icon.component";
 
 @Component({
     selector: "app-comment",
     templateUrl: "comment.component.html",
-    styleUrls: ["comment.component.scss"]
+    styleUrls: ["comment.component.scss"],
+    standalone: true,
+    imports: [IconComponent, NgIf, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, NgFor, ReplyComponent, CalendarPipe]
 })
 export class CommentComponent implements OnInit {
 

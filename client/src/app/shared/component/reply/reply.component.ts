@@ -1,12 +1,19 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import { FormControl, FormGroup, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {BlogService} from "../../../core/services/blog.service";
+import { CalendarPipe } from "../../pipe/calendar.pipe";
+import { ButtonComponent } from "../button/button.component";
+import { TextboxComponent } from "../textbox/textbox.component";
+import { NgIf } from "@angular/common";
+import { IconComponent } from "../icon/icon.component";
 
 @Component({
     selector: "app-reply",
     templateUrl: "reply.component.html",
-    styleUrls: ["reply.component.scss"]
+    styleUrls: ["reply.component.scss"],
+    standalone: true,
+    imports: [IconComponent, NgIf, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, CalendarPipe]
 })
 export class ReplyComponent implements OnInit {
 

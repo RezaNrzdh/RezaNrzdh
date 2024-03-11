@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {AuthService} from "../../../core/services/auth.service";
-import {Router} from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import { IconComponent } from '../../../shared/component/icon/icon.component';
+import { CheckboxComponent } from '../../../shared/component/checkbox/checkbox.component';
+import { ButtonComponent } from '../../../shared/component/button/button.component';
+import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss']
+    styleUrls: ['./register.component.scss'],
+    standalone: true,
+    imports: [RouterLink, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, CheckboxComponent, IconComponent]
 })
 export class RegisterComponent implements OnInit {
 

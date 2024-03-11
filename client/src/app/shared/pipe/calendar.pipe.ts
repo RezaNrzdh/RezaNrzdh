@@ -1,7 +1,8 @@
 import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
-    name: "PersianCalendar"
+    name: "PersianCalendar",
+    standalone: true
 })
 export class CalendarPipe implements PipeTransform {
 

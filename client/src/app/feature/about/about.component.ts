@@ -5,11 +5,17 @@ import {AboutModel} from "../../core/models/about.model";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../core/enum/responsive.enum";
 import {Title} from "@angular/platform-browser";
+import { DropdownComponent } from '../../shared/component/dropdown/dropdown.component';
+import { ButtonComponent } from '../../shared/component/button/button.component';
+import { NgFor, NgIf, NgClass } from '@angular/common';
+import { IconComponent } from '../../shared/component/icon/icon.component';
 
 @Component({
     selector: 'app-about',
     templateUrl: './about.component.html',
-    styleUrls: ['./about.component.scss']
+    styleUrls: ['./about.component.scss'],
+    standalone: true,
+    imports: [IconComponent, NgFor, NgIf, ButtonComponent, DropdownComponent, NgClass]
 })
 export class AboutComponent implements OnInit, OnDestroy {
 

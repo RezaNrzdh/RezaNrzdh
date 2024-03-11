@@ -1,9 +1,14 @@
 import {Component, EventEmitter, Output} from "@angular/core";
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { IconComponent } from "../icon/icon.component";
+import { NgClass } from "@angular/common";
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: "sidebar.component.html",
-    styleUrls: ["sidebar.component.scss"]
+    styleUrls: ["sidebar.component.scss"],
+    standalone: true,
+    imports: [NgClass, IconComponent, RouterLink, RouterLinkActive]
 })
 export class SidebarComponent {
 

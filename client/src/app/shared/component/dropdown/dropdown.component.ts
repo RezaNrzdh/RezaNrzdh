@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from "@angular/forms";
+import { NgClass, NgFor } from "@angular/common";
 
 @Component({
     selector: "app-dropdown",
@@ -11,7 +12,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
             useExisting: DropdownComponent,
             multi: true
         }
-    ]
+    ],
+    standalone: true,
+    imports: [NgClass, NgFor, FormsModule]
 })
 export class DropdownComponent implements OnInit, ControlValueAccessor {
 

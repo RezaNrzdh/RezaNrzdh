@@ -1,7 +1,8 @@
 import {Directive, ElementRef, Input, Renderer2} from "@angular/core";
 
 @Directive({
-    selector: "[ClickOutside]"
+    selector: "[ClickOutside]",
+    standalone: true
 })
 export class ClickoutsideDirective {
 

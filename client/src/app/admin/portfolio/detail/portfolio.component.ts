@@ -1,15 +1,24 @@
 import {Component, OnInit} from "@angular/core";
 import {CategoryConstant} from "../../../core/constant/category.constant";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {environment} from "../../../../environments/environment"
 import {ActivatedRoute} from "@angular/router";
 import {PublishConstant} from "../../../core/constant/publish.constant";
+import { DropdownComponent } from "../../../shared/component/dropdown/dropdown.component";
+import { ButtonComponent } from "../../../shared/component/button/button.component";
+import { IconComponent } from "../../../shared/component/icon/icon.component";
+import { UploadfileComponent } from "../../../shared/component/uploadfile/uploadfile.component";
+import { TextboxComponent } from "../../../shared/component/textbox/textbox.component";
+import { AlertboxComponent } from "../../../shared/component/alertbox/alertbox.component";
+import { NgIf, NgFor } from "@angular/common";
 
 @Component({
     selector: "admin-portfolio",
     templateUrl: "portfolio.component.html",
-    styleUrls: ["portfolio.component.scss"]
+    styleUrls: ["portfolio.component.scss"],
+    standalone: true,
+    imports: [NgIf, AlertboxComponent, FormsModule, ReactiveFormsModule, TextboxComponent, UploadfileComponent, NgFor, IconComponent, ButtonComponent, DropdownComponent]
 })
 export class PortfolioComponent implements OnInit {
 

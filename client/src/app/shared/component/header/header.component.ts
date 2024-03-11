@@ -1,15 +1,21 @@
 import {Component, ElementRef, HostBinding, OnDestroy, Renderer2, ViewChild} from "@angular/core";
-import {NavigationEnd, Router} from "@angular/router";
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {AuthService} from "../../../core/services/auth.service";
 import {UserService} from "../../../core/services/user.service";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
+import { SidebarComponent } from "../sidebar/sidebar.component";
+import { ButtonComponent } from "../button/button.component";
+import { IconComponent } from "../icon/icon.component";
+import { NgIf } from "@angular/common";
 
 @Component({
     selector: "app-header",
     templateUrl: "header.component.html",
-    styleUrls: ["header.component.scss"]
+    styleUrls: ["header.component.scss"],
+    standalone: true,
+    imports: [NgIf, IconComponent, RouterLink, RouterLinkActive, ButtonComponent, SidebarComponent]
 })
 export class HeaderComponent implements OnDestroy {
 

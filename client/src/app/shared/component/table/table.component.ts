@@ -4,7 +4,8 @@ import {PortfolioModel} from "../../../core/models/portfolio.model";
 @Component({
     selector: "admin-table",
     templateUrl: "table.component.html",
-    styleUrls: ["table.component.scss"]
+    styleUrls: ["table.component.scss"],
+    standalone: true
 })
 export class TableComponent implements OnInit {
     @Input() tableHeaders: Array<string>;

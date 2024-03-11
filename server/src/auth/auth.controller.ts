@@ -23,6 +23,7 @@ export class AuthController {
         const value = await this.authService.SignIn(body);
         if (!value) return false;
 
+        console.log("its ok");
         res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
         return true;
     }

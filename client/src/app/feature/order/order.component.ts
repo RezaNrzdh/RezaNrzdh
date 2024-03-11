@@ -2,11 +2,17 @@ import {Component, OnInit} from '@angular/core';
 import {OrdersService} from "../../core/services/orders.service";
 import {ResponsiveService} from "../../core/services/responsive.service";
 import {OrderModel} from "../../core/models/order.model";
+import { TagComponent } from '../../shared/component/tag/tag.component';
+import { NgFor, NgClass, NgIf } from '@angular/common';
+import { ButtonComponent } from '../../shared/component/button/button.component';
+import { IconComponent } from '../../shared/component/icon/icon.component';
 
 @Component({
     selector: 'app-order',
     templateUrl: './order.component.html',
-    styleUrls: ['./order.component.scss']
+    styleUrls: ['./order.component.scss'],
+    standalone: true,
+    imports: [IconComponent, ButtonComponent, NgFor, NgClass, NgIf, TagComponent]
 })
 export class OrderComponent implements OnInit {
 

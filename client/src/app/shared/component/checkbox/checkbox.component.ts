@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import { IconComponent } from "../icon/icon.component";
+import { NgIf } from "@angular/common";
 
 @Component({
     selector: "app-checkbox",
@@ -11,7 +13,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
             useExisting: CheckboxComponent,
             multi: true
         }
-    ]
+    ],
+    standalone: true,
+    imports: [NgIf, IconComponent]
 })
 export class CheckboxComponent implements OnInit, ControlValueAccessor {
 

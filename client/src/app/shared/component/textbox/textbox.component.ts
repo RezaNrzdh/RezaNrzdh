@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from "@angular/forms";
 import {AlertEnum} from "../../../core/enum/alert.enum";
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-textbox',
@@ -12,7 +13,9 @@ import {AlertEnum} from "../../../core/enum/alert.enum";
             useExisting: TextboxComponent,
             multi: true
         }
-    ]
+    ],
+    standalone: true,
+    imports: [NgIf, FormsModule]
 })
 export class TextboxComponent implements ControlValueAccessor {
 

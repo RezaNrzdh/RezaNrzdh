@@ -1,13 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "../../../core/services/blog.service";
 import {BlogModel} from "../../../core/models/blog.model";
+import { ImagePathPipe } from '../../../shared/pipe/image-path.pipe';
+import { CalendarPipe } from '../../../shared/pipe/calendar.pipe';
+import { CommentComponent } from '../../../shared/component/comment/comment.component';
+import { NgIf, NgFor } from '@angular/common';
+import { ButtonComponent } from '../../../shared/component/button/button.component';
+import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
+import { IconComponent } from '../../../shared/component/icon/icon.component';
 
 @Component({
     selector: 'app-blog',
     templateUrl: './blog.component.html',
-    styleUrls: ['./blog.component.scss']
+    styleUrls: ['./blog.component.scss'],
+    standalone: true,
+    imports: [IconComponent, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe]
 })
 export class BlogComponent implements OnInit {
 

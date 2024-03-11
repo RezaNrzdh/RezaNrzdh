@@ -8,11 +8,17 @@ import {SortEnum} from "../../../core/enum/sort.enum";
 import {CategoryConstant} from "../../../core/constant/category.constant";
 import {SortConstant} from "../../../core/constant/sort.constant";
 import {Title} from "@angular/platform-browser";
+import { PortfolioCardComponent } from '../../../shared/component/portfolioCard/portfolio-card.component';
+import { DropdownComponent } from '../../../shared/component/dropdown/dropdown.component';
+import { ButtonComponent } from '../../../shared/component/button/button.component';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-portfolio-list',
     templateUrl: './portfolio-list.component.html',
-    styleUrls: ['./portfolio-list.component.scss']
+    styleUrls: ['./portfolio-list.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent]
 })
 export class PortfolioListComponent implements OnInit, OnDestroy {
 

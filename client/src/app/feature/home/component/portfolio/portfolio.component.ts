@@ -5,11 +5,19 @@ import {PortfolioModel} from "../../../../core/models/portfolio.model";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../../../core/enum/responsive.enum";
 import {CategoryConstant} from "../../../../core/constant/category.constant";
+import { IconComponent } from '../../../../shared/component/icon/icon.component';
+import { RouterLink } from '@angular/router';
+import { PortfolioCardComponent } from '../../../../shared/component/portfolioCard/portfolio-card.component';
+import { DropdownComponent } from '../../../../shared/component/dropdown/dropdown.component';
+import { ButtonComponent } from '../../../../shared/component/button/button.component';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-home-portfolio',
     templateUrl: './portfolio.component.html',
-    styleUrls: ['./portfolio.component.scss']
+    styleUrls: ['./portfolio.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent, RouterLink, IconComponent]
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
 

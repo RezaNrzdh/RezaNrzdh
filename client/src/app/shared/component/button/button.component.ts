@@ -1,9 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import { IconComponent } from "../icon/icon.component";
+import { RouterLink } from "@angular/router";
+import { NgIf, NgClass, NgTemplateOutlet } from "@angular/common";
 
 @Component({
     selector: "app-button",
     templateUrl: "button.component.html",
-    styleUrls: ["button.component.scss"]
+    styleUrls: ["button.component.scss"],
+    standalone: true,
+    imports: [NgIf, NgClass, NgTemplateOutlet, RouterLink, IconComponent]
 })
 export class ButtonComponent implements OnInit {
 

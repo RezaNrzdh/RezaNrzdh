@@ -1,11 +1,15 @@
 import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {ImagesService} from "../../../core/services/images.service";
+import { IconComponent } from "../icon/icon.component";
+import { NgIf } from "@angular/common";
 
 @Component({
     selector: "app-uploadfile",
     templateUrl: "uploadfile.component.html",
-    styleUrls: ["uploadfile.component.scss"]
+    styleUrls: ["uploadfile.component.scss"],
+    standalone: true,
+    imports: [NgIf, IconComponent]
 })
 export class UploadfileComponent implements OnInit {
 

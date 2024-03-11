@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {DomSanitizer} from "@angular/platform-browser";
-import {MatIconRegistry} from "@angular/material/icon";
+import { MatIconRegistry, MatIconModule } from "@angular/material/icon";
 
 @Component({
     selector: "app-icon",
     templateUrl: "icon.component.html",
-    styleUrls: ["icon.component.scss"]
+    styleUrls: ["icon.component.scss"],
+    standalone: true,
+    imports: [MatIconModule]
 })
 export class IconComponent implements OnInit {
 

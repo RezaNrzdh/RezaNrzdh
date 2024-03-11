@@ -1,17 +1,28 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
 import {environment} from "../../../../environments/environment";
+import { CategoryPipe } from "../../../shared/pipe/category.pipe";
+import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
+import { CommentComponent } from "../../../shared/component/comment/comment.component";
+import { ButtonComponent } from "../../../shared/component/button/button.component";
+import { TextboxComponent } from "../../../shared/component/textbox/textbox.component";
+import { PortfolioCardComponent } from "../../../shared/component/portfolioCard/portfolio-card.component";
+import { IconComponent } from "../../../shared/component/icon/icon.component";
+import { TagComponent } from "../../../shared/component/tag/tag.component";
+import { NgIf, NgFor, NgClass } from "@angular/common";
 
 @Component({
     selector: "app-portfolio",
     templateUrl: "portfolio.component.html",
-    styleUrls: ["portfolio.component.scss"]
+    styleUrls: ["portfolio.component.scss"],
+    standalone: true,
+    imports: [NgIf, TagComponent, IconComponent, NgFor, NgClass, PortfolioCardComponent, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, CommentComponent, CalendarPipe, CategoryPipe]
 })
 export class PortfolioComponent implements OnInit {
 

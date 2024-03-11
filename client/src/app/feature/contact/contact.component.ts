@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {ContactService} from "../../core/services/contact.service";
 import {AboutModel} from "../../core/models/about.model";
 import {AlertboxModel} from "../../core/models/alertbox.model";
 import {AlertEnum} from "../../core/enum/alert.enum";
 import {Title} from "@angular/platform-browser";
+import { IconComponent } from '../../shared/component/icon/icon.component';
+import { ButtonComponent } from '../../shared/component/button/button.component';
+import { TextboxComponent } from '../../shared/component/textbox/textbox.component';
+import { AlertboxComponent } from '../../shared/component/alertbox/alertbox.component';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-contact',
     templateUrl: './contact.component.html',
-    styleUrls: ['./contact.component.scss']
+    styleUrls: ['./contact.component.scss'],
+    standalone: true,
+    imports: [NgIf, AlertboxComponent, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, IconComponent]
 })
 export class ContactComponent implements OnInit {
 
