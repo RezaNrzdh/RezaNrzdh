@@ -1,10 +1,10 @@
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import {Injectable} from "@angular/core";
 import {AuthService} from "../services/auth.service";
 import {UserService} from "../services/user.service";
 
 @Injectable({providedIn: "root"})
-export class CheckTokenService implements Resolve<any>{
+export class CheckTokenService {
 
     constructor(private authService: AuthService, private userService: UserService) {
     }
