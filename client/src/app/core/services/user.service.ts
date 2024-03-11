@@ -1,12 +1,12 @@
 import {Injectable} from "@angular/core";
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
 
-    userInfo = new Subject<object>();
+    userInfo = new  BehaviorSubject<object>({});
 
     ChangeInfo(value: object) {
         this.userInfo.next(value);

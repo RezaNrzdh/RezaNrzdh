@@ -34,7 +34,6 @@ const HttpInterceptor = {
         AboutModel,
         ImagesService,
         AuthGuard
-    ],
-    imports:[]
+    ]
 })
 export class CoreModule {}

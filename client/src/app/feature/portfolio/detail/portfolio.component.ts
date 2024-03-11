@@ -22,7 +22,21 @@ import { NgIf, NgFor, NgClass } from "@angular/common";
     templateUrl: "portfolio.component.html",
     styleUrls: ["portfolio.component.scss"],
     standalone: true,
-    imports: [NgIf, TagComponent, IconComponent, NgFor, NgClass, PortfolioCardComponent, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, CommentComponent, CalendarPipe, CategoryPipe]
+    imports: [
+        NgIf,
+        TagComponent,
+        IconComponent,
+        NgFor,
+        NgClass,
+        PortfolioCardComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        TextboxComponent,
+        ButtonComponent,
+        CommentComponent,
+        CalendarPipe,
+        CategoryPipe
+    ]
 })
 export class PortfolioComponent implements OnInit {
 

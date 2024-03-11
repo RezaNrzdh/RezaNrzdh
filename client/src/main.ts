@@ -1,5 +1,5 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
-import {HTTP_INTERCEPTORS, provideHttpClient} from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
@@ -14,7 +14,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, RoutingModule, CoreModule),
-        provideHttpClient(),
+        provideHttpClient(withInterceptorsFromDi()),
     ]
 })
   .catch(err => console.error(err));

@@ -12,27 +12,35 @@ const routes: Routes = [
         component: MainLayoutComponent,
         resolve: { a: CheckTokenService, b: CheckBreakpointService },
         children: [
-            { path: "", loadChildren: () => import("./feature/home/home.module").then(m => m.HomeModule) },
-            { path: "portfolio", loadChildren: () => import("./feature/portfolio/portfolio.module").then(m => m.PortfolioModule) },
-            { path: "blog", loadChildren: () => import("./feature/blog/blog.module").then(m => m.BlogModule) },
-            { path: "order", loadChildren: () => import("./feature/order/order.module").then(m => m.OrderModule) },
-            { path: "about", loadChildren: () => import("./feature/about/about.module").then(m => m.AboutModule) },
-            { path: "contact", loadChildren: () => import("./feature/contact/contact.module").then(m => m.ContactModule) },
+            { path: "", loadComponent: () => import("./feature/home/home.component").then(c => c.HomeComponent) },
+            { path: "portfolio", loadComponent: () => import("./feature/portfolio/list/portfolio-list.component").then(c => c.PortfolioListComponent) },
+            { path: "portfolio/:slug", loadComponent: () => import("./feature/portfolio/detail/portfolio.component").then(c => c.PortfolioComponent)},
+            { path: "blog", loadComponent: () => import("./feature/blog/list/blog-list.component").then(c => c.BlogListComponent) },
+            { path: "blog/:slug", loadComponent: () => import("./feature/blog/detail/blog.component").then(c => c.BlogComponent) },
+            { path: "order", loadComponent: () => import("./feature/order/order.component").then(c => c.OrderComponent) },
+            { path: "about", loadComponent: () => import("./feature/about/about.component").then(c => c.AboutComponent) },
+            { path: "contact", loadComponent: () => import("./feature/contact/contact.component").then(c => c.ContactComponent) },
         ]
     },
-    { path: "login", loadChildren: () => import("./feature/auth/login/login.module").then(m => m.LoginModule) },
-    { path: "register", loadChildren: () => import("./feature/auth/register/register.module").then(m => m.RegisterModule) },
+    { path: "login", loadComponent: () => import("./feature/auth/login/login.component").then(c => c.LoginComponent) },
+    { path: "register", loadComponent: () => import("./feature/auth/register/register.component").then(c => c.RegisterComponent) },
     {
         path: "admin",
         canActivate: [AuthGuard],
         component: AdminLayoutComponent,
         children: [
-            { path: "", loadChildren: () => import("./admin/dashboard/dashboard.module").then(m => m.DashboardModule) },
-            { path: "portfolio", loadChildren: () => import("./admin/portfolio/portfolio.module").then(m => m.PortfolioModule) },
-            { path: "user", loadChildren: () => import("./admin/user/user.module").then(m=> m.UserModule) },
-            { path: "images", loadChildren: () => import("./admin/images/images.module").then(m => m.ImagesModule) },
-            { path: "contact", loadChildren: () => import("./admin/contact/contact.module").then(m => m.ContactModule) },
-            { path: "blog", loadChildren: () => import("./admin/blog/blog.module").then(m => m.BlogModule) }
+            { path: "", loadComponent: () => import("./admin/dashboard/dashboard.component").then(c => c.DashboardComponent) },
+            { path: "portfolio", loadComponent: () => import("./admin/portfolio/list/portfolio-list.component").then(c => c.PortfolioListComponent) },
+            { path: "portfolio/:slug", loadComponent: () => import("./admin/portfolio/detail/portfolio.component").then(c => c.PortfolioComponent) },
+            { path: "portfolio/new", loadComponent: () => import("./admin/portfolio/detail/portfolio.component").then(c => c.PortfolioComponent) },
+            { path: "user", loadComponent: () => import("./admin/user/list/user-list.component").then(c=> c.UserListComponent) },
+            { path: "user/:username", loadComponent: () => import("./admin/user/detail/user.component").then(c=> c.UserComponent) },
+            { path: "images", loadComponent: () => import("./admin/images/images.component").then(c => c.ImagesComponent) },
+            { path: "contact", loadComponent: () => import("./admin/contact/list/contact-list.component").then(c => c.ContactListComponent) },
+            { path: "contact/:slug", loadComponent: () => import("./admin/contact/detail/contact.component").then(c => c.ContactComponent) },
+            { path: "blog", loadComponent: () => import("./admin/blog/list/blog-list.component").then(c => c.BlogListComponent) },
+            { path: "blog/:slug", loadComponent: () => import("./admin/blog/detail/blog.component").then(c => c.BlogComponent) },
+            { path: "orders", loadComponent: () => import("./admin/order/order.component").then(c => c.OrderComponent) }
         ]
     }
 ];

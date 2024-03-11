@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {AboutService} from "../../core/services/about.service";
 import {ResponsiveService} from "../../core/services/responsive.service";
 import {AboutModel} from "../../core/models/about.model";
@@ -7,7 +8,6 @@ import {ResponsiveEnum} from "../../core/enum/responsive.enum";
 import {Title} from "@angular/platform-browser";
 import { DropdownComponent } from '../../shared/component/dropdown/dropdown.component';
 import { ButtonComponent } from '../../shared/component/button/button.component';
-import { NgFor, NgIf, NgClass } from '@angular/common';
 import { IconComponent } from '../../shared/component/icon/icon.component';
 
 @Component({
@@ -15,7 +15,7 @@ import { IconComponent } from '../../shared/component/icon/icon.component';
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss'],
     standalone: true,
-    imports: [IconComponent, NgFor, NgIf, ButtonComponent, DropdownComponent, NgClass]
+    imports: [CommonModule, IconComponent, ButtonComponent, DropdownComponent,]
 })
 export class AboutComponent implements OnInit, OnDestroy {
 

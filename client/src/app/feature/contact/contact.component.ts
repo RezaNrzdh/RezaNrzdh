@@ -16,7 +16,15 @@ import { NgIf } from '@angular/common';
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss'],
     standalone: true,
-    imports: [NgIf, AlertboxComponent, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, IconComponent]
+    imports: [
+        NgIf,
+        AlertboxComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        TextboxComponent,
+        ButtonComponent,
+        IconComponent
+    ]
 })
 export class ContactComponent implements OnInit {
 
@@ -83,6 +91,4 @@ export class ContactComponent implements OnInit {
             this.isAlertboxActive = false;
         },time);
     }
-
-
 }

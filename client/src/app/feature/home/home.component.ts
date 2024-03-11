@@ -11,7 +11,13 @@ import { SlideComponent } from "./component/slide/slide.component";
     templateUrl: "home.component.html",
     styleUrls: ["home.component.scss"],
     standalone: true,
-    imports: [SlideComponent, ExperienceComponent, PortfolioComponent, EmployersComponent, CompanyComponent]
+    imports: [
+        SlideComponent,
+        ExperienceComponent,
+        PortfolioComponent,
+        EmployersComponent,
+        CompanyComponent
+    ]
 })
 export class HomeComponent implements OnInit {
 

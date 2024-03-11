@@ -15,7 +15,16 @@ import { NgIf } from '@angular/common';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     standalone: true,
-    imports: [NgIf, AlertboxComponent, RouterLink, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, IconComponent]
+    imports: [
+        NgIf,
+        AlertboxComponent,
+        RouterLink,
+        FormsModule,
+        ReactiveFormsModule,
+        TextboxComponent,
+        ButtonComponent,
+        IconComponent
+    ]
 })
 export class LoginComponent implements OnInit {
 
