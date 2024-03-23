@@ -30,8 +30,7 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
     constructor() {
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     writeValue(obj: any) {
         this.value = obj;
