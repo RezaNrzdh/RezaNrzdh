@@ -9,6 +9,7 @@ import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
 import { DropdownComponent } from "../../../shared/component/dropdown/dropdown.component";
 import { ButtonComponent } from "../../../shared/component/button/button.component";
 import { TextboxComponent } from "../../../shared/component/textbox/textbox.component";
+import {PublishPipe} from "../../../shared/pipe/publish.pipe";
 
 @Component({
     selector: "admin-user",
@@ -48,11 +49,11 @@ export class UserComponent implements OnInit {
                     email: value.email,
                     name: value.name,
                     phone: value.phone,
-                    role: value.role
+                    role: value.role,
+                    available: value.available ? 2 : 1
                 });
                 this.id = value._id;
                 this.attempt = value.attempt;
-                this.available = value.available;
                 this.registerDate = value.registerDate;
             })
         })
