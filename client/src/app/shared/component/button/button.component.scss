@@ -11,8 +11,6 @@
     button, a{
         @include body2;
         width: 100%;
-        height: 40px;
-        padding: 0 16px;
         transition: all ease-in-out 0.3s;
         font-weight: 500;
         i{
@@ -27,6 +25,16 @@
             animation-duration: 1s;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
+        }
+    }
+    button, a {
+        &.medium{
+            height: 40px;
+            padding: 0 16px;
+        }
+        &.small{
+            height: 32px;
+            padding: 0 8px;
         }
     }
 }

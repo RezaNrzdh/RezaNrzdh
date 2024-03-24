@@ -15,6 +15,7 @@ export class ButtonComponent implements OnInit {
     @Input() mode: "filled" | "outlined" | "ghost" | "submit" = 'filled';
     @Input() action: "submit" | "button" | "reset";
     @Input() color: "primary" | "secondary" | "dark" | "white" | "dark2" = 'primary';
+    @Input() size: "small" | "medium" = "medium";
     @Input() isLink: true | false = false;
     @Input() icon?: string;
     @Input() href?: string;
