@@ -11,14 +11,16 @@ import { IconComponent } from "../../../shared/component/icon/icon.component";
 import { UploadfileComponent } from "../../../shared/component/uploadfile/uploadfile.component";
 import { TextboxComponent } from "../../../shared/component/textbox/textbox.component";
 import { AlertboxComponent } from "../../../shared/component/alertbox/alertbox.component";
-import { NgIf, NgFor } from "@angular/common";
+import {NgIf, NgFor, NgClass} from "@angular/common";
+import {CalendarPipe} from "../../../shared/pipe/calendar.pipe";
+import {TagComponent} from "../../../shared/component/tag/tag.component";
 
 @Component({
     selector: "admin-portfolio",
     templateUrl: "portfolio.component.html",
     styleUrls: ["portfolio.component.scss"],
     standalone: true,
-    imports: [NgIf, AlertboxComponent, FormsModule, ReactiveFormsModule, TextboxComponent, UploadfileComponent, NgFor, IconComponent, ButtonComponent, DropdownComponent]
+    imports: [NgIf, AlertboxComponent, FormsModule, ReactiveFormsModule, TextboxComponent, UploadfileComponent, NgFor, IconComponent, ButtonComponent, DropdownComponent, CalendarPipe, NgClass, TagComponent]
 })
 export class PortfolioComponent implements OnInit {
 
@@ -26,6 +28,7 @@ export class PortfolioComponent implements OnInit {
     option: Array<string> = [...CategoryConstant];
     publish: Array<string> = [...PublishConstant];
     images: Array<string> = [];
+    comment: any;
     thumbnail: string;
 
     alertbox: boolean = false;
@@ -56,6 +59,7 @@ export class PortfolioComponent implements OnInit {
                         category: value.category,
                         publish: value.publish
                     });
+                    this.comment = value.comment;
                     this.thumbnail = value.thumbnail;
                     this.images = [...this.images, ...value.img];
                 })

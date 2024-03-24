@@ -1,5 +1,5 @@
 import {Body, Controller, Get, Param, Post, UseGuards} from "@nestjs/common";
-import {ContactService} from "./contact.service";
+import {ContactService} from "../service/contact.service";
 import {AuthGuard} from "../guard/auth.guard";
 
 @Controller("api/v1/contact")

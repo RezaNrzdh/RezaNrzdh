@@ -1,5 +1,5 @@
 import {Query, Controller, Get, Param, Patch, Body, UseGuards, Post} from "@nestjs/common";
-import {BlogService} from "./blog.service";
+import {BlogService} from "../service/blog.service";
 import {AuthGuard} from "../guard/auth.guard";
 
 @Controller("api/v1/blog")

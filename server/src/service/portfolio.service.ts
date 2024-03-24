@@ -1,12 +1,14 @@
 import {Injectable} from "@nestjs/common";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
-import {Portfolio} from "./portfolio.schema";
+import {Portfolio} from "../schema/portfolio.schema";
 
 @Injectable()
 export class PortfolioService {
 
-    constructor(@InjectModel("Portfolio") private portfolioModel: Model<Portfolio>) {}
+    constructor(
+        @InjectModel("Portfolio") private portfolioModel: Model<Portfolio>
+    ){}
 
     async GetAllPortfolios(query: any): Promise<any> {
         let _sort: Record<any, any>;
@@ -93,7 +95,7 @@ export class PortfolioService {
         return await this.portfolioModel
             .findOne(
                 { slug: slug },
-                { category: 1, date: 1, desc: 1, img: 1, publish: 1, slug: 1, thumbnail: 1, title: 1, _id: 1 })
+                { category: 1, date: 1, desc: 1, img: 1, publish: 1, slug: 1, thumbnail: 1, title: 1, _id: 1, comment: 1 })
             .exec();
     }
 
@@ -122,6 +124,13 @@ export class PortfolioService {
     }
 
     async CreateComment(body: any): Promise<any> {
+        return await this.portfolioModel
+            .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
+            .exec();
+
+    }
+
+    async CreateComment2(body: any): Promise<any> {
         return await this.portfolioModel
             .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
             .exec();

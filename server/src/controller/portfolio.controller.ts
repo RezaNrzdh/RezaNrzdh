@@ -4,7 +4,7 @@ import {
     ParseFilePipe, MaxFileSizeValidator, FileTypeValidator, UseGuards,
 } from "@nestjs/common";
 import {FileInterceptor} from "@nestjs/platform-express";
-import {PortfolioService} from "./portfolio.service";
+import {PortfolioService} from "../service/portfolio.service";
 import {Express} from "express";
 import {diskStorage} from "multer";
 import {AuthGuard} from "../guard/auth.guard";

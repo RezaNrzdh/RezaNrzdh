@@ -9,7 +9,7 @@
             grid-template-columns: 1fr 250px;
             grid-column-gap: 24px;
             .main {
-                app-button {
+                > app-button {
                     min-width: 116px;
                 }
             }

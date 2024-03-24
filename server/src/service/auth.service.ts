@@ -3,7 +3,7 @@ import {JwtService} from "@nestjs/jwt";
 import {constants} from "../constant";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
-import {Auth} from "./auth.schema";
+import {Auth} from "../schema/auth.schema";
 import * as bcrypt from "bcrypt";
 
 @Injectable()

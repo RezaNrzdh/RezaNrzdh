@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
-import {Skill} from "./skill.schema";
+import {Skill} from "../schema/skill.schema";
 
 @Injectable()
 export class SkillsService {
