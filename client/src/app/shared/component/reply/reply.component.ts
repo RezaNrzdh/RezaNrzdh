@@ -1,12 +1,11 @@
 import {Component, Input, OnInit} from "@angular/core";
-import { FormControl, FormGroup, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {PortfolioService} from "../../../core/services/portfolio.service";
-import {BlogService} from "../../../core/services/blog.service";
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CalendarPipe } from "../../pipe/calendar.pipe";
 import { ButtonComponent } from "../button/button.component";
 import { TextboxComponent } from "../textbox/textbox.component";
 import { NgIf } from "@angular/common";
 import { IconComponent } from "../icon/icon.component";
+import {ReplyService} from "../../../core/services/reply.service";
 
 @Component({
     selector: "app-reply",
@@ -20,14 +19,13 @@ export class ReplyComponent implements OnInit {
     @Input() pid: number;
     @Input() commentId: number;
     @Input() data: any;
-    @Input() CreateReply: (query: object) => void;
 
     isHideForm: boolean = true;
 
     commentForm: FormGroup | any;
 
 
-    constructor(private portfolioService: PortfolioService, private blogService: BlogService) {}
+    constructor(private replyService: ReplyService) {}
 
     ngOnInit() {
         this.commentForm = new FormGroup({
@@ -46,7 +44,13 @@ export class ReplyComponent implements OnInit {
             replyName: this.data.name,
             ...this.commentForm.value
         }
-        this.CreateReply(query);
+        this.replyService.CreateReply(query).subscribe({
+            next: ((value: any) => {
+                this.commentForm.markAsPristine();
+                this.commentForm.markAsUntouched();
+                this.commentForm.reset({ name: "", email: "", comment: "" });
+            })
+        });
     }
 
     ShowForm(): void {

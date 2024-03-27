@@ -1,13 +1,12 @@
 import {Component, Input, OnInit} from "@angular/core";
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {PortfolioService} from "../../../core/services/portfolio.service";
-import {BlogService} from "../../../core/services/blog.service";
 import { CalendarPipe } from "../../pipe/calendar.pipe";
 import { ReplyComponent } from "../reply/reply.component";
 import { ButtonComponent } from "../button/button.component";
 import { TextboxComponent } from "../textbox/textbox.component";
 import { NgIf, NgFor } from "@angular/common";
 import { IconComponent } from "../icon/icon.component";
+import {ReplyService} from "../../../core/services/reply.service";
 
 @Component({
     selector: "app-comment",
@@ -20,14 +19,14 @@ export class CommentComponent implements OnInit {
 
     @Input() pid: number;
     @Input() data: any;
-    @Input() CreateReply: (query: object) => void;
 
     isFormHide: boolean = true;
     isReplyHide: boolean = true;
+    reply: Array<object> = [];
 
     commentForm: FormGroup | any;
 
-    constructor(private portfolioService: PortfolioService, private blogService: BlogService) {}
+    constructor(private replyService: ReplyService) {}
 
     ngOnInit() {
         this.commentForm = new FormGroup({
@@ -42,11 +41,18 @@ export class CommentComponent implements OnInit {
 
         const query = {
             pid: this.pid,
+            isArticle: this.data.isArticle,
             replyId: this.data._id,
             replyName: this.data.name,
             ...this.commentForm.value
         }
-        this.CreateReply(query);
+        this.replyService.CreateReply(query).subscribe({
+            next: ((value: any) => {
+                this.commentForm.markAsPristine();
+                this.commentForm.markAsUntouched();
+                this.commentForm.reset({ name: "", email: "", comment: "" });
+            })
+        });
     }
 
     ShowForm(): void {
@@ -56,5 +62,20 @@ export class CommentComponent implements OnInit {
     ShowReply(value: any): void {
         value.setAttribute("showreply", this.isReplyHide);
         this.isReplyHide = !this.isReplyHide;
+
+        if(!this.isReplyHide ) {
+            if(this.reply.length <= 0){
+                const query = {
+                    pid: this.pid,
+                    replyId: this.data._id,
+                    isArticle: this.data.isArticle
+                }
+                this.replyService.GetReplies(query).subscribe({
+                    next:((value) => {
+                        this.reply = value;
+                    })
+                });
+            }
+        }
     }
 }

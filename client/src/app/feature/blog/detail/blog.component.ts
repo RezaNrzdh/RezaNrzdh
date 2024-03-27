@@ -61,14 +61,4 @@ export class BlogComponent implements OnInit {
             })
         })
     }
-
-    OnCreateReply(body: any): void {
-        this.blogService.CreateReply(body).subscribe({
-            next: ((value: any) => {
-                this.commentForm.markAsPristine();
-                this.commentForm.markAsUntouched();
-                this.commentForm.reset({ name: "", email: "", comment: "" });
-            })
-        });
-    }
 }

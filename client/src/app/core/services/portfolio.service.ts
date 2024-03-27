@@ -33,11 +33,15 @@ export class PortfolioService {
     }
 
     CreateComment(body: any): Observable<any> {
-        return this.http.patch(`${environment.server}/portfolio/comment`, body);
+        return this.http.post(`${environment.server}/portfolio/comment`, body);
     }
 
     CreateReply(body: any): Observable<any> {
-        return this.http.patch(`${environment.server}/portfolio/reply`, body);
+        return this.http.post(`${environment.server}/portfolio/reply`, body);
+    }
+
+    GetReplies(query: any): Observable<any> {
+        return this.http.get(`${environment.server}/portfolio/reply`, { params: query});
     }
 
     DeleteImage(image: string): Observable<any> {

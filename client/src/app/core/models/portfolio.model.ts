@@ -11,4 +11,5 @@ export class PortfolioModel {
     desc: string;
     category: number;
     comment: Array<object> = [];
+    reply: Array<object> = [];
 }

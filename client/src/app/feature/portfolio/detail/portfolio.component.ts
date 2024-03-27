@@ -84,7 +84,6 @@ export class PortfolioComponent implements OnInit {
                 this.portfolioService.GetPortfolio(value.slug).subscribe({
                     next: ((value: any) => {
                         this.data = value;
-                        this.data = value;
                         this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
                         this.OnGetTopPortfolio(this.data.category);
                     })
@@ -106,7 +105,9 @@ export class PortfolioComponent implements OnInit {
 
         const query = {
             pid: this.data._id,
-            body: this.commentForm.value
+            name: this.commentForm.value.name,
+            email: this.commentForm.value.email,
+            comment: this.commentForm.value.comment
         }
         this.portfolioService.CreateComment(query).subscribe({
             next:((value: any) => {
@@ -115,16 +116,6 @@ export class PortfolioComponent implements OnInit {
                 this.commentForm.reset({ name: "", email: "", comment: "" });
             })
         })
-    }
-
-    OnCreateReply(body: any): void {
-        this.portfolioService.CreateReply(body).subscribe({
-            next: ((value: any) => {
-                this.commentForm.markAsPristine();
-                this.commentForm.markAsUntouched();
-                this.commentForm.reset({ name: "", email: "", comment: "" });
-            })
-        });
     }
 
     ShowNextImage(value: any): void {

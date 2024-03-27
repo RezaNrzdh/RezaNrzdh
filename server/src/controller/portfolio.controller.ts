@@ -1,12 +1,8 @@
 import {
     Body, Controller, Get, Param, Post,
-    Query, Patch, UseInterceptors, UploadedFile,
-    ParseFilePipe, MaxFileSizeValidator, FileTypeValidator, UseGuards,
+    Query, Patch, UseGuards
 } from "@nestjs/common";
-import {FileInterceptor} from "@nestjs/platform-express";
 import {PortfolioService} from "../service/portfolio.service";
-import {Express} from "express";
-import {diskStorage} from "multer";
 import {AuthGuard} from "../guard/auth.guard";
 
 
@@ -48,13 +44,18 @@ export class PortfolioController {
         return this.portfolioService.ModifyPortfolio(body);
     }
 
-    @Patch("comment")
+    @Post("comment")
     CreateComment(@Body() body: object): any {
         return this.portfolioService.CreateComment(body);
     }
 
-    @Patch("reply")
+    @Post("reply")
     CreateReply(@Body() body: object): object {
         return this.portfolioService.CreateReply(body);
+    }
+
+    @Get("reply")
+    GetReplies(@Query() query): object {
+        return this.portfolioService.GetReplies(query);
     }
 }
