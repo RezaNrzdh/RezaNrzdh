@@ -29,6 +29,7 @@ export class CommentComponent implements OnInit {
     constructor(private replyService: ReplyService) {}
 
     ngOnInit() {
+        console.log(['comment',this.data]);
         this.commentForm = new FormGroup({
             "name":    new FormControl(null, [Validators.required]),
             "email":   new FormControl(null, [Validators.required, Validators.email]),

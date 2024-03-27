@@ -2,11 +2,15 @@ import {Injectable} from "@nestjs/common";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {Blog} from "../schema/blog.schema";
+import {Comment} from "../schema/comment.schema";
 
 @Injectable()
 export class BlogService {
 
-    constructor(@InjectModel("Blog") private blogModel: Model<Blog>) {}
+    constructor(
+        @InjectModel("Blog") private blogModel: Model<Blog>,
+        @InjectModel("Comment") private commentModel: Model<Comment>
+    ) {}
 
     async GetAllArticles(query: any): Promise<any> {
         const count = await this.blogModel.find().countDocuments();
@@ -21,73 +25,22 @@ export class BlogService {
     }
 
     async GetArticle(slug: string): Promise<any> {
-        const filter = await this.blogModel
-            .aggregate([
-                { $match: { slug: slug, publish: true } },
-                {
-                    $project: {
-                        title: "$title",
-                        slug: "$slug",
-                        read: "$read",
-                        publish: "$publish",
-                        visit: "$visit",
-                        like: "$like",
-                        img: "$img",
-                        thumbnail: "$thumbnail",
-                        desc: "$desc",
-                        date: "$date",
-                        comment: {
-                            $filter: {
-                                input: "$comment",
-                                as: "cm",
-                                cond: {
-                                    $eq: [ "$$cm.confirmed", true ]
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    $project: {
-                        title: "$title",
-                        slug: "$slug",
-                        read: "$read",
-                        publish: "$publish",
-                        visit: "$visit",
-                        like: "$like",
-                        img: "$img",
-                        thumbnail: "$thumbnail",
-                        desc: "$desc",
-                        date: "$date",
-                        comment: {
-                            $map: {
-                                input: "$comment",
-                                as: "cm",
-                                in: {
-                                    _id: "$$cm._id",
-                                    name: "$$cm.name",
-                                    email: "$$cm.email",
-                                    comment: "$$cm.comment",
-                                    like: "$$cm.like",
-                                    confirmed: "$$cm.confirmed",
-                                    date: "$$cm.date",
-                                    reply: {
-                                        $filter: {
-                                            input: "$$cm.reply",
-                                            as: "cm2",
-                                            cond: {
-                                                $eq: [ "$$cm2.confirmed", true ]
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            ])
-            .exec();
-        return filter[0];
+        const article = await this.blogModel.findOne({ slug: slug, publish: true }).exec();
+        const comment = await this.commentModel.find({ pid: article._id, confirmed: true }).exec();
+
+        return {
+            _id: article._id,
+            title: article.title,
+            slug: article.slug,
+            date: article.date,
+            like: article.like,
+            visit: article.visit,
+            read: article.read,
+            img: article.img,
+            desc: article.desc,
+            thumbnail: article.thumbnail,
+            comment: comment
+        }
     }
 
     async GetArticleForAdmin(slug: string): Promise<any> {
@@ -123,13 +76,6 @@ export class BlogService {
                 }
             )
             .exec();
-    }
-
-    async CreateComment(body: any): Promise<any> {
-        return await this.blogModel
-            .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
-            .exec();
-
     }
 
     async CreateReply(body: any): Promise<any> {

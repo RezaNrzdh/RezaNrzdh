@@ -10,20 +10,24 @@ import { NgIf, NgFor } from '@angular/common';
 import { ButtonComponent } from '../../../shared/component/button/button.component';
 import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
 import { IconComponent } from '../../../shared/component/icon/icon.component';
+import {CommentService} from "../../../core/services/comment.service";
 
 @Component({
     selector: 'app-blog',
     templateUrl: './blog.component.html',
     styleUrls: ['./blog.component.scss'],
     standalone: true,
-    imports: [IconComponent, FormsModule, ReactiveFormsModule, TextboxComponent, ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe]
+    imports: [
+        IconComponent,FormsModule, ReactiveFormsModule, TextboxComponent,
+        ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe
+    ]
 })
 export class BlogComponent implements OnInit {
 
     data: BlogModel = new BlogModel();
     commentForm: FormGroup | any;
 
-    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService) { }
+    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService, private commentService: CommentService) { }
 
     ngOnInit(): void {
         this.commentForm = new FormGroup({
@@ -51,9 +55,12 @@ export class BlogComponent implements OnInit {
 
         const query ={
             pid: this.data._id,
-            body: this.commentForm.value
+            isArticle: true,
+            name: this.commentForm.value.name,
+            email: this.commentForm.value.email,
+            comment: this.commentForm.value.comment
         }
-        this.blogService.CreateComment(query).subscribe({
+        this.commentService.CreateComment(query).subscribe({
             next: ((value: any) => {
                 this.commentForm.markAsPristine();
                 this.commentForm.markAsUntouched();

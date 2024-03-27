@@ -28,6 +28,7 @@ export class ReplyComponent implements OnInit {
     constructor(private replyService: ReplyService) {}
 
     ngOnInit() {
+        console.log(['reply',this.data]);
         this.commentForm = new FormGroup({
             "name":    new FormControl(null, [Validators.required]),
             "email":   new FormControl(null, [Validators.required, Validators.email]),
@@ -40,6 +41,7 @@ export class ReplyComponent implements OnInit {
 
         const query = {
             pid: this.pid,
+            isArticle: this.data.isArticle,
             replyId: this.commentId,
             replyName: this.data.name,
             ...this.commentForm.value

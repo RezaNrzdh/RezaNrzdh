@@ -50,8 +50,8 @@ export class PortfolioService {
     }
 
     async GetPortfolio(slug: string): Promise<any> {
-        let portfolio = await this.portfolioModel.findOne({ slug: slug, publish: 2}).exec();
-        const comment = await this.commentModel.find({ pid: portfolio._id, confirmed: true }).exec();
+        const portfolio = await this.portfolioModel.findOne({ slug: slug, publish: 2}).exec();
+        const comment = await this.commentModel.find({ pid: portfolio._id, confirmed: true, isArticle: false }).exec();
 
         return {
             _id: portfolio._id,

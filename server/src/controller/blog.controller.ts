@@ -40,11 +40,6 @@ export class BlogController {
         return this.blogService.ModifyArticle(body);
     }
 
-    @Patch("/comment")
-    CreateComment(@Body() body: any): any {
-        return this.blogService.CreateComment(body);
-    }
-
     @Patch("/reply")
     CreateReply(@Body() body: any): any {
         return this.blogService.CreateReply(body);
