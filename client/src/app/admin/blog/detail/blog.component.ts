@@ -38,13 +38,13 @@ export class BlogComponent implements OnInit {
 
     ngOnInit() {
         if(this.activatedRoute.snapshot.params["slug"] !== "new"){
-            this.blogService.GetArticle(this.activatedRoute.snapshot.params["slug"]).subscribe({
+            this.blogService.GetArticleForAdmin(this.activatedRoute.snapshot.params["slug"]).subscribe({
                 next: ((value: any) => {
                     this.blogForm.patchValue({
                         title: value.title,
                         slug: value.slug,
                         read: value.read,
-                        publish: value.publish,
+                        publish: value.publish ? 2 : 1,
                         desc: value.desc
                     });
                     this.thumbnail = value.thumbnail;

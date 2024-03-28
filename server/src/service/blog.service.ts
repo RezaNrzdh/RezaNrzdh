@@ -44,12 +44,7 @@ export class BlogService {
     }
 
     async GetArticleForAdmin(slug: string): Promise<any> {
-        return this.blogModel
-            .findOne(
-                { slug: slug },
-                {}
-            )
-            .exec();
+        return await this.blogModel.findOne({ slug: slug }).exec();
     }
 
     async CreateArticle(body: any): Promise<any> {

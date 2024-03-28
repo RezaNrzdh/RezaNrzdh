@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Observable, take} from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
@@ -18,6 +18,10 @@ export class BlogService {
 
     GetArticle(slug: string): Observable<any> {
         return this.http.get(`${environment.server}/blog/${slug}`);
+    }
+
+    GetArticleForAdmin(slug: string): Observable<any> {
+        return this.http.get(`${environment.server}/blog/admin/${slug}`);
     }
 
     CreateArticle(body: object): Observable<any> {
