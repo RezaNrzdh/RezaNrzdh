@@ -27,7 +27,7 @@ export class BlogComponent implements OnInit {
     data: BlogModel = new BlogModel();
     commentForm: FormGroup | any;
 
-    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService, private commentService: CommentService) { }
+    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService) { }
 
     ngOnInit(): void {
         this.commentForm = new FormGroup({
@@ -55,12 +55,12 @@ export class BlogComponent implements OnInit {
 
         const query ={
             pid: this.data._id,
-            isArticle: true,
-            name: this.commentForm.value.name,
-            email: this.commentForm.value.email,
-            comment: this.commentForm.value.comment
+            body: {
+                isArticle: true,
+                ...this.commentForm.value
+            }
         }
-        this.commentService.CreateComment(query).subscribe({
+        this.blogService.CreateComment(query).subscribe({
             next: ((value: any) => {
                 this.commentForm.markAsPristine();
                 this.commentForm.markAsUntouched();

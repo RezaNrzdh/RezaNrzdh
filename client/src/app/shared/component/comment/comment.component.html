@@ -15,10 +15,10 @@
     <div class="desc margin-top-16 margin-right-64 padding-bot-32">
         <p class="body-2 medium color-dark lineheight-24 margin-bot-16">{{ data.comment }}</p>
         <div class="flex">
-            <a *ngIf="data.replyCount > 0" class="showReply flex align-ctr margin-left-24" #im (click)="ShowReply(im)">
+            <a *ngIf="data.reply.length > 0" class="showReply flex align-ctr margin-left-24" #im (click)="ShowReply(im)">
                 <span class="body-2 medium color-secondary margin-left-4">
                     مشاهده پاسخ ها
-                    ({{data.replyCount}})
+                    ({{data.reply.length}})
                 </span>
                 <app-icon icon="chevron-down" size="16" color="secondary"></app-icon>
             </a>
@@ -55,7 +55,7 @@
             </div>
         </form>
         <div *ngIf="!isReplyHide">
-            <app-reply *ngFor="let i of reply" [data]="i" [pid]="pid" [commentId]="data._id"></app-reply>
+            <app-reply *ngFor="let i of data.reply" [data]="i" [pid]="pid" [commentId]="data._id"></app-reply>
         </div>
     </div>
 </section>

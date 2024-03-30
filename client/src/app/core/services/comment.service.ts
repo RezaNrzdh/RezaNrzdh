@@ -11,6 +11,14 @@ export class CommentService {
         return this.http.get(`${environment.server}/comment`, {params: query});
     }
 
+    GetOneComment(query: any): Observable<any> {
+        return this.http.get(`${environment.server}/comment/one`, {params: query});
+    }
+
+    GetAllComments(): Observable<any> {
+        return this.http.get(`${environment.server}/comment/all`);
+    }
+
     CreateComment(body: object): Observable<any> {
         return this.http.post(`${environment.server}/comment`, body);
     }

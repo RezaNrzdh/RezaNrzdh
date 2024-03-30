@@ -28,6 +28,12 @@ export class BlogController {
         return this.blogService.GetArticleForAdmin(slug);
     }
 
+    @Get("admin/find/title")
+    @UseGuards(AuthGuard)
+    GetArticleTitleForAdmin(@Query() query): any {
+        return this.blogService.GetArticleTitleForAdmin(query);
+    }
+
     @Post()
     @UseGuards(AuthGuard)
     CreateArticle(@Body() body: object): any {
@@ -38,6 +44,12 @@ export class BlogController {
     @UseGuards(AuthGuard)
     ModifyArticle(@Body() body: object): any {
         return this.blogService.ModifyArticle(body);
+    }
+
+    @Post("comment")
+    CreateComment(@Body() body: object): any {
+        console.log(2);
+        return this.blogService.CreateComment(body);
     }
 
     @Patch("/reply")

@@ -1,0 +1,30 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">
+            کاربر
+            {{ comment.email }}
+        </h1>
+    </div>
+    <div class="title flex background-white radius-top-8 shadow-16 padding-24">
+        <div>
+            <h2 class="flex column color-dark headline-6 bold margin-bot-8">
+                {{ data.title }}
+            </h2>
+            <span class="body-2 medium color-gray-5">{{ comment.isArticle | IsArticle}}</span>
+        </div>
+        <a *ngIf="comment.isArticle" href="/blog/{{data.slug}}" target="_blank" class="margin-right-auto"><app-icon icon="open" size="20" color="dark"></app-icon></a>
+        <a *ngIf="!comment.isArticle"  href="/portfolio/{{data.slug}}" target="_blank" class="margin-right-auto"><app-icon icon="open" size="20" color="dark"></app-icon></a>
+    </div>
+    <div class="flex column background-white radius-bot-8 shadow-16 padding-24 margin-bot-8">
+        <div class="flex column margin-bot-16">
+            <div class="flex align-ctr margin-bot-8">
+                <span class="body-2 color-dark">{{ comment.name }}</span>
+                <span class="color-gray-3 margin-right-16 margin-left-16">|</span>
+                <span class="body-2 color-dark">{{ comment.date | PersianCalendar}}</span>
+            </div>
+            <span class="body-1 medium color-dark">{{ comment.comment }}</span>
+        </div>
+        <app-button *ngIf="!comment.confirmed; else notConfiremd" mode="outlined" color="dark" class="width-fit">تایید نظر</app-button>
+        <ng-template #notConfiremd><app-tag color="success">{{ comment.confirmed | Confirmed }}</app-tag></ng-template>
+    </div>
+</section>

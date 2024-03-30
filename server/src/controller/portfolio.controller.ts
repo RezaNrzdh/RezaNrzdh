@@ -27,6 +27,12 @@ export class PortfolioController {
         return this.portfolioService.GetPortfolioForAdmin(slug);
     }
 
+    @Get("admin/find/title")
+    @UseGuards(AuthGuard)
+    GetArticleTitleForAdmin(@Query() query): any {
+        return this.portfolioService.GetArticleTitleForAdmin(query);
+    }
+
     @Get("top/:number")
     GetTopPortfolios(@Param('number') number): any {
         return this.portfolioService.GetTopPortfolios(number);
@@ -52,10 +58,5 @@ export class PortfolioController {
     @Post("reply")
     CreateReply(@Body() body: object): object {
         return this.portfolioService.CreateReply(body);
-    }
-
-    @Get("reply")
-    GetReplies(@Query() query): object {
-        return this.portfolioService.GetReplies(query);
     }
 }

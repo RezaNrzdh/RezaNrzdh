@@ -11,6 +11,10 @@ export class ReplyService {
         return this.http.get(`${environment.server}/reply`, {params: query});
     }
 
+    GetAllReplies(): Observable<any> {
+        return this.http.get(`${environment.server}/reply/all`);
+    }
+
     CreateReply(body: object): Observable<any> {
         return this.http.post(`${environment.server}/reply`, body);
     }

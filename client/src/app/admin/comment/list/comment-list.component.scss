@@ -1,0 +1,27 @@
+@use "src/assets/styles/color";
+
+:host {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    section {
+        .headerTable{
+            top: 80px;
+            grid-template-columns: 2fr 2fr 1.5fr 2fr 1fr 1fr;
+            grid-column-gap: 16px;
+            border-bottom: 1px solid color.$color-gray-2;
+        }
+        .rowTable{
+            grid-template-columns: 2fr 2fr 1.5fr 2fr 1fr 1fr;
+            grid-column-gap: 16px;
+            border-bottom: 1px solid color.$color-gray-1b;
+            .like {
+                min-width: 20px;
+                min-height: 24px;
+            }
+            a {
+                padding: 8px;
+            }
+        }
+    }
+}

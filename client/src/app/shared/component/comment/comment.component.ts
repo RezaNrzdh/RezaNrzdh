@@ -6,7 +6,8 @@ import { ButtonComponent } from "../button/button.component";
 import { TextboxComponent } from "../textbox/textbox.component";
 import { NgIf, NgFor } from "@angular/common";
 import { IconComponent } from "../icon/icon.component";
-import {ReplyService} from "../../../core/services/reply.service";
+import {PortfolioService} from "../../../core/services/portfolio.service";
+import {BlogService} from "../../../core/services/blog.service";
 
 @Component({
     selector: "app-comment",
@@ -22,14 +23,12 @@ export class CommentComponent implements OnInit {
 
     isFormHide: boolean = true;
     isReplyHide: boolean = true;
-    reply: Array<object> = [];
 
     commentForm: FormGroup | any;
 
-    constructor(private replyService: ReplyService) {}
+    constructor(private portfolioService: PortfolioService, private blogService: BlogService) {}
 
     ngOnInit() {
-        console.log(['comment',this.data]);
         this.commentForm = new FormGroup({
             "name":    new FormControl(null, [Validators.required]),
             "email":   new FormControl(null, [Validators.required, Validators.email]),
@@ -47,13 +46,20 @@ export class CommentComponent implements OnInit {
             replyName: this.data.name,
             ...this.commentForm.value
         }
-        this.replyService.CreateReply(query).subscribe({
-            next: ((value: any) => {
-                this.commentForm.markAsPristine();
-                this.commentForm.markAsUntouched();
-                this.commentForm.reset({ name: "", email: "", comment: "" });
-            })
-        });
+        if(this.data.isArticle) {
+            this.blogService.CreateReply(query).subscribe({
+                next: ((value: any) => {
+                    this.ResetForm();
+                })
+            });
+        }
+        else {
+            this.portfolioService.CreateReply(query).subscribe({
+                next: ((value: any) => {
+                    this.ResetForm();
+                })
+            });
+        }
     }
 
     ShowForm(): void {
@@ -64,19 +70,25 @@ export class CommentComponent implements OnInit {
         value.setAttribute("showreply", this.isReplyHide);
         this.isReplyHide = !this.isReplyHide;
 
-        if(!this.isReplyHide ) {
-            if(this.reply.length <= 0){
-                const query = {
-                    pid: this.pid,
-                    replyId: this.data._id,
-                    isArticle: this.data.isArticle
-                }
-                this.replyService.GetReplies(query).subscribe({
-                    next:((value) => {
-                        this.reply = value;
-                    })
-                });
-            }
-        }
+        // if(!this.isReplyHide ) {
+        //     if(this.reply.length <= 0){
+        //         const query = {
+        //             pid: this.pid,
+        //             replyId: this.data._id,
+        //             isArticle: this.data.isArticle
+        //         }
+        //         this.replyService.GetReplies(query).subscribe({
+        //             next:((value) => {
+        //                 this.reply = value;
+        //             })
+        //         });
+        //     }
+        // }
+    }
+
+    ResetForm(): void {
+        this.commentForm.markAsPristine();
+        this.commentForm.markAsUntouched();
+        this.commentForm.reset({ name: "", email: "", comment: "" });
     }
 }

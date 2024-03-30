@@ -25,26 +25,78 @@ export class BlogService {
     }
 
     async GetArticle(slug: string): Promise<any> {
-        const article = await this.blogModel.findOne({ slug: slug, publish: true }).exec();
-        const comment = await this.commentModel.find({ pid: article._id, confirmed: true }).exec();
-
-        return {
-            _id: article._id,
-            title: article.title,
-            slug: article.slug,
-            date: article.date,
-            like: article.like,
-            visit: article.visit,
-            read: article.read,
-            img: article.img,
-            desc: article.desc,
-            thumbnail: article.thumbnail,
-            comment: comment
-        }
+        const filter = await this.blogModel
+            .aggregate([
+                { $match: { slug: slug } },
+                {
+                    $project: {
+                        title: "$title",
+                        slug: "$slug",
+                        read: "$read",
+                        visit: "$visit",
+                        like: "$like",
+                        img: "$img",
+                        desc: "$desc",
+                        date: "$date",
+                        comment: {
+                            $filter: {
+                                input: "$comment",
+                                as: "cm",
+                                cond: {
+                                    $eq: [ "$$cm.confirmed", true ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        title: "$title",
+                        slug: "$slug",
+                        read: "$read",
+                        visit: "$visit",
+                        like: "$like",
+                        img: "$img",
+                        desc: "$desc",
+                        date: "$date",
+                        comment: {
+                            $map: {
+                                input: "$comment",
+                                as: "cm",
+                                in: {
+                                    _id: "$$cm._id",
+                                    name: "$$cm.name",
+                                    email: "$$cm.email",
+                                    comment: "$$cm.comment",
+                                    like: "$$cm.like",
+                                    confirmed: "$$cm.confirmed",
+                                    date: "$$cm.date",
+                                    isArticle: "$$cm.isArticle",
+                                    reply: {
+                                        $filter: {
+                                            input: "$$cm.reply",
+                                            as: "cm2",
+                                            cond: {
+                                                $eq: [ "$$cm2.confirmed", true ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ])
+            .exec();
+        return filter[0];
     }
 
     async GetArticleForAdmin(slug: string): Promise<any> {
         return await this.blogModel.findOne({ slug: slug }).exec();
+    }
+
+    async GetArticleTitleForAdmin(query: any): Promise<any> {
+        return await this.blogModel.findOne({_id: query.id},{ title: 1, slug: 1 }).exec();
     }
 
     async CreateArticle(body: any): Promise<any> {
@@ -54,7 +106,6 @@ export class BlogService {
     }
 
     async ModifyArticle(body: any): Promise<any> {
-        console.log(body);
         return await  this.blogModel
             .updateOne(
                 { slug: body.slug },
@@ -71,6 +122,13 @@ export class BlogService {
                 }
             )
             .exec();
+    }
+
+    async CreateComment(body: any): Promise<any> {
+        return await this.blogModel
+            .updateOne({ _id: body.pid }, { $push: { comment: body.body }})
+            .exec();
+
     }
 
     async CreateReply(body: any): Promise<any> {

@@ -40,7 +40,9 @@ const routes: Routes = [
             { path: "contact/:slug", loadComponent: () => import("./admin/contact/detail/contact.component").then(c => c.ContactComponent) },
             { path: "blog", loadComponent: () => import("./admin/blog/list/blog-list.component").then(c => c.BlogListComponent) },
             { path: "blog/:slug", loadComponent: () => import("./admin/blog/detail/blog.component").then(c => c.BlogComponent) },
-            { path: "orders", loadComponent: () => import("./admin/order/order.component").then(c => c.OrderComponent) }
+            { path: "orders", loadComponent: () => import("./admin/order/order.component").then(c => c.OrderComponent) },
+            { path: "comment", loadComponent: () => import("./admin/comment/list/comment-list.component").then(c => c.CommentListComponent) },
+            { path: "comment/:slug", loadComponent: () => import("./admin/comment/detail/comment.component").then(c => c.CommentComponent) },
         ]
     }
 ];

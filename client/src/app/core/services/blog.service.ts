@@ -24,6 +24,10 @@ export class BlogService {
         return this.http.get(`${environment.server}/blog/admin/${slug}`);
     }
 
+    GetArticleTitleForAdmin(query: any): Observable<any> {
+        return this.http.get(`${environment.server}/blog/admin/find/title`,{ params: query });
+    }
+
     CreateArticle(body: object): Observable<any> {
         return this.http.post(`${environment.server}/blog`, body);
     }
@@ -33,7 +37,7 @@ export class BlogService {
     }
 
     CreateComment(body: any): Observable<any> {
-        return this.http.patch(`${environment.server}/blog/comment`, body);
+        return this.http.post(`${environment.server}/blog/comment`, body);
     }
 
     CreateReply(body: any): Observable<any> {

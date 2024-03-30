@@ -5,7 +5,8 @@ import { ButtonComponent } from "../button/button.component";
 import { TextboxComponent } from "../textbox/textbox.component";
 import { NgIf } from "@angular/common";
 import { IconComponent } from "../icon/icon.component";
-import {ReplyService} from "../../../core/services/reply.service";
+import {PortfolioService} from "../../../core/services/portfolio.service";
+import {BlogService} from "../../../core/services/blog.service";
 
 @Component({
     selector: "app-reply",
@@ -25,10 +26,9 @@ export class ReplyComponent implements OnInit {
     commentForm: FormGroup | any;
 
 
-    constructor(private replyService: ReplyService) {}
+    constructor(private portfolioService: PortfolioService, private blogService: BlogService) {}
 
     ngOnInit() {
-        console.log(['reply',this.data]);
         this.commentForm = new FormGroup({
             "name":    new FormControl(null, [Validators.required]),
             "email":   new FormControl(null, [Validators.required, Validators.email]),
@@ -46,16 +46,30 @@ export class ReplyComponent implements OnInit {
             replyName: this.data.name,
             ...this.commentForm.value
         }
-        this.replyService.CreateReply(query).subscribe({
-            next: ((value: any) => {
-                this.commentForm.markAsPristine();
-                this.commentForm.markAsUntouched();
-                this.commentForm.reset({ name: "", email: "", comment: "" });
-            })
-        });
+        if(this.data.isArticle){
+            this.blogService.CreateReply(query).subscribe({
+                next: ((value: any) => {
+                    this.ResetForm();
+                })
+            });
+        }
+        else {
+            this.portfolioService.CreateReply(query).subscribe({
+                next: ((value: any) => {
+                    this.ResetForm();
+                })
+            });
+        }
+
     }
 
     ShowForm(): void {
         this.isHideForm = !this.isHideForm;
+    }
+
+    ResetForm(): void {
+        this.commentForm.markAsPristine();
+        this.commentForm.markAsUntouched();
+        this.commentForm.reset({ name: "", email: "", comment: "" });
     }
 }

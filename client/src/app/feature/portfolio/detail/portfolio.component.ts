@@ -105,9 +105,7 @@ export class PortfolioComponent implements OnInit {
 
         const query = {
             pid: this.data._id,
-            name: this.commentForm.value.name,
-            email: this.commentForm.value.email,
-            comment: this.commentForm.value.comment
+            body: this.commentForm.value
         }
         this.portfolioService.CreateComment(query).subscribe({
             next:((value: any) => {

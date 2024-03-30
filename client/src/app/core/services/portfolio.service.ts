@@ -24,6 +24,10 @@ export class PortfolioService {
         return this.http.get(`${environment.server}/portfolio/admin/${slug}`);
     }
 
+    GetArticleTitleForAdmin(query: any): Observable<any> {
+        return this.http.get(`${environment.server}/portfolio/admin/find/title`,{ params: query });
+    }
+
     CreatePortfolio(body: object): Observable<any> {
         return this.http.post(`${environment.server}/portfolio`, body);
     }
