@@ -2,15 +2,11 @@ import {Injectable} from "@nestjs/common";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {Blog} from "../schema/blog.schema";
-import {Comment} from "../schema/comment.schema";
 
 @Injectable()
 export class BlogService {
 
-    constructor(
-        @InjectModel("Blog") private blogModel: Model<Blog>,
-        @InjectModel("Comment") private commentModel: Model<Comment>
-    ) {}
+    constructor(@InjectModel("Blog") private blogModel: Model<Blog>) {}
 
     async GetAllArticles(query: any): Promise<any> {
         const count = await this.blogModel.find().countDocuments();

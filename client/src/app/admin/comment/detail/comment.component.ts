@@ -1,7 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {DropdownComponent} from "../../../shared/component/dropdown/dropdown.component";
-import {CommentService} from "../../../core/services/comment.service";
-import {ReplyService} from "../../../core/services/reply.service";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {ActivatedRoute} from "@angular/router";
 import {TagComponent} from "../../../shared/component/tag/tag.component";
@@ -26,20 +24,19 @@ export class CommentComponent implements OnInit {
     data: any = {};
 
     constructor(
-        private commentService: CommentService,
         private portfolioService: PortfolioService,
         private blogService: BlogService,
         private activatedRoute: ActivatedRoute
     ){}
 
     ngOnInit() {
-        const query = { slug: this.activatedRoute.snapshot.params["slug"] }
-        this.commentService.GetOneComment(query).subscribe({
-            next:((value) => {
-                this.comment = value;
-                this.OnGetData(value.pid, value.isArticle);
-            })
-        });
+        // const query = { slug: this.activatedRoute.snapshot.params["slug"] }
+        // this.commentService.GetOneComment(query).subscribe({
+        //     next:((value) => {
+        //         this.comment = value;
+        //         this.OnGetData(value.pid, value.isArticle);
+        //     })
+        // });
     }
 
     OnGetData(id: any, isArticle: boolean): any {
@@ -59,13 +56,4 @@ export class CommentComponent implements OnInit {
             });
         }
     }
-
-    // OnGetReplies(id: any, pid: number, isArticle: boolean): any {
-    //     const query = { pid: pid, replyId: id, isArticle: isArticle };
-    //     this.replyService.GetRepliesForAdmin(query).subscribe({
-    //         next: ((value) => {
-    //             this.replies = value;
-    //         })
-    //     })
-    // }
 }

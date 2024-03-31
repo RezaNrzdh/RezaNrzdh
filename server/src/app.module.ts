@@ -17,8 +17,6 @@ import {ContactSchema} from "./schema/contact.schema";
 import {BlogSchema} from "./schema/blog.schema";
 import {AuthSchema} from "./schema/auth.schema";
 import {UserSchema} from "./schema/user.schema";
-import {CommentSchema} from "./schema/comment.schema";
-import {ReplySchema} from "./schema/reply.schema";
 
 import {EmployersController} from "./controller/employers.controller";
 import {EmployersService} from "./service/employers.service";
@@ -29,8 +27,6 @@ import {OrdersController} from "./controller/orders.controller";
 import {ContactController} from "./controller/contact.controller";
 import {BlogController} from "./controller/blog.controller";
 import {AuthController} from "./controller/auth.controller";
-import {CommentController} from "./controller/comment.controller";
-import {ReplyController} from "./controller/reply.controller";
 
 import {UserController} from "./controller/user.controller";
 import {SkillsService} from "./service/skills.service";
@@ -41,8 +37,6 @@ import {ContactService} from "./service/contact.service";
 import {BlogService} from "./service/blog.service";
 import {AuthService} from "./service/auth.service";
 import {UserService} from "./service/user.service";
-import {CommentService} from "./service/comment.service";
-import {ReplyService} from "./service/reply.service";
 
 @Module({
   imports: [
@@ -57,9 +51,7 @@ import {ReplyService} from "./service/reply.service";
       MongooseModule.forFeature([{ name: "Contact", schema: ContactSchema }]),
       MongooseModule.forFeature([{ name: "Blog", schema: BlogSchema }]),
       MongooseModule.forFeature([{ name: "Auth", schema: AuthSchema }]),
-      MongooseModule.forFeature([{name: "User", schema: UserSchema}]),
-      MongooseModule.forFeature([{ name: "Comment", schema: CommentSchema }]),
-      MongooseModule.forFeature([{ name: "Reply", schema: ReplySchema }])
+      MongooseModule.forFeature([{name: "User", schema: UserSchema}])
   ],
   controllers: [
       AppController,
@@ -71,9 +63,7 @@ import {ReplyService} from "./service/reply.service";
       ContactController,
       BlogController,
       AuthController,
-      UserController,
-      CommentController,
-      ReplyController
+      UserController
   ],
   providers: [
       AppService,
@@ -85,9 +75,7 @@ import {ReplyService} from "./service/reply.service";
       ContactService,
       BlogService,
       AuthService,
-      UserService,
-      CommentService,
-      ReplyService
+      UserService
   ],
 })
 export class AppModule {}

@@ -10,7 +10,6 @@ import { NgIf, NgFor } from '@angular/common';
 import { ButtonComponent } from '../../../shared/component/button/button.component';
 import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
 import { IconComponent } from '../../../shared/component/icon/icon.component';
-import {CommentService} from "../../../core/services/comment.service";
 
 @Component({
     selector: 'app-blog',

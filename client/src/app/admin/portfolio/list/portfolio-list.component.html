@@ -7,10 +7,11 @@
         <div class="headerTable sticky background-white width-full grid body-2 bold color-dark padding-top-16 padding-bot-16">
             <span>عنوان</span>
             <span>تاریخ انتشار</span>
-            <span>ویزیت</span>
-            <span>لایک</span>
+<!--            <span>ویزیت</span>-->
+<!--            <span>لایک</span>-->
             <span>دسته بندی</span>
             <span>انتشار</span>
+            <span>کامنت</span>
             <span></span>
         </div>
         <div *ngFor="let i of data" class="rowTable flex align-ctr width-full grid body-2 medium color-dark padding-top-16 padding-bot-16 margin-top-8">
@@ -19,8 +20,8 @@
                 <span class="margin-right-16">{{i.title}}</span>
             </div>
             <span>{{i.date | PersianCalendar}}</span>
-            <span>{{i.visit}}</span>
-            <span>{{i.like}}</span>
+<!--            <span>{{i.visit}}</span>-->
+<!--            <span>{{i.like}}</span>-->
             <div class="flex">
                 <app-tag>{{i.category | CategoryPipe}}</app-tag>
             </div>
@@ -28,7 +29,8 @@
                 <app-tag *ngIf="i.publish === 2; else altPublish" color="success">{{i.publish| Publish}}</app-tag>
                 <ng-template #altPublish><app-tag color="danger">{{i.publish| Publish}}</app-tag></ng-template>
             </span>
-            <div class="flex justify-end">
+            <span>{{ i.comment }}</span>
+            <div class="flex justify-end margin-right-auto">
                 <a routerLink="{{i.slug}}"><app-icon icon="edit" size="20" color="dark"></app-icon></a>
                 <a href="/portfolio/{{i.slug}}" target="_blank"><app-icon icon="open" size="20" color="dark"></app-icon></a>
             </div>

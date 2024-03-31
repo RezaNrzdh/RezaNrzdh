@@ -2,17 +2,11 @@ import {Injectable} from "@nestjs/common";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {Portfolio} from "../schema/portfolio.schema";
-import {Comment} from "../schema/comment.schema";
-import {Reply} from "../schema/reply.schema";
 
 @Injectable()
 export class PortfolioService {
 
-    constructor(
-        @InjectModel("Portfolio") private portfolioModel: Model<Portfolio>,
-        @InjectModel("Comment") private commentModel: Model<Comment>,
-        @InjectModel("Reply") private replyModel: Model<Reply>
-    ){}
+    constructor(@InjectModel("Portfolio") private portfolioModel: Model<Portfolio>){}
 
     async GetAllPortfolios(query: any): Promise<any> {
         let _sort: Record<any, any>;
@@ -20,7 +14,7 @@ export class PortfolioService {
 
         query.publish
             ? _filter = { publish: 2 }
-            : null;
+            : _filter = { publish: { $gt: 0 } };
 
         query.sortBy === "id"
             ? _sort = {_id: -1}
@@ -32,12 +26,66 @@ export class PortfolioService {
 
         const count = await this.portfolioModel.find(_filter).countDocuments();
         const data = await this.portfolioModel
-            .find(_filter, { category: 1, like: 1, slug: 1, date: 1, publish: 1, thumbnail: 1, title: 1, visit: 1, _id: 1 })
-            .skip(query.skip)
-            .limit(query.limit)
-            .sort(_sort)
+            .aggregate([
+                { $match: _filter },
+                { $sort: _sort },
+                { $skip: parseInt(query.skip) },
+                { $limit: parseInt(query.limit) },
+                {
+                    $project: {
+                        _id: 1,
+                        category: 1,
+                        like: 1,
+                        slug: 1,
+                        date: 1,
+                        publish: 1,
+                        thumbnail: 1,
+                        title: 1,
+                        visit: 1,
+                        comment: {
+                            $cond: {
+                                if: { $isArray: "$comment" },
+                                then: {
+                                    $size: {
+                                        $filter: {
+                                            input: "$comment",
+                                            as: "cm",
+                                            cond: {
+                                                $eq: [ "$$cm.confirmed", false ]
+                                            }
+                                        }
+                                    }
+                                },
+                                else: 0
+                            }
+                        },
+                        reply: {
+                            $map: {
+                                input: "$comment",
+                                as: "cm",
+                                in: {
+                                    $cond: {
+                                        if: { $isArray: "$$cm.reply" },
+                                        then: {
+                                            $size: {
+                                                $filter: {
+                                                    input: "$$cm.reply",
+                                                    as: "rp",
+                                                    cond: {
+                                                        $eq: [ "$$rp.confirmed", false ]
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        else: 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ])
             .exec();
-
         return { count: count, data: data }
     }
 
