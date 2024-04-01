@@ -24,7 +24,6 @@ export class PortfolioService {
             ? _filter = {..._filter, category: parseInt(query.cat) }
             : null;
 
-        console.log(_filter);
         const count = await this.portfolioModel.find(_filter).countDocuments();
         const data = await this.portfolioModel
             .aggregate([
@@ -203,17 +202,20 @@ export class PortfolioService {
     }
 
     async ConfirmComments(body: any): Promise<any> {
-        return await this.portfolioModel
+        const confirm = await this.portfolioModel
             .updateOne(
                 { _id: body.pid },
                 { $set: {"comment.$[cm].confirmed": true}},
                 {arrayFilters: [{"cm._id": body._id}]}
             )
             .exec();
+
+        if(confirm.acknowledged)
+            return await this.portfolioModel.findOne({ _id: body.pid },{ comment: 1 }).exec();
     }
 
     async ConfirmReplies(body: any): Promise<any> {
-        return await this.portfolioModel
+        const confirm = await this.portfolioModel
             .updateOne(
                 { _id: body.pid },
                 { $set: {"comment.$[cm].reply.$[rp].confirmed": true} },
@@ -221,5 +223,7 @@ export class PortfolioService {
             )
             .exec();
 
+        if(confirm.acknowledged)
+            return await this.portfolioModel.findOne({ _id: body.pid },{ comment: 1 }).exec();
     }
 }

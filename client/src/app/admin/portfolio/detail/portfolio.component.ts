@@ -139,7 +139,7 @@ export class PortfolioComponent implements OnInit {
         const body = { pid: pid, _id: _id }
         this.portfolioService.ConfirmComments(body).subscribe({
             next:((value: any) => {
-                console.log(value);
+               this.comment = value.comment;
             })
         })
     }
@@ -148,7 +148,7 @@ export class PortfolioComponent implements OnInit {
         const body = { pid: pid, replyId: replyId, _id: _id }
         this.portfolioService.ConfirmReplies(body).subscribe({
             next:((value: any) => {
-                console.log(value);
+                this.comment = value.comment;
             })
         })
     }
