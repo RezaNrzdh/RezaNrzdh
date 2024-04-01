@@ -21,9 +21,10 @@ export class PortfolioService {
             : _sort = {visit: -1};
 
         query.cat
-            ? _filter = {..._filter, category: query.cat }
+            ? _filter = {..._filter, category: parseInt(query.cat) }
             : null;
 
+        console.log(_filter);
         const count = await this.portfolioModel.find(_filter).countDocuments();
         const data = await this.portfolioModel
             .aggregate([
