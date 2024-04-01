@@ -23,7 +23,6 @@ export class PortfolioController {
     @Get("admin/:slug")
     @UseGuards(AuthGuard)
     GetPortfolioForAdmin(@Param("slug") slug): any {
-        console.log(slug);
         return this.portfolioService.GetPortfolioForAdmin(slug);
     }
 
@@ -52,5 +51,17 @@ export class PortfolioController {
     @Post("reply")
     CreateReply(@Body() body: object): object {
         return this.portfolioService.CreateReply(body);
+    }
+
+    @Patch("comment/confirm")
+    @UseGuards(AuthGuard)
+    ConfirmComments(@Body() body: any): any {
+        return this.portfolioService.ConfirmComments(body);
+    }
+
+    @Patch("reply/confirm")
+    @UseGuards(AuthGuard)
+    ConfirmReplies(@Body() body: any): any {
+        return this.portfolioService.ConfirmReplies(body);
     }
 }

@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <app-button [spin]="isSpin" class="width-fit margin-top-24">
+                    <app-button [spin]="isSpin" action="submit" class="width-fit margin-top-24">
                         ثبت نمونه کار
                     </app-button>
                 </div>
@@ -77,7 +77,8 @@
                                 </app-tag>
                                 <app-button
                                         *ngIf="!i.confirmed"
-                                        (click)="OnConfirmComment()"
+                                        action="button"
+                                        (click)="OnConfirmComment(pid, i._id)"
                                         mode="outlined"
                                         color="dark2"
                                         size="small">
@@ -112,7 +113,8 @@
                                 </app-tag>
                                 <app-button
                                         *ngIf="!j.confirmed"
-                                        (click)="OnConfirmComment()"
+                                        action="button"
+                                        (click)="OnConfirmReplies(pid, i._id, j._id)"
                                         mode="outlined"
                                         color="dark2"
                                         size="small">
@@ -149,7 +151,10 @@
                 <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
                     <label class="body-2 medium color-dark margin-bot-4">عکس Thumbnail</label>
                     <span class="caption medium color-gray-5 margin-top-8 margin-bot-8">اندازه عکس تامنیل باید 296 در 296 پیکسل باشد.</span>
-                    <app-uploadfile *ngIf="!thumbnail" (outData)="OnAddThumbnail($event)"></app-uploadfile>
+                    <app-uploadfile
+                        *ngIf="!thumbnail"
+                        (outData)="OnAddThumbnail($event)">
+                    </app-uploadfile>
                     <div *ngIf="thumbnail" class="thumbnailImageContainer">
                         <div class="flex relative margin-left-8 radius-8 hidden">
                             <a (click)="OnDeleteThumbnail(thumbnail)" class="absolute bot margin-bot-12 margin-right-12"><app-icon icon="trash" color="white" size="20"></app-icon></a>

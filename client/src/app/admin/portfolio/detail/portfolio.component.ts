@@ -27,8 +27,9 @@ export class PortfolioComponent implements OnInit {
     portfolioForm: FormGroup | any;
     option: Array<string> = [...CategoryConstant];
     publish: Array<string> = [...PublishConstant];
-    images: Array<string> = [];
+    pid: number;
     comment: Array<any> = [];
+    images: Array<string> = [];
     thumbnail: string;
 
     alertbox: boolean = false;
@@ -59,6 +60,7 @@ export class PortfolioComponent implements OnInit {
                         category: value.category,
                         publish: value.publish
                     });
+                    this.pid = value._id;
                     this.comment = value.comment;
                     this.thumbnail = value.thumbnail;
                     this.images = [...this.images, ...value.img];
@@ -133,7 +135,21 @@ export class PortfolioComponent implements OnInit {
         })
     }
 
-    OnConfirmComment(): void {
-        console.log("CONFIRMED");
+    OnConfirmComment(pid: number, _id: any): void {
+        const body = { pid: pid, _id: _id }
+        this.portfolioService.ConfirmComments(body).subscribe({
+            next:((value: any) => {
+                console.log(value);
+            })
+        })
+    }
+
+    OnConfirmReplies(pid: number, replyId: any, _id: any): void {
+        const body = { pid: pid, replyId: replyId, _id: _id }
+        this.portfolioService.ConfirmReplies(body).subscribe({
+            next:((value: any) => {
+                console.log(value);
+            })
+        })
     }
 }

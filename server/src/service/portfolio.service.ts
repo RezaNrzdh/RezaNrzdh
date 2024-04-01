@@ -200,4 +200,25 @@ export class PortfolioService {
                 {arrayFilters: [{ "cm._id": body.replyId }]})
             .exec();
     }
+
+    async ConfirmComments(body: any): Promise<any> {
+        return await this.portfolioModel
+            .updateOne(
+                { _id: body.pid },
+                { $set: {"comment.$[cm].confirmed": true}},
+                {arrayFilters: [{"cm._id": body._id}]}
+            )
+            .exec();
+    }
+
+    async ConfirmReplies(body: any): Promise<any> {
+        return await this.portfolioModel
+            .updateOne(
+                { _id: body.pid },
+                { $set: {"comment.$[cm].reply.$[rp].confirmed": true} },
+                {arrayFilters: [{"cm._id": body.replyId},{"rp._id": body._id}]}
+            )
+            .exec();
+
+    }
 }
