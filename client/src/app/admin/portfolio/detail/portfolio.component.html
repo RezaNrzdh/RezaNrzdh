@@ -3,7 +3,9 @@
 </app-alertbox>
 <section class="width-full padding-top-24 padding-right-24 padding-left-32">
     <div class="flex align-ctr margin-bot-24">
-        <h1 class="color-dark headline-5 bold">نمونه کار جدید</h1>
+        <h1 class="color-dark headline-5 bold">
+            نمونه کار جدید
+        </h1>
     </div>
     <form [formGroup]="portfolioForm" (ngSubmit)="OnSubmit()">
         <div class="grid">
@@ -29,37 +31,103 @@
                         formControlName="desc"
                         [formGroup]="portfolioForm.get('desc')">
                     </app-textbox>
-                    <span class="caption medium color-gray-5 margin-top-24 margin-bot-4">اندازه عکسها باید حداقل 1024 در 574 پیکسل باشد.</span>
-                    <span class="caption medium color-gray-5 margin-bot-12">حجم هر عکس حداکثر باید 500 کیلوبایت باشد.</span>
+                    <span class="caption medium color-gray-5 margin-top-24 margin-bot-4">
+                        اندازه عکسها باید حداقل 1024 در 574 پیکسل باشد.
+                    </span>
+                    <span class="caption medium color-gray-5 margin-bot-12">
+                        حجم هر عکس حداکثر باید 500 کیلوبایت باشد.
+                    </span>
                     <div class="flex">
                         <app-uploadfile (outData)="OnAddImages($event)"></app-uploadfile>
                         <div class="imagelist flex margin-right-16">
                             <div *ngFor="let img of images" class="flex relative margin-left-8 radius-8 hidden">
-                                <a (click)="OnDeleteImages(img)" class="absolute bot margin-bot-12 margin-right-12"><app-icon icon="trash" color="white" size="20"></app-icon></a>
+                                <a (click)="OnDeleteImages(img)"class="absolute bot margin-bot-12 margin-right-12">
+                                    <app-icon icon="trash" color="white" size="20"></app-icon>
+                                </a>
                                 <img src="{{env}}/public/{{img}}" class="radius-8" />
                             </div>
                         </div>
                     </div>
-                    <app-button [spin]="isSpin" class="width-fit margin-top-24">ثبت نمونه کار</app-button>
+                    <app-button [spin]="isSpin" class="width-fit margin-top-24">
+                        ثبت نمونه کار
+                    </app-button>
                 </div>
-                <div class="main flex column background-white radius-8 shadow-16 padding-24 margin-bot-32">
-                    <h2 class="color-dark body-1 bold margin-bot-24">نظر کاربران</h2>
-                    <div *ngFor="let i of comment" class="flex column background-gray-1b radius-8 padding-16 margin-bot-4">
-                        <div class="flex">
-                            <span class="body-2 medium color-dark margin-left-16">{{ i.name }}</span>
-                            <span class="caption color-dark">{{ i.date | PersianCalendar}}</span>
+                <div *ngIf="comment.length > 0" class="comments flex column background-white radius-8 shadow-16 padding-24 margin-bot-32">
+                    <h2 class="color-dark body-1 bold margin-bot-24">
+                        نظر کاربران
+                    </h2>
+                    <div *ngFor="let i of comment">
+                        <div class="mainComment flex column radius-8 padding-16 margin-bot-4">
+                            <div class="flex align-ctr">
+                                <span class="body-2 medium color-dark margin-left-16">
+                                    {{ i.name }}
+                                </span>
+                                <span class="caption color-dark">
+                                    {{ i.date | PersianCalendar}}
+                                </span>
+                            </div>
+                            <span class="margin-top-8 margin-bot-8 body-2 color-dark">
+                                {{ i.comment }}
+                            </span>
+                            <div class="flex align-ctr">
+                                <app-tag
+                                        *ngIf="i.confirmed"
+                                        color="success">
+                                    تایید شده
+                                </app-tag>
+                                <app-button
+                                        *ngIf="!i.confirmed"
+                                        (click)="OnConfirmComment()"
+                                        mode="outlined"
+                                        color="dark2"
+                                        size="small">
+                                    تایید نظر
+                                </app-button>
+                            </div>
                         </div>
-                        <span class="margin-top-8 margin-bot-8 body-2 color-dark">{{ i.comment }}</span>
-                        <div class="flex align-ctr">
-                            <app-tag *ngIf="i.confirmed" color="success">تایید شده</app-tag>
-                            <app-button *ngIf="!i.confirmed" mode="outlined" color="dark2" size="small">تایید نظر</app-button>
+                        <div *ngFor="let j of i.reply"
+                             class="flex column background-gray-1 radius-8 padding-16 margin-bot-4">
+                            <div class="flex align-ctr">
+                                <span class="body-2 medium color-dark margin-left-4">
+                                    {{ j.name }}
+                                </span>
+                                <div class="body-2 medium color-dark margin-left-16">
+                                    <span class="margin-left-4">
+                                        در پاسخ
+                                    </span>
+                                    <span>
+                                        {{ j.replyName }}
+                                    </span>
+                                </div>
+                                <span class="caption color-dark">
+                                    {{ j.date | PersianCalendar}}
+                                </span>
+                            </div>
+                            <span class="margin-top-8 margin-bot-8 body-2 color-dark">
+                                {{ j.comment }}
+                            </span>
+                            <div class="flex align-ctr">
+                                <app-tag *ngIf="j.confirmed" color="success">
+                                    تایید شده
+                                </app-tag>
+                                <app-button
+                                        *ngIf="!j.confirmed"
+                                        (click)="OnConfirmComment()"
+                                        mode="outlined"
+                                        color="dark2"
+                                        size="small">
+                                    تایید نظر
+                                </app-button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
-                    <label class="body-2 medium color-dark margin-bot-4">دسته بندی</label>
+                    <label class="body-2 medium color-dark margin-bot-4">
+                        دسته بندی
+                    </label>
                     <app-dropdown
                         [options]="option"
                         class="margin-bot-8"
@@ -68,7 +136,9 @@
                     </app-dropdown>
                 </div>
                 <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
-                    <label class="body-2 medium color-dark margin-bot-4">وضعیت انتشار</label>
+                    <label class="body-2 medium color-dark margin-bot-4">
+                        وضعیت انتشار
+                    </label>
                     <app-dropdown
                         [options]="publish"
                         class="margin-bot-8"

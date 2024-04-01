@@ -27,12 +27,6 @@ export class PortfolioController {
         return this.portfolioService.GetPortfolioForAdmin(slug);
     }
 
-    @Get("admin/find/title")
-    @UseGuards(AuthGuard)
-    GetArticleTitleForAdmin(@Query() query): any {
-        return this.portfolioService.GetArticleTitleForAdmin(query);
-    }
-
     @Get("top/:number")
     GetTopPortfolios(@Param('number') number): any {
         return this.portfolioService.GetTopPortfolios(number);

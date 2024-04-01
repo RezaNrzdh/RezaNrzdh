@@ -28,7 +28,7 @@ export class PortfolioComponent implements OnInit {
     option: Array<string> = [...CategoryConstant];
     publish: Array<string> = [...PublishConstant];
     images: Array<string> = [];
-    comment: any;
+    comment: Array<any> = [];
     thumbnail: string;
 
     alertbox: boolean = false;
@@ -131,5 +131,9 @@ export class PortfolioComponent implements OnInit {
                 }
             })
         })
+    }
+
+    OnConfirmComment(): void {
+        console.log("CONFIRMED");
     }
 }

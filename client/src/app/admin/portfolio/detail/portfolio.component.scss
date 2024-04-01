@@ -13,6 +13,11 @@
                     min-width: 116px;
                 }
             }
+            .comments {
+                .mainComment {
+                    border: 1px solid color.$color-gray-2;
+                }
+            }
             .imagelist, .thumbnailImageContainer {
                 div {
                     width: 120px;

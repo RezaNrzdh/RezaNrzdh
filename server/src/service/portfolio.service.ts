@@ -147,12 +147,19 @@ export class PortfolioService {
         return await this.portfolioModel
             .findOne(
                 { slug: slug },
-                { category: 1, date: 1, desc: 1, img: 1, publish: 1, slug: 1, thumbnail: 1, title: 1, _id: 1 })
+                {
+                    category: 1,
+                    date: 1,
+                    desc: 1,
+                    img: 1,
+                    publish: 1,
+                    slug: 1,
+                    thumbnail: 1,
+                    title: 1,
+                    _id: 1,
+                    comment: 1
+                })
             .exec();
-    }
-
-    async GetArticleTitleForAdmin(query: any): Promise<any> {
-        return await this.portfolioModel.findOne({_id: query.id}, {title: 1, slug: 1}).exec();
     }
 
     async CreatePortfolio(body: any): Promise<any> {
@@ -193,35 +200,4 @@ export class PortfolioService {
                 {arrayFilters: [{ "cm._id": body.replyId }]})
             .exec();
     }
-
-    // async CreateComment(body: any): Promise<any> {
-    //     return await this.commentModel.create(body);
-    // }
-
-    // async CreateReply(body: any): Promise<any> {
-    //     await this.commentModel.updateOne({ _id: body.replyId }, { $inc: { replyCount: 1 }}).exec();
-    //     return await this.replyModel.create(body);
-    // }
-    //
-    // async GetReplies(query: any): Promise<any> {
-    //     return await this.replyModel.find({ pid: query.pid, replyId: query.replyId }).exec();
-    // }
-
-    // async GetPortfolio(slug: string): Promise<any> {
-    //     const portfolio = await this.portfolioModel.findOne({ slug: slug, publish: 2}).exec();
-    //     const comment = await this.commentModel.find({ pid: portfolio._id, confirmed: true, isArticle: false }).exec();
-    //
-    //     return {
-    //         _id: portfolio._id,
-    //         title: portfolio.title,
-    //         slug: portfolio.slug,
-    //         date: portfolio.date,
-    //         category: portfolio.category,
-    //         img: portfolio.img,
-    //         desc: portfolio.desc,
-    //         like: portfolio.like,
-    //         visit: portfolio.visit,
-    //         comment: comment
-    //     };
-    // }
 }
