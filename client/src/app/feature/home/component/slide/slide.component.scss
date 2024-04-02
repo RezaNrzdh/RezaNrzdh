@@ -24,7 +24,7 @@
         position: relative;
         width: inherit;
         height: inherit;
-        background: url("/assets/images/heroimg.jpg");
+        background-image: url("/assets/images/heroimg.jpg");
         background-repeat: no-repeat;
         background-position: center center;
         image-rendering: pixelated;
@@ -43,6 +43,16 @@
                 height: 48px;
                 background-color: color.$color-primary;
             }
+        }
+        .rezanrzdh {
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 625px;
+            background-image: url("/assets/images/heroimg.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            image-rendering: pixelated;
         }
         .socialmedia{
             display: flex;
@@ -63,6 +73,9 @@
             background-repeat: no-repeat;
             background-position: center center;
             image-rendering: pixelated;
+            .rezanrzdh {
+                background-image: url("/assets/images/heroimg_medium.png");
+            }
             .comment{
                 margin-top: 450px;
             }
@@ -77,6 +90,9 @@
             background-repeat: no-repeat;
             background-position: center center;
             image-rendering: pixelated;
+            .rezanrzdh {
+                background-image: url("/assets/images/heroimg_small.png");
+            }
             .comment{
                 display: none;
             }
@@ -94,6 +110,9 @@
             background-repeat: no-repeat;
             background-position: center center;
             image-rendering: pixelated;
+            .rezanrzdh {
+                background-image: url("/assets/images/heroimg_xsmall.png");
+            }
         }
     }
 }

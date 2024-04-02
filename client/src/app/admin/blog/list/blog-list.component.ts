@@ -8,6 +8,7 @@ import { RouterLink } from "@angular/router";
 import { TagComponent } from "../../../shared/component/tag/tag.component";
 import { NgFor, NgIf } from "@angular/common";
 import { ButtonComponent } from "../../../shared/component/button/button.component";
+import {map} from "rxjs";
 
 @Component({
     selector: "admin-blog-list",
@@ -33,7 +34,13 @@ export class BlogListComponent implements OnInit {
             limit: this.limit,
             sortBy: this.sortBy
         }
-        this.blogService.GetAllArticlesForAdmin(query).subscribe({
+        this.blogService.GetAllArticlesForAdmin(query).pipe(map((value, index) => {
+            value.data.forEach((val: any) => {
+                val.comment = val.comment + val.reply;
+                delete val.reply;
+            })
+            return value;
+        })).subscribe({
             next: ((value: any) => {
                 this.data = value.data;
             })

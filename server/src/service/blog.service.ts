@@ -16,7 +16,66 @@ export class BlogService {
 
     async GetAllArticlesForAdmin(query: any): Promise<any> {
         const count = await this.blogModel.find().countDocuments();
-        const data  = await this.blogModel.find().skip(query.offset).limit(query.limit).sort({ _id: -1 }).exec();
+        const data = await this.blogModel
+            .aggregate([
+                { $sort: { _id: -1 } },
+                { $skip: parseInt(query.offset) },
+                { $limit: parseInt(query.limit) },
+                {
+                    $project: {
+                        _id: 1,
+                        title: 1,
+                        slug: 1,
+                        date: 1,
+                        publish: 1,
+                        visit: 1,
+                        like: 1,
+                        comment: {
+                            $cond: {
+                                if: { $isArray: "$comment" },
+                                then: {
+                                    $size: {
+                                        $filter: {
+                                            input: "$comment",
+                                            as: "cm",
+                                            cond: {
+                                                $eq: [ "$$cm.confirmed", false ]
+                                            }
+                                        }
+                                    }
+                                },
+                                else: 0
+                            }
+                        },
+                        reply: {
+                            $sum: {
+                                $map: {
+                                    input: "$comment",
+                                    as: "cm",
+                                    in: {
+                                        $cond: {
+                                            if: { $isArray: "$$cm.reply" },
+                                            then:{
+                                                $size: {
+                                                    $filter: {
+                                                        input: "$$cm.reply",
+                                                        as: "rp",
+                                                        cond: {
+                                                            $eq: [ "$$rp.confirmed", false ]
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            else: 0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ])
+            .exec();
         return { count: count, data: data }
     }
 
