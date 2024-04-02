@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {UserService} from "../../../core/services/user.service";
-import { RolePipe } from "../../../shared/pipe/role.pipe";
-import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
+import {UserService} from "../../../../core/services/user.service";
+import { RolePipe } from "../../../../shared/pipe/role.pipe";
+import { CalendarPipe } from "../../../../shared/pipe/calendar.pipe";
 import { RouterLink } from "@angular/router";
-import { TagComponent } from "../../../shared/component/tag/tag.component";
-import { IconComponent } from "../../../shared/component/icon/icon.component";
+import { TagComponent } from "../../../../shared/component/tag/tag.component";
+import { IconComponent } from "../../../../shared/component/icon/icon.component";
 import { NgFor, NgIf } from "@angular/common";
 
 @Component({

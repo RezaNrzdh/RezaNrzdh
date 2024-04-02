@@ -1,15 +1,15 @@
 import {Component, OnInit} from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {BlogService} from "../../../core/services/blog.service";
-import {PublishConstant} from "../../../core/constant/publish.constant";
-import { ImagePathPipe } from "../../../shared/pipe/image-path.pipe";
-import { DropdownComponent } from "../../../shared/component/dropdown/dropdown.component";
-import { ButtonComponent } from "../../../shared/component/button/button.component";
-import { IconComponent } from "../../../shared/component/icon/icon.component";
-import { UploadfileComponent } from "../../../shared/component/uploadfile/uploadfile.component";
+import {BlogService} from "../../../../core/services/blog.service";
+import {PublishConstant} from "../../../../core/constant/publish.constant";
+import { ImagePathPipe } from "../../../../shared/pipe/image-path.pipe";
+import { DropdownComponent } from "../../../../shared/component/dropdown/dropdown.component";
+import { ButtonComponent } from "../../../../shared/component/button/button.component";
+import { IconComponent } from "../../../../shared/component/icon/icon.component";
+import { UploadfileComponent } from "../../../../shared/component/uploadfile/uploadfile.component";
 import { NgIf } from "@angular/common";
-import { TextboxComponent } from "../../../shared/component/textbox/textbox.component";
+import { TextboxComponent } from "../../../../shared/component/textbox/textbox.component";
 
 @Component({
     selector: "admin-blog",

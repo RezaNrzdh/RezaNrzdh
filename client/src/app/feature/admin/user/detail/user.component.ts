@@ -1,15 +1,15 @@
 import {Component, OnInit} from "@angular/core";
-import {UserService} from "../../../core/services/user.service";
+import {UserService} from "../../../../core/services/user.service";
 import {ActivatedRoute} from "@angular/router";
-import {UserModel} from "../../../core/models/user.model";
+import {UserModel} from "../../../../core/models/user.model";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {RoleConstant} from "../../../core/constant/role.constant";
-import {UserStateConstant} from "../../../core/constant/user-state.constant";
-import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
-import { DropdownComponent } from "../../../shared/component/dropdown/dropdown.component";
-import { ButtonComponent } from "../../../shared/component/button/button.component";
-import { TextboxComponent } from "../../../shared/component/textbox/textbox.component";
-import {PublishPipe} from "../../../shared/pipe/publish.pipe";
+import {RoleConstant} from "../../../../core/constant/role.constant";
+import {UserStateConstant} from "../../../../core/constant/user-state.constant";
+import { CalendarPipe } from "../../../../shared/pipe/calendar.pipe";
+import { DropdownComponent } from "../../../../shared/component/dropdown/dropdown.component";
+import { ButtonComponent } from "../../../../shared/component/button/button.component";
+import { TextboxComponent } from "../../../../shared/component/textbox/textbox.component";
+import {PublishPipe} from "../../../../shared/pipe/publish.pipe";
 
 @Component({
     selector: "admin-user",

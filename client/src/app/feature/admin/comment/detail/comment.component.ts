@@ -1,15 +1,15 @@
 import {Component, OnInit} from "@angular/core";
-import {DropdownComponent} from "../../../shared/component/dropdown/dropdown.component";
-import {PortfolioService} from "../../../core/services/portfolio.service";
+import {DropdownComponent} from "../../../../shared/component/dropdown/dropdown.component";
+import {PortfolioService} from "../../../../core/services/portfolio.service";
 import {ActivatedRoute} from "@angular/router";
-import {TagComponent} from "../../../shared/component/tag/tag.component";
-import {IsArticlePipe} from "../../../shared/pipe/isarticle.pipe";
-import {ButtonComponent} from "../../../shared/component/button/button.component";
-import {BlogService} from "../../../core/services/blog.service";
-import {IconComponent} from "../../../shared/component/icon/icon.component";
+import {TagComponent} from "../../../../shared/component/tag/tag.component";
+import {IsArticlePipe} from "../../../../shared/pipe/isarticle.pipe";
+import {ButtonComponent} from "../../../../shared/component/button/button.component";
+import {BlogService} from "../../../../core/services/blog.service";
+import {IconComponent} from "../../../../shared/component/icon/icon.component";
 import {NgFor, NgIf} from "@angular/common";
-import {ConfirmedPipe} from "../../../shared/pipe/confirmed.pipe";
-import {CalendarPipe} from "../../../shared/pipe/calendar.pipe";
+import {ConfirmedPipe} from "../../../../shared/pipe/confirmed.pipe";
+import {CalendarPipe} from "../../../../shared/pipe/calendar.pipe";
 
 @Component({
     selector: "admin-comment",

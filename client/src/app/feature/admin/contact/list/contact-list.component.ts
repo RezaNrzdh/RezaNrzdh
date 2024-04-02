@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {ContactService} from "../../../core/services/contact.service";
-import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
-import { IconComponent } from "../../../shared/component/icon/icon.component";
+import {ContactService} from "../../../../core/services/contact.service";
+import { CalendarPipe } from "../../../../shared/pipe/calendar.pipe";
+import { IconComponent } from "../../../../shared/component/icon/icon.component";
 import { RouterLink } from "@angular/router";
 import { NgFor } from "@angular/common";
 

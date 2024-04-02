@@ -3,13 +3,13 @@
 
 @keyframes AnimateUpDown {
     0% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(-5deg);
     }
     50% {
-        transform: translateY(10px);
+        transform: translateY(50px) rotate(5deg);
     }
     100%{
-        transform: translateY(0);
+        transform: translateY(0) rotate(-5deg);
     }
 }
 
@@ -28,6 +28,9 @@
         background-repeat: no-repeat;
         background-position: center center;
         image-rendering: pixelated;
+        video {
+            mix-blend-mode: overlay;
+        }
         .comment{
             position: absolute;
             margin-top: 415px;
@@ -61,6 +64,10 @@
             margin-bottom: 32px;
             a{
                 margin-right: 24px;
+                transition: all ease-in-out 0.3s;
+                &:hover{
+                    transform: scale(2);
+                }
             }
         }
     }

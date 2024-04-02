@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {ImagesService} from "../../core/services/images.service";
-import {environment} from "../../../environments/environment";
-import { IconComponent } from "../../shared/component/icon/icon.component";
+import {ImagesService} from "../../../core/services/images.service";
+import {environment} from "../../../../environments/environment";
+import { IconComponent } from "../../../shared/component/icon/icon.component";
 import { NgFor } from "@angular/common";
 
 @Component({

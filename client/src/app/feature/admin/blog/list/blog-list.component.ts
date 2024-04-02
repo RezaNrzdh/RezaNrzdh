@@ -1,13 +1,13 @@
 import {Component, OnInit} from "@angular/core";
-import {BlogService} from "../../../core/services/blog.service";
-import {BlogModel} from "../../../core/models/blog.model";
-import { PublishPipe } from "../../../shared/pipe/publish.pipe";
-import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
-import { IconComponent } from "../../../shared/component/icon/icon.component";
+import {BlogService} from "../../../../core/services/blog.service";
+import {BlogModel} from "../../../../core/models/blog.model";
+import { PublishPipe } from "../../../../shared/pipe/publish.pipe";
+import { CalendarPipe } from "../../../../shared/pipe/calendar.pipe";
+import { IconComponent } from "../../../../shared/component/icon/icon.component";
 import { RouterLink } from "@angular/router";
-import { TagComponent } from "../../../shared/component/tag/tag.component";
+import { TagComponent } from "../../../../shared/component/tag/tag.component";
 import { NgFor, NgIf } from "@angular/common";
-import { ButtonComponent } from "../../../shared/component/button/button.component";
+import { ButtonComponent } from "../../../../shared/component/button/button.component";
 import {map} from "rxjs";
 
 @Component({
