@@ -10,6 +10,7 @@ import { RouterLink } from "@angular/router";
 import { TagComponent } from "../../../shared/component/tag/tag.component";
 import { NgFor, NgIf } from "@angular/common";
 import { ButtonComponent } from "../../../shared/component/button/button.component";
+import {map} from "rxjs";
 
 @Component({
     selector: "admin-portfolio-list",
@@ -34,7 +35,13 @@ export class PortfolioListComponent implements OnInit {
             limit: this.limit,
             sortBy: this.sortBy
         }
-        this.portfolioService.GetAllPortfolio(query).subscribe({
+        this.portfolioService.GetAllPortfolio(query).pipe(map((value, index) => {
+            value.data.forEach((val: any) => {
+                val.comment = val.comment + val.reply;
+                delete val.reply;
+            });
+            return value;
+        })).subscribe({
             next: ((value: any) => {
                 console.log(value);
                 this.count = value.count - this.limit;

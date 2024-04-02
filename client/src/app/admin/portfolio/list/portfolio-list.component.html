@@ -7,21 +7,17 @@
         <div class="headerTable sticky background-white width-full grid body-2 bold color-dark padding-top-16 padding-bot-16">
             <span>عنوان</span>
             <span>تاریخ انتشار</span>
-<!--            <span>ویزیت</span>-->
-<!--            <span>لایک</span>-->
             <span>دسته بندی</span>
             <span>انتشار</span>
-            <span>کامنت</span>
+            <span>کامنت جدید</span>
             <span></span>
         </div>
-        <div *ngFor="let i of data" class="rowTable flex align-ctr width-full grid body-2 medium color-dark padding-top-16 padding-bot-16 margin-top-8">
+        <div *ngFor="let i of data; index as j" class="rowTable flex align-ctr width-full grid body-2 medium color-dark padding-top-16 padding-bot-16 margin-top-8">
             <div class="flex align-ctr">
                 <img src="{{i.thumbnail | ImagePath}}" width="40" height="40" class="radius-4" />
                 <span class="margin-right-16">{{i.title}}</span>
             </div>
             <span>{{i.date | PersianCalendar}}</span>
-<!--            <span>{{i.visit}}</span>-->
-<!--            <span>{{i.like}}</span>-->
             <div class="flex">
                 <app-tag>{{i.category | CategoryPipe}}</app-tag>
             </div>

@@ -60,24 +60,26 @@ export class PortfolioService {
                             }
                         },
                         reply: {
-                            $map: {
-                                input: "$comment",
-                                as: "cm",
-                                in: {
-                                    $cond: {
-                                        if: { $isArray: "$$cm.reply" },
-                                        then: {
-                                            $size: {
-                                                $filter: {
-                                                    input: "$$cm.reply",
-                                                    as: "rp",
-                                                    cond: {
-                                                        $eq: [ "$$rp.confirmed", false ]
+                            $sum: {
+                                $map: {
+                                    input: "$comment",
+                                    as: "cm",
+                                    in: {
+                                        $cond: {
+                                            if: { $isArray: "$$cm.reply" },
+                                            then: {
+                                                $size: {
+                                                    $filter: {
+                                                        input: "$$cm.reply",
+                                                        as: "rp",
+                                                        cond: {
+                                                            $eq: [ "$$rp.confirmed", false ]
+                                                        }
                                                     }
                                                 }
-                                            }
-                                        },
-                                        else: 0
+                                            },
+                                            else: 0
+                                        }
                                     }
                                 }
                             }
