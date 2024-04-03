@@ -1,3 +1,4 @@
+<app-share *ngIf="share" [value]="currentUrl"></app-share>
 <section *ngIf="data" class="flex column width-full align-ctr">
     <div class="flex column CRTMonitor margin-top-56 margin-bot-56">
         <h1 class="headline-1 bold color-dark margin-bot-16">{{ data.title }}</h1>
@@ -24,15 +25,15 @@
             </div>
             <div class="flex justify-ctr align-ctr margin-top-24">
                 <div class="flex">
-                    <a *ngFor="let dot of [].constructor(data.img.length); index as i"
+                    <span *ngFor="let dot of [].constructor(data.img.length); index as i"
                        [ngClass]="currentImage === i ? 'background-primary' : 'background-gray-2'"
-                       class="flex margin-left-4 margin-right-4 padding-4 radius-8"></a>
+                       class="flex margin-left-4 margin-right-4 padding-4 radius-8"></span>
                 </div>
             </div>
         </div>
         <div class="desc grid margin-top-40 margin-left-32 margin-right-32">
             <div class="flex column align-ctr">
-                <a><app-icon icon="share" size="24" color="gray4"></app-icon></a>
+                <a (click)="ToggleShare()"><app-icon icon="share" size="24" color="gray4"></app-icon></a>
                 <div class="flex column align-ctr margin-top-32">
                     <app-icon icon="like" size="24" color="gray4"></app-icon>
                     <span class="body-2 medium color-gray-4 margin-top-4">{{ data.like }}</span>

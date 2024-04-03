@@ -156,6 +156,9 @@
 .lineheight-32 { line-height: 32px }
 
 .text-ctr { text-align: center };
+.dir-ltr { direction: ltr };
+.dir-rtl { direction: rtl };
+
 
 /*
 --- Shadow ---
@@ -231,6 +234,7 @@
 .radius-16 { border-radius: 16px }
 .radius-24 { border-radius: 24px }
 .radius-32 { border-radius: 32px }
+.radius-48 { border-radius: 48px }
 .radius-top-8 { border-top-right-radius: 8px; border-top-left-radius: 8px }
 .radius-bot-8 { border-bottom-right-radius: 8px; border-bottom-left-radius: 8px }
 

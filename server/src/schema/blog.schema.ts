@@ -28,6 +28,7 @@ class Comment {
 export class Blog {
     @Prop() _id: Number;
     @Prop() title: String;
+    @Prop() short: String;
     @Prop() slug: String;
     @Prop({ default: Date.now }) date: Number;
     @Prop({ default: false }) publish: Boolean;

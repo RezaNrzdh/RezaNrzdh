@@ -47,6 +47,7 @@ export class BlogComponent implements OnInit {
         this.blogForm = new FormGroup({
             "title": new FormControl(null),
             "slug": new FormControl(null),
+            "short": new FormControl(null),
             "read": new FormControl(null),
             "publish": new FormControl(false),
             "desc": new FormControl(null)
@@ -59,6 +60,7 @@ export class BlogComponent implements OnInit {
                 next: ((value: any) => {
                     this.blogForm.patchValue({
                         title: value.title,
+                        short: value.short,
                         slug: value.slug,
                         read: value.read,
                         publish: value.publish ? 2 : 1,

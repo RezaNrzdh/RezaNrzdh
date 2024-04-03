@@ -1,0 +1,26 @@
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
+
+:host{
+    display: flex;
+    position: fixed;
+    z-index: 9999;
+    top:0;
+    section {
+        .box {
+            width: 328px;
+            a{
+                transition: all ease-in-out 0.3s;
+                &:hover{
+                    background-color: color.$color-primary;
+                }
+            }
+            input{
+                height: 40px;
+                outline: none;
+                font-family: PelakFont;
+                border: 1px solid color.$color-gray-2;
+            }
+        }
+    }
+}

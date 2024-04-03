@@ -16,6 +16,7 @@ import { PortfolioCardComponent } from "../../../shared/component/portfolioCard/
 import { IconComponent } from "../../../shared/component/icon/icon.component";
 import { TagComponent } from "../../../shared/component/tag/tag.component";
 import { NgIf, NgFor, NgClass } from "@angular/common";
+import {ShareComponent} from "../../../shared/component/share/share.component";
 
 @Component({
     selector: "app-portfolio",
@@ -35,7 +36,8 @@ import { NgIf, NgFor, NgClass } from "@angular/common";
         ButtonComponent,
         CommentComponent,
         CalendarPipe,
-        CategoryPipe
+        CategoryPipe,
+        ShareComponent
     ]
 })
 export class PortfolioComponent implements OnInit {
@@ -45,6 +47,8 @@ export class PortfolioComponent implements OnInit {
     commentForm: FormGroup | any;
     isMedium: boolean = false;
     isSmall: boolean = false;
+    share: boolean = false;
+    currentUrl: string;
     env: string = environment.static;
     sub: Subscription;
 
@@ -83,6 +87,7 @@ export class PortfolioComponent implements OnInit {
                 this.currentImage = 0;
                 this.portfolioService.GetPortfolio(value.slug).subscribe({
                     next: ((value: any) => {
+                        this.currentUrl = document.URL;
                         this.data = value;
                         this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
                         this.OnGetTopPortfolio(this.data.category);
@@ -128,6 +133,10 @@ export class PortfolioComponent implements OnInit {
         this.transformX -= 100;
         this.renderer.setStyle(value,'transform',`translate3d(${ this.transformX }%,0,0)`);
         this.currentImage--;
+    }
+
+    ToggleShare(): void {
+        this.share = !this.share;
     }
 
 }

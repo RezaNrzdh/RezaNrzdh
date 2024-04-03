@@ -10,6 +10,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { ButtonComponent } from '../../../shared/component/button/button.component';
 import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
 import { IconComponent } from '../../../shared/component/icon/icon.component';
+import {ShareComponent} from "../../../shared/component/share/share.component";
 
 @Component({
     selector: 'app-blog',
@@ -17,13 +18,15 @@ import { IconComponent } from '../../../shared/component/icon/icon.component';
     styleUrls: ['./blog.component.scss'],
     standalone: true,
     imports: [
-        IconComponent,FormsModule, ReactiveFormsModule, TextboxComponent,
-        ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe
+        IconComponent, FormsModule, ReactiveFormsModule, TextboxComponent,
+        ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe, ShareComponent
     ]
 })
 export class BlogComponent implements OnInit {
 
     data: BlogModel = new BlogModel();
+    share: boolean = false;
+    currentUrl: string;
     commentForm: FormGroup | any;
 
     constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService) { }
@@ -42,6 +45,7 @@ export class BlogComponent implements OnInit {
             next: ((value: any) => {
                 this.blogService.GetArticle(value.slug).subscribe({
                     next:((value: any) => {
+                        this.currentUrl = document.URL;
                         this.data = value;
                     })
                 })
@@ -66,5 +70,9 @@ export class BlogComponent implements OnInit {
                 this.commentForm.reset({ name: "", email: "", comment: "" });
             })
         })
+    }
+
+    ToggleShare(): void {
+        this.share = !this.share;
     }
 }

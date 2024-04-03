@@ -87,6 +87,7 @@ export class BlogService {
                     $project: {
                         title: "$title",
                         slug: "$slug",
+                        short: "$short",
                         read: "$read",
                         visit: "$visit",
                         like: "$like",
@@ -108,6 +109,7 @@ export class BlogService {
                     $project: {
                         title: "$title",
                         slug: "$slug",
+                        short: "$short",
                         read: "$read",
                         visit: "$visit",
                         like: "$like",
@@ -167,6 +169,7 @@ export class BlogService {
                 {
                     $set: {
                         title: body.title,
+                        short: body.short,
                         slug: body.slug,
                         img: body.img,
                         read: body.read,
