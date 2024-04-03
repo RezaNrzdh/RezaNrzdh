@@ -4,7 +4,7 @@
         <h1 class="color-dark headline-1 bold margin-left-24">تماس با من</h1>
         <img src="assets/images/dot.svg" alt="" />
     </div>
-    <p class="color-dark medium body-2 margin-bot-24">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است</p>
+    <p class="color-dark medium body-2 margin-bot-24">نظرات و پیشنهاداتتون رو میتونید از طریق فرم زیر با من در میون بذارید.</p>
     <div class="container grid background-white radius-8">
         <div class="form padding-32 width-full borderbox">
             <h2 class="headline-4 bold color-dark margin-bot-32">ارسال نظر</h2>
@@ -15,8 +15,7 @@
                 <app-textbox type="text" name="subject" title="موضوع" formControlName="subject" [formGroup]="contactForm.get('subject')"></app-textbox>
                 <app-textbox [multiLine]="true" [rows]="4" name="comment" title="نظر شما" formControlName="comment" [formGroup]="contactForm.get('comment')"></app-textbox>
                 <div class="action flex">
-                    <app-button [isLink]="false" [spin]="isSpin" color="primary" mode="filled" class="margin-left-16">ارسال نظر</app-button>
-                    <app-button [isLink]="true" color="dark" mode="ghost">بازنشانی</app-button>
+                    <app-button action="submit" [isLink]="false" [spin]="isSpin" color="primary" mode="filled" class="margin-left-16">ارسال نظر</app-button>
                 </div>
             </form>
         </div>
