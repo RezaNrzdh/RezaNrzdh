@@ -37,6 +37,9 @@ import {ContactService} from "./service/contact.service";
 import {BlogService} from "./service/blog.service";
 import {AuthService} from "./service/auth.service";
 import {UserService} from "./service/user.service";
+import {NewsletterService} from "./service/newsletter.service";
+import {NewsletterController} from "./controller/newsletter.controller";
+import {NewsletterSchema} from "./schema/newsletter.schema";
 
 @Module({
   imports: [
@@ -51,7 +54,8 @@ import {UserService} from "./service/user.service";
       MongooseModule.forFeature([{ name: "Contact", schema: ContactSchema }]),
       MongooseModule.forFeature([{ name: "Blog", schema: BlogSchema }]),
       MongooseModule.forFeature([{ name: "Auth", schema: AuthSchema }]),
-      MongooseModule.forFeature([{name: "User", schema: UserSchema}])
+      MongooseModule.forFeature([{ name: "User", schema: UserSchema }]),
+      MongooseModule.forFeature([{ name: "Newsletter", schema: NewsletterSchema }])
   ],
   controllers: [
       AppController,
@@ -63,7 +67,8 @@ import {UserService} from "./service/user.service";
       ContactController,
       BlogController,
       AuthController,
-      UserController
+      UserController,
+      NewsletterController
   ],
   providers: [
       AppService,
@@ -75,7 +80,8 @@ import {UserService} from "./service/user.service";
       ContactService,
       BlogService,
       AuthService,
-      UserService
+      UserService,
+      NewsletterService
   ],
 })
 export class AppModule {}
