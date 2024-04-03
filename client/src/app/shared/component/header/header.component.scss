@@ -73,6 +73,10 @@
                 width: 40px;
                 height: 40px;
                 border-radius: 20px;
+                transition: all ease-in-out 0.2s;
+                &:hover{
+                    transform: scale(1.2);
+                }
             }
             .menu {
                 grid-template-columns: 1fr;

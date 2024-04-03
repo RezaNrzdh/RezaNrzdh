@@ -3,13 +3,13 @@
 
 @keyframes AnimateUpDown {
     0% {
-        transform: translateY(0) rotate(-5deg);
+        transform: translateY(0) rotate(-3deg);
     }
     50% {
-        transform: translateY(50px) rotate(5deg);
+        transform: translateY(30px) rotate(3deg);
     }
     100%{
-        transform: translateY(0) rotate(-5deg);
+        transform: translateY(0) rotate(-3deg);
     }
 }
 
