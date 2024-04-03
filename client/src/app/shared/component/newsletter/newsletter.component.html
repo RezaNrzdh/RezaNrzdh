@@ -1,7 +1,12 @@
 <div class="body-1 color-gray-3 bold margin-bot-16">عضویت در خبرنامه بلاگ</div>
 <div class="flex">
-    <button (click)="SubmitNewsletter()" class="flex justify-ctr align-ctr background-primary">
-        <app-icon size="20" color="dark" icon="arrow-right"></app-icon>
-    </button>
-    <input [(ngModel)]="newsletterInput" placeholder="Your email..." class="outline color-white body-1" />
+    <form [formGroup]="newsletterForm" (ngSubmit)="SubmitNewsletter()" class="flex">
+        <button class="flex justify-ctr align-ctr background-primary">
+            <app-icon size="20" color="dark" icon="arrow-right"></app-icon>
+        </button>
+        <input formControlName="email"
+               [(ngModel)]="newsletterInput"
+               placeholder="Your email..."
+               class="outline color-white body-1" />
+    </form>
 </div>
