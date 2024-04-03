@@ -8,19 +8,36 @@ import { DropdownComponent } from "../../../../shared/component/dropdown/dropdow
 import { ButtonComponent } from "../../../../shared/component/button/button.component";
 import { IconComponent } from "../../../../shared/component/icon/icon.component";
 import { UploadfileComponent } from "../../../../shared/component/uploadfile/uploadfile.component";
-import { NgIf } from "@angular/common";
+import {NgFor, NgIf} from "@angular/common";
 import { TextboxComponent } from "../../../../shared/component/textbox/textbox.component";
+import {CalendarPipe} from "../../../../shared/pipe/calendar.pipe";
+import {TagComponent} from "../../../../shared/component/tag/tag.component";
 
 @Component({
     selector: "admin-blog",
     templateUrl: "blog.component.html",
     styleUrls: ["blog.component.scss"],
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, TextboxComponent, NgIf, UploadfileComponent, IconComponent, ButtonComponent, DropdownComponent, ImagePathPipe]
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TextboxComponent,
+        NgIf,
+        NgFor,
+        UploadfileComponent,
+        IconComponent,
+        ButtonComponent,
+        DropdownComponent,
+        ImagePathPipe,
+        CalendarPipe,
+        TagComponent
+    ]
 })
 export class BlogComponent implements OnInit {
 
     blogForm: FormGroup | any;
+    comment: Array<any> = [];
+    pid: number;
     image: string;
     thumbnail: string;
     publish: Array<string> = [...PublishConstant];
@@ -47,6 +64,8 @@ export class BlogComponent implements OnInit {
                         publish: value.publish ? 2 : 1,
                         desc: value.desc
                     });
+                    this.comment = value.comment;
+                    this.pid = value._id;
                     this.thumbnail = value.thumbnail;
                     this.image = value.img;
                 })
@@ -110,6 +129,24 @@ export class BlogComponent implements OnInit {
                 if(state){
                     this.thumbnail = "";
                 }
+            })
+        });
+    }
+
+    OnConfirmComment(pid: number, _id: any): void {
+        const body = { pid: pid, _id: _id }
+        this.blogService.ConfirmComments(body).subscribe({
+            next:((value: any) => {
+                this.comment = value.comment;
+            })
+        });
+    }
+
+    OnConfirmReplies(pid: number, replyId: any, _id: any): void {
+        const body = { pid: pid, replyId: replyId, _id: _id }
+        this.blogService.ConfirmReplies(body).subscribe({
+            next:((value: any) => {
+                this.comment = value.comment;
             })
         });
     }

@@ -56,4 +56,16 @@ export class BlogController {
     CreateReply(@Body() body: any): any {
         return this.blogService.CreateReply(body);
     }
+
+    @Patch("comment/confirm")
+    @UseGuards(AuthGuard)
+    ConfirmComments(@Body() body: any): any {
+        return this.blogService.ConfirmComments(body);
+    }
+
+    @Patch("reply/confirm")
+    @UseGuards(AuthGuard)
+    ConfirmReplies(@Body() body: any): any {
+        return this.blogService.ConfirmReplies(body);
+    }
 }

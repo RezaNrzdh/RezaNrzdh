@@ -194,4 +194,30 @@ export class BlogService {
                 {arrayFilters: [{ "cm._id": body.replyId }]})
             .exec();
     }
+
+    async ConfirmComments(body: any): Promise<any> {
+        const confirm = await this.blogModel
+            .updateOne(
+                { _id: body.pid },
+                { $set: {"comment.$[cm].confirmed": true}},
+                {arrayFilters: [{"cm._id": body._id}]}
+            )
+            .exec();
+
+        if(confirm.acknowledged)
+            return await this.blogModel.findOne({ _id: body.pid },{ comment: 1 }).exec();
+    }
+
+    async ConfirmReplies(body: any): Promise<any> {
+        const confirm = await this.blogModel
+            .updateOne(
+                { _id: body.pid },
+                { $set: {"comment.$[cm].reply.$[rp].confirmed": true} },
+                {arrayFilters: [{"cm._id": body.replyId},{"rp._id": body._id}]}
+            )
+            .exec();
+
+        if(confirm.acknowledged)
+            return await this.blogModel.findOne({ _id: body.pid },{ comment: 1 }).exec();
+    }
 }
