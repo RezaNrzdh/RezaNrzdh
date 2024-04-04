@@ -1,4 +1,5 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
+import {SchemaTypes, Types} from "mongoose";
 
 @Schema()
 class Reply {
@@ -22,6 +23,11 @@ class Comment {
     @Prop({ type: [Reply] }) reply: Reply[];
 }
 
+@Schema()
+class Like {
+    @Prop({ type: SchemaTypes.ObjectId }) uid: Types.ObjectId;
+}
+
 @Schema({ collection: "portfolio" })
 export class Portfolio {
     @Prop() _id: Number;
@@ -30,7 +36,7 @@ export class Portfolio {
     @Prop({ default: Date.now }) date: Number;
     @Prop() publish: Number;
     @Prop({ default: 0 }) visit: Number;
-    @Prop({ default: 0 }) like: Number;
+    @Prop({ default: 0, type: [Like] }) like: Like[];
     @Prop() img: [String];
     @Prop() thumbnail: String;
     @Prop() desc: String;
