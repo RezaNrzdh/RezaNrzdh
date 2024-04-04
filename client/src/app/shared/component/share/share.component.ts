@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {IconComponent} from "../icon/icon.component";
 import {ButtonComponent} from "../button/button.component";
 
@@ -14,11 +14,17 @@ import {ButtonComponent} from "../button/button.component";
 })
 export class ShareComponent {
 
-    @Input() value: string = "http://rezanrzdh.ir/";
+    @Input() title: string;
+    @Input() url: string;
+    @Output() outout: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}
 
     CopyOnClipboard(): void {
-        navigator.clipboard.writeText(this.value);
+        navigator.clipboard.writeText(this.url);
+    }
+
+    CloseDialog(): void {
+        this.outout.emit();
     }
 }

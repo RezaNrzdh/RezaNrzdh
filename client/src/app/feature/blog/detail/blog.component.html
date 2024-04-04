@@ -1,4 +1,4 @@
-<app-share *ngIf="share" [value]="currentUrl"></app-share>
+<app-share *ngIf="share" [title]="data.title" [url]="currentUrl" (outout)="ToggleShare()"></app-share>
 <section class="flex column width-full align-ctr">
     <div class="flex column CRTMonitor margin-top-56 margin-bot-56">
         <h1 class="headline-1 bold color-dark margin-bot-16">{{ data.title }}</h1>

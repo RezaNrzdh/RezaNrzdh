@@ -1,21 +1,24 @@
 <section class="flex  align-ctr justify-ctr width-full height-full fixed">
-    <span class="width-full height-full background-dark opacity-80"></span>
-    <div class="box flex column absolute background-white radius-16 padding-32 shadow-24">
+    <span (click)="CloseDialog()" class="width-full height-full background-dark opacity-80"></span>
+    <div class="box flex column absolute background-white radius-16 padding-32 shadow-24 borderbox">
         <span class="flex justify-ctr headline-5 text-ctr color-dark bold margin-top-16">به اشتراک گذاری این مطلب در</span>
         <div class="flex margin-top-32 justify-ctr">
-            <a class="padding-24 background-gray-2 margin-right-8 margin-left-8 radius-48">
+            <a href="http://www.linkedin.com/shareArticle/mini=true&url={{url}}&title={{title}}&source=https://rezanrzdh.ir" target="_blank"
+               class="padding-24 background-gray-2 margin-right-8 margin-left-8 radius-48">
                 <app-icon icon="linkedin" color="dark"></app-icon>
             </a>
-            <a class="padding-24 background-gray-2 margin-right-8 margin-left-8 radius-48">
+            <a href="https://telegram.me/share/?url={{url}}" target="_blank"
+               class="padding-24 background-gray-2 margin-right-8 margin-left-8 radius-48">
                 <app-icon icon="instagram" color="dark"></app-icon>
             </a>
-            <a class="padding-24 background-gray-2 margin-right-8 margin-left-8 radius-48">
-                <app-icon icon="linkedin" color="dark"></app-icon>
+            <a href="https://twitter.com/intent/post?via=TheRezaNrzdh&text={{title}}&url={{url}}" target="_blank"
+               class="padding-24 background-gray-2 margin-right-8 margin-left-8 radius-48">
+                <app-icon icon="twitter" color="dark"></app-icon>
             </a>
         </div>
         <div class="flex column margin-top-32">
             <span class="caption medium color-gray-5 margin-bot-8">یا کپی لینک زیر:</span>
-            <input [readOnly]="true" class="padding-16 dir-ltr borderbox radius-8 background-gray-1 margin-bot-8 color-gray-5" value="{{value}}" />
+            <input [readOnly]="true" class="padding-16 dir-ltr borderbox radius-8 background-gray-1 margin-bot-8 color-gray-5" value="{{url}}" />
             <app-button (click)="CopyOnClipboard()">کپی لینک</app-button>
         </div>
     </div>
