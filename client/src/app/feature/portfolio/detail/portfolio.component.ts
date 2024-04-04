@@ -19,6 +19,7 @@ import { NgIf, NgFor, NgClass } from "@angular/common";
 import {ShareComponent} from "../../../shared/component/share/share.component";
 import {AlertboxComponent} from "../../../shared/component/alertbox/alertbox.component";
 import {UserService} from "../../../core/services/user.service";
+import {GuestComponent} from "../../../shared/component/guest/guest.component";
 
 @Component({
     selector: "app-portfolio",
@@ -40,7 +41,8 @@ import {UserService} from "../../../core/services/user.service";
         CalendarPipe,
         CategoryPipe,
         ShareComponent,
-        AlertboxComponent
+        AlertboxComponent,
+        GuestComponent
     ]
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
@@ -51,6 +53,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     isMedium: boolean = false;
     isSmall: boolean = false;
     share: boolean = false;
+    guest: boolean = false;
     alertbox: boolean = false;
     currentUrl: string;
     env: string = environment.static;
@@ -145,6 +148,10 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         this.share = !this.share;
     }
 
+    ToggleGuest(): void {
+        this.guest = !this.guest;
+    }
+
     SubmitLike(): void {
         this.subUser = this.userService.userInfo.subscribe({
             next: ((value: any) => {
@@ -152,7 +159,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
                 }
                 else {
-                    this.alertbox = true;
+                    this.guest = true;
                 }
             })
         })

@@ -16,7 +16,7 @@ export class ShareComponent {
 
     @Input() title: string;
     @Input() url: string;
-    @Output() outout: EventEmitter<any> = new EventEmitter<any>();
+    @Output() output: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}
 
@@ -25,6 +25,6 @@ export class ShareComponent {
     }
 
     CloseDialog(): void {
-        this.outout.emit();
+        this.output.emit();
     }
 }

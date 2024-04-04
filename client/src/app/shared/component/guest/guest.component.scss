@@ -1,0 +1,19 @@
+@use "src/assets/styles/color";
+@use "src/assets/styles/typography";
+
+:host {
+    display: flex;
+    position: fixed;
+    z-index: 9999;
+    top:0;
+    section {
+        .box {
+            width: 328px;
+            .action{
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 16px;
+            }
+        }
+
+    }
+}

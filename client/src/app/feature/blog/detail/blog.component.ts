@@ -11,6 +11,9 @@ import { ButtonComponent } from '../../../shared/component/button/button.compone
 import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
 import { IconComponent } from '../../../shared/component/icon/icon.component';
 import {ShareComponent} from "../../../shared/component/share/share.component";
+import {GuestComponent} from "../../../shared/component/guest/guest.component";
+import {UserService} from "../../../core/services/user.service";
+import {Subscription} from "rxjs";
 
 @Component({
     selector: 'app-blog',
@@ -19,17 +22,24 @@ import {ShareComponent} from "../../../shared/component/share/share.component";
     standalone: true,
     imports: [
         IconComponent, FormsModule, ReactiveFormsModule, TextboxComponent,
-        ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe, ShareComponent
+        ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe, ShareComponent, GuestComponent
     ]
 })
 export class BlogComponent implements OnInit {
 
     data: BlogModel = new BlogModel();
     share: boolean = false;
+    guest: boolean = false;
     currentUrl: string;
     commentForm: FormGroup | any;
 
-    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService) { }
+    subUser: Subscription;
+
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private blogService: BlogService,
+        private userService: UserService
+    ) { }
 
     ngOnInit(): void {
         this.commentForm = new FormGroup({
@@ -72,7 +82,24 @@ export class BlogComponent implements OnInit {
         })
     }
 
+    SubmitLike(): void {
+        this.subUser = this.userService.userInfo.subscribe({
+            next: ((value: any) => {
+                if(value) {
+
+                }
+                else {
+                    this.guest = true;
+                }
+            })
+        })
+    }
+
     ToggleShare(): void {
         this.share = !this.share;
+    }
+
+    ToggleGuest(): void {
+        this.guest = !this.guest;
     }
 }
