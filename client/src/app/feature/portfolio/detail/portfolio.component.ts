@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
@@ -17,6 +17,8 @@ import { IconComponent } from "../../../shared/component/icon/icon.component";
 import { TagComponent } from "../../../shared/component/tag/tag.component";
 import { NgIf, NgFor, NgClass } from "@angular/common";
 import {ShareComponent} from "../../../shared/component/share/share.component";
+import {AlertboxComponent} from "../../../shared/component/alertbox/alertbox.component";
+import {UserService} from "../../../core/services/user.service";
 
 @Component({
     selector: "app-portfolio",
@@ -37,10 +39,11 @@ import {ShareComponent} from "../../../shared/component/share/share.component";
         CommentComponent,
         CalendarPipe,
         CategoryPipe,
-        ShareComponent
+        ShareComponent,
+        AlertboxComponent
     ]
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, OnDestroy {
 
     data: PortfolioModel = new PortfolioModel();
     topPortfolio: Array<PortfolioModel>;
@@ -48,9 +51,11 @@ export class PortfolioComponent implements OnInit {
     isMedium: boolean = false;
     isSmall: boolean = false;
     share: boolean = false;
+    alertbox: boolean = false;
     currentUrl: string;
     env: string = environment.static;
     sub: Subscription;
+    subUser: Subscription;
 
     currentImage: number = 0;
     transformX: number = 0;
@@ -61,6 +66,7 @@ export class PortfolioComponent implements OnInit {
         private responsiveService: ResponsiveService,
         private renderer: Renderer2,
         private route: Router,
+        private userService: UserService,
         private activatedRoute: ActivatedRoute)
     {
         this.sub = responsiveService.breakpoint.subscribe({
@@ -139,4 +145,20 @@ export class PortfolioComponent implements OnInit {
         this.share = !this.share;
     }
 
+    SubmitLike(): void {
+        this.subUser = this.userService.userInfo.subscribe({
+            next: ((value: any) => {
+                if(value) {
+
+                }
+                else {
+                    this.alertbox = true;
+                }
+            })
+        })
+    }
+
+    ngOnDestroy() {
+        this.subUser.unsubscribe();
+    }
 }

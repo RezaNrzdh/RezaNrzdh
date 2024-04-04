@@ -32,15 +32,15 @@ export class HeaderComponent implements OnDestroy {
 
     handler: any;
 
-    @HostBinding('class.internalPages') get t() { return this.internalPages };
-    @ViewChild("popup") popuop: ElementRef;
+    @HostBinding('class.inpupopternalPages') get t() { return this.internalPages };
+    @ViewChild("popup") popup: ElementRef;
 
     constructor(
         private router: Router,
         private responsiveService: ResponsiveService,
         private authService: AuthService,
-        private userService: UserService,
-        private renderer: Renderer2)
+        private renderer: Renderer2,
+        private userService: UserService)
     {
         this.IsInternalPage(this.router);
         this.subUserService = this.userService.userInfo.subscribe({
@@ -78,18 +78,20 @@ export class HeaderComponent implements OnDestroy {
     OnDisplayMenu(): void {
         this.displayMenu = !this.displayMenu;
         if(this.displayMenu){
-            this.handler = this.renderer.listen(document,"click", (t:any) => {
-                if(!this.popuop.nativeElement.contains(t.target)){
-                    this.displayMenu = false;
+            this.handler = this.renderer.listen(document, "click", (e) => {
+                if(!this.popup.nativeElement.contains(e.target)){
                     this.handler();
+                    this.displayMenu = false;
                 }
-            })
-        }else{
+            });
+        }
+        else {
             this.handler();
         }
     }
 
     OnSignOut(): void {
+        this.handler();
         this.authService.SignOut().subscribe({
             next: ((value: any) => {
                 this.isLoggedIn = value;
