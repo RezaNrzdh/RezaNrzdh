@@ -32,7 +32,7 @@ export class HeaderComponent implements OnDestroy {
 
     handler: any;
 
-    @HostBinding('class.inpupopternalPages') get t() { return this.internalPages };
+    @HostBinding('class.internalPages') get t() { return this.internalPages };
     @ViewChild("popup") popup: ElementRef;
 
     constructor(
