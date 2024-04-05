@@ -17,8 +17,9 @@ export class ButtonComponent implements OnInit {
     @Input() color: "primary" | "secondary" | "dark" | "white" | "dark2" = 'primary';
     @Input() size: "small" | "medium" = "medium";
     @Input() isLink: true | false = false;
-    @Input() icon?: string;
     @Input() href?: string;
+    @Input() target: "_blank" | "_self" = "_self";
+    @Input() icon?: string;
     @Input() disabled: any = "";
     @Input() spin: boolean = false;
 

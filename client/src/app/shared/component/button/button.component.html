@@ -1,7 +1,7 @@
 <button *ngIf="!isLink" type="{{ action }}" [ngClass]="[mode, color, size]" class="flex justify-ctr align-ctr radius-8">
     <ng-container *ngTemplateOutlet="outlet"></ng-container>
 </button>
-<a *ngIf="isLink" routerLink="{{ href }}" [ngClass]="[mode, color, size]" class="flex align-ctr justify-ctr borderbox radius-8">
+<a *ngIf="isLink" routerLink="{{ href }}" [target]="target" [ngClass]="[mode, color, size]" class="flex align-ctr justify-ctr borderbox radius-8">
     <ng-container *ngTemplateOutlet="outlet"></ng-container>
 </a>
 

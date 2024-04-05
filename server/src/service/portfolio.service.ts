@@ -228,4 +228,37 @@ export class PortfolioService {
         if(confirm.acknowledged)
             return await this.portfolioModel.findOne({ _id: body.pid },{ comment: 1 }).exec();
     }
+
+    async CreateLike(body: any): Promise<any> {
+        const valid = await this.portfolioModel
+            .aggregate([
+                { $match: { _id: body.pid } },
+                {
+                    $project:{
+                        like: {
+                            $filter: {
+                                input: "$like",
+                                as: "i",
+                                cond: {
+                                    $eq: [ "$$i.uid", body.body.uid ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ])
+            .exec();
+
+        if(valid[0].like.length == 0){
+            return await this.portfolioModel
+                .updateOne(
+                    { _id: body.pid },
+                    { $push: { "like": body.body }}
+                )
+                .exec();
+        }
+        else {
+            return false;
+        }
+    }
 }

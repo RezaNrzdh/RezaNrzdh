@@ -50,13 +50,18 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     data: PortfolioModel = new PortfolioModel();
     topPortfolio: Array<PortfolioModel>;
     commentForm: FormGroup | any;
+    currentUrl: string;
+    user: any;
+
     isMedium: boolean = false;
     isSmall: boolean = false;
     share: boolean = false;
     guest: boolean = false;
+
     alertbox: boolean = false;
-    currentUrl: string;
     env: string = environment.static;
+
+
     sub: Subscription;
     subUser: Subscription;
 
@@ -72,6 +77,11 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         private userService: UserService,
         private activatedRoute: ActivatedRoute)
     {
+        this.subUser = this.userService.userInfo.subscribe({
+            next:((value: any) => {
+                this.user = value;
+            })
+        });
         this.sub = responsiveService.breakpoint.subscribe({
             next: ((value: any) => {
                 value[ResponsiveEnum.MEDIUM] ? this.isMedium = true : this.isMedium = false;
@@ -122,7 +132,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
             body: this.commentForm.value
         }
         this.portfolioService.CreateComment(query).subscribe({
-            next:((value: any) => {
+            next:(() => {
                 this.commentForm.markAsPristine();
                 this.commentForm.markAsUntouched();
                 this.commentForm.reset({ name: "", email: "", comment: "" });
@@ -153,16 +163,18 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     }
 
     SubmitLike(): void {
-        this.subUser = this.userService.userInfo.subscribe({
-            next: ((value: any) => {
-                if(value) {
-
-                }
-                else {
-                    this.guest = true;
-                }
+        if(this.user) {
+            const body = {
+                pid: this.data._id,
+                body: { uid: this.user.uid }
+            }
+            this.portfolioService.CreateLike(body).subscribe({
+                next: (() => {})
             })
-        })
+        }
+        else {
+            this.guest = true;
+        }
     }
 
     ngOnDestroy() {

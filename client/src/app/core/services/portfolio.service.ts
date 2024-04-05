@@ -49,6 +49,9 @@ export class PortfolioService {
     ConfirmReplies(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/portfolio/reply/confirm`, body);
     }
+    CreateLike(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/portfolio/like`, body);
+    }
 
     // Images
     DeleteImage(image: string): Observable<any> {

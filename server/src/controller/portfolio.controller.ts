@@ -64,4 +64,9 @@ export class PortfolioController {
     ConfirmReplies(@Body() body: any): any {
         return this.portfolioService.ConfirmReplies(body);
     }
+
+    @Patch("like")
+    CreateLike(@Body() body: any): any {
+        return this.portfolioService.CreateLike(body);
+    }
 }

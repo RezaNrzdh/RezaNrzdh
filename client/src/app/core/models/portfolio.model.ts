@@ -4,7 +4,7 @@ export class PortfolioModel {
     slug: string;
     date: number;
     publish: number;
-    like: number;
+    like: string[];
     visit: number;
     thumbnail: string;
     img: Array<string> = [];
