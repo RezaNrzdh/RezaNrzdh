@@ -11,13 +11,15 @@ import { PortfolioCardComponent } from '../../../../shared/component/portfolioCa
 import { DropdownComponent } from '../../../../shared/component/dropdown/dropdown.component';
 import { ButtonComponent } from '../../../../shared/component/button/button.component';
 import { NgIf, NgFor } from '@angular/common';
+import {TextboxComponent} from "../../../../shared/component/textbox/textbox.component";
+import {BottomsheetComponent} from "../../../../shared/component/bottomsheet/bottomsheet.component";
 
 @Component({
     selector: 'app-home-portfolio',
     templateUrl: './portfolio.component.html',
     styleUrls: ['./portfolio.component.scss'],
     standalone: true,
-    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent, RouterLink, IconComponent]
+    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent, RouterLink, IconComponent, TextboxComponent, BottomsheetComponent]
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
 
@@ -29,6 +31,13 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     options: Array<string> = [...CategoryConstant];
     tab: number = 0;
     query: any = {};
+
+    bottomsheet: boolean = false;
+    OnBottemSheet: any = () => { this.bottomsheet = !this.bottomsheet; };
+    bottomsheetData = {
+        title: "انتخاب دسته بندی",
+        options: CategoryConstant
+    }
 
     sub: Subscription;
 
