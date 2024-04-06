@@ -16,7 +16,19 @@
         </app-button>
     </div>
     <div *ngIf="isXSmall">
-        <app-button (click)="ToggleVisible()" mode="outlined" color="dark2" icon="chevron-down">مرتب سازی</app-button>
-        <app-bottomsheet *ngIf="isVisible" title="انتخاب مرتب سازی" [options]="sortName" (value)="SetSort($event+1)" (isVisible)="ToggleVisible()"></app-bottomsheet>
+        <app-button
+            (click)="ToggleVisible()"
+            mode="outlined"
+            color="dark2"
+            icon="chevron-down">
+            مرتب سازی
+        </app-button>
+        <app-bottomsheet
+            *ngIf="isVisible"
+            title="انتخاب مرتب سازی"
+            [options]="sortName"
+            (value)="SetSort($event+1)"
+            (isVisible)="ToggleVisible()">
+        </app-bottomsheet>
     </div>
 </section>
