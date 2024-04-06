@@ -32,8 +32,8 @@ export class Blog {
     @Prop() slug: String;
     @Prop({ default: Date.now }) date: Number;
     @Prop({ default: false }) publish: Boolean;
-    @Prop() like: Number;
-    @Prop() visit: Number;
+    @Prop({ default: 0 }) visit: Number;
+    @Prop({ default: 0 }) like: Number;
     @Prop() read: Number;
     @Prop() img: String;
     @Prop() thumbnail: String;

@@ -223,4 +223,11 @@ export class BlogService {
         if(confirm.acknowledged)
             return await this.blogModel.findOne({ _id: body.pid },{ comment: 1 }).exec();
     }
+
+    async CreateLike(body: any): Promise<any> {
+        return await this.blogModel.updateOne(
+            { _id: body.pid },
+            { $inc: { like: 1 } }
+        ).exec();
+    }
 }

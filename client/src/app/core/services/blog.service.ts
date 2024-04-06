@@ -46,6 +46,9 @@ export class BlogService {
     ConfirmReplies(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/blog/reply/confirm`, body);
     }
+    CreateLike(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/blog/like`, body);
+    }
 
     // Images
     SaveImage(formData: any): Observable<any> {

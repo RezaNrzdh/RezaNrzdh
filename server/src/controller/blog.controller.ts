@@ -68,4 +68,10 @@ export class BlogController {
     ConfirmReplies(@Body() body: any): any {
         return this.blogService.ConfirmReplies(body);
     }
+
+    @Patch("like")
+    CreateLike(@Body() body: any): any {
+        console.log(3);
+        return this.blogService.CreateLike(body);
+    }
 }

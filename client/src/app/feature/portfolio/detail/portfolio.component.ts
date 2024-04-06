@@ -160,8 +160,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         const _localstorage = localStorage.getItem("userLikes");
         if(_localstorage){
             this.allPortfoliosLikes = { ...JSON.parse(_localstorage) };
-            const a = this.allPortfoliosLikes.p.find((e: any) => e == this.data._id);
-            if(a) this.isLiked = true;
+            const isCurrentPortfolio = this.allPortfoliosLikes.p.find((e: any) => e == this.data._id);
+            if(isCurrentPortfolio) this.isLiked = true;
         }
         else {
             this.allPortfoliosLikes = {a:[], p:[]};

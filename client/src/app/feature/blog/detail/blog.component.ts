@@ -33,6 +33,9 @@ export class BlogComponent implements OnInit {
     currentUrl: string;
     commentForm: FormGroup | any;
 
+    allArticlesLikes: any;
+    isLiked: boolean = false;
+
     subUser: Subscription;
 
     constructor(
@@ -53,10 +56,12 @@ export class BlogComponent implements OnInit {
     OnGetArticle(): void{
         this.activatedRoute.params.subscribe({
             next: ((value: any) => {
+                this.isLiked = false;
                 this.blogService.GetArticle(value.slug).subscribe({
                     next:((value: any) => {
                         this.currentUrl = document.URL;
                         this.data = value;
+                        this.CheckIsLiked();
                     })
                 })
             })
@@ -82,14 +87,30 @@ export class BlogComponent implements OnInit {
         })
     }
 
-    SubmitLike(): void {
-        this.subUser = this.userService.userInfo.subscribe({
-            next: ((value: any) => {
-                if(value) {
+    CheckIsLiked(): void {
+        const _localstorage = localStorage.getItem("userLikes");
+        if(_localstorage){
+            this.allArticlesLikes = { ...JSON.parse(_localstorage) };
+            const isCurrentArticle = this.allArticlesLikes.a.find((e: any) => e == this.data._id);
+            if(isCurrentArticle) this.isLiked = true;
+        }
+        else {
+            this.allArticlesLikes = {a:[], p:[]};
+        }
+    }
 
-                }
-                else {
-                    this.guest = true;
+    SubmitLike(): void {
+        const body = { pid: this.data._id }
+        this.blogService.CreateLike(body).subscribe({
+            next: ((value) => {
+                if(value.acknowledged){
+                    this.allArticlesLikes = {
+                        ...this.allArticlesLikes,
+                        a: [...this.allArticlesLikes.a, this.data._id]
+                    }
+                    localStorage.setItem("userLikes", JSON.stringify(this.allArticlesLikes));
+                    this.data = {...this.data, like: this.data.like + 1};
+                    this.isLiked = true;
                 }
             })
         })
