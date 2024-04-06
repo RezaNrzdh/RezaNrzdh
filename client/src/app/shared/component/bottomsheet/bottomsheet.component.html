@@ -1,6 +1,6 @@
 <section class="flex width-full height-full fixed">
-    <span (click)="CloseDialog()" class="width-full height-full background-dark opacity-80"></span>
-   <div class="flex column absolute bot right width-full padding-16 borderbox background-white radius-top-16">
+    <span (click)="CloseDialog()" class="overlayAnimate width-full height-full background-dark"></span>
+   <div class="boxAnimate flex column absolute bot right width-full padding-16 borderbox background-white radius-top-16">
        <div class="headline-6 bold color-dark margin-bot-8">{{title}}</div>
        <div *ngFor="let elem of options; index as j" class="flex align-ctr padding-top-12 padding-bot-12">
            <app-icon icon="chevron-left" size="16" color="primary"></app-icon>

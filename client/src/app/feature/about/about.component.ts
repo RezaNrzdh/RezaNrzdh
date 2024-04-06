@@ -9,13 +9,14 @@ import {Title} from "@angular/platform-browser";
 import { DropdownComponent } from '../../shared/component/dropdown/dropdown.component';
 import { ButtonComponent } from '../../shared/component/button/button.component';
 import { IconComponent } from '../../shared/component/icon/icon.component';
+import {BottomsheetComponent} from "../../shared/component/bottomsheet/bottomsheet.component";
 
 @Component({
     selector: 'app-about',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss'],
     standalone: true,
-    imports: [CommonModule, IconComponent, ButtonComponent, DropdownComponent,]
+    imports: [CommonModule, IconComponent, ButtonComponent, DropdownComponent, BottomsheetComponent,]
 })
 export class AboutComponent implements OnInit, OnDestroy {
 
@@ -23,7 +24,16 @@ export class AboutComponent implements OnInit, OnDestroy {
     show: boolean = false;
     tab: number = 0;
     isSmall: boolean = true;
+
     options: Array<string> = ['طراحی UIUX','برنامه نویسی','گرافیک دو بعدی','گرافیک سه بعدی','بازیسازی'];
+
+    bottomsheet: boolean = false;
+    OnBottemSheet: any = () => { this.bottomsheet = !this.bottomsheet; };
+    bottomsheetData = {
+        title: "انتخاب مهارت ها",
+        options: this.options
+    }
+
     sub: Subscription;
 
     constructor(private AboutService: AboutService, private responsiveService: ResponsiveService, private titleService: Title) {

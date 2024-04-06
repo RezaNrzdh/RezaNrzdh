@@ -1,0 +1,14 @@
+<section>
+    <ul *ngIf="!isSmall" class="flex margin-0 padding-0">
+        <ng-container *ngFor="let opt of options; index as i">
+            <li><app-button *ngIf="i === currentTab; else alt" mode="filled" color="primary">{{ opt }}</app-button></li>
+            <ng-template #alt>
+                <li><app-button (click)="CallOnGetAllPortfolio(i)" mode="ghost" color="dark">{{ opt }}</app-button></li>
+            </ng-template>
+        </ng-container>
+    </ul>
+    <div *ngIf="isSmall">
+        <app-button (click)="ToggleVisible()" mode="outlined" color="dark2" icon="chevron-down">دسته بندی</app-button>
+        <app-bottomsheet *ngIf="isVisible" title="انتخاب دسته بندی" [options]="options" (value)="CallOnGetAllPortfolio($event)" (isVisible)="ToggleVisible()"></app-bottomsheet>
+    </div>
+</section>

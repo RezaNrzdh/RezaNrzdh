@@ -16,7 +16,7 @@ export class BottomsheetComponent implements OnInit {
 
     @Input() title: string;
     @Input() options: Array<string>;
-    @Output() isOpen: EventEmitter<any> = new EventEmitter<any>();
+    @Output() isVisible: EventEmitter<any> = new EventEmitter<any>();
     @Output() value: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(){}
@@ -24,11 +24,11 @@ export class BottomsheetComponent implements OnInit {
     ngOnInit() {}
 
     CloseDialog(): void {
-        this.isOpen.emit(false);
+        this.isVisible.emit(false);
     }
 
     EmitValue(val: number): void {
         this.value.emit(val);
-        this.isOpen.emit(false);
+        this.isVisible.emit(false);
     }
 }

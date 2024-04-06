@@ -19,7 +19,17 @@ import {BottomsheetComponent} from "../../../../shared/component/bottomsheet/bot
     templateUrl: './portfolio.component.html',
     styleUrls: ['./portfolio.component.scss'],
     standalone: true,
-    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent, RouterLink, IconComponent, TextboxComponent, BottomsheetComponent]
+    imports: [
+        NgIf,
+        NgFor,
+        ButtonComponent,
+        DropdownComponent,
+        PortfolioCardComponent,
+        RouterLink,
+        IconComponent,
+        TextboxComponent,
+        BottomsheetComponent
+    ]
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
 

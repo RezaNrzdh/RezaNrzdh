@@ -12,13 +12,15 @@ import { PortfolioCardComponent } from '../../../shared/component/portfolioCard/
 import { DropdownComponent } from '../../../shared/component/dropdown/dropdown.component';
 import { ButtonComponent } from '../../../shared/component/button/button.component';
 import { NgIf, NgFor } from '@angular/common';
+import {CategoryComponent} from "./category/category.component";
+import {SortComponent} from "./sort/sort.component";
 
 @Component({
     selector: 'app-portfolio-list',
     templateUrl: './portfolio-list.component.html',
     styleUrls: ['./portfolio-list.component.scss'],
     standalone: true,
-    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent]
+    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent, CategoryComponent, SortComponent]
 })
 export class PortfolioListComponent implements OnInit, OnDestroy {
 
@@ -27,17 +29,15 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     isXSmall: boolean = false;
     isSmall: boolean = false;
 
-    options: Array<string> = ['همه', ...CategoryConstant];
-    sortName: Array<string> = SortConstant;
-    sortNum: SortEnum = SortEnum.NEWEST;
-
     currentTab: number = 0;
+
     isLastPage: boolean = false;
     skip: number = 0;
     count: number = 9999;
     limit: number = 8;
     sortBy: string = "id";
     query: any = {};
+
     isSpin: boolean = false;
 
     sub: Subscription;
@@ -101,19 +101,6 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
             this.isLastPage = true;
         }else{
             this.isLastPage = false;
-        }
-    }
-
-    SetSort(value: number): void {
-        switch (value){
-            case 1:
-                this.sortNum = SortEnum.NEWEST;
-                this.OnNewestPortfolio();
-                break;
-            case 2:
-                this.sortNum = SortEnum.MOSTVISITED;
-                this.OnMostVisitedPortfolio();
-                break;
         }
     }
 

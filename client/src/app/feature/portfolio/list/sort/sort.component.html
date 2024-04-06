@@ -1,0 +1,22 @@
+<section>
+    <div *ngIf="!isXSmall" class="flex margin-right-auto">
+        <app-button
+            (click)="SetSort(1)"
+            [isLink]="false"
+            [mode]="sortNum == 1 ? 'filled' : 'ghost'"
+            [color]="'dark'">
+            جدیدترین
+        </app-button>
+        <app-button
+            (click)="SetSort(2)"
+            [isLink]="false"
+            [mode]="sortNum == 2 ? 'filled' : 'ghost'"
+            [color]="'dark'" class="margin-right-16">
+            پربازدیدترین
+        </app-button>
+    </div>
+    <div *ngIf="isXSmall">
+        <app-button (click)="ToggleVisible()" mode="outlined" color="dark2" icon="chevron-down">مرتب سازی</app-button>
+        <app-bottomsheet *ngIf="isVisible" title="انتخاب مرتب سازی" [options]="sortName" (value)="SetSort($event+1)" (isVisible)="ToggleVisible()"></app-bottomsheet>
+    </div>
+</section>

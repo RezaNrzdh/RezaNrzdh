@@ -4,50 +4,17 @@
         <img src="../../../../assets/images/dot.svg" alt="" />
     </div>
     <div class="categories flex margin-top-32 margin-bot-32">
-        <ul *ngIf="!isSmall" class="flex margin-0 padding-0">
-            <ng-container *ngFor="let opt of options; index as i">
-                <li>
-                    <app-button
-                        *ngIf="i === currentTab; else alt"
-                        mode="filled"
-                        color="primary">
-                            {{ opt }}
-                    </app-button>
-                </li>
-                <ng-template #alt>
-                    <li>
-                        <app-button
-                            (click)="OnGetAllPortfolio(i)"
-                            mode="ghost"
-                            color="dark">
-                                {{ opt }}
-                        </app-button>
-                    </li>
-                </ng-template>
-            </ng-container>
-        </ul>
-        <app-dropdown *ngIf="isSmall" [options]="options"></app-dropdown>
-        <div *ngIf="!isXSmall" class="flex margin-right-auto">
-            <app-button
-                (click)="SetSort(1)"
-                [isLink]="false"
-                [mode]="sortNum == 1 ? 'filled' : 'ghost'"
-                [color]="'dark'">
-                جدیدترین
-            </app-button>
-            <app-button
-                (click)="SetSort(2)"
-                [isLink]="false"
-                [mode]="sortNum == 2 ? 'filled' : 'ghost'"
-                [color]="'dark'" class="margin-right-16">
-                پربازدیدترین
-            </app-button>
-        </div>
-        <app-dropdown
-            *ngIf="isXSmall"
-            [options]="sortName"
-            class="flex margin-right-auto">
-        </app-dropdown>
+        <app-portfolio-category
+            [isSmall]="isSmall"
+            [currentTab]="currentTab"
+            (output)="OnGetAllPortfolio($event)">
+        </app-portfolio-category>
+        <app-portfolio-sort
+            [isXSmall]="isXSmall"
+            (newstPortfolio)="OnNewestPortfolio()"
+            (mostVisitedPortfolio)="OnMostVisitedPortfolio()"
+            class="margin-right-auto">
+        </app-portfolio-sort>
     </div>
     <div class="grid">
         <app-portfoliocard

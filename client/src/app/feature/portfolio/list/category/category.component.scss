@@ -1,0 +1,15 @@
+:host {
+    section{
+        li{
+            list-style: none;
+            margin-left: 8px;
+            margin-right: 8px;
+            &:first-child{
+                margin-right: 0;
+            }
+            &:last-child{
+                margin-left: 0;
+            }
+        }
+    }
+}

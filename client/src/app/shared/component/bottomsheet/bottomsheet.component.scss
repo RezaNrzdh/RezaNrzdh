@@ -1,6 +1,23 @@
 @use "src/assets/styles/color";
 @use "src/assets/styles/typography";
 
+@keyframes FadeIn {
+    from { opacity: 0 }
+    to   { opacity: 0.8 }
+}
+
+@keyframes FadeInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 :host {
     display: flex;
     position: fixed;
@@ -8,6 +25,17 @@
     top:0;
     right: 0;
     section {
-
+        .overlayAnimate{
+            animation-name: FadeIn;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+            animation-duration: 0.2s;
+        }
+        .boxAnimate{
+            animation-name: FadeInUp;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+            animation-duration: 0.4s;;
+        }
     }
 }

@@ -83,7 +83,16 @@
                     </ng-template>
                 </ng-container>
             </div>
-            <app-dropdown *ngIf="isSmall" [options]="options"></app-dropdown>
+            <div *ngIf="isSmall" class="flex margin-top-32">
+                <app-button (click)="OnBottemSheet()" class="width-fit" icon="chevron-down" mode="outlined" color="dark2">دسته بندی ها</app-button>
+                <app-bottomsheet
+                    *ngIf="bottomsheet"
+                    [title]="bottomsheetData.title"
+                    [options]="bottomsheetData.options"
+                    (value)="SetTabIndex($event)"
+                    (isOpen)="OnBottemSheet()">
+                </app-bottomsheet>
+            </div>
             <div class="grid margin-top-40">
                 <ng-container *ngIf="show">
                     <div *ngFor="let skl of data.skills[tab].skill" class="flex align-ctr">
