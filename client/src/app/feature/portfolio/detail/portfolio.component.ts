@@ -56,14 +56,14 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     isMedium: boolean = false;
     isSmall: boolean = false;
     share: boolean = false;
-    guest: boolean = false;
+
+    allPortfoliosLikes: any;
+    isLiked: boolean = false;
 
     alertbox: boolean = false;
     env: string = environment.static;
 
-
     sub: Subscription;
-    subUser: Subscription;
 
     currentImage: number = 0;
     transformX: number = 0;
@@ -77,11 +77,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         private userService: UserService,
         private activatedRoute: ActivatedRoute)
     {
-        this.subUser = this.userService.userInfo.subscribe({
-            next:((value: any) => {
-                this.user = value;
-            })
-        });
         this.sub = responsiveService.breakpoint.subscribe({
             next: ((value: any) => {
                 value[ResponsiveEnum.MEDIUM] ? this.isMedium = true : this.isMedium = false;
@@ -97,6 +92,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
             "email": new FormControl(null, [Validators.required, Validators.email]),
             "comment": new FormControl(null, [Validators.required])
         });
+
     }
 
     OnGetPortfolio(): void{
@@ -104,12 +100,14 @@ export class PortfolioComponent implements OnInit, OnDestroy {
             next: ((value: any) => {
                 this.transformX = 0;
                 this.currentImage = 0;
+                this.isLiked = false;
                 this.portfolioService.GetPortfolio(value.slug).subscribe({
                     next: ((value: any) => {
                         this.currentUrl = document.URL;
                         this.data = value;
                         this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
                         this.OnGetTopPortfolio(this.data.category);
+                        this.CheckIsLiked();
                     })
                 });
             })
@@ -158,26 +156,35 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         this.share = !this.share;
     }
 
-    ToggleGuest(): void {
-        this.guest = !this.guest;
+    CheckIsLiked(): void {
+        const _localstorage = localStorage.getItem("userLikes");
+        if(_localstorage){
+            this.allPortfoliosLikes = { ...JSON.parse(_localstorage) };
+            const a = this.allPortfoliosLikes.p.find((e: any) => e == this.data._id);
+            if(a) this.isLiked = true;
+        }
+        else {
+            this.allPortfoliosLikes = {a:[], p:[]};
+        }
     }
 
     SubmitLike(): void {
-        if(this.user) {
-            const body = {
-                pid: this.data._id,
-                body: { uid: this.user.uid }
-            }
-            this.portfolioService.CreateLike(body).subscribe({
-                next: (() => {})
+        const body = { pid: this.data._id }
+        this.portfolioService.CreateLike(body).subscribe({
+            next: ((value) => {
+                if(value.acknowledged){
+                    this.allPortfoliosLikes = {
+                        ...this.allPortfoliosLikes,
+                        p: [...this.allPortfoliosLikes.p, this.data._id]
+                    }
+                    localStorage.setItem("userLikes", JSON.stringify(this.allPortfoliosLikes));
+                    this.data = {...this.data, like: this.data.like + 1};
+                    this.isLiked = true;
+                }
             })
-        }
-        else {
-            this.guest = true;
-        }
+        })
     }
 
     ngOnDestroy() {
-        this.subUser.unsubscribe();
     }
 }

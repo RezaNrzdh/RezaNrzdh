@@ -19,7 +19,7 @@ export class PortfolioCardComponent implements OnInit {
     @Input() slug: string;
     @Input() category: number;
     @Input() visit: number = 0;
-    @Input() like:  Array<string>;
+    @Input() like:  number = 0;
     @Input() imageURL: string;
 
     @Input() isOutline: boolean = false;

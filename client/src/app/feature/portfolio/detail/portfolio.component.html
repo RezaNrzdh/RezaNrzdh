@@ -1,5 +1,4 @@
 <app-share *ngIf="share" [title]="data.title" [url]="currentUrl" (output)="ToggleShare()"></app-share>
-<app-guest *ngIf="guest" (output)="ToggleGuest()"></app-guest>
 <section *ngIf="data" class="flex column width-full align-ctr">
     <div class="flex column CRTMonitor margin-top-56 margin-bot-56">
         <h1 class="headline-1 bold color-dark margin-bot-16">{{ data.title }}</h1>
@@ -36,11 +35,11 @@
             <div class="flex column align-ctr">
                 <a (click)="ToggleShare()"><app-icon icon="share" size="24" color="gray4"></app-icon></a>
                 <div class="flex column align-ctr margin-top-32">
-                    <a (click)="SubmitLike()"><app-icon icon="like" size="24" color="gray4"></app-icon></a>
-                    <ng-template>
+                    <a *ngIf="!isLiked; else alt" (click)="SubmitLike()"><app-icon icon="like" size="24" color="gray4"></app-icon></a>
+                    <ng-template #alt>
                         <app-icon icon="like-f" size="24" color="danger"></app-icon>
                     </ng-template>
-                    <span class="body-2 medium color-gray-4 margin-top-4">{{ data.like.length }}</span>
+                    <span class="body-2 medium color-gray-4 margin-top-4">{{ data.like }}</span>
                 </div>
             </div>
             <div class="lineheight-32 color-dark">

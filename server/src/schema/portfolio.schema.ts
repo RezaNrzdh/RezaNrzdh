@@ -23,12 +23,6 @@ class Comment {
     @Prop({ type: [Reply] }) reply: Reply[];
 }
 
-@Schema({ _id: false })
-class Like {
-    //@Prop({ type: SchemaTypes.ObjectId, unique: true }) uid: Types.ObjectId;
-    @Prop() uid: string;
-}
-
 @Schema({ collection: "portfolio" })
 export class Portfolio {
     @Prop() _id: Number;
@@ -37,7 +31,7 @@ export class Portfolio {
     @Prop({ default: Date.now }) date: Number;
     @Prop() publish: Number;
     @Prop({ default: 0 }) visit: Number;
-    @Prop({ type: [Like] }) like: Like[];
+    @Prop({ default: 0 }) like: Number;
     @Prop() img: [String];
     @Prop() thumbnail: String;
     @Prop() desc: String;
