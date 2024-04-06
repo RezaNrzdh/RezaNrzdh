@@ -10,7 +10,7 @@
                 <app-textbox title="رمز عبور" type="password" name="password" class="margin-bot-16" formControlName="password" [formGroup]="registerForm.get('password')"></app-textbox>
                 <app-button [isLink]="false" mode="filled" color="primary" class="margin-bot-16">عضویت در سایت</app-button>
                 <app-checkbox formControlName="checkbox">شرایط و قوانین رو خوندم و می پذیرم</app-checkbox>
-                <app-button [isLink]="true" icon="google" mode="outlined" color="dark" class="margin-top-24">عضویت با گوگل</app-button>
+                <app-button [isLink]="true" href="/login" mode="outlined" color="dark" class="margin-top-24">قبلا عضو شدی؟ کلیک کن</app-button>
             </form>
         </div>
         <div class="registerBG flex relative height-full">
