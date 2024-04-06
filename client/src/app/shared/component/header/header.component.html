@@ -41,7 +41,7 @@
                         <app-icon icon="user2" size="20" color="secondary"></app-icon>
                         <span class="padding-right-8 body-2 medium">پروفایل</span>
                     </a>
-                    <a routerLink="/admin" class="flex color-dark align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
+                    <a *ngIf="role == 2" routerLink="/admin" class="flex color-dark align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
                         <app-icon icon="dashboard" size="20" color="secondary"></app-icon>
                         <span class="padding-right-8 body-2 medium">داشبورد ادمین</span>
                     </a>

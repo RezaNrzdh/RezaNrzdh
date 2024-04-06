@@ -25,11 +25,12 @@ export class HeaderComponent implements OnDestroy {
     internalPages: boolean = false;
     ShowSidebar: boolean   = false;
     isLoggedIn: boolean    = false;
-    displayMenu: boolean    = false;
+    displayMenu: boolean   = false;
 
     isXSmall: boolean = false;
     isMedium: boolean = false;
 
+    role: number;
     handler: any;
 
     @HostBinding('class.internalPages') get t() { return this.internalPages };
@@ -45,7 +46,13 @@ export class HeaderComponent implements OnDestroy {
         this.IsInternalPage(this.router);
         this.subUserService = this.userService.userInfo.subscribe({
             next: ((value: any) => {
-                value ? this.isLoggedIn = true : this.isLoggedIn = false;
+                if(value) {
+                    this.isLoggedIn = true;
+                    this.role = value.role;
+                }
+                else {
+                    this.isLoggedIn = false;
+                }
             }),
             error: ((err: any) => {
                 console.log(err)
