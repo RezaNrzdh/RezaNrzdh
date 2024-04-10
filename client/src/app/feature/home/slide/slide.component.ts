@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IconComponent } from '../../../../shared/component/icon/icon.component';
+import { IconComponent } from '../../../shared/component/icon/icon.component';
 
 @Component({
     selector: 'app-home-slide',

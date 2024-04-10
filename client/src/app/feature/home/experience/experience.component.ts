@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SkillsService} from "../../../../core/services/skills.service";
-import {ExperienceModel} from "../../../../core/models/experience.model";
-import { IconComponent } from '../../../../shared/component/icon/icon.component';
+import {SkillsService} from "../../../core/services/skills.service";
+import {ExperienceModel} from "../../../core/models/experience.model";
+import { IconComponent } from '../../../shared/component/icon/icon.component';
 import { NgFor, NgClass } from '@angular/common';
 
 @Component({

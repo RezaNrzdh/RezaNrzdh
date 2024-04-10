@@ -8,25 +8,6 @@ app-textbox[name="comment"]{ grid-area: comment }
     section{
         grid-template-columns: 2fr 1fr;
         grid-column-gap: 32px;
-        .slider{
-            img{
-                max-width: 100%;
-                max-height: 574px;
-                background-color: color.$color-gray-2;
-            }
-            a.next, a.prev {
-                display: none;
-            }
-            .sliderWeapper{
-                transition-duration: 0.7s;
-                transition-timing-function: ease-in-out;
-            }
-            &:hover{
-                a.next, a.prev {
-                    display: flex;
-                }
-            }
-        }
         .desc{
             grid-template-columns: 1fr auto 1fr;
             grid-column-gap: 32px;

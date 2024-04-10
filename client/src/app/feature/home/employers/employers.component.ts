@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployersService} from "../../../../core/services/employers.service";
-import {EmployersModel} from "../../../../core/models/employers.model";
+import {EmployersService} from "../../../core/services/employers.service";
+import {EmployersModel} from "../../../core/models/employers.model";
 import { NgFor } from '@angular/common';
 
 @Component({

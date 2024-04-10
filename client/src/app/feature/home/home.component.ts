@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
-import { CompanyComponent } from "./component/company/company.component";
-import { EmployersComponent } from "./component/employers/employers.component";
-import { PortfolioComponent } from "./component/portfolio/portfolio.component";
-import { ExperienceComponent } from "./component/experience/experience.component";
-import { SlideComponent } from "./component/slide/slide.component";
+import { CompanyComponent } from "./company/company.component";
+import { EmployersComponent } from "./employers/employers.component";
+import { PortfolioComponent } from "./portfolio/portfolio.component";
+import { ExperienceComponent } from "./experience/experience.component";
+import { SlideComponent } from "./slide/slide.component";
 
 @Component({
     selector: "app-home",

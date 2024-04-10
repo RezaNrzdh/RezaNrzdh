@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {PortfolioModel} from "../../../core/models/portfolio.model";
@@ -6,7 +6,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ResponsiveService} from "../../../core/services/responsive.service";
 import {Subscription} from "rxjs";
 import {ResponsiveEnum} from "../../../core/enum/responsive.enum";
-import {environment} from "../../../../environments/environment";
 import { CategoryPipe } from "../../../shared/pipe/category.pipe";
 import { CalendarPipe } from "../../../shared/pipe/calendar.pipe";
 import { CommentComponent } from "../../../shared/component/comment/comment.component";
@@ -20,6 +19,7 @@ import {ShareComponent} from "../../../shared/component/share/share.component";
 import {AlertboxComponent} from "../../../shared/component/alertbox/alertbox.component";
 import {UserService} from "../../../core/services/user.service";
 import {GuestComponent} from "../../../shared/component/guest/guest.component";
+import {SliderComponent} from "./slider/slider.component";
 
 @Component({
     selector: "app-portfolio",
@@ -42,7 +42,8 @@ import {GuestComponent} from "../../../shared/component/guest/guest.component";
         CategoryPipe,
         ShareComponent,
         AlertboxComponent,
-        GuestComponent
+        GuestComponent,
+        SliderComponent
     ]
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
@@ -61,18 +62,12 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     isLiked: boolean = false;
 
     alertbox: boolean = false;
-    env: string = environment.static;
 
     sub: Subscription;
-
-    currentImage: number = 0;
-    transformX: number = 0;
-    @ViewChild('sliderWrapper') sliderWrapper: ElementRef;
 
     constructor(
         private portfolioService: PortfolioService,
         private responsiveService: ResponsiveService,
-        private renderer: Renderer2,
         private route: Router,
         private userService: UserService,
         private activatedRoute: ActivatedRoute)
@@ -98,14 +93,11 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     OnGetPortfolio(): void{
         this.activatedRoute.params.subscribe({
             next: ((value: any) => {
-                this.transformX = 0;
-                this.currentImage = 0;
                 this.isLiked = false;
                 this.portfolioService.GetPortfolio(value.slug).subscribe({
                     next: ((value: any) => {
                         this.currentUrl = document.URL;
                         this.data = value;
-                        this.renderer.setStyle(this.sliderWrapper.nativeElement,'transform', 'translate3d(0,0,0)');
                         this.OnGetTopPortfolio(this.data.category);
                         this.CheckIsLiked();
                     })
@@ -136,20 +128,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
                 this.commentForm.reset({ name: "", email: "", comment: "" });
             })
         })
-    }
-
-    ShowNextImage(value: any): void {
-        if(this.currentImage >= this.data.img.length - 1) return;
-        this.transformX += 100;
-        this.renderer.setStyle(value,'transform',`translate3d(${ this.transformX }%,0,0)`);
-        this.currentImage++;
-    }
-
-    ShowPrevImage(value: any): void {
-        if(this.currentImage <= 0) return;
-        this.transformX -= 100;
-        this.renderer.setStyle(value,'transform',`translate3d(${ this.transformX }%,0,0)`);
-        this.currentImage--;
     }
 
     ToggleShare(): void {
