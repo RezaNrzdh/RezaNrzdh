@@ -1,52 +1,55 @@
-<div class="slider flex column">
-    <div class="flex relative align-ctr">
-        <a
-            (click)="ShowPrevImage()"
-            class="next absolute right margin-right-24 padding-8 background-white radius-8 opacity-60 z-index-1"
+<div class="flex relative align-ctr">
+    <a
+        (click)="ShowPrevImage()"
+        class="next absolute right margin-right-24 padding-8 background-white radius-8 opacity-60 z-index-1"
+    >
+        <app-icon icon="arrow-right" color="dark" size="24"></app-icon>
+    </a>
+    <div
+        class="slider flex radius-8 hidden"
+        [ngStyle]="{  }"
+    >
+        <div
+            #sliderWrapper
+            (mousedown)="Start($event)"
+            (mouseup)="End($event)"
+            [ngClass]="{ 'grabbing': grabbing, 'transition': transitionClass }"
+            [ngStyle]="{'transform': 'translateX('+ transformX +'%)'}"
+            class="flex relative width-fit sliderWrapper"
         >
-            <app-icon icon="arrow-right" color="dark" size="24"></app-icon>
-        </a>
-        <div class="flex radius-8 hidden">
-            <div
-                #sliderWrapper
-                 (dragstart)="Start($event)"
-                 (dragover)="Over($event)"
-                 (dragend)="End($event)"
-                 [ngStyle]="{'transform': 'translateX('+ transformX +'px)'}"
-                 class="flex relative"
-            >
-                <img
-                    (mouseenter)="GetImageSize(sliderWrapper.clientWidth)"
-                    *ngFor="let img of image; index as i" src="{{img | ImagePath}}"
-                    [ngClass]="{
-                        'prevImage': currentImage - 1 >= 0,
-                        'currentImage': i == currentImage,
-                        'nextImage':  i == currentImage + 1
-                    }"
-                    alt=""
-                />
-            </div>
+            <img
+                (mouseenter)="GetImageSize(sliderWrapper.clientWidth)"
+                *ngFor="let img of image; index as i"
+                src="{{img | ImagePath}}"
+                [ngClass]="{
+                    'prevImage':  i == currentImage - 1 && i >= 0,
+                    'currentImage': i == currentImage,
+                    'nextImage':  i == currentImage + 1 && i <= image.length-1
+                }"
+                alt=""
+                draggable="false"
+            />
         </div>
-        <a
+    </div>
+    <a
             (click)="ShowNextImage()"
             class="prev absolute left margin-left-24 padding-8 background-white radius-8 opacity-60"
-        >
-            <app-icon
+    >
+        <app-icon
                 icon="arrow-left"
                 color="dark"
                 size="24"
-            >
-            </app-icon>
-        </a>
-    </div>
-    <div class="flex justify-ctr align-ctr margin-top-24">
-        <div class="flex">
+        >
+        </app-icon>
+    </a>
+</div>
+<div class="flex justify-ctr align-ctr margin-top-24">
+    <div class="flex">
             <span
-                *ngFor="let dot of [].constructor(image.length); index as i"
-                [ngClass]="currentImage === i ? 'background-primary' : 'background-gray-2'"
-                class="flex margin-left-4 margin-right-4 padding-4 radius-8"
+                    *ngFor="let dot of [].constructor(image.length); index as i"
+                    [ngClass]="currentImage === i ? 'background-primary' : 'background-gray-2'"
+                    class="flex margin-left-4 margin-right-4 padding-4 radius-8"
             >
             </span>
-        </div>
     </div>
 </div>
