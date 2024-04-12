@@ -67,7 +67,12 @@ export class SliderComponent implements OnInit {
         else this.ShowPrevImage();
     }
 
-    Test(e: any): void {
-        console.log(e);
+    TouchStart(e: any): void {
+        this.start = e.changedTouches[0].clientX;
+    }
+
+    TouchEnd(e: any): void {
+        if(this.start < e.changedTouches[0].clientX) this.ShowNextImage();
+        else this.ShowPrevImage();
     }
 }

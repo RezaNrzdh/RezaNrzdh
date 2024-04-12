@@ -13,6 +13,8 @@
             #sliderWrapper
             (mousedown)="Start($event)"
             (mouseup)="End($event)"
+            (touchstart)="TouchStart($event)"
+            (touchend)="TouchEnd($event)"
             [ngClass]="{ 'grabbing': grabbing, 'transition': transitionClass }"
             [ngStyle]="{'transform': 'translateX('+ transformX +'%)'}"
             class="flex relative width-fit sliderWrapper"
