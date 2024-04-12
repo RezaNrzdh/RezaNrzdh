@@ -1,7 +1,8 @@
-import {Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {NgClass, NgFor, NgStyle} from "@angular/common";
 import {IconComponent} from "../../../../shared/component/icon/icon.component";
 import {ImagePathPipe} from "../../../../shared/pipe/image-path.pipe";
+import {HammerModule} from "@angular/platform-browser";
 
 @Component({
     selector: "app-portfolio-slider",
@@ -14,6 +15,7 @@ import {ImagePathPipe} from "../../../../shared/pipe/image-path.pipe";
         NgStyle,
         IconComponent,
         ImagePathPipe,
+        HammerModule
     ]
 })
 export class SliderComponent implements OnInit {
@@ -65,5 +67,9 @@ export class SliderComponent implements OnInit {
         this.grabbing = false;
         if(this.start < e.clientX) this.ShowNextImage();
         else this.ShowPrevImage();
+    }
+
+    Test(e: any): void {
+        console.log(e);
     }
 }
