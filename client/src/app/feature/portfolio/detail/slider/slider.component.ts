@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from "@angular/core";
 import {NgClass, NgFor, NgStyle} from "@angular/common";
 import {IconComponent} from "../../../../shared/component/icon/icon.component";
 import {ImagePathPipe} from "../../../../shared/pipe/image-path.pipe";
-import {HammerModule} from "@angular/platform-browser";
 
 @Component({
     selector: "app-portfolio-slider",
@@ -14,8 +13,7 @@ import {HammerModule} from "@angular/platform-browser";
         NgClass,
         NgStyle,
         IconComponent,
-        ImagePathPipe,
-        HammerModule
+        ImagePathPipe
     ]
 })
 export class SliderComponent implements OnInit {
