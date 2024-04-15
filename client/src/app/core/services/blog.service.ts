@@ -49,6 +49,10 @@ export class BlogService {
     CreateLike(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/blog/like`, body);
     }
+    CreateVisit(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/blog/visit`, body);
+    }
+
 
     // Images
     SaveImage(formData: any): Observable<any> {

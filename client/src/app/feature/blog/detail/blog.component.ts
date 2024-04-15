@@ -33,6 +33,7 @@ export class BlogComponent implements OnInit {
     currentUrl: string;
     commentForm: FormGroup | any;
 
+    allArticleVisits: any;
     allArticlesLikes: any;
     isLiked: boolean = false;
 
@@ -62,6 +63,7 @@ export class BlogComponent implements OnInit {
                         this.currentUrl = document.URL;
                         this.data = value;
                         this.CheckIsLiked();
+                        this.SubmitVisit();
                     })
                 })
             })
@@ -114,6 +116,28 @@ export class BlogComponent implements OnInit {
                 }
             })
         })
+    }
+
+    SubmitVisit(): void {
+        const body = { pid: this.data._id }
+        const _localstorage = localStorage.getItem("userVisits");
+
+        if(_localstorage) this.allArticleVisits = { ...JSON.parse(_localstorage) };
+        else this.allArticleVisits = {a:[], p:[]};
+
+        if(!this.allArticleVisits.a.find((e: any) => e == this.data._id )){
+            this.blogService.CreateVisit(body).subscribe({
+                next: ((value) => {
+                    if(value.acknowledged) {
+                        this.allArticleVisits = {
+                            ...this.allArticleVisits,
+                            a: [...this.allArticleVisits.a, this.data._id]
+                        }
+                        localStorage.setItem("userVisits", JSON.stringify(this.allArticleVisits));
+                    }
+                })
+            });
+        }
     }
 
     ToggleShare(): void {

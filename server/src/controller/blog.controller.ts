@@ -71,7 +71,11 @@ export class BlogController {
 
     @Patch("like")
     CreateLike(@Body() body: any): any {
-        console.log(3);
         return this.blogService.CreateLike(body);
+    }
+
+    @Patch("visit")
+    CreateVisit(@Body() body: any): any {
+        return this.blogService.CreateVisit(body);
     }
 }
