@@ -58,6 +58,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     isSmall: boolean = false;
     share: boolean = false;
 
+    allPortfolioVisits: any;
     allPortfoliosLikes: any;
     isLiked: boolean = false;
 
@@ -100,6 +101,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
                         this.data = value;
                         this.OnGetTopPortfolio(this.data.category);
                         this.CheckIsLiked();
+                        this.SubmitVisit();
                     })
                 });
             })
@@ -147,7 +149,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     }
 
     SubmitLike(): void {
-        const body = { pid: this.data._id }
+        const body = { pid: this.data._id };
         this.portfolioService.CreateLike(body).subscribe({
             next: ((value) => {
                 if(value.acknowledged){
@@ -161,6 +163,28 @@ export class PortfolioComponent implements OnInit, OnDestroy {
                 }
             })
         })
+    }
+
+    SubmitVisit(): void {;
+        const body = { pid: this.data._id }
+        const _localstorage = localStorage.getItem("userVisits");
+
+        if(_localstorage) this.allPortfolioVisits = { ...JSON.parse(_localstorage) };
+        else this.allPortfolioVisits = {a:[], p:[]};
+
+        if(!this.allPortfolioVisits.p.find((e: any) => e == this.data._id )){
+            this.portfolioService.CreateVisit(body).subscribe({
+                next: ((value) => {
+                    if(value.acknowledged) {
+                        this.allPortfolioVisits = {
+                            ...this.allPortfolioVisits,
+                            p: [...this.allPortfolioVisits.p, this.data._id]
+                        }
+                        localStorage.setItem("userVisits", JSON.stringify(this.allPortfolioVisits));
+                    }
+                })
+            });
+        }
     }
 
     ngOnDestroy() {

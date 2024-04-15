@@ -235,4 +235,11 @@ export class PortfolioService {
             { $inc: { like: 1 } }
         ).exec();
     }
+
+    async CreateVisit(body: any): Promise<any> {
+        return await this.portfolioModel.updateOne(
+            { _id: body.pid },
+            { $inc: { visit: 1 } }
+        ).exec();
+    }
 }

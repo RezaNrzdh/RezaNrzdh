@@ -52,6 +52,9 @@ export class PortfolioService {
     CreateLike(body: any): Observable<any> {
         return this.http.patch(`${environment.server}/portfolio/like`, body);
     }
+    CreateVisit(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/portfolio/visit`, body);
+    }
 
     // Images
     DeleteImage(image: string): Observable<any> {

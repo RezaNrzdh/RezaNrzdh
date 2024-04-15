@@ -67,7 +67,11 @@ export class PortfolioController {
 
     @Patch("like")
     CreateLike(@Body() body: any): any {
-        console.log(3);
         return this.portfolioService.CreateLike(body);
+    }
+
+    @Patch("visit")
+    CreateVisit(@Body() body: any): any {
+        return this.portfolioService.CreateVisit(body);
     }
 }
