@@ -22,6 +22,14 @@ export class UserService {
         return this.http.get(`${environment.server}/user/${username}`);
     }
 
+    GetProfile(username: string): Observable<any> {
+        return this.http.get(`${environment.server}/user/profile/${username}`);
+    }
+
+    ModifyProfile(body: object): Observable<any> {
+        return this.http.patch(`${environment.server}/user/profile`, body);
+    }
+
     ModifyUser(body: object): Observable<any> {
         return this.http.patch(`${environment.server}/user`, body);
     }

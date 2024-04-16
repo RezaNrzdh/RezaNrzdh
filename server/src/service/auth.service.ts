@@ -50,4 +50,18 @@ export class AuthService {
             return false;
         }
     }
+
+    async ModifyPassword(body: any): Promise<any> {
+        const pass = await bcrypt.hash(body.body.password, 12);
+        return this.authModel
+            .updateOne(
+                { email: body.email },
+                {
+                    $set: {
+                        password: pass
+                    }
+                }
+            )
+            .exec();
+    }
 }

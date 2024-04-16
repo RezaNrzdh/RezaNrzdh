@@ -23,4 +23,8 @@ export class AuthService {
     SignOut(): Observable<any> {
         return this.http.get(`${environment.server}/auth/signout`);
     }
+
+    ModifyPassword(body: object): Observable<any> {
+        return this.http.patch(`${environment.server}/auth/modifyPassword`, body);
+    }
 }

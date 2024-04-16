@@ -1,0 +1,25 @@
+<div class="flex column padding-32">
+    <div class="flex align-ctr">
+        <a (click)="SetCurrentTab()" class="margin-left-8">
+            <app-icon icon="arrow-right" size="24" color="gray5"></app-icon>
+        </a>
+        <span class="body-1 bold color-dark">ویرایش رمز عبور</span>
+    </div>
+    <form [formGroup]="formGroup" (ngSubmit)="OnSubmit()" class="margin-top-32">
+        <app-textbox
+            type="password"
+            formControlName="pass1"
+            [formGroup]="formGroup.get('pass1')"
+            title="رمز عبور جدید"
+        >
+        </app-textbox>
+        <app-textbox
+            type="password"
+            formControlName="pass2"
+            [formGroup]="formGroup.get('pass2')"
+            title="تکرار رمز عبور جدید"
+        >
+        </app-textbox>
+        <app-button color="secondary">ویرایش</app-button>
+    </form>
+</div>

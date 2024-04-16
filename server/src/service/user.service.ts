@@ -21,8 +21,25 @@ export class UserService {
             .exec();
     }
 
+    async GetProfile(username: string): Promise<any> {
+        return await this.userModel
+            .findOne(
+                { email: username },
+                { _id: 1, email: 1, name: 1, phone: 1 }
+            )
+            .exec();
+    }
+
+    async ModifyProfile(body: any): Promise<any> {
+        return await this.userModel
+            .updateOne(
+                { email: body.email },
+                { $set: body.body }
+            )
+            .exec();
+    }
+
     async ModifyUser(body: any): Promise<any> {
-        console.log(body);
         return this.userModel
             .updateOne(
                 {

@@ -1,3 +1,4 @@
+<app-profile *ngIf="toggleProfile" (output)="ToggleProfile()"></app-profile>
 <header>
     <section class="laptop width-full relative">
         <a *ngIf="isMedium" (click)="OnToggleSidebar()" class="flex align-ctr margin-left-16 pointer">
@@ -37,7 +38,7 @@
                     <app-icon icon="user2" size="20" color="white"></app-icon>
                 </a>
                 <div *ngIf="displayMenu" class="menu grid borderbox absolute background-white radius-8 padding-top-16 padding-bot-16">
-                    <a routerLink="/profile" class="flex color-dark align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
+                    <a (click)="ToggleProfile()" class="flex color-dark align-ctr padding-top-16 padding-bot-16 padding-right-24 padding-left-24">
                         <app-icon icon="user2" size="20" color="secondary"></app-icon>
                         <span class="padding-right-8 body-2 medium">پروفایل</span>
                     </a>

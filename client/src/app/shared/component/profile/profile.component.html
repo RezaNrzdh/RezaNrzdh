@@ -1,0 +1,46 @@
+<section class="flex fixed width-full height-full align-ctr justify-ctr">
+    <span (click)="CloseDialog()" class="width-full height-full background-dark opacity-80"></span>
+    <div class="box flex column absolute background-white radius-16 hidden">
+        <div class="flex background-gray-1 padding-32">
+            <div class="background-primary padding-32 radius-48 margin-left-24">
+                <app-icon icon="user2" size="32" color="white"></app-icon>
+            </div>
+            <div class="flex column justify-ctr">
+                <span class="headline-4 bold color-dark margin-bot-8">
+                    {{ data.name ? data.name : 'کاربر' }}
+                </span>
+                <span class="body-1 medium color-gray-5">
+                    {{ data.email }}
+                </span>
+            </div>
+        </div>
+        <app-profile-main
+            *ngIf="tabs == 0"
+            [data]="data"
+            (output)="SetCurrentTab($event)"
+        >
+        </app-profile-main>
+        <app-profile-name
+            *ngIf="tabs == 1"
+            [name]="data.name"
+            [email]="data.email"
+            (back)="SetCurrentTab($event)"
+            (outName)="SetDataChanged($event)"
+        >
+        </app-profile-name>
+        <app-profile-phone
+            *ngIf="tabs == 2"
+            [phone]="data.phone"
+            [email]="data.email"
+            (back)="SetCurrentTab($event)"
+            (outPhone)="SetDataChanged($event)"
+        >
+        </app-profile-phone>
+        <app-profile-pass
+            *ngIf="tabs == 3"
+            [email]="data.email"
+            (back)="SetCurrentTab($event)"
+        >
+        </app-profile-pass>
+    </div>
+</section>

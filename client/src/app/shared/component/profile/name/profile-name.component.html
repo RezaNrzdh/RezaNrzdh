@@ -1,0 +1,19 @@
+<div class="flex column padding-32">
+    <div class="flex align-ctr">
+        <a (click)="SetCurrentTab()" class="margin-left-8">
+            <app-icon icon="arrow-right" size="24" color="gray5"></app-icon>
+        </a>
+        <span class="body-1 bold color-dark">ویرایش نام و نام خانوادگی</span>
+    </div>
+    <form [formGroup]="formGroup" (ngSubmit)="OnSubmit()" class="margin-top-32">
+        <app-textbox
+            type="text"
+            name="name"
+            title="نام و نام خانوادگی"
+            formControlName="name"
+            [formGroup]="formGroup.get('name')"
+        >
+        </app-textbox>
+        <app-button color="secondary">ویرایش</app-button>
+    </form>
+</div>

@@ -9,7 +9,6 @@ import { CalendarPipe } from "../../../../shared/pipe/calendar.pipe";
 import { DropdownComponent } from "../../../../shared/component/dropdown/dropdown.component";
 import { ButtonComponent } from "../../../../shared/component/button/button.component";
 import { TextboxComponent } from "../../../../shared/component/textbox/textbox.component";
-import {PublishPipe} from "../../../../shared/pipe/publish.pipe";
 
 @Component({
     selector: "admin-user",

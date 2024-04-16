@@ -32,7 +32,7 @@ export class TextboxComponent implements ControlValueAccessor {
     onChange: (value: any) => void;
     onTouched: () => void;
 
-    constructor() { }
+    constructor() {}
 
     writeValue(obj: any) {
         this.value = obj;

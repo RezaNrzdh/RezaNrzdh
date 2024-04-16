@@ -9,13 +9,14 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
 import { ButtonComponent } from "../button/button.component";
 import { IconComponent } from "../icon/icon.component";
 import { NgIf } from "@angular/common";
+import {ProfileComponent} from "../profile/profile.component";
 
 @Component({
     selector: "app-header",
     templateUrl: "header.component.html",
     styleUrls: ["header.component.scss"],
     standalone: true,
-    imports: [NgIf, IconComponent, RouterLink, RouterLinkActive, ButtonComponent, SidebarComponent]
+    imports: [NgIf, IconComponent, RouterLink, RouterLinkActive, ButtonComponent, SidebarComponent, ProfileComponent]
 })
 export class HeaderComponent implements OnDestroy {
 
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnDestroy {
     ShowSidebar: boolean   = false;
     isLoggedIn: boolean    = false;
     displayMenu: boolean   = false;
+    toggleProfile: boolean = false;
 
     isXSmall: boolean = false;
     isMedium: boolean = false;
@@ -104,6 +106,11 @@ export class HeaderComponent implements OnDestroy {
                 this.isLoggedIn = value;
             })
         })
+    }
+
+    ToggleProfile(): void {
+        this.OnDisplayMenu();
+        this.toggleProfile = !this.toggleProfile;
     }
 
     ngOnDestroy() {

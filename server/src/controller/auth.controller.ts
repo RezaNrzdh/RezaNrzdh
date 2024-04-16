@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Req, Res} from "@nestjs/common";
+import {Body, Controller, Get, Patch, Post, Req, Res} from "@nestjs/common";
 import {Request, Response} from "express";
 import {AuthService} from "../service/auth.service";
 import {constants} from "../constant";
@@ -23,7 +23,6 @@ export class AuthController {
         const value = await this.authService.SignIn(body);
         if (!value) return false;
 
-        console.log("its ok");
         res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
         return true;
     }
@@ -42,5 +41,10 @@ export class AuthController {
     SignOut(@Res({passthrough: true}) res: Response): any {
         res.clearCookie("jwt");
         return false;
+    }
+
+    @Patch("modifyPassword")
+    ModifyPassword(@Body() body): any {
+        return this.authService.ModifyPassword(body);
     }
 }
