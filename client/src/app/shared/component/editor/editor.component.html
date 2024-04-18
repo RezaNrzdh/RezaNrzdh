@@ -1,0 +1,27 @@
+<div class="flex column background-gray-1">
+    <div class="menu flex borderbox">
+        <button (click)="Bold()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isBold}">
+            <app-icon icon="bold" size="16" color="dark"></app-icon>
+        </button>
+        <button (click)="Italic()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isItalic}">
+            <app-icon icon="italic" size="16" color="dark"></app-icon>
+        </button>
+        <button (click)="Underline()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isUnderline}">
+            <app-icon icon="underline" size="16" color="dark"></app-icon>
+        </button>
+        <button (click)="Numbered()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isNumbered}">
+            <app-icon icon="numbered" size="16" color="dark"></app-icon>
+        </button>
+        <button (click)="Bulleted()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isBulleted}">
+            <app-icon icon="bulleted" size="16" color="dark"></app-icon>
+        </button>
+    </div>
+    <div
+        id="editable"
+        class="background-white borderbox padding-16"
+        contenteditable="true"
+        (input)="IsEmpty($event)"
+        (mouseup)="SelectionCheck()"
+    >
+    </div>
+</div>

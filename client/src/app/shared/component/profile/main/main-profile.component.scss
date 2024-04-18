@@ -2,5 +2,7 @@
 @use "src/assets/styles/typography";
 
 :host {
-
+    .card {
+        border: 1px solid color.$color-gray-2;
+    }
 }

@@ -14,13 +14,14 @@ import { AlertboxComponent } from "../../../../shared/component/alertbox/alertbo
 import {NgIf, NgFor, NgClass} from "@angular/common";
 import {CalendarPipe} from "../../../../shared/pipe/calendar.pipe";
 import {TagComponent} from "../../../../shared/component/tag/tag.component";
+import {EditorComponent} from "../../../../shared/component/editor/editor.component";
 
 @Component({
     selector: "admin-portfolio",
     templateUrl: "portfolio.component.html",
     styleUrls: ["portfolio.component.scss"],
     standalone: true,
-    imports: [NgIf, AlertboxComponent, FormsModule, ReactiveFormsModule, TextboxComponent, UploadfileComponent, NgFor, IconComponent, ButtonComponent, DropdownComponent, CalendarPipe, NgClass, TagComponent]
+    imports: [NgIf, AlertboxComponent, FormsModule, ReactiveFormsModule, TextboxComponent, UploadfileComponent, NgFor, IconComponent, ButtonComponent, DropdownComponent, CalendarPipe, NgClass, TagComponent, EditorComponent]
 })
 export class PortfolioComponent implements OnInit {
 

@@ -43,7 +43,7 @@ app-textbox[name="comment"]{ grid-area: comment }
                 width: 100%;
                 min-height: 100%;
                 border-radius: 8px 0 0 8px;
-                background: url("/assets/images/map.avif");
+                background: url("/assets/images/map.webp");
                 background-repeat: no-repeat;
                 background-size: cover;
                 &:before{
@@ -76,7 +76,7 @@ app-textbox[name="comment"]{ grid-area: comment }
         grid-template-columns: 1fr;
         .info {
             border-radius: 0 0 8px 8px;
-            background: url("/assets/images/map-hor.avif");
+            background: url("/assets/images/map-hor.webp");
             background-position: center center;
             &:before {
                 width: 80%;
