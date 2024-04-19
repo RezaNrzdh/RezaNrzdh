@@ -21,9 +21,7 @@
                     <span class="body-2 medium color-gray-4 margin-top-4">{{ data.like }}</span>
                 </div>
             </div>
-            <div class="lineheight-32 color-dark">
-                <p>{{ data.desc }}</p>
-            </div>
+            <div class="lineheight-32 color-dark" [innerHTML]="data.desc"></div>
         </div>
     </div>
     <div class="related flex background-gray-1b width-full justify-ctr">

@@ -23,15 +23,10 @@
                         formControlName="slug"
                         [formGroup]="portfolioForm.get('slug')">
                     </app-textbox>
-                    <app-textbox
-                        title="توضیحات"
-                        [multiLine]="true"
-                        class="margin-bot-4"
-                        [rows]="12"
+                    <app-editor
                         formControlName="desc"
-                        [formGroup]="portfolioForm.get('desc')">
-                    </app-textbox>
-                    <app-editor></app-editor>
+                        [formGroup]="portfolioForm.get('desc')"
+                    ></app-editor>
                     <span class="caption medium color-gray-5 margin-top-24 margin-bot-4">
                         اندازه عکسها باید حداقل 1024 در 574 پیکسل باشد.
                     </span>

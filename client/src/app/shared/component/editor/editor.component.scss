@@ -26,6 +26,20 @@
             }
         }
     }
+    .AnchorContainer {
+        top: 52px;
+        right: 4px;
+        border: 1px solid color.$color-gray-2;
+        box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
+        opacity: 0.8;
+        &:hover {
+            opacity: 1;
+        }
+        input {
+            outline: none;
+            border: 1px solid color.$color-gray-2;
+        }
+    }
     #editable {
         min-height: 250px;
         outline: none;

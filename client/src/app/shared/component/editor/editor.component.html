@@ -1,26 +1,36 @@
-<div class="flex column background-gray-1">
+<div class="flex column background-gray-1 relative">
     <div class="menu flex borderbox">
-        <button (click)="Bold()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isBold}">
+        <button (click)="Bold()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isBold}" type="button">
             <app-icon icon="bold" size="16" color="dark"></app-icon>
         </button>
-        <button (click)="Italic()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isItalic}">
+        <button (click)="Italic()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isItalic}" type="button">
             <app-icon icon="italic" size="16" color="dark"></app-icon>
         </button>
-        <button (click)="Underline()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isUnderline}">
+        <button (click)="Underline()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isUnderline}" type="button">
             <app-icon icon="underline" size="16" color="dark"></app-icon>
         </button>
-        <button (click)="Numbered()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isNumbered}">
+        <button (click)="Numbered()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isNumbered}" type="button">
             <app-icon icon="numbered" size="16" color="dark"></app-icon>
         </button>
-        <button (click)="Bulleted()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isBulleted}">
+        <button (click)="Bulleted()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isBulleted}" type="button">
             <app-icon icon="bulleted" size="16" color="dark"></app-icon>
         </button>
+        <button (click)="ToggleAnchorContainer()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isAnchor}" type="button">
+            <app-icon icon="link" size="16" color="dark"></app-icon>
+        </button>
+    </div>
+    <div *ngIf="anchorContainer" class="AnchorContainer flex align-ctr absolute padding-8 background-gray-1 radius-8">
+        <input #anchorInput dir="ltr" autofocus/>
+        <button (click)="Anchor(anchorInput)" class="margin-right-4" type="button">Done</button>
+        <a (click)="ToggleAnchorContainer()" class="margin-right-4"><app-icon icon="close" size="20"></app-icon></a>
     </div>
     <div
         id="editable"
         class="background-white borderbox padding-16"
         contenteditable="true"
-        (input)="IsEmpty($event)"
+        [innerHTML]="value"
+        (input)="IsEmpty($event); onChange($event.target.innerHTML)"
+        (blur)="onTouched()"
         (mouseup)="SelectionCheck()"
     >
     </div>

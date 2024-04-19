@@ -1,6 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {IconComponent} from "../icon/icon.component";
-import {NgClass} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
     selector: "app-editor",
@@ -9,25 +10,53 @@ import {NgClass} from "@angular/common";
     standalone: true,
     imports: [
         IconComponent,
-        NgClass
+        NgClass,
+        NgIf
+    ],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: EditorComponent,
+            multi: true
+        }
     ]
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, ControlValueAccessor {
 
-    selection: any;
     contentEditable: HTMLElement;
+
+    anchorContainer: boolean = false;
+
+    _range: any;
 
     isBold: boolean      = false;
     isItalic: boolean    = false;
     isUnderline: boolean = false;
     isNumbered: boolean  = false;
     isBulleted: boolean  = false;
+    isAnchor: boolean    = false;
+
+    value: string = "";
+    onChange: (value: any) => void;
+    onTouched: () => void;
 
     constructor() {
     }
 
     ngOnInit() {
         this.contentEditable = document.getElementById("editable")!;
+    }
+
+    writeValue(obj: any) {
+        this.value = obj;
+    }
+
+    registerOnChange(fn: any) {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any) {
+        this.onTouched = fn;
     }
 
     Bold(): void {
@@ -55,6 +84,16 @@ export class EditorComponent implements OnInit {
         this.ExecCommend("insertUnorderedList");
     }
 
+    ToggleAnchorContainer(): void {
+        this.anchorContainer = !this.anchorContainer;
+    }
+
+    Anchor(url: HTMLInputElement): void {
+        const a = document.createElement("a");
+        a.href = url.value;
+        this._range.surroundContents(a);
+    }
+
     IsEmpty(event: any): void {
         if(event.target.innerHTML === "" || event.target.innerHTML === "<br>"){
             this.Clear();
@@ -64,8 +103,8 @@ export class EditorComponent implements OnInit {
     SelectionCheck(): void {
         this.Clear();
 
-        const selection = window.getSelection()!;
-        let element = selection.focusNode;
+        this._range = window.getSelection()!.getRangeAt(0);
+        let element = this._range.startContainer;
 
         while (element!.parentElement!.tagName != "DIV") {
             switch (element!.parentElement!.tagName){
@@ -74,6 +113,7 @@ export class EditorComponent implements OnInit {
                 case "I": this.isItalic = true; break;
                 case "OL": this.isNumbered = true; break;
                 case "UL": this.isBulleted = true; break;
+                case "A": this.isAnchor = true; break;
             }
             element = element!.parentElement;
         }
@@ -85,11 +125,12 @@ export class EditorComponent implements OnInit {
         this.isUnderline = false;
         this.isNumbered  = false;
         this.isBulleted  = false;
+        this.isAnchor    = false;
     }
 
 
-    ExecCommend(command: string): void {
-        document.execCommand(command);
+    ExecCommend(command: string, value: string = ""): void {
+        document.execCommand(command, false, value);
         this.contentEditable.focus();
     }
 }
