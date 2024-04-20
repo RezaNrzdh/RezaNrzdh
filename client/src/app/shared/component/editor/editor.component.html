@@ -21,10 +21,11 @@
     </div>
     <div *ngIf="anchorContainer" class="AnchorContainer flex align-ctr absolute padding-8 background-gray-1 radius-8">
         <input [(ngModel)]="link.input" dir="ltr" autofocus/>
-        <button (click)="Anchor()" class="margin-right-4" type="button">ایجاد</button>
+        <button (click)="Anchor(); onChange(editable.innerHTML)" class="margin-right-4" type="button">ایجاد</button>
         <a (click)="ToggleAnchorContainer()" class="margin-right-4"><app-icon icon="close" size="20"></app-icon></a>
     </div>
     <div
+        #editable
         id="editable"
         class="background-white borderbox padding-16"
         contenteditable="true"
