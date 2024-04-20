@@ -40,8 +40,6 @@ export class EditorComponent implements OnInit, ControlValueAccessor {
         isLink: false,
         element: null
     }
-    // isLinkedBefore: boolean  = false;
-    // anchorInput: string = "";
 
     value: string = "";
     onChange: (value: any) => void;
