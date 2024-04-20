@@ -117,6 +117,7 @@ export class EditorComponent implements OnInit, ControlValueAccessor {
         else {
             const a = document.createElement("a");
             a.href = this.link.input;
+            a.target = "_blank";
             this._range.surroundContents(a);
         }
 
