@@ -37,7 +37,15 @@
         }
         input {
             outline: none;
+            height: 19px;
+            border-radius: 4px;
             border: 1px solid color.$color-gray-2;
+        }
+        button{
+            border: none;
+            background-color: color.$color-secondary;
+            color:white;
+            border-radius: 4px;
         }
     }
     #editable {

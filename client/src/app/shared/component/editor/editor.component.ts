@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {IconComponent} from "../icon/icon.component";
 import {NgClass, NgIf} from "@angular/common";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
     selector: "app-editor",
@@ -11,7 +11,8 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     imports: [
         IconComponent,
         NgClass,
-        NgIf
+        NgIf,
+        FormsModule
     ],
     providers: [
         {
@@ -24,9 +25,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 export class EditorComponent implements OnInit, ControlValueAccessor {
 
     contentEditable: HTMLElement;
-
-    anchorContainer: boolean = false;
-
     _range: any;
 
     isBold: boolean      = false;
@@ -35,6 +33,15 @@ export class EditorComponent implements OnInit, ControlValueAccessor {
     isNumbered: boolean  = false;
     isBulleted: boolean  = false;
     isAnchor: boolean    = false;
+
+    anchorContainer: boolean = false;
+    link: any = {
+        input: "",
+        isLink: false,
+        element: null
+    }
+    // isLinkedBefore: boolean  = false;
+    // anchorInput: string = "";
 
     value: string = "";
     onChange: (value: any) => void;
@@ -86,12 +93,34 @@ export class EditorComponent implements OnInit, ControlValueAccessor {
 
     ToggleAnchorContainer(): void {
         this.anchorContainer = !this.anchorContainer;
+        if(this.isAnchor){
+            let element = this._range.startContainer;
+            while (element!.parentElement!.tagName != "DIV") {
+                if(element!.parentElement!.tagName == "A"){
+                    this.link.isLink  = true;
+                    this.link.input   = element!.parentElement!.attributes[0].nodeValue;
+                    this.link.element = element!.parentElement;
+                    return;
+                }
+                element = element!.parentElement;
+            }
+        }
     }
 
-    Anchor(url: HTMLInputElement): void {
-        const a = document.createElement("a");
-        a.href = url.value;
-        this._range.surroundContents(a);
+    Anchor(): void {
+        if(this._range == null)
+            return;
+
+        if(this.link.isLink){
+            this.link.element.attributes[0].nodeValue = this.link.input;
+        }
+        else {
+            const a = document.createElement("a");
+            a.href = this.link.input;
+            this._range.surroundContents(a);
+        }
+
+        this.anchorContainer = !this.anchorContainer;
     }
 
     IsEmpty(event: any): void {
@@ -120,12 +149,14 @@ export class EditorComponent implements OnInit, ControlValueAccessor {
     }
 
     Clear(): void {
-        this.isBold      = false;
-        this.isItalic    = false;
-        this.isUnderline = false;
-        this.isNumbered  = false;
-        this.isBulleted  = false;
-        this.isAnchor    = false;
+        this.isBold         = false;
+        this.isItalic       = false;
+        this.isUnderline    = false;
+        this.isNumbered     = false;
+        this.isBulleted     = false;
+        this.isAnchor       = false;
+        this.link.isLink    = false;
+        this.link.input     = "";
     }
 
 
