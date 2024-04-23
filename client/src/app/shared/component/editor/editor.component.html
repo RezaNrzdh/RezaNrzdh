@@ -15,14 +15,15 @@
         <button (click)="Bulleted()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isBulleted}" type="button">
             <app-icon icon="bulleted" size="16" color="dark"></app-icon>
         </button>
-        <button (click)="ToggleAnchorContainer()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isAnchor}" type="button">
+        <button (click)="Anchor()" class="flex justify-ctr align-ctr" [ngClass]="{'active': isAnchor}" type="button">
             <app-icon icon="link" size="16" color="dark"></app-icon>
         </button>
     </div>
     <div *ngIf="anchorContainer" class="AnchorContainer flex align-ctr absolute padding-8 background-gray-1 radius-8">
+        <button *ngIf="isAnchor" (click)="UnAnchor(); onChange(editable.innerHTML)" class="deleteBtn margin-left-4 color-danger radius-4" type="button">حذف</button>
+        <button (click)="CreateAnchor(); onChange(editable.innerHTML)" class="margin-left-4 background-secondary color-white radius-4" type="button">ایجاد</button>
         <input [(ngModel)]="link.input" dir="ltr" autofocus/>
-        <button (click)="Anchor(); onChange(editable.innerHTML)" class="margin-right-4" type="button">ایجاد</button>
-        <a (click)="ToggleAnchorContainer()" class="margin-right-4"><app-icon icon="close" size="20"></app-icon></a>
+        <a (click)="CloseAnchor()" class="margin-right-4"><app-icon icon="close" size="20"></app-icon></a>
     </div>
     <div
         #editable

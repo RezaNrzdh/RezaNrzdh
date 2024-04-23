@@ -37,7 +37,6 @@ export class EditorComponent implements OnInit, ControlValueAccessor {
     anchorContainer: boolean = false;
     link: any = {
         input: "",
-        isLink: false,
         element: null
     }
 
@@ -89,36 +88,37 @@ export class EditorComponent implements OnInit, ControlValueAccessor {
         this.ExecCommend("insertUnorderedList");
     }
 
-    ToggleAnchorContainer(): void {
-        this.anchorContainer = !this.anchorContainer;
-        if(this.isAnchor){
-            let element = this._range.startContainer;
-            while (element!.parentElement!.tagName != "DIV") {
-                if(element!.parentElement!.tagName == "A"){
-                    this.link.isLink  = true;
-                    this.link.input   = element!.parentElement!.attributes[0].nodeValue;
-                    this.link.element = element!.parentElement;
-                    return;
-                }
-                element = element!.parentElement;
-            }
-        }
-    }
-
     Anchor(): void {
-        if(this._range == null)
-            return;
-
-        if(this.link.isLink){
-            this.link.element.attributes[0].nodeValue = this.link.input;
+        if(this.isAnchor){
+            this.link.input = this.link.element.attributes[0].nodeValue;
         }
         else {
-            const a = document.createElement("a");
-            a.href = this.link.input;
-            a.target = "_blank";
-            this._range.surroundContents(a);
+            this.ExecCommend("createLink", "/");
+            this.link.element = document.getSelection()!.anchorNode!.parentElement!;
+        }
+        this.anchorContainer = !this.anchorContainer;
+    }
+
+    CreateAnchor(): void {
+        this.anchorContainer = !this.anchorContainer;
+
+        if(this._range == null) {
+            return;
+
         }
 
+        this.link.element.attributes[0].nodeValue = this.link.input;
+    }
+
+    UnAnchor(): void {
+        document.execCommand("unlink", false);
+        this.anchorContainer = !this.anchorContainer;
+    }
+
+    CloseAnchor(): void {
+        if(this.link.element.attributes[0].nodeValue === "/"){
+            document.execCommand("unlink", false);
+        }
         this.anchorContainer = !this.anchorContainer;
     }
 
