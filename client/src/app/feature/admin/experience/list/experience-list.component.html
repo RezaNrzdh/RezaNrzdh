@@ -1,0 +1,15 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">لیست سوابق کاری</h1>
+    </div>
+    <div class="grid margin-bot-32">
+        <div *ngFor="let data of data" class="flex column padding-24 background-white radius-8 shadow-16">
+            <img src="assets/images/{{data.img}}.png" />
+            <span class="headline-6 margin-top-16 bold color-dark">{{ data.companyname }}</span>
+            <span class="color-gray-5 caption medium margin-top-4">{{ data.from }}</span>
+            <p class="color-gray-5 medium body-2 margin-top-16">{{ data.desc }}</p>
+            <span class="color-gray-5 caption medium margin-top-16">{{ data.reason }}</span>
+            <app-button mode="outlined" color="dark2" class="flex width-fit margin-top-24">ویرایش</app-button>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,14 @@
+@use "src/assets/styles/color";
+
+:host{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    section{
+        .grid {
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 16px;
+            grid-row-gap: 16px;
+        }
+    }
+}

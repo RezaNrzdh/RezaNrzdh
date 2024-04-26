@@ -1,0 +1,16 @@
+@use "src/assets/styles/color";
+
+:host {
+    section {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 24px;
+        .info {
+            box-shadow: 0 16px 48px rgba(0,0,0,0.04);
+            > div {
+                &:not(:last-child) {
+                    border-bottom: 1px solid color.$color-gray-1b;
+                }
+            }
+        }
+    }
+}

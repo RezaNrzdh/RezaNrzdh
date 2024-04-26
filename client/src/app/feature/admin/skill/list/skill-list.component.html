@@ -1,0 +1,14 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">لیست مهارت ها</h1>
+    </div>
+    <div class="grid margin-bot-32">
+        <div *ngFor="let i of data" class="flex column padding-24 background-white radius-8 shadow-16">
+            <span class="headline-6 bold color-dark">{{ i.title }}</span>
+            <div class="flex flex-wrap gap-8 margin-top-16 margin-bot-16">
+                <app-tag *ngFor="let j of i.skill">{{ j }}</app-tag>
+            </div>
+            <app-button mode="outlined" color="dark2" class="flex width-fit">ویرایش</app-button>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,9 @@
+<section class="grid margin-bot-24">
+    <div *ngFor="let i of data" class="flex column width-full background-white padding-24 borderbox radius-8">
+        <div class="width-fit padding-12 radius-24 background-primary">
+            <app-icon icon="{{ i.icon }}" color="white" size="24"></app-icon>
+        </div>
+        <span class="margin-top-24 body-2 color-gray-4">{{ i.key }}</span>
+        <span class="margin-top-8 headline-1 bold color-dark">{{ i.value }}</span>
+    </div>
+</section>

@@ -43,6 +43,10 @@ const routes: Routes = [
             { path: "orders", loadComponent: () => import("./feature/admin/order/order.component").then(c => c.OrderComponent) },
             { path: "comment", loadComponent: () => import("./feature/admin/comment/list/comment-list.component").then(c => c.CommentListComponent) },
             { path: "comment/:slug", loadComponent: () => import("./feature/admin/comment/detail/comment.component").then(c => c.CommentComponent) },
+            { path: "category", loadComponent: () => import("./feature/admin/category/list/list-category.component").then(c => c.ListCategoryComponent) },
+            { path: "employers", loadComponent: () => import("./feature/admin/employer/list/employer-list.component").then(c => c.EmployerListComponent) },
+            { path: "skills", loadComponent: () => import("./feature/admin/skill/list/skill-list.component").then(c => c.SkillListComponent) },
+            { path: "experience", loadComponent: () => import("./feature/admin/experience/list/experience-list.component").then(c => c.ExperienceListComponent) },
         ]
     }
 ];

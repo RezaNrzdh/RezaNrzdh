@@ -11,4 +11,16 @@ export class AboutService {
     async GetAboutMe(): Promise<any> {
         return await this.aboutModel.find().exec();
     }
+
+    async GetSkills(): Promise<any> {
+        return await this.aboutModel.findOne(null, { skills: 1}).exec();
+    }
+
+    async GetExperience(): Promise<any> {
+        return await this.aboutModel.findOne(null, { experience: 1}).exec();
+    }
+
+    async GetLanguage(): Promise<any> {
+        return await this.aboutModel.findOne(null, { language: 1}).exec();
+    }
 }

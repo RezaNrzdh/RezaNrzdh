@@ -174,9 +174,10 @@
 /*
 --- Display / Position / Align ---
  */
-.flex  { display: flex }
-.block { display: block }
-.grid  { display: grid }
+.flex  { display: flex };
+.flex-wrap { flex-wrap: wrap };
+.block { display: block };
+.grid  { display: grid };
 
 .absolute { position: absolute };
 .relative { position: relative };
@@ -207,6 +208,13 @@
 .justify-self-ctr   { justify-self: center }
 .justify-self-start { justify-self: flex-start }
 .justify-self-end   { justify-self: flex-end }
+
+.gap-2 { gap: 2px }
+.gap-4 { gap: 4px }
+.gap-8 { gap: 8px }
+.gap-12 { gap: 12px }
+.gap-16 { gap: 16px }
+.gap-24 { gap: 24px }
 
 /*
 --- Width / Height ---

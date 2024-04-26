@@ -1,0 +1,24 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">دسته بندی مهارت ها</h1>
+
+    </div>
+    <div class="grid margin-bot-32">
+        <div *ngFor="let data of data" class="flex column padding-24 background-white radius-8 shadow-16">
+            <div class="flex align-ctr">
+                <div class="padding-12 radius-48 background-secondary width-fit">
+                    <app-icon icon="{{data.img}}" color="white" size="24"></app-icon>
+                </div>
+                <span class="margin-right-12 bold color-dark">{{data.title}}</span>
+            </div>
+            <div class="margin-right-56 margin-top-16">
+                <div class="color-dark">{{ data.desc }}</div>
+                <div class="flex margin-top-8">
+                    <span class="color-dark bold margin-left-8">سطح مهارت:</span>
+                    <span class="color-dark">{{ data.levelName }} - {{ data.level }}</span>
+                </div>
+                <app-button mode="outlined" color="dark2" class="flex width-fit margin-top-16">ویرایش</app-button>
+            </div>
+        </div>
+    </div>
+</section>

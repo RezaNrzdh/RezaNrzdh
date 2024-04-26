@@ -1,0 +1,25 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">نظر کارفرمایان در مورد من</h1>
+        <app-button href="new" [isLink]="true" class="margin-right-auto">نظر جدید</app-button>
+    </div>
+    <div class="grid margin-bot-32">
+        <div *ngFor="let data of data" class="flex column padding-24 background-white radius-8 shadow-16">
+            <div class="flex align-ctr">
+                <app-icon icon="quote" size="32"></app-icon>
+            </div>
+            <span class="headline-6 margin-top-16 bold color-dark">{{ data.name }}</span>
+            <span class="color-gray-5 caption medium margin-top-4">{{ data.company }}</span>
+            <p class="color-gray-5 medium body-2 margin-top-16">{{ data.desc }}</p>
+            <div class="flex align-ctr margin-top-16">
+                <div>
+                    <app-tag *ngIf="data.state; else alt" color="success">{{ data.state | Publish }}</app-tag>
+                    <ng-template #alt>
+                        <app-tag color="danger">{{ data.state | Publish }}</app-tag>
+                    </ng-template>
+                </div>
+                <app-button mode="outlined" color="dark2" class="flex width-fit margin-right-auto">ویرایش</app-button>
+            </div>
+        </div>
+    </div>
+</section>
