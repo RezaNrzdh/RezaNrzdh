@@ -1,0 +1,42 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">درباره من</h1>
+    </div>
+    <div class="flex margin-bot-32">
+        <div class="flex width-full column padding-24 background-white radius-8 shadow-16">
+            <form [formGroup]="aboutForm" (ngSubmit)="OnSubmit()">
+                <app-textbox
+                    title="ایمیل"
+                    formControlName="email">
+                </app-textbox>
+                <app-textbox
+                    title="عنوان شغلی"
+                    formControlName="jobtitle">
+                </app-textbox>
+                <app-textbox
+                    title="شماره تماس"
+                    formControlName="phone">
+                </app-textbox>
+                <app-textbox
+                    title="تاریخ تولد"
+                    formControlName="birthday">
+                </app-textbox>
+                <app-textbox
+                    title="وضعیت تاهل"
+                    formControlName="married">
+                </app-textbox>
+                <app-textbox
+                    title="وضعیت سربازی"
+                    formControlName="militaryservice">
+                </app-textbox>
+                <app-textbox
+                    title="درباره من"
+                    [multiLine]="true"
+                    [rows]="4"
+                    formControlName="aboutme">
+                </app-textbox>
+                <app-button class="flex width-fit margin-top-24">ویرایش</app-button>
+            </form>
+        </div>
+    </div>
+</section>

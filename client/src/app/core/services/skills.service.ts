@@ -9,7 +9,15 @@ export class SkillsService {
     constructor(private http: HttpClient) {
     }
 
-    getSkills = (): Observable<any> => {
+    getSkills(): Observable<any> {
         return this.http.get(`${environment.server}/skills`);
+    }
+
+    getSkillOne(id: number): Observable<any> {
+        return this.http.get(`${environment.server}/skills/${id}`);
+    }
+
+    ModifySkill(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/skills`,body);
     }
 }

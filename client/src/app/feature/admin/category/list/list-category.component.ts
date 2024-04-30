@@ -23,8 +23,7 @@ export class ListCategoryComponent implements OnInit {
 
     data: any;
 
-    constructor(private skillService: SkillsService) {
-    }
+    constructor(private skillService: SkillsService) {}
 
     ngOnInit() {
         this.skillService.getSkills().subscribe({

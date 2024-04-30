@@ -11,4 +11,22 @@ export class SkillsService {
     async GetSkills(): Promise<any> {
         return await this.skillModel.find().exec();
     }
+
+    async GetSkillOne(id: any): Promise<any> {
+        return await this.skillModel.findOne({ _id: id }).exec();
+    }
+
+    async ModifySkill(body: any): Promise<any> {
+        return this.skillModel
+            .updateOne(
+                { _id: body.id },
+                {
+                    title: body.title,
+                    levelName: body.levelName,
+                    level: body.level,
+                    desc: body.desc ,
+                }
+            )
+            .exec();
+    }
 }

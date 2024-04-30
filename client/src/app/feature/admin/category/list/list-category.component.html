@@ -17,7 +17,14 @@
                     <span class="color-dark bold margin-left-8">سطح مهارت:</span>
                     <span class="color-dark">{{ data.levelName }} - {{ data.level }}</span>
                 </div>
-                <app-button mode="outlined" color="dark2" class="flex width-fit margin-top-16">ویرایش</app-button>
+                <app-button
+                    href="{{data._id}}"
+                    [isLink]="true"
+                    mode="outlined"
+                    color="dark2"
+                    class="flex width-fit margin-top-16">
+                    ویرایش
+                </app-button>
             </div>
         </div>
     </div>

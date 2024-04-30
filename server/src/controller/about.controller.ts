@@ -1,4 +1,4 @@
-import {Controller, Get, UseGuards} from "@nestjs/common";
+import {Body, Controller, Get, Patch, UseGuards} from "@nestjs/common";
 import {AboutService} from "../service/about.service";
 import {AuthGuard} from "../guard/auth.guard";
 
@@ -9,6 +9,16 @@ export class AboutController {
     @Get()
     GetAboutMe(): any {
         return this.aboutService.GetAboutMe();
+    }
+
+    @Get("personalinfo")
+    GetPersonalInfo(): any {
+        return this.aboutService.GetPersonalInfo();
+    }
+
+    @Patch("personalinfo")
+    ModifyPersonalInfo(@Body() body: any): any {
+        return this.aboutService.ModifyPersonalInfo(body);
     }
 
     @Get("skills")
