@@ -1,0 +1,45 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">
+            کامنت کارفرما
+        </h1>
+    </div>
+    <form [formGroup]="employerForm" (ngSubmit)="OnSubmit()">
+        <div class="grid">
+            <div class="main flex column background-white radius-8 shadow-16 padding-24 margin-bot-24">
+                <app-textbox
+                    title="نام کارفرما"
+                    class="width-half margin-bot-8"
+                    formControlName="name">
+                </app-textbox>
+                <app-textbox
+                    title="نام شرکت"
+                    class="width-half margin-bot-8"
+                    formControlName="company">
+                </app-textbox>
+                <app-textbox
+                    title="نام شرکت"
+                    class="margin-bot-8"
+                    [multiLine]="true"
+                    [rows]="4"
+                    formControlName="desc">
+                </app-textbox>
+                <app-button action="submit" class="width-fit margin-top-24">
+                    ویرایش
+                </app-button>
+            </div>
+            <div>
+                <div class="flex column background-white radius-8 shadow-16 margin-bot-24 padding-24 borderbox">
+                    <label class="body-2 medium color-dark margin-bot-4">
+                        دسته بندی
+                    </label>
+                    <app-dropdown
+                        [options]="publish"
+                        class="margin-bot-8"
+                        formControlName="publish">
+                    </app-dropdown>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

@@ -11,4 +11,16 @@ export class EmployersService {
     GetEmployersComment(): Observable<any> {
         return this.http.get(`${environment.server}/employers`);
     }
+
+    GetEmployersCommentOne(id: number): Observable<any> {
+        return this.http.get(`${environment.server}/employers/${id}`)
+    }
+
+    CreateEmployersComment(body: any): Observable<any> {
+        return this.http.post(`${environment.server}/employers`, body);
+    }
+
+    ModifyEmployersComment(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/employers`, body);
+    }
 }

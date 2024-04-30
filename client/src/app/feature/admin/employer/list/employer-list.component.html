@@ -13,12 +13,12 @@
             <p class="color-gray-5 medium body-2 margin-top-16">{{ data.desc }}</p>
             <div class="flex align-ctr margin-top-16">
                 <div>
-                    <app-tag *ngIf="data.state; else alt" color="success">{{ data.state | Publish }}</app-tag>
+                    <app-tag *ngIf="data.publish; else alt" color="success">{{ data.publish | Publish }}</app-tag>
                     <ng-template #alt>
-                        <app-tag color="danger">{{ data.state | Publish }}</app-tag>
+                        <app-tag color="danger">{{ data.publish | Publish }}</app-tag>
                     </ng-template>
                 </div>
-                <app-button mode="outlined" color="dark2" class="flex width-fit margin-right-auto">ویرایش</app-button>
+                <app-button href="{{data._id}}" [isLink]="true" mode="outlined" color="dark2" class="flex width-fit margin-right-auto">ویرایش</app-button>
             </div>
         </div>
     </div>

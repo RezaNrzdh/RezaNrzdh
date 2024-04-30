@@ -13,6 +13,9 @@ export class Employer {
 
     @Prop()
     desc: String;
+
+    @Prop()
+    publish: Boolean;
 }
 
 export const EmployerSchema = SchemaFactory.createForClass(Employer);

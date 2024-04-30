@@ -1,4 +1,4 @@
-import {Controller, Get} from "@nestjs/common";
+import {Body, Controller, Get, Param, Patch, Post} from "@nestjs/common";
 import {EmployersService} from "../service/employers.service";
 
 @Controller("api/v1/employers")
@@ -8,5 +8,20 @@ export class EmployersController {
     @Get()
     GetEmplyersComment(): any {
         return this.employersService.GetEmplyersComment();
+    }
+
+    @Get(":id")
+    GetEmplyersCommentOne(@Param("id") id: any): any {
+        return this.employersService.GetEmplyersCommentOne(id);
+    }
+
+    @Post()
+    CreateEmployersComment(@Body() body: any): any {
+        return this.employersService.CreateEmployersComment(body);
+    }
+
+    @Patch()
+    ModifyEmployersComment(@Body() body: any): any {
+        return this.employersService.ModifyEmployersComment(body);
     }
 }

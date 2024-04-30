@@ -71,7 +71,6 @@ export class PortfolioComponent implements OnInit {
     }
 
     OnSubmit(): void {
-        console.log(this.portfolioForm.value);
         if(this.portfolioForm.status === "INVALID" || this.isSpin) return;
 
         const query = {
