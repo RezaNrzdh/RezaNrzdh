@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Patch, UseGuards} from "@nestjs/common";
+import {Body, Controller, Get, Param, Patch, UseGuards} from "@nestjs/common";
 import {AboutService} from "../service/about.service";
 import {AuthGuard} from "../guard/auth.guard";
 
@@ -37,5 +37,16 @@ export class AboutController {
     @UseGuards(AuthGuard)
     GetLanguage(): any {
         return this.aboutService.GetLanguage();
+    }
+
+    @Get("language/:id")
+    @UseGuards(AuthGuard)
+    GetLanguageOne(@Param("id") id: any): any {
+        return this.aboutService.GetLanguageOne(id);
+    }
+
+    @Patch("language")
+    ModifyLanguageOne(@Body() body: any): any {
+        return this.aboutService.ModifyLanguageOne(body);
     }
 }

@@ -5,15 +5,15 @@ import {NgFor} from "@angular/common";
 
 @Component({
     selector: "admin-language-list",
-    templateUrl: "language.component.html",
-    styleUrls: ["language.component.scss"],
+    templateUrl: "language-list.component.html",
+    styleUrls: ["language-list.component.scss"],
     standalone: true,
     imports: [
         ButtonComponent,
         NgFor
     ]
 })
-export class LanguageComponent implements OnInit {
+export class LanguageListComponent implements OnInit {
 
     data: any;
 

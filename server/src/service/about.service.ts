@@ -55,4 +55,28 @@ export class AboutService {
     async GetLanguage(): Promise<any> {
         return await this.aboutModel.findOne(null, { language: 1}).exec();
     }
+
+    async GetLanguageOne(id: any): Promise<any> {
+        return await this.aboutModel
+            .findOne(null, { language: 1})
+            .then((value) => {
+                return value.language[id-1]
+            });
+    }
+
+    async ModifyLanguageOne(body: any): Promise<any> {
+        return await this.aboutModel
+            .updateOne(
+                null,
+                {
+                    $set: {
+                        "language.$[lang].title": body.title,
+                        "language.$[lang].cefr": body.cefr,
+                        "language.$[lang].level": body.level
+                    }
+                },
+                { arrayFilters: [{"lang._id": body.id}]}
+            )
+            .exec();
+    }
 }
