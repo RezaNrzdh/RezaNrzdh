@@ -9,6 +9,10 @@ export class EmployersService {
     constructor(@InjectModel("Employer") private employerModel: Model<Employer>) {}
 
     async GetEmplyersComment(): Promise<any> {
+        return await this.employerModel.find({ publish: true }).limit(4).exec();
+    }
+
+    async GetEmplyersCommentForAdmin(): Promise<any> {
         return await this.employerModel.find().exec();
     }
 

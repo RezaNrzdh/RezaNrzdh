@@ -32,7 +32,7 @@ export class EmployerListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.employerService.GetEmployersComment().subscribe({
+        this.employerService.GetEmployersCommentForAdmin().subscribe({
             next: ((comments: any) => {
                 this.data = comments;
             })

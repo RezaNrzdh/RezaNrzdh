@@ -12,6 +12,10 @@ export class EmployersService {
         return this.http.get(`${environment.server}/employers`);
     }
 
+    GetEmployersCommentForAdmin(): Observable<any> {
+        return this.http.get(`${environment.server}/employers/admin`);
+    }
+
     GetEmployersCommentOne(id: number): Observable<any> {
         return this.http.get(`${environment.server}/employers/${id}`)
     }

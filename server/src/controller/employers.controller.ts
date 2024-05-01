@@ -1,5 +1,6 @@
-import {Body, Controller, Get, Param, Patch, Post} from "@nestjs/common";
+import {Body, Controller, Get, Param, Patch, Post, UseGuards} from "@nestjs/common";
 import {EmployersService} from "../service/employers.service";
+import {AuthGuard} from "../guard/auth.guard";
 
 @Controller("api/v1/employers")
 export class EmployersController {
@@ -8,6 +9,12 @@ export class EmployersController {
     @Get()
     GetEmplyersComment(): any {
         return this.employersService.GetEmplyersComment();
+    }
+
+    @Get("/admin")
+    @UseGuards(AuthGuard)
+    GetEmplyersCommentForAdmin(): any {
+        return this.employersService.GetEmplyersCommentForAdmin();
     }
 
     @Get(":id")
