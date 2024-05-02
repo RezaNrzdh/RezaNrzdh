@@ -9,7 +9,7 @@
             <span class="color-gray-5 caption medium margin-top-4">{{ data.from }}</span>
             <p class="color-gray-5 medium body-2 margin-top-16">{{ data.desc }}</p>
             <span class="color-gray-5 caption medium margin-top-16">{{ data.reason }}</span>
-            <app-button mode="outlined" color="dark2" class="flex width-fit margin-top-24">ویرایش</app-button>
+            <app-button href="{{data._id}}" [isLink]="true" mode="outlined" color="dark2" class="flex width-fit margin-top-24">ویرایش</app-button>
         </div>
     </div>
 </section>

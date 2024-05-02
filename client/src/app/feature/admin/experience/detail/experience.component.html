@@ -1,0 +1,35 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">ویرایش مهارت</h1>
+    </div>
+    <div class="flex margin-bot-32">
+        <div class="flex width-full column padding-24 background-white radius-8 shadow-16">
+            <form [formGroup]="expForm" (ngSubmit)="OnSubmit()">
+                <app-textbox
+                    title="نام شرکت"
+                    formControlName="companyname"
+                ></app-textbox>
+                <app-textbox
+                    title="شروع همکاری"
+                    formControlName="year"
+                ></app-textbox>
+                <app-textbox
+                    title="سال شروع و سال پایان"
+                    formControlName="from"
+                ></app-textbox>
+                <app-textbox
+                    title="دلیل اتمام همکاری"
+                    formControlName="reason"
+                ></app-textbox>
+                <app-textbox
+                    title="توضیحات"
+                    formControlName="desc"
+                    [multiLine]="true"
+                    [rows]="4"
+                ></app-textbox>
+                <app-button class="flex width-fit margin-top-24">ویرایش</app-button>
+            </form>
+        </div>
+    </div>
+</section>
+

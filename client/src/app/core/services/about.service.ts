@@ -2,10 +2,11 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
+import {MainService} from "./main.service";
 
 @Injectable({ providedIn: "root" })
 export class AboutService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private mainService: MainService) {}
 
     // About
     GetAbout(): Observable<any> {
@@ -27,7 +28,13 @@ export class AboutService {
 
     // Experience
     GetExperience(): Observable<any> {
-        return this.http.get(`${environment.server}/about/experience`)
+        return this.http.get(`${environment.server}/about/experience`);
+    }
+    GetExperienceOne(id: number): Observable<any> {
+        return this.http.get(`${environment.server}/about/experience/${id}`);
+    }
+    ModifyExperience(body: object): Observable<any> {
+        return this.http.patch(`${environment.server}/about/experience`,body);
     }
 
     // Languages

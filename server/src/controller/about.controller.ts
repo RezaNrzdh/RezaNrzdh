@@ -33,6 +33,18 @@ export class AboutController {
         return this.aboutService.GetExperience();
     }
 
+    @Get("experience/:id")
+    @UseGuards(AuthGuard)
+    GetExperienceOne(@Param("id") id: any): any {
+        return this.aboutService.GetExperienceOne(id);
+    }
+
+    @Patch("experience")
+    @UseGuards(AuthGuard)
+    ModifyExperience(@Body() body: any): any {
+        return this.aboutService.ModifyExperience(body);
+    }
+
     @Get("language")
     @UseGuards(AuthGuard)
     GetLanguage(): any {

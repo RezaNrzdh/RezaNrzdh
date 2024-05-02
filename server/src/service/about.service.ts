@@ -52,6 +52,32 @@ export class AboutService {
         return await this.aboutModel.findOne(null, { experience: 1}).exec();
     }
 
+    async GetExperienceOne(id: any): Promise<any> {
+        return await this.aboutModel
+            .findOne(null, { experience: 1})
+            .then((value) => {
+                return value.experience[id-1];
+            })
+    }
+
+    async ModifyExperience(body: any): Promise<any> {
+        return this.aboutModel
+            .updateOne(
+                null,
+                {
+                    $set: {
+                        "experience.$[exp].year": body.year,
+                        "experience.$[exp].companyname": body.companyname,
+                        "experience.$[exp].from": body.from,
+                        "experience.$[exp].desc": body.desc,
+                        "experience.$[exp].reason": body.reason
+                    }
+                },
+                { arrayFilters: [{ "exp._id": body.id }] }
+            )
+            .exec();
+    }
+
     async GetLanguage(): Promise<any> {
         return await this.aboutModel.findOne(null, { language: 1}).exec();
     }
