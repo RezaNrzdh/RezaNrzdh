@@ -4,6 +4,9 @@ import {SkillsService} from "../../../../core/services/skills.service";
 import {ActivatedRoute} from "@angular/router";
 import {TextboxComponent} from "../../../../shared/component/textbox/textbox.component";
 import {ButtonComponent} from "../../../../shared/component/button/button.component";
+import {AlertService} from "../../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../../core/enum/alert.enum";
 
 @Component({
     selector: "admin-category",
@@ -20,7 +23,7 @@ export class CategoryComponent implements OnInit {
 
     categoryForm: FormGroup | any;
 
-    constructor(private skillService: SkillsService, private activatedRoute: ActivatedRoute) {
+    constructor(private skillService: SkillsService, private activatedRoute: ActivatedRoute, private alertService: AlertService) {
         this.categoryForm = new FormGroup({
             "title": new FormControl(null),
             "levelName": new FormControl(null),
@@ -50,7 +53,16 @@ export class CategoryComponent implements OnInit {
             ...this.categoryForm.value
         }
         this.skillService.ModifySkill(body).subscribe({
-            next: (() => {})
+            next: ((value: any) => {
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit})
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit})
+                }
+            })
         })
     }
 }

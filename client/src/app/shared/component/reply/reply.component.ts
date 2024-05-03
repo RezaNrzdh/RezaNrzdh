@@ -7,6 +7,9 @@ import { NgIf } from "@angular/common";
 import { IconComponent } from "../icon/icon.component";
 import {PortfolioService} from "../../../core/services/portfolio.service";
 import {BlogService} from "../../../core/services/blog.service";
+import {AlertService} from "../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../core/enum/alert.enum";
 
 @Component({
     selector: "app-reply",
@@ -26,7 +29,7 @@ export class ReplyComponent implements OnInit {
     commentForm: FormGroup | any;
 
 
-    constructor(private portfolioService: PortfolioService, private blogService: BlogService) {}
+    constructor(private portfolioService: PortfolioService, private blogService: BlogService, private alertService: AlertService) {}
 
     ngOnInit() {
         this.commentForm = new FormGroup({
@@ -50,6 +53,14 @@ export class ReplyComponent implements OnInit {
             this.blogService.CreateReply(query).subscribe({
                 next: ((value: any) => {
                     this.ResetForm();
+                    if(value.acknowledged){
+                        this.alertService.SetIsHide(false);
+                        this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successContactComment});
+                    }
+                    else {
+                        this.alertService.SetIsHide(false);
+                        this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.fatalError});
+                    }
                 })
             });
         }
@@ -57,6 +68,14 @@ export class ReplyComponent implements OnInit {
             this.portfolioService.CreateReply(query).subscribe({
                 next: ((value: any) => {
                     this.ResetForm();
+                    if(value.acknowledged){
+                        this.alertService.SetIsHide(false);
+                        this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successContactComment});
+                    }
+                    else {
+                        this.alertService.SetIsHide(false);
+                        this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.fatalError});
+                    }
                 })
             });
         }

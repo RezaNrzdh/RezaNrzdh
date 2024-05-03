@@ -20,6 +20,9 @@ import {AlertboxComponent} from "../../../shared/component/alertbox/alertbox.com
 import {UserService} from "../../../core/services/user.service";
 import {GuestComponent} from "../../../shared/component/guest/guest.component";
 import {SliderComponent} from "./slider/slider.component";
+import {AlertService} from "../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../core/enum/alert.enum";
 
 @Component({
     selector: "app-portfolio",
@@ -71,6 +74,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         private responsiveService: ResponsiveService,
         private route: Router,
         private userService: UserService,
+        private alertService: AlertService,
         private activatedRoute: ActivatedRoute)
     {
         this.sub = responsiveService.breakpoint.subscribe({
@@ -124,10 +128,18 @@ export class PortfolioComponent implements OnInit, OnDestroy {
             body: this.commentForm.value
         }
         this.portfolioService.CreateComment(query).subscribe({
-            next:(() => {
+            next:((value: any) => {
                 this.commentForm.markAsPristine();
                 this.commentForm.markAsUntouched();
                 this.commentForm.reset({ name: "", email: "", comment: "" });
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successContactComment});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.fatalError});
+                }
             })
         })
     }

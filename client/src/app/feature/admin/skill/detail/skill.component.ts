@@ -6,6 +6,9 @@ import {ActivatedRoute} from "@angular/router";
 import {NgFor} from "@angular/common";
 import {IconComponent} from "../../../../shared/component/icon/icon.component";
 import {FormsModule} from "@angular/forms";
+import {AlertService} from "../../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../../core/enum/alert.enum";
 
 interface skills {
     title?: string;
@@ -29,7 +32,7 @@ export class SkillComponent implements OnInit {
 
     data: skills = {title: "", skill: []};
 
-    constructor(private aboutService: AboutService, private activatedRoute: ActivatedRoute){}
+    constructor(private aboutService: AboutService, private activatedRoute: ActivatedRoute, private alertService: AlertService){}
 
     ngOnInit(): void {
         this.aboutService.GetSkillOne(this.activatedRoute.snapshot.params["id"]).subscribe({
@@ -60,7 +63,14 @@ export class SkillComponent implements OnInit {
         }
         this.aboutService.ModifySkills(query).subscribe({
             next:((value: any) => {
-                console.log(value);
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else{
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         })
     }

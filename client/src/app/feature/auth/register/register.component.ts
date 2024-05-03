@@ -7,6 +7,9 @@ import { IconComponent } from '../../../shared/component/icon/icon.component';
 import { CheckboxComponent } from '../../../shared/component/checkbox/checkbox.component';
 import { ButtonComponent } from '../../../shared/component/button/button.component';
 import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
+import {AlertService} from "../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../core/enum/alert.enum";
 
 @Component({
     selector: 'app-register',
@@ -19,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
     registerForm: FormGroup | any;
 
-    constructor(private authService: AuthService, private router: Router, private titleService: Title) {
+    constructor(private authService: AuthService, private router: Router, private titleService: Title, private alertService: AlertService) {
         this.titleService.setTitle("RezaNrzdh - Register");
     }
 
@@ -36,10 +39,19 @@ export class RegisterComponent implements OnInit {
 
         this.authService.SignUp(this.registerForm.value).subscribe({
             next: ((value: any) => {
-                this.router.navigate(["/"]);
+                if(value){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successLogin});
+                    this.router.navigate(["/"]);
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.errorLogin});
+                }
             }),
             error: ((err: any) => {
-                console.log(err);
+                this.alertService.SetIsHide(false);
+                this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.errorLogin});
             })
         });
     }

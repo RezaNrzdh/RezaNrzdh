@@ -2,11 +2,11 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
-import {MainService} from "./main.service";
+import {AlertService} from "./alert.service";
 
 @Injectable({ providedIn: "root" })
 export class AboutService {
-    constructor(private http: HttpClient, private mainService: MainService) {}
+    constructor(private http: HttpClient, private mainService: AlertService) {}
 
     // About
     GetAbout(): Observable<any> {

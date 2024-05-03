@@ -9,7 +9,6 @@ export class NewsletterService {
     constructor(private http: HttpClient) {}
 
     CreateNewsletter(body: any): Observable<any> {
-        console.log(body);
         return this.http.post(`${environment.server}/newsletter`, body);
     }
 

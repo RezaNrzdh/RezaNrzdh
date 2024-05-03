@@ -10,6 +10,8 @@ import { ButtonComponent } from '../../shared/component/button/button.component'
 import { TextboxComponent } from '../../shared/component/textbox/textbox.component';
 import { AlertboxComponent } from '../../shared/component/alertbox/alertbox.component';
 import { NgIf } from '@angular/common';
+import {AlertService} from "../../core/services/alert.service";
+import {AlertStateEnum} from "../../core/enum/alertState.enum";
 
 @Component({
     selector: 'app-contact',
@@ -29,12 +31,10 @@ import { NgIf } from '@angular/common';
 export class ContactComponent implements OnInit {
 
     isSpin: boolean = false;
-    isAlertboxActive: boolean = false;
-    alertbox: AlertboxModel;
     data: AboutModel = new AboutModel();
     contactForm: FormGroup | any;
 
-    constructor(private contactService: ContactService, private titleService: Title) {
+    constructor(private contactService: ContactService, private titleService: Title, private alertService: AlertService) {
         this.titleService.setTitle("RezaNrzdh - Contact Me");
     }
 
@@ -58,37 +58,27 @@ export class ContactComponent implements OnInit {
     }
 
     CreateComment(): void {
-        if(this.contactForm.status === "INVALID" || this.isSpin){
-            console.log(this.contactForm);
+        if(this.contactForm.status === "INVALID" || this.isSpin)
             return;
-        }
-        console.log(1);
-        this.isSpin = true;
 
+        this.isSpin = true;
         this.contactService.CreateComment(this.contactForm.value).subscribe({
             next:((value: any) => {
-                this.alertbox = {
-                    type: "success",
-                    msg: AlertEnum.successContactComment
-                };
                 this.isSpin = false;
-                this.ActiveAlertBox(value, 3000);
+                if(value){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successContactComment});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.fatalError});
+                }
             }),
             error:(() => {
-                this.alertbox = {
-                    type: "danger",
-                    msg: AlertEnum.fatalError
-                };
                 this.isSpin = false;
+                this.alertService.SetIsHide(false);
+                this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.fatalError});
             })
         })
-    }
-
-    ActiveAlertBox(value: any, time: number): void {
-        this.isAlertboxActive = true;
-        const timeout = setTimeout(() => {
-            clearTimeout(timeout);
-            this.isAlertboxActive = false;
-        },time);
     }
 }

@@ -4,6 +4,9 @@ import {AboutService} from "../../../../core/services/about.service";
 import {ActivatedRoute} from "@angular/router";
 import {TextboxComponent} from "../../../../shared/component/textbox/textbox.component";
 import {ButtonComponent} from "../../../../shared/component/button/button.component";
+import {AlertService} from "../../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../../core/enum/alert.enum";
 
 @Component({
     selector: "admin-experience",
@@ -20,7 +23,7 @@ export class ExperienceComponent implements OnInit {
 
     expForm: FormGroup | any;
 
-    constructor(private aboutService: AboutService, private activatedRoute: ActivatedRoute) {
+    constructor(private aboutService: AboutService, private activatedRoute: ActivatedRoute, private alertService: AlertService) {
         this.expForm = new FormGroup({
             "year": new FormControl(null),
             "companyname": new FormControl(null),
@@ -53,7 +56,14 @@ export class ExperienceComponent implements OnInit {
         }
         this.aboutService.ModifyExperience(query).subscribe({
             next: ((value: any) => {
-                console.log(value);
+               if(value.acknowledged){
+                   this.alertService.SetIsHide(false);
+                   this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+               }
+               else {
+                   this.alertService.SetIsHide(false);
+                   this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+               }
             })
         })
     }

@@ -11,6 +11,7 @@ div{
     font-size: 14px;
     z-index: 999999;
     box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+
     &.success{
         color: white;
         background-color: color.$color-success;
@@ -27,6 +28,7 @@ div{
         color: white;
         background-color: color.$color-dark;
     }
+
     &.TopCenter {
         top:32px;
         left: 0;

@@ -8,6 +8,9 @@ import { ButtonComponent } from '../../../shared/component/button/button.compone
 import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
 import { AlertboxComponent } from '../../../shared/component/alertbox/alertbox.component';
 import { NgIf } from '@angular/common';
+import {AlertService} from "../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../core/enum/alert.enum";
 
 @Component({
     selector: 'app-login',
@@ -31,7 +34,7 @@ export class LoginComponent implements OnInit {
     alertbox: {type: string, msg: string};
     loginForm: FormGroup | any;
 
-    constructor(private authService: AuthService, private router: Router, private titleService: Title) {
+    constructor(private authService: AuthService, private router: Router, private titleService: Title, private alertService: AlertService) {
         this.titleService.setTitle("RezaNrzdh - Login");
     }
 
@@ -48,9 +51,21 @@ export class LoginComponent implements OnInit {
 
         this.authService.SignIn(this.loginForm.value).subscribe({
             next: ((value: any) => {
-                this.router.navigate(["/"])
+                this.isSpin = false;
+                if(value){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successLogin});
+                    this.router.navigate(["/"]);
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.errorLogin});
+                }
             }),
             error: (() => {
+                this.isSpin = false;
+                this.alertService.SetIsHide(false);
+                this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.errorLogin});
             })
         });
     }

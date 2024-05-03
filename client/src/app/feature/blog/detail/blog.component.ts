@@ -14,6 +14,9 @@ import {ShareComponent} from "../../../shared/component/share/share.component";
 import {GuestComponent} from "../../../shared/component/guest/guest.component";
 import {UserService} from "../../../core/services/user.service";
 import {Subscription} from "rxjs";
+import {AlertService} from "../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../core/enum/alert.enum";
 
 @Component({
     selector: 'app-blog',
@@ -42,6 +45,7 @@ export class BlogComponent implements OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private blogService: BlogService,
+        private alertService: AlertService,
         private userService: UserService
     ) { }
 
@@ -85,6 +89,14 @@ export class BlogComponent implements OnInit {
                 this.commentForm.markAsPristine();
                 this.commentForm.markAsUntouched();
                 this.commentForm.reset({ name: "", email: "", comment: "" });
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successContactComment});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.fatalError});
+                }
             })
         })
     }

@@ -6,6 +6,9 @@ import {ButtonComponent} from "../../../../shared/component/button/button.compon
 import {TextboxComponent} from "../../../../shared/component/textbox/textbox.component";
 import {PublishConstant} from "../../../../core/constant/publish.constant";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {AlertService} from "../../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../../core/enum/alert.enum";
 
 @Component({
     selector: "app-employer",
@@ -27,7 +30,8 @@ export class EmployerComponent implements OnInit {
 
     constructor(
         private employerService: EmployersService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private alertService: AlertService
     ){
         this.employerForm = new FormGroup({
             "name": new FormControl(null),
@@ -65,7 +69,14 @@ export class EmployerComponent implements OnInit {
     OnEdit(query: object): void {
         this.employerService.ModifyEmployersComment(query).subscribe({
             next: ((value) => {
-                console.log(value);
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         });
     }
@@ -73,7 +84,14 @@ export class EmployerComponent implements OnInit {
     OnCreate(query: object): void {
         this.employerService.CreateEmployersComment(query).subscribe({
             next: ((value) => {
-                console.log(value);
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         });
     }

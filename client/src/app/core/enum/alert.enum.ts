@@ -5,8 +5,11 @@ export enum AlertEnum {
     phone = "لطفا شماره تماس خود را وارد کنید.",
     subject = "لطفا موضوع پیغام خود را بنویسید.",
     comment = "لطفا نظر خود را بنویسید.",
+    SuccessSubmit = "عملیات با موفقیت انجام شد",
     successLogin = "ورود شما با موفقیت انجام شد.",
+    successContactComment = "پیغام شما با موفقیت ارسال شد.",
+    successNewsLetter = "اشتراک در خبرنامه با موفقیت انجام شد",
     errorLogin = "ایمیل یا رمز عبور اشتباه است، دوباره تلاش کنید.",
     fatalError = "خطایی رخ داده است. دوباره تلاش کنید.",
-    successContactComment = "پیغام شما با موفقیت ارسال شد."
+    DangerSubmit = "خطایی رخ داده است",
 }

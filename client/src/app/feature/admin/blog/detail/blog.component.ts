@@ -12,6 +12,9 @@ import {NgFor, NgIf} from "@angular/common";
 import { TextboxComponent } from "../../../../shared/component/textbox/textbox.component";
 import {CalendarPipe} from "../../../../shared/pipe/calendar.pipe";
 import {TagComponent} from "../../../../shared/component/tag/tag.component";
+import {AlertService} from "../../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../../core/enum/alert.enum";
 
 @Component({
     selector: "admin-blog",
@@ -43,7 +46,7 @@ export class BlogComponent implements OnInit {
     publish: Array<string> = [...PublishConstant];
     isSpin: boolean = false;
 
-    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService) {
+    constructor(private activatedRoute: ActivatedRoute, private blogService: BlogService, private alertService: AlertService) {
         this.blogForm = new FormGroup({
             "title": new FormControl(null),
             "slug": new FormControl(null),
@@ -92,8 +95,16 @@ export class BlogComponent implements OnInit {
     OnCreateNewArticle(query: object): void {
         this.isSpin = true;
         this.blogService.CreateArticle(query).subscribe({
-            next:(() => {
+            next:((value: any) => {
                 this.isSpin = false;
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         });
     }
@@ -101,8 +112,16 @@ export class BlogComponent implements OnInit {
     OnModifyArticle(query: object): void {
         this.isSpin = true;
         this.blogService.ModifyArticle(query).subscribe({
-            next:(() => {
+            next:((value: any) => {
                 this.isSpin = false;
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         });
     }

@@ -15,6 +15,9 @@ import {NgIf, NgFor, NgClass} from "@angular/common";
 import {CalendarPipe} from "../../../../shared/pipe/calendar.pipe";
 import {TagComponent} from "../../../../shared/component/tag/tag.component";
 import {EditorComponent} from "../../../../shared/component/editor/editor.component";
+import {AlertService} from "../../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../../core/enum/alert.enum";
 
 @Component({
     selector: "admin-portfolio",
@@ -33,12 +36,12 @@ export class PortfolioComponent implements OnInit {
     images: Array<string> = [];
     thumbnail: string;
 
-    alertbox: boolean = false;
     isSpin: boolean = false;
     env: string = environment.static;
 
     constructor(
         private portfolioService: PortfolioService,
+        private alertService: AlertService,
         private activatedRoute: ActivatedRoute)
     {
         this.portfolioForm = new FormGroup({
@@ -88,7 +91,14 @@ export class PortfolioComponent implements OnInit {
         this.portfolioService.CreatePortfolio(query).subscribe({
             next: ((value: any) => {
                 this.isSpin = false;
-                this.alertbox = true;
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         })
     }
@@ -98,13 +108,16 @@ export class PortfolioComponent implements OnInit {
         this.portfolioService.ModifyPortfolio(query).subscribe({
             next: ((value: any) => {
                 this.isSpin = false;
-                this.alertbox = true;
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         })
-    }
-
-    OnAlertBoxHide(value: boolean): void {
-        this.alertbox = value;
     }
 
     OnAddImages(value: any): void {

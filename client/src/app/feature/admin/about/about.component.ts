@@ -3,6 +3,9 @@ import {AboutService} from "../../../core/services/about.service";
 import {ButtonComponent} from "../../../shared/component/button/button.component";
 import {TextboxComponent} from "../../../shared/component/textbox/textbox.component";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {AlertService} from "../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../core/enum/alert.enum";
 
 @Component({
     selector: "admin-about",
@@ -20,7 +23,7 @@ export class AboutComponent implements OnInit {
     data: any;
     aboutForm: FormGroup | any;
 
-    constructor(private aboutService: AboutService) {
+    constructor(private aboutService: AboutService, private alertService: AlertService) {
         this.aboutForm = new FormGroup({
             "email": new FormControl(null),
             "jobtitle": new FormControl(null),
@@ -29,13 +32,12 @@ export class AboutComponent implements OnInit {
             "married": new FormControl(null),
             "militaryservice": new FormControl(null),
             "aboutme": new FormControl(null)
-        })
+        });
     }
 
     ngOnInit() {
         this.aboutService.GetPersonalInfo().subscribe({
             next: ((value: any) => {
-                console.log(value);
                 this.aboutForm.patchValue({
                     email: value.email,
                     jobtitle: value.jobtitle,
@@ -53,7 +55,14 @@ export class AboutComponent implements OnInit {
     OnSubmit(): void {
         this.aboutService.ModifyPersonalInfo(this.aboutForm.value).subscribe({
             next: ((value: any) => {
-                console.log(value);
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({ type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit });
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({ type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit });
+                }
             })
         })
     }

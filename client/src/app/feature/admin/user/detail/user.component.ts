@@ -9,6 +9,9 @@ import { CalendarPipe } from "../../../../shared/pipe/calendar.pipe";
 import { DropdownComponent } from "../../../../shared/component/dropdown/dropdown.component";
 import { ButtonComponent } from "../../../../shared/component/button/button.component";
 import { TextboxComponent } from "../../../../shared/component/textbox/textbox.component";
+import {AlertService} from "../../../../core/services/alert.service";
+import {AlertStateEnum} from "../../../../core/enum/alertState.enum";
+import {AlertEnum} from "../../../../core/enum/alert.enum";
 
 @Component({
     selector: "admin-user",
@@ -30,7 +33,7 @@ export class UserComponent implements OnInit {
     registerDate: number;
     id: any;
 
-    constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+    constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private alertService: AlertService) {
         this.userForm = new FormGroup({
             "email": new FormControl(null),
             "name": new FormControl(null),
@@ -66,7 +69,14 @@ export class UserComponent implements OnInit {
         }
         this.userService.ModifyUser(form).subscribe({
             next: ((value: any) => {
-                console.log(value);
+                if(value.acknowledged){
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
+                }
+                else {
+                    this.alertService.SetIsHide(false);
+                    this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
+                }
             })
         })
     }
