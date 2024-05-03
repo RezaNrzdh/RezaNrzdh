@@ -65,6 +65,9 @@ export class ContactComponent implements OnInit {
         this.contactService.CreateComment(this.contactForm.value).subscribe({
             next:((value: any) => {
                 this.isSpin = false;
+                this.contactForm.markAsPristine();
+                this.contactForm.markAsUntouched();
+                this.contactForm.reset({ name: "", email: "", phone: "", subject: "", comment: ""});
                 if(value){
                     this.alertService.SetIsHide(false);
                     this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.successContactComment});

@@ -27,7 +27,7 @@
             <app-textbox title="ایمیل" name="email" type="email" formControlName="email" [formGroup]="commentForm.get('email')"></app-textbox>
             <app-textbox title="نظر شما" name="comment" [multiLine]="true" [rows]="4" formControlName="comment" [formGroup]="commentForm.get('comment')"></app-textbox>
             <div class="flex">
-                <app-button mode="filled" color="primary">ارسال نظر</app-button>
+                <app-button [spin]="isSpin" mode="filled" color="primary">ارسال نظر</app-button>
             </div>
         </form>
     </div>

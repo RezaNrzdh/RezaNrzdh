@@ -27,8 +27,8 @@ export class AboutComponent implements OnInit, OnDestroy {
 
     options: Array<string> = ['طراحی UIUX','برنامه نویسی','گرافیک دو بعدی','گرافیک سه بعدی','بازیسازی'];
 
-    bottomsheet: boolean = false;
-    OnBottemSheet: any = () => { this.bottomsheet = !this.bottomsheet; };
+    isVisible: boolean = false;
+    ToggleVisible: any = () => { this.isVisible = !this.isVisible; };
     bottomsheetData = {
         title: "انتخاب مهارت ها",
         options: this.options

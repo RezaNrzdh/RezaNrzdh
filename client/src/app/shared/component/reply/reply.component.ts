@@ -25,6 +25,7 @@ export class ReplyComponent implements OnInit {
     @Input() data: any;
 
     isHideForm: boolean = true;
+    isSpin: boolean = false;
 
     commentForm: FormGroup | any;
 
@@ -40,8 +41,9 @@ export class ReplyComponent implements OnInit {
     }
 
     OnSubmit(): void {
-        if(this.commentForm.status === "INVALID") return;
+        if(this.commentForm.status === "INVALID" || this.isSpin) return;
 
+        this.isSpin = true;
         const query = {
             pid: this.pid,
             isArticle: this.data.isArticle,
@@ -52,6 +54,7 @@ export class ReplyComponent implements OnInit {
         if(this.data.isArticle){
             this.blogService.CreateReply(query).subscribe({
                 next: ((value: any) => {
+                    this.isSpin = false;
                     this.ResetForm();
                     if(value.acknowledged){
                         this.alertService.SetIsHide(false);
@@ -67,6 +70,7 @@ export class ReplyComponent implements OnInit {
         else {
             this.portfolioService.CreateReply(query).subscribe({
                 next: ((value: any) => {
+                    this.isSpin = false;
                     this.ResetForm();
                     if(value.acknowledged){
                         this.alertService.SetIsHide(false);

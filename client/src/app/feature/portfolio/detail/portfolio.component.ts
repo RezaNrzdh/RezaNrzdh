@@ -64,8 +64,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     allPortfolioVisits: any;
     allPortfoliosLikes: any;
     isLiked: boolean = false;
-
-    alertbox: boolean = false;
+    isSpin: boolean = false;
 
     sub: Subscription;
 
@@ -121,14 +120,16 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     }
 
     OnSubmit(): void {
-        if(this.commentForm.status === "INVALID") return;
+        if(this.commentForm.status === "INVALID" || this.isSpin) return;
 
+        this.isSpin = true;
         const query = {
             pid: this.data._id,
             body: this.commentForm.value
         }
         this.portfolioService.CreateComment(query).subscribe({
             next:((value: any) => {
+                this.isSpin = false;
                 this.commentForm.markAsPristine();
                 this.commentForm.markAsUntouched();
                 this.commentForm.reset({ name: "", email: "", comment: "" });

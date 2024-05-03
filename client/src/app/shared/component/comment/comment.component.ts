@@ -24,6 +24,8 @@ export class CommentComponent implements OnInit {
     @Input() pid: number;
     @Input() data: any;
 
+    isSpin: boolean = false;
+
     isFormHide: boolean = true;
     isReplyHide: boolean = true;
 
@@ -40,7 +42,9 @@ export class CommentComponent implements OnInit {
     }
 
     OnSubmit(): void {
-        if(this.commentForm.status === "INVALID") return;
+        if(this.commentForm.status === "INVALID" || this.isSpin) return;
+
+        this.isSpin = true;
 
         const query = {
             pid: this.pid,
@@ -52,6 +56,7 @@ export class CommentComponent implements OnInit {
         if(this.data.isArticle) {
             this.blogService.CreateReply(query).subscribe({
                 next: ((value: any) => {
+                    this.isSpin = false;
                     this.ResetForm();
                     if(value.acknowledged){
                         this.alertService.SetIsHide(false);
@@ -67,6 +72,7 @@ export class CommentComponent implements OnInit {
         else {
             this.portfolioService.CreateReply(query).subscribe({
                 next: ((value: any) => {
+                    this.isSpin = false;
                     this.ResetForm();
                     if(value.acknowledged){
                         this.alertService.SetIsHide(false);
@@ -88,21 +94,6 @@ export class CommentComponent implements OnInit {
     ShowReply(value: any): void {
         value.setAttribute("showreply", this.isReplyHide);
         this.isReplyHide = !this.isReplyHide;
-
-        // if(!this.isReplyHide ) {
-        //     if(this.reply.length <= 0){
-        //         const query = {
-        //             pid: this.pid,
-        //             replyId: this.data._id,
-        //             isArticle: this.data.isArticle
-        //         }
-        //         this.replyService.GetReplies(query).subscribe({
-        //             next:((value) => {
-        //                 this.reply = value;
-        //             })
-        //         });
-        //     }
-        // }
     }
 
     ResetForm(): void {

@@ -39,15 +39,15 @@ export class BlogComponent implements OnInit {
     allArticleVisits: any;
     allArticlesLikes: any;
     isLiked: boolean = false;
+    isSpin: boolean = false;
 
     subUser: Subscription;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private blogService: BlogService,
-        private alertService: AlertService,
-        private userService: UserService
-    ) { }
+        private alertService: AlertService)
+    { }
 
     ngOnInit(): void {
         this.commentForm = new FormGroup({
@@ -75,8 +75,9 @@ export class BlogComponent implements OnInit {
     }
 
     OnSubmit(): void {
-        if(this.commentForm.status === "INVALID") return;
+        if(this.commentForm.status === "INVALID" || this.isSpin) return;
 
+        this.isSpin = true;
         const query ={
             pid: this.data._id,
             body: {
@@ -86,6 +87,7 @@ export class BlogComponent implements OnInit {
         }
         this.blogService.CreateComment(query).subscribe({
             next: ((value: any) => {
+                this.isSpin = false;
                 this.commentForm.markAsPristine();
                 this.commentForm.markAsUntouched();
                 this.commentForm.reset({ name: "", email: "", comment: "" });

@@ -8,13 +8,15 @@
             </a>
         </div>
         <div class="actions flex align-ctr margin-top-auto margin-right-24 margin-left-24 padding-bot-16">
-            <div class="show flex align-ctr caption color-text-tint margin-left-16">
-                <app-icon icon="eye" size="20" color="gray4" class="margin-left-4"></app-icon>
-                {{ visit }}
-            </div>
-            <div class="like flex align-ctr caption color-text-tint">
-                <app-icon icon="like" size="20" color="gray4" class="margin-left-4"></app-icon>
-                {{ like }}
+            <div class="flex">
+                <div class="show flex align-ctr caption color-text-tint margin-left-16">
+                    <app-icon icon="eye" size="20" color="gray4" class="margin-left-4"></app-icon>
+                    {{ visit }}
+                </div>
+                <div class="like flex align-ctr caption color-text-tint">
+                    <app-icon icon="like" size="20" color="gray4" class="margin-left-4"></app-icon>
+                    {{ like }}
+                </div>
             </div>
             <app-tag *ngIf="category" class="margin-right-auto">{{ category | CategoryPipe }}</app-tag>
         </div>

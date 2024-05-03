@@ -42,8 +42,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     tab: number = 0;
     query: any = {};
 
-    bottomsheet: boolean = false;
-    OnBottemSheet: any = () => { this.bottomsheet = !this.bottomsheet; };
+    isVisible: boolean = false;
+    ToggleVisible: any = () => { this.isVisible = !this.isVisible; };
     bottomsheetData = {
         title: "انتخاب دسته بندی",
         options: CategoryConstant

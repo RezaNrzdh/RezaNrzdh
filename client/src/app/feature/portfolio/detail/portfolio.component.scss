@@ -27,6 +27,9 @@ app-textbox[name="comment"]{ grid-area: comment }
                     'comment comment';
                 grid-column-gap: 32px;
                 grid-row-gap: 32px;
+                app-button {
+                    min-width: 116px;
+                }
             }
         }
     }

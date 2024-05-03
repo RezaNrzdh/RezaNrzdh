@@ -84,13 +84,13 @@
                 </ng-container>
             </div>
             <div *ngIf="isSmall" class="flex margin-top-32">
-                <app-button (click)="OnBottemSheet()" class="width-fit" icon="chevron-down" mode="outlined" color="dark2">دسته بندی ها</app-button>
+                <app-button (click)="ToggleVisible()" class="width-fit" icon="chevron-down" mode="outlined" color="dark2">دسته بندی ها</app-button>
                 <app-bottomsheet
-                    *ngIf="bottomsheet"
+                    *ngIf="isVisible"
                     [title]="bottomsheetData.title"
                     [options]="bottomsheetData.options"
                     (value)="SetTabIndex($event)"
-                    (isOpen)="OnBottemSheet()">
+                    (isVisible)="ToggleVisible()">
                 </app-bottomsheet>
             </div>
             <div class="grid margin-top-40">

@@ -51,7 +51,7 @@
                 [formGroup]="commentForm.get('comment')">
             </app-textbox>
             <div class="flex">
-                <app-button mode="filled" color="primary">ارسال نظر</app-button>
+                <app-button [spin]="isSpin" mode="filled" color="primary">ارسال نظر</app-button>
             </div>
         </form>
         <div *ngIf="!isReplyHide">
