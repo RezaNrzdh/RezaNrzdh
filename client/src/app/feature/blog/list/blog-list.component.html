@@ -1,11 +1,11 @@
 <section *ngIf="!isLoading" class="CRTMonitor margin-top-32">
     <div class="recent grid">
-        <div class="mainImg flex column relative radius-8 background-gray-1b hidden">
+        <a routerLink="/blog/{{ data[0].slug }}" class="mainImg flex column relative radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-32 z-index-10">
                 <span class="caption color-white margin-top-auto">{{ data[0].date | PersianCalendar }}</span>
-                <a routerLink="/blog/{{ data[0].slug }}">
+                <div>
                     <h2 class="headline-6 bold color-white margin-top-8">{{ data[0].title }}</h2>
-                </a>
+                </div>
                 <div class="flex align-ctr margin-top-16">
                     <app-icon icon="like" size="16" color="gray4"></app-icon>
                     <span class="caption medium margin-left-24 margin-right-8 color-white">{{ data[0].like }}</span>
@@ -15,25 +15,25 @@
                 </div>
             </div>
             <img src="{{ data[0].img | ImagePath }}" class="radius-8 z-index-1" alt=""/>
-        </div>
-        <div class="topImg flex column relative borderbox radius-8 background-gray-1b hidden">
+        </a>
+        <a routerLink="/blog/{{ data[1].slug }}" class="topImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
                 <span class="caption color-white margin-top-auto">{{ data[1].date | PersianCalendar }}</span>
-                <a routerLink="/blog/{{ data[1].slug }}">
+                <div>
                     <h2 class="body-1 bold color-white margin-top-8">{{ data[1].title }}</h2>
-                </a>
+                </div>
             </div>
             <img src="{{ data[1].img | ImagePath }}" class="radius-8 z-index-1" alt=""/>
-        </div>
-        <div class="botImg flex column relative borderbox radius-8 background-gray-1b hidden">
+        </a>
+        <a routerLink="/blog/{{ data[2].slug }}" class="botImg flex column relative borderbox radius-8 background-gray-1b hidden">
             <div class="flex column justify-self-end width-full borderbox bot absolute padding-24 z-index-10">
                 <span class="caption color-white margin-top-auto">{{ data[2].date | PersianCalendar }}</span>
-                <a routerLink="/blog/{{ data[2].slug }}">
+                <div>
                     <h2 class="body-1 bold color-white margin-top-8">{{ data[2].title }}</h2>
-                </a>
+                </div>
             </div>
             <img src="{{ data[2].img | ImagePath }}" class="radius-8 z-index-1" alt=""/>
-        </div>
+        </a>
     </div>
     <div class="other margin-top-56 margin-bot-56">
         <div class="flex align-ctr margin-bot-32">
@@ -41,23 +41,23 @@
             <img src="assets/images/dot.svg" alt="" />
         </div>
         <div class="grid">
-            <div *ngFor="let i of otherData" class="container flex column radius-8">
+            <a routerLink="/blog/{{ i.slug }}" *ngFor="let i of otherData" class="container flex column radius-8">
                 <img src="{{i.img | ImagePath}}" height="225" alt="" class="background-gray-1b"/>
                 <div class="flex column borderbox padding-24">
                     <span class="caption color-dark">{{ i.date | PersianCalendar }}</span>
-                    <a routerLink="/blog/{{ i.slug }}">
+                    <div>
                         <h3 class="body-1 bold color-dark margin-top-8">{{ i.title }}</h3>
-                    </a>
+                    </div>
                     <p class="body-2 medium color-dark margin-top-16 margin-bot-16">{{i.short}}</p>
                     <div class="flex align-ctr margin-top-16">
                         <app-icon icon="like" size="16" color="gray4"></app-icon>
-                        <span class="caption medium margin-left-24 margin-right-8">{{ i.like }}</span>
+                        <span class="caption medium margin-left-24 margin-right-8 color-dark">{{ i.like }}</span>
 <!--                        <app-icon icon="comment" size="16" color="gray4"></app-icon>-->
 <!--                        <span class="caption medium margin-left-24 margin-right-8">{{ i.comment.length }}</span>-->
-                        <span class="caption medium margin-right-auto">خواندن {{ i.read }} دقیقه</span>
+                        <span class="caption medium margin-right-auto color-dark">خواندن {{ i.read }} دقیقه</span>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div *ngIf="count > 0" class="flex justify-ctr margin-top-32">
             <app-button mode="outlined" color="dark" (click)="GetMoreArticle()">مطالب بیشتر</app-button>

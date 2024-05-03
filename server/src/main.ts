@@ -7,10 +7,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.use(helmet({
-    crossOriginResourcePolicy: false
+    crossOriginResourcePolicy: false,
   }));
   app.use(cookieParser());
-  app.enableCors({ credentials: true, origin: "http://localhost:8080" });
+  app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Resource-Policy", "same-origin");
+    next();
+  });
+  app.enableCors({ credentials: true, origin: "http://192.168.1.2:8080" });
 
   await app.listen(3000);
 }

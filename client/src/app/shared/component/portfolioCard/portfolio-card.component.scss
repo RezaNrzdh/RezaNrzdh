@@ -2,10 +2,10 @@
 @use "src/assets/styles/typography";
 
 :host{
-    > div {
+    > a {
         .title{
             height: 46px;
-            a{
+            span{
                 overflow: hidden;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;

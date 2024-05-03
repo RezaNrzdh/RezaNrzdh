@@ -1,11 +1,11 @@
-<div [ngClass]="{ 'isOutline': isOutline, 'isList': isList, 'isGrid': !isList }"
+<a routerLink="/portfolio/{{slug}}" [ngClass]="{ 'isOutline': isOutline, 'isList': isList, 'isGrid': !isList }"
      class="flex hidden radius-8 borderbox background-white">
     <img src="{{env}}/public/{{ imageURL }}" alt="" />
     <div class="width-full flex column">
         <div class="title flex body-2 margin-top-16 margin-right-24 margin-left-24 margin-bot-16">
-            <a routerLink="/portfolio/{{slug}}" class="body-1 bold color-dark">
+            <span routerLink="/portfolio/{{slug}}" class="body-1 bold color-dark">
                 {{ title }}
-            </a>
+            </span>
         </div>
         <div class="actions flex align-ctr margin-top-auto margin-right-24 margin-left-24 padding-bot-16">
             <div class="flex">
@@ -21,4 +21,4 @@
             <app-tag *ngIf="category" class="margin-right-auto">{{ category | CategoryPipe }}</app-tag>
         </div>
     </div>
-</div>
+</a>

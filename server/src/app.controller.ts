@@ -46,7 +46,7 @@ export class AppController {
 
     @Get('public/:img')
     async ServeImage(@Param('img') img, @Res() res): Promise<any> {
-        res.header("Cross-Origin-Resource-Policy", "same-site");
+        res.header("Cross-Origin-Resource-Policy", "cross-origin");
         res.sendFile(img, {root: 'public'});
     }
 

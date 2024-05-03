@@ -68,6 +68,7 @@ export class SliderComponent implements OnInit {
     }
 
     TouchStart(e: any): void {
+        console.log(e);
         this.start = e.changedTouches[0].clientX;
     }
 
