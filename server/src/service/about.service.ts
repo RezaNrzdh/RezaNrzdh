@@ -48,6 +48,29 @@ export class AboutService {
         return await this.aboutModel.findOne(null, { skills: 1}).exec();
     }
 
+    async GetSkillOne(id: any): Promise<any> {
+        return await this.aboutModel
+            .findOne(null, { skills: 1})
+            .then((value) => {
+                return value.skills[id-1];
+            })
+    }
+
+    async ModifySkills(body: any): Promise<any> {
+        console.log(body);
+        return this.aboutModel
+            .updateOne(
+                null,
+                {
+                    $set: {
+                            "skills.$[s].skill": body.skill
+                    }
+                },
+                { arrayFilters: [{ "s._id": body.id }]}
+            )
+            .exec();
+    }
+
     async GetExperience(): Promise<any> {
         return await this.aboutModel.findOne(null, { experience: 1}).exec();
     }

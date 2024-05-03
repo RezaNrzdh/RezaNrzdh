@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from "@angular/forms";
 import {AlertEnum} from "../../../core/enum/alert.enum";
 import { NgIf } from '@angular/common';
@@ -20,6 +20,7 @@ import { NgIf } from '@angular/common';
 export class TextboxComponent implements ControlValueAccessor {
 
     @Input() title: string;
+    @Input() val: string;
     @Input() type: "text" | "password" | "email" | "tel";
     @Input() name: string;
     @Input() placeholder: string = "";

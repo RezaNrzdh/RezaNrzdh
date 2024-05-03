@@ -8,7 +8,7 @@
             <div class="flex flex-wrap gap-8 margin-top-16 margin-bot-16">
                 <app-tag *ngFor="let j of i.skill">{{ j }}</app-tag>
             </div>
-            <app-button mode="outlined" color="dark2" class="flex width-fit">ویرایش</app-button>
+            <app-button href="{{i._id}}" [isLink]="true" mode="outlined" color="dark2" class="flex width-fit">ویرایش</app-button>
         </div>
     </div>
 </section>

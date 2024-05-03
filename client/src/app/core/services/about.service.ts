@@ -25,6 +25,12 @@ export class AboutService {
     GetSkills(): Observable<any> {
         return this.http.get(`${environment.server}/about/skills`);
     }
+    GetSkillOne(id: number): Observable<any> {
+        return this.http.get(`${environment.server}/about/skills/${id}`);
+    }
+    ModifySkills(body: any): Observable<any> {
+        return this.http.patch(`${environment.server}/about/skills`, body);
+    }
 
     // Experience
     GetExperience(): Observable<any> {

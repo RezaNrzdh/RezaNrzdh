@@ -1,0 +1,28 @@
+<section class="width-full padding-top-24 padding-right-24 padding-left-32">
+    <div class="flex align-ctr margin-bot-24">
+        <h1 class="color-dark headline-5 bold">
+            ویرایش مهارت
+            {{data.title}}
+        </h1>
+    </div>
+    <div class="flex margin-bot-32">
+        <div class="flex width-full column padding-24 background-white radius-8 shadow-16">
+            <form (ngSubmit)="OnSubmit(form.value)" #form="ngForm">
+                <div *ngFor="let i of data.skill; index as j" class="flex column margin-bot-24">
+                    <label class="flex body-2 medium color-dark margin-bot-4"> مهارت {{ j+1 }}</label>
+                    <div class="flex align-ctr">
+                        <input [ngModel]="i" name="s{{j+1}}" ngModel class="padding-16 borderbox radius-8 background-gray-1 width-half" />
+                        <a (click)="DeleteSkill(j)" class="margin-right-12"><app-icon icon="trash" size="20" color="danger"></app-icon></a>
+                    </div>
+                </div>
+                <hr class="width-full margin-bot-24">
+                <div class="flex">
+                    <input #newSkill class="padding-16 borderbox radius-8 background-gray-1 margin-left-8"/>
+                    <app-button (click)="AddSkill(newSkill)" mode="outlined" color="dark2" action="button">افزودن</app-button>
+                </div>
+                <app-button class="flex width-fit margin-top-24">ویرایش</app-button>
+            </form>
+        </div>
+    </div>
+</section>
+

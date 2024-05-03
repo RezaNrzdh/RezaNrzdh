@@ -27,6 +27,18 @@ export class AboutController {
         return this.aboutService.GetSkills();
     }
 
+    @Get("skills/:id")
+    @UseGuards(AuthGuard)
+    GetSkillOne(@Param("id") id: any): any {
+        return this.aboutService.GetSkillOne(id);
+    }
+
+    @Patch("skills")
+    @UseGuards(AuthGuard)
+    ModifySkills(@Body() body: any): any {
+        return this.aboutService.ModifySkills(body);
+    }
+
     @Get("experience")
     @UseGuards(AuthGuard)
     GetExperience(): any {
