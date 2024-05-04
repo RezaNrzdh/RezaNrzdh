@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FooterComponent } from '../../component/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../component/header/header.component';
@@ -16,9 +16,8 @@ import { HeaderComponent } from '../../component/header/header.component';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {
+    }
 }

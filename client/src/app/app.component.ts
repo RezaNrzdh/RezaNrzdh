@@ -4,6 +4,9 @@ import {AlertboxComponent} from "./shared/component/alertbox/alertbox.component"
 import {AlertService} from "./core/services/alert.service";
 import {Subscription} from "rxjs";
 import {NgIf} from "@angular/common";
+import {ResponsiveService} from "./core/services/responsive.service";
+import {ResponsiveEnum} from "./core/enum/responsive.enum";
+import {BottommenuComponent} from "./shared/component/bottommenu/bottommenu.component";
 
 @Component({
     selector: 'app-root',
@@ -13,6 +16,7 @@ import {NgIf} from "@angular/common";
     imports: [
         RouterOutlet,
         AlertboxComponent,
+        BottommenuComponent,
         NgIf
     ]
 })
@@ -21,9 +25,20 @@ export class AppComponent implements OnInit, OnDestroy {
     title = 'RezaNrzdh';
     alertIsHide: boolean;
 
+    isSmall: boolean = false;
+
+    ResSub: Subscription;
     alertSub: Subscription;
 
-    constructor(private alertService: AlertService) {}
+    constructor(private alertService: AlertService, private responsiveService: ResponsiveService) {
+        this.responsiveService.breakpoint.subscribe({
+            next:((value: any) => {
+                value[ResponsiveEnum.SMALL]
+                    ? this.isSmall = true
+                    : this.isSmall = false;
+            })
+        });
+    }
 
     ngOnInit() {
         this.alertSub = this.alertService.isHide.subscribe({
@@ -35,5 +50,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.alertSub.unsubscribe();
+        this.ResSub.unsubscribe();
     }
 }
