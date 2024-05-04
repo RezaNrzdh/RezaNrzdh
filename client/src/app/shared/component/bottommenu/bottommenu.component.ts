@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 import {IconComponent} from "../icon/icon.component";
 
 @Component({
@@ -9,7 +9,8 @@ import {IconComponent} from "../icon/icon.component";
     standalone: true,
     imports: [
         RouterLink,
-        IconComponent
+        IconComponent,
+        RouterLinkActive
     ]
 })
 export class BottommenuComponent {
