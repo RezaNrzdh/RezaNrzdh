@@ -1,15 +1,15 @@
 <section class="flex fixed width-full height-full align-ctr justify-ctr">
     <span (click)="CloseDialog()" class="width-full height-full background-dark opacity-80"></span>
-    <div class="box flex column absolute background-white radius-16 hidden">
-        <div class="flex background-gray-1 padding-32">
-            <div class="background-primary padding-32 radius-48 margin-left-24">
-                <app-icon icon="user2" size="32" color="white"></app-icon>
+    <div class="box flex column absolute background-white radius-16 hidden margin-16">
+        <div class="header flex background-gray-1 padding-32">
+            <div class="shape background-primary padding-16 radius-48 margin-left-24 height-full width-fit">
+                <app-icon icon="user2" size="24" color="white"></app-icon>
             </div>
             <div class="flex column justify-ctr">
-                <span class="headline-4 bold color-dark margin-bot-8">
+                <span class="username body-1 bold color-dark margin-bot-8">
                     {{ data.name ? data.name : 'کاربر' }}
                 </span>
-                <span class="body-1 medium color-gray-5">
+                <span class="email body-2 medium color-gray-5">
                     {{ data.email }}
                 </span>
             </div>

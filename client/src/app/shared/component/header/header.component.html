@@ -29,7 +29,7 @@
                 <app-button [isLink]="true" mode="filled" color="primary" href="/register" class="margin-right-16">عضویت</app-button>
             </div>
             <div *ngIf="isXSmall" class="flex margin-right-auto align-ctr justify-end">
-                <a><app-icon icon="user" size="24" color="gray3"></app-icon></a>
+                <a routerLink="/login"><app-icon icon="user" size="24" color="gray3"></app-icon></a>
             </div>
         </ng-container>
         <ng-template #loggedIn>

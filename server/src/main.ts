@@ -14,7 +14,7 @@ async function bootstrap() {
     res.setHeader("Cross-Origin-Resource-Policy", "same-origin");
     next();
   });
-  app.enableCors({ credentials: true, origin: "http://192.168.1.2:8080" });
+  app.enableCors({ credentials: true, origin: "http://localhost:8080" });
 
   await app.listen(3000);
 }

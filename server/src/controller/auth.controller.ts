@@ -30,6 +30,7 @@ export class AuthController {
 
     @Get("verify")
     Verify(@Req() req: Request): any {
+        console.log(req.cookies.jwt);
         if(!req.cookies.jwt) return false;
 
         const value = this.authService.Verify(req.cookies.jwt);

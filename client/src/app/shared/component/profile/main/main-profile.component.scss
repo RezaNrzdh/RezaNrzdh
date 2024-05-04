@@ -4,5 +4,11 @@
 :host {
     .card {
         border: 1px solid color.$color-gray-2;
+        .name {
+            width: 190px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
     }
 }
