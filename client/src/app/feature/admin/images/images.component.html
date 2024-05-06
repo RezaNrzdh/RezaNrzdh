@@ -5,7 +5,7 @@
     <div class="grid">
         <div *ngFor="let img of images" class="imgContainer flex relative margin-left-8 radius-8 hidden">
             <div class="flex align-ctr absolute bot width-full padding-12 borderbox background-dark">
-                <a class=""><app-icon icon="trash" color="white" size="20"></app-icon></a>
+                <a (click)="OnDeleteImages(img)" class=""><app-icon icon="trash" color="white" size="20"></app-icon></a>
                 <span class="caption color-white margin-right-auto">{{img}}</span>
             </div>
             <img src="{{env}}/public/{{img}}" class="radius-8" />

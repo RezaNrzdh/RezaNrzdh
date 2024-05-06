@@ -12,4 +12,5 @@ export enum AlertEnum {
     errorLogin = "ایمیل یا رمز عبور اشتباه است، دوباره تلاش کنید.",
     fatalError = "خطایی رخ داده است. دوباره تلاش کنید.",
     DangerSubmit = "خطایی رخ داده است",
+
 }

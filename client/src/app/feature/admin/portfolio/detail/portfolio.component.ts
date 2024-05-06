@@ -122,6 +122,7 @@ export class PortfolioComponent implements OnInit {
 
     OnAddImages(value: any): void {
         this.images = [...this.images, value.filename];
+        console.log(this.images);
     }
 
     OnDeleteImages(imageName: string): void {

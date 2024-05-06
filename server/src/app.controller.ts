@@ -1,49 +1,31 @@
 import {
-    Controller,
-    Delete, FileTypeValidator,
-    Get, MaxFileSizeValidator,
-    Param,
-    ParseFilePipe,
-    Post,
-    Res,
-    UploadedFile,
-    UseGuards,
-    UseInterceptors
+    Controller, Delete, Get,
+    Param, Post, Res, UploadedFile,
+    UseGuards, UseInterceptors
 } from '@nestjs/common';
-import { AppService } from './app.service';
-import {unlink, readdir} from "fs";
+import {unlink, readdir, writeFile} from "fs";
 import {AuthGuard} from "./guard/auth.guard";
 import {FileInterceptor} from "@nestjs/platform-express";
-import {diskStorage} from "multer";
 import {Express} from "express";
 
 @Controller()
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor() {}
 
     @Get()
     getHello(): void {
         console.log("Hello");
     }
 
-    @Post('api/v1/saveImg')
+    @Post("api/v1/saveImg2")
     @UseGuards(AuthGuard)
-    @UseInterceptors(FileInterceptor("file", {
-        storage: diskStorage({
-            destination: "public",
-            filename: (req, file, callback) => {
-                const name = `img-${Date.now()}.jpg`;
-                callback(null, name);
-            }
-        })
-    }))
-    SaveImage(@UploadedFile(new ParseFilePipe({
-        validators: [
-            new MaxFileSizeValidator(   { maxSize: 500000 }),
-            new FileTypeValidator({ fileType: "image/jpeg" })
-        ]
-    })) file: Express.Multer.File) {
-        return file;
+    @UseInterceptors(FileInterceptor('file'))
+    SaveImage2(@UploadedFile() file: Express.Multer.File, @Res() res) {
+        const name = `img-${Date.now()}.jpg`;
+        writeFile(`public/${name}`,file.buffer, (err) => {
+            if(err) res.send(false);
+            else res.send({filename: name});
+        });
     }
 
     @Get('public/:img')
@@ -55,9 +37,7 @@ export class AppController {
     @Delete('public/delete/:file')
     @UseGuards(AuthGuard)
     async DeleteImage(@Param('file') file, @Res() res): Promise<any> {
-
         unlink(`./public/${file}`, Callback);
-
         function Callback(err) {
             if(err) res.send(false);
             else res.send(true);
@@ -68,7 +48,6 @@ export class AppController {
     @UseGuards(AuthGuard)
     async ReadImages(@Res() res): Promise<any> {
         readdir("./public", null, Callback);
-
         function Callback(err, files) {
             if(err) res.send(err);
             else res.send(files)

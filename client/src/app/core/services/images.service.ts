@@ -11,7 +11,16 @@ export class ImagesService {
         return this.http.post(`${environment.server}/saveImg`, formData);
     }
 
+    SaveImage2(formData: any): Observable<any> {
+        return this.http.post(`${environment.server}/saveImg2`, formData);
+    }
+
+
     GetAllImages(): Observable<any> {
         return this.http.get(`${environment.static}/public/read/files`)
+    }
+
+    DeleteImage(image: string): Observable<any> {
+        return this.http.delete(`${environment.static}/public/delete/${image}`);
     }
 }
