@@ -22,7 +22,9 @@ export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @Get()
-    getHello(): void {}
+    getHello(): void {
+        console.log("Hello");
+    }
 
     @Post('api/v1/saveImg')
     @UseGuards(AuthGuard)
