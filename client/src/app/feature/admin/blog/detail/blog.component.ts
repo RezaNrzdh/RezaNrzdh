@@ -97,7 +97,7 @@ export class BlogComponent implements OnInit {
         this.blogService.CreateArticle(query).subscribe({
             next:((value: any) => {
                 this.isSpin = false;
-                if(value.acknowledged){
+                if(value._id){
                     this.alertService.SetIsHide(false);
                     this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
                 }
@@ -105,6 +105,11 @@ export class BlogComponent implements OnInit {
                     this.alertService.SetIsHide(false);
                     this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
                 }
+            }),
+            error: ((err: any) => {
+                this.isSpin = false;
+                this.alertService.SetIsHide(false);
+                this.alertService.SetAlertInfo({type: AlertStateEnum.DANGER, msg: AlertEnum.DangerSubmit});
             })
         });
     }

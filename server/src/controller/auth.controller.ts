@@ -24,13 +24,13 @@ export class AuthController {
         const value = await this.authService.SignIn(body);
         if (!value) return false;
 
-        res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
+        //res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
+        res.cookie("jwt", value, {httpOnly: true, sameSite: true, maxAge: constants.expires * 1000});
         return true;
     }
 
     @Get("verify")
     Verify(@Req() req: Request): any {
-        console.log(req.cookies.jwt);
         if(!req.cookies.jwt) return false;
 
         const value = this.authService.Verify(req.cookies.jwt);

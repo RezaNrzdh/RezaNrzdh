@@ -91,7 +91,7 @@ export class PortfolioComponent implements OnInit {
         this.portfolioService.CreatePortfolio(query).subscribe({
             next: ((value: any) => {
                 this.isSpin = false;
-                if(value.acknowledged){
+                if(value._id){
                     this.alertService.SetIsHide(false);
                     this.alertService.SetAlertInfo({type: AlertStateEnum.SUCCESS, msg: AlertEnum.SuccessSubmit});
                 }
