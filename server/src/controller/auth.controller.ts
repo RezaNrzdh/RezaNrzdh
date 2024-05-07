@@ -11,7 +11,9 @@ export class AuthController {
     async SignUp(@Body() body: object, @Res({passthrough: true}) res: Response): Promise<any> {
         const value = await this.authService.SignUp(body);
         if(value){
-            res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
+            // prod mode secure true.
+            //res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
+            res.cookie("jwt", value, {httpOnly: true, sameSite: true, maxAge: constants.expires * 1000});
             return true;
         }
         else{
@@ -24,6 +26,7 @@ export class AuthController {
         const value = await this.authService.SignIn(body);
         if (!value) return false;
 
+        // prod mode secure true.
         //res.cookie("jwt", value, {httpOnly: true, secure: true, sameSite: true, maxAge: constants.expires * 1000});
         res.cookie("jwt", value, {httpOnly: true, sameSite: true, maxAge: constants.expires * 1000});
         return true;
