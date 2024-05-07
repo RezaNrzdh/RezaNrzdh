@@ -11,15 +11,18 @@ import { ButtonComponent } from '../../../shared/component/button/button.compone
 import { NgIf, NgFor } from '@angular/common';
 import {CategoryComponent} from "./category/category.component";
 import {SortComponent} from "./sort/sort.component";
+import {LoaderComponent} from "../../../shared/component/loading/loader.component";
 
 @Component({
     selector: 'app-portfolio-list',
     templateUrl: './portfolio-list.component.html',
     styleUrls: ['./portfolio-list.component.scss'],
     standalone: true,
-    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent, CategoryComponent, SortComponent]
+    imports: [NgIf, NgFor, ButtonComponent, DropdownComponent, PortfolioCardComponent, CategoryComponent, SortComponent, LoaderComponent]
 })
 export class PortfolioListComponent implements OnInit, OnDestroy {
+
+    isLoading: boolean = true;
 
     data: Array<PortfolioModel>;
 
@@ -75,6 +78,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
                 this.count = value.count - this.limit;
                 this.skip = this.skip + this.limit;
                 this.IsLastPage();
+                this.isLoading = false;
             })
         });
     }

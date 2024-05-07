@@ -10,15 +10,18 @@ import { DropdownComponent } from '../../shared/component/dropdown/dropdown.comp
 import { ButtonComponent } from '../../shared/component/button/button.component';
 import { IconComponent } from '../../shared/component/icon/icon.component';
 import {BottomsheetComponent} from "../../shared/component/bottomsheet/bottomsheet.component";
+import {LoaderComponent} from "../../shared/component/loading/loader.component";
 
 @Component({
     selector: 'app-about',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss'],
     standalone: true,
-    imports: [CommonModule, IconComponent, ButtonComponent, DropdownComponent, BottomsheetComponent,]
+    imports: [CommonModule, IconComponent, ButtonComponent, DropdownComponent, BottomsheetComponent, LoaderComponent,]
 })
 export class AboutComponent implements OnInit, OnDestroy {
+
+    isLoading: boolean = true;
 
     data: AboutModel = new AboutModel();
     show: boolean = false;
@@ -50,6 +53,7 @@ export class AboutComponent implements OnInit, OnDestroy {
             next: ((value: any) => {
                 this.data = value[0];
                 this.show = true;
+                this.isLoading = false;
             }),
             error: ((error: any) => {
                 console.log(error);

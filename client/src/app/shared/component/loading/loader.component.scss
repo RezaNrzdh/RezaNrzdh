@@ -1,0 +1,27 @@
+@use "src/assets/styles/color";
+
+@keyframes animate {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 0%;
+    }
+}
+
+:host {
+    width: 100%;
+    section {
+        .progressbar {
+            max-width: 128px;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, color.$color-gray-1, color.$color-gray-2, color.$color-gray-1);
+            background-size: 200% 200%;
+            animation-name: animate;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-duration: 1s;
+        }
+    }
+}

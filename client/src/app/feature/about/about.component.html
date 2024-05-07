@@ -1,4 +1,5 @@
-<section class="flex column">
+<app-loader *ngIf="isLoading"></app-loader>
+<section *ngIf="!isLoading" class="flex column">
     <div class="aboutme CRTMonitor flex column justify-ctr align-self-ctr">
         <div class="flex column margin-top-32">
             <div class="imageContaier flex relative z-index-1 radius-8 hidden">

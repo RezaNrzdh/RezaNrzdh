@@ -12,6 +12,7 @@ import { AlertboxComponent } from '../../shared/component/alertbox/alertbox.comp
 import { NgIf } from '@angular/common';
 import {AlertService} from "../../core/services/alert.service";
 import {AlertStateEnum} from "../../core/enum/alertState.enum";
+import {LoaderComponent} from "../../shared/component/loading/loader.component";
 
 @Component({
     selector: 'app-contact',
@@ -25,10 +26,13 @@ import {AlertStateEnum} from "../../core/enum/alertState.enum";
         ReactiveFormsModule,
         TextboxComponent,
         ButtonComponent,
-        IconComponent
+        IconComponent,
+        LoaderComponent
     ]
 })
 export class ContactComponent implements OnInit {
+
+    isLoading: boolean = true;
 
     isSpin: boolean = false;
     data: AboutModel = new AboutModel();
@@ -50,6 +54,7 @@ export class ContactComponent implements OnInit {
         this.contactService.GetInformation().subscribe({
             next: ((value: any) => {
                 this.data = value[0];
+                this.isLoading = false;
             }),
             error:((err: any) => {
                 console.log(err);

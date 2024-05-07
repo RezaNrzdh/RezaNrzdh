@@ -1,4 +1,5 @@
-<section class="ContactPage laptop width-full margin-top-32">
+<app-loader *ngIf="isLoading"></app-loader>
+<section *ngIf="!isLoading" class="ContactPage laptop width-full margin-top-32">
     <div class="flex align-ctr margin-bot-16">
         <h1 class="color-dark headline-1 bold margin-left-24">تماس با من</h1>
         <img src="assets/images/dot.svg" alt="" />

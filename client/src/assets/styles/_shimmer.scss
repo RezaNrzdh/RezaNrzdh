@@ -1,0 +1,59 @@
+@use "color";
+
+@keyframes shimmer-loop {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 0%;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg,color.$color-gray-1b, color.$color-gray-2, color.$color-gray-1b);
+    background-size: 200% 200%;
+}
+
+.shimmer-animate {
+    animation-name: shimmer-loop;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+.shimmer-title {
+    width: 190px;
+    height: 48px;
+    border-radius: 4px;
+}
+
+.shimmer-subtitle {
+
+}
+
+.shimmer-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.shimmer-box {
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.shimmer-img {
+    width: 100%;
+}
+
+.shimmer-txt {
+    height: 20px;
+    border-radius: 4px;
+}
+
+.shimmer-btn {
+    width: 72px;
+    height: 40px;
+    border-radius: 4px;
+}

@@ -1,3 +1,4 @@
+<app-loader *ngIf="isLoading"></app-loader>
 <section *ngIf="!isLoading" class="CRTMonitor margin-top-32">
     <div class="recent grid">
         <a routerLink="/blog/{{ data[0].slug }}" class="mainImg flex column relative radius-8 background-gray-1b hidden">

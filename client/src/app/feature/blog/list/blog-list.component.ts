@@ -8,17 +8,18 @@ import { ButtonComponent } from '../../../shared/component/button/button.compone
 import { IconComponent } from '../../../shared/component/icon/icon.component';
 import { RouterLink } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
+import {LoaderComponent} from "../../../shared/component/loading/loader.component";
 
 @Component({
     selector: 'app-blog-list',
     templateUrl: './blog-list.component.html',
     styleUrls: ['./blog-list.component.scss'],
     standalone: true,
-    imports: [NgIf, RouterLink, IconComponent, NgFor, ButtonComponent, CalendarPipe, ImagePathPipe]
+    imports: [NgIf, RouterLink, IconComponent, NgFor, ButtonComponent, CalendarPipe, ImagePathPipe, LoaderComponent]
 })
 export class BlogListComponent implements OnInit {
 
-    isLoading: boolean = false;
+    isLoading: boolean = true;
 
     data: Array<BlogModel> = new Array<BlogModel>();
     otherData: Array<BlogModel> = new Array<BlogModel>();
@@ -29,7 +30,6 @@ export class BlogListComponent implements OnInit {
 
     constructor(private blogService: BlogService, private titleService: Title) {
         this.titleService.setTitle("RezaNrzdh - Blog");
-        this.isLoading = true;
     }
 
     ngOnInit(): void {
