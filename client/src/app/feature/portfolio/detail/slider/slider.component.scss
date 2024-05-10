@@ -11,8 +11,8 @@
                 cursor: grabbing;
             }
             &.transition {
-                transition-duration: 0.7s;
-                transition-timing-function: ease-in-out;
+                transition-duration: 0.5s;
+                transition-timing-function: cubic-bezier(.1,.5,.5,.9);
             }
             img {
                 max-width: 100%;

@@ -16,7 +16,7 @@
             max-width: 128px;
             width: 50%;
             height: 4px;
-            background: linear-gradient(90deg, color.$color-gray-1, color.$color-gray-2, color.$color-gray-1);
+            background: linear-gradient(90deg, color.$color-gray-1b 30%, color.$color-secondary 31%, color.$color-gray-1b 70%);
             background-size: 200% 200%;
             animation-name: animate;
             animation-timing-function: linear;
