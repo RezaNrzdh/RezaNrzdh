@@ -5,14 +5,17 @@
     <div class="slider flex radius-8 hidden"
         [ngStyle]="{  }">
         <div #sliderWrapper
-             (mousedown)="Start($event)"
-             (mousemove)="Move($event)"
-             (mouseup)="End($event)"
-             (mouseleave)="Leave($event)"
+             (touchmove)="CheckIsMultiTouch($event)"
+             (touchend)="CheckIsMultiTouch($event)"
+             (pointerdown)="Start($event)"
+             (pointermove)="Move($event)"
+             (pointerup)="End($event)"
+             (pointerleave)="Leave($event)"
              [ngClass]="{ 'grabbing': grabbing }"
              [ngStyle]="{'transform': 'translateX('+ transformX +'px)'}"
-            class="flex relative width-fit sliderWrapper">
+             class="flex relative width-fit sliderWrapper">
             <img (mouseenter)="GetImageSize(sliderWrapper.clientWidth)"
+                 (touchstart)="GetImageSize(sliderWrapper.clientWidth)"
                 *ngFor="let img of image; index as i"
                 src="{{img | ImagePath}}"
                 alt="" draggable="false"/>

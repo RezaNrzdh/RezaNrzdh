@@ -28,11 +28,12 @@ export class SliderComponent implements OnInit {
     isDown: boolean = false;
     _start: number = 0;
     _move: number = 0;
-    _end: number = 0
+    _offset: number = 0;
     _isClickable: boolean = true;
     speed: number = 50;
     threshold: number = 0;
     _interval: any;
+    isMultiTouch: boolean = false;
 
     @Input() image: Array<any> = [];
     @ViewChild("sliderWrapper") sliderWrapper: ElementRef;
@@ -45,7 +46,6 @@ export class SliderComponent implements OnInit {
     ngOnInit() {
         this.transformX = 0;
         this.currentImage = 0;
-        console.log(this.image);
     }
 
     GetImageSize(size: number): void {
@@ -54,42 +54,59 @@ export class SliderComponent implements OnInit {
         this.threshold = this.currentImageSize * 0.1;
     }
 
+    CheckIsMultiTouch(e: any): void {
+        this.isMultiTouch = e.touches.length > 1;
+        if(this.isMultiTouch){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        }
+    }
+
     Start(e: any): void {
+        if(this.isMultiTouch)
+            return;
+
         clearInterval(this._interval);
         this.isDown = true;
-        this._start = e.clientX;
+        this._start = Math.round(e.clientX);
+        this._move = this._start;
     }
 
     Move(e: any): void {
         if(this.isDown){
             if(e.clientX > this._start) {
-                this.transformX += e.clientX - this._move;
+                this.transformX += Math.round(e.clientX) - this._move;
                 if(this.transformX > this.currentImageSize * (this.image.length -1) )
                     this.transformX = this.currentImageSize * (this.image.length -1);
             }
             else {
-                this.transformX += e.clientX - this._move;
+                this.transformX += Math.round(e.clientX) - this._move;
                 if(this.transformX < 0)
                     this.transformX = 0;
             }
         }
-        this._move = e.clientX;
+        this._move = Math.round(e.clientX);
     }
 
     End(e: any): void {
+        if(this.isMultiTouch)
+            return;
+
         this.isDown = false;
-        const offset = e.clientX - this._start;
+        let offset = Math.round(e.clientX) - this._start
         this.Animate(offset);
     }
 
     Leave(e: any): void {
+        if(this.isMultiTouch)
+            return;
+
         if(this.isDown){
-            const offset = e.clientX - this._start;
+            const offset = Math.round(e.clientX) - this._start;
             this.Animate(offset);
         }
         this.isDown = false;
     }
-
 
     BtnNextImage(): void {
         if(this.currentImage >= this.image.length - 1)
@@ -118,20 +135,20 @@ export class SliderComponent implements OnInit {
         }
     }
 
-    ShowNextImage(target?: number): void {
-        if(this.transformX >= this.maxWrapperSize)
+    ShowNextImage(target: number): void {
+        if(target > this.maxWrapperSize)
             return;
 
         this.currentImage++;
-        this.SetInterval(target!,false);
+        this.SetInterval(target,false);
     }
 
-    ShowPrevImage(target?: number): void {
-        if(this.transformX <= 0)
+    ShowPrevImage(target: number): void {
+        if(target < 0)
             return;
 
         this.currentImage--;
-        this.SetInterval(target!,true);
+        this.SetInterval(target,true);
     }
 
     BackToLeft(): void {

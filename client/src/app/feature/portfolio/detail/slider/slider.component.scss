@@ -5,6 +5,8 @@
     flex-direction: column;
     .slider {
         width: 100%;
+        touch-action: none;
+        -ms-touch-action: none;
         .sliderWrapper{
             cursor: grab;
             &.grabbing {
