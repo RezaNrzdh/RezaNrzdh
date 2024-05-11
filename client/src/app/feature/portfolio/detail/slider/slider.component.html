@@ -1,24 +1,27 @@
-<div *ngIf="image" class="flex relative align-ctr">
+<div #sliderWrapper *ngIf="image" class="flex relative align-ctr hidden radius-8">
     <a (click)="BtnPrevImage()" class="next absolute right margin-right-24 padding-8 background-white radius-8 opacity-60 z-index-1">
         <app-icon icon="arrow-right" color="dark" size="24"></app-icon>
     </a>
-    <div class="slider flex radius-8 hidden"
+    <div class="slider flex"
         [ngStyle]="{  }">
-        <div #sliderWrapper
-             (touchmove)="CheckIsMultiTouch($event)"
+        <div (touchmove)="CheckIsMultiTouch($event)"
              (touchend)="CheckIsMultiTouch($event)"
              (pointerdown)="Start($event)"
              (pointermove)="Move($event)"
              (pointerup)="End($event)"
              (pointerleave)="Leave($event)"
-             [ngClass]="{ 'grabbing': grabbing }"
              [ngStyle]="{'transform': 'translateX('+ transformX +'px)'}"
-             class="flex relative width-fit sliderWrapper">
-            <img (mouseenter)="GetImageSize(sliderWrapper.clientWidth)"
-                 (touchstart)="GetImageSize(sliderWrapper.clientWidth)"
-                *ngFor="let img of image; index as i"
-                src="{{img | ImagePath}}"
-                alt="" draggable="false"/>
+             class="sliderWrapper flex">
+            <div *ngFor="let img of image; index as i">
+                <a #anchorTag [href]="img | ImagePath" target="_blank" class="flex" draggable="false"
+                   [ngStyle]="{ 'width': currentImageSize +'px', 'pointer-events': pointerEvent }">
+                    <img (mouseenter)="GetImageSize(sliderWrapper.clientWidth)"
+                         (touchstart)="GetImageSize(sliderWrapper.clientWidth)"
+                         [width]="currentImageSize"
+                         src="{{img | ImagePath}}"
+                         alt="" draggable="false"/>
+                </a>
+            </div>
         </div>
     </div>
     <a (click)="BtnNextImage()" class="prev absolute left margin-left-24 padding-8 background-white radius-8 opacity-60">

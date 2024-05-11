@@ -3,9 +3,11 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@ang
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { RoutingModule } from './app/routing.module';
-import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { BrowserModule, bootstrapApplication, HammerModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpInterceptorService} from "./app/core/interceptor/http.interceptor";
+
+import "hammerjs";
 
 if (environment.production) {
   enableProdMode();
@@ -13,7 +15,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, RoutingModule, BrowserAnimationsModule),
+        importProvidersFrom(BrowserModule, RoutingModule, BrowserAnimationsModule, HammerModule),
         provideHttpClient(withInterceptorsFromDi()),
         {
             provide: HTTP_INTERCEPTORS,
