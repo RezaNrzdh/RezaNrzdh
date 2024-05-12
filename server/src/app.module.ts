@@ -40,6 +40,8 @@ import {UserService} from "./service/user.service";
 import {NewsletterService} from "./service/newsletter.service";
 import {NewsletterController} from "./controller/newsletter.controller";
 import {NewsletterSchema} from "./schema/newsletter.schema";
+import {DashboardController} from "./controller/dashboard.controller";
+import {DashboardService} from "./service/dashboard.service";
 
 @Module({
   imports: [
@@ -68,7 +70,8 @@ import {NewsletterSchema} from "./schema/newsletter.schema";
       BlogController,
       AuthController,
       UserController,
-      NewsletterController
+      NewsletterController,
+      DashboardController
   ],
   providers: [
       AppService,
@@ -81,7 +84,8 @@ import {NewsletterSchema} from "./schema/newsletter.schema";
       BlogService,
       AuthService,
       UserService,
-      NewsletterService
+      NewsletterService,
+      DashboardService
   ],
 })
 export class AppModule {}

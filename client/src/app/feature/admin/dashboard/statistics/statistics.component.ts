@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {NgFor} from "@angular/common";
 import {IconComponent} from "../../../../shared/component/icon/icon.component";
+import {DashboardService} from "../../../../core/services/dashboard.service";
 
 @Component({
     selector: "app-statistics",
@@ -14,16 +15,16 @@ import {IconComponent} from "../../../../shared/component/icon/icon.component";
 })
 export class StatisticsComponent implements OnInit {
 
-    data: Array<any> = [
-        { icon: "portfolio", key: "نمونه کارها", value: 17 },
-        { icon: "note", key: "مقالات", value: 9 },
-        { icon: "user2", key: "کاربران", value: 2 },
-        { icon: "gallery", key: "عکس ها", value: 60 },
-    ];
+    data: any;
 
-    constructor() {
+    constructor(private dashboardService: DashboardService) {
     }
 
     ngOnInit() {
+        this.dashboardService.GetStatistics().subscribe({
+            next: ((value: any) => {
+                this.data = value;
+            })
+        });
     }
 }
