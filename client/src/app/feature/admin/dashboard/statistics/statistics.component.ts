@@ -15,7 +15,7 @@ import {DashboardService} from "../../../../core/services/dashboard.service";
 })
 export class StatisticsComponent implements OnInit {
 
-    data: any;
+    data: any = {};
 
     constructor(private dashboardService: DashboardService) {
     }
