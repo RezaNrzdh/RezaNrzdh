@@ -8,7 +8,6 @@ import {
     Renderer2,
     ViewChild
 } from "@angular/core";
-import {max} from "rxjs";
 
 @Component({
     selector: "admin-canvas",
@@ -19,8 +18,8 @@ import {max} from "rxjs";
 })
 export class CanvasComponent implements OnInit, AfterViewInit, OnChanges {
 
-    data: Array<number> = [2,10,5,4,8,24,9];
-    week: Array<string> = ['ش','ی','د','س','چ','پ','ج'];
+    data: Array<number> = [10,20,40,60,70,100,50];
+    week: Array<string> = ['شنبه','یکشنبه','دوشنبه','سه شنبه','چهارشنبه','پنجشنبه','جمعه'];
     width: number;
     height: number;
     ctx: any;
@@ -38,6 +37,9 @@ export class CanvasComponent implements OnInit, AfterViewInit, OnChanges {
     constructor(private renderer: Renderer2,private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
+        setTimeout(() => {
+            this.ngAfterViewInit();
+        },10);
     }
 
     ngAfterViewInit() {
@@ -66,7 +68,7 @@ export class CanvasComponent implements OnInit, AfterViewInit, OnChanges {
     InitCanvas(): void {
         this.CreateHorizLines();
         this.CreateVertLines();
-        this.CreateLinerGraph();
+        this.CreateBarGraph();
     }
 
     CreateLine(style: string, startWidth: number, startHeight: number, endWidth: number, endHeight: number, line?: number, dash: Array<number> = []): void {
@@ -88,63 +90,84 @@ export class CanvasComponent implements OnInit, AfterViewInit, OnChanges {
 
     CreateHorizLines(): void {
         this.hLines = [];
-        let index = 0;
-        const row = Math.floor((this.height - 40.5) / 5);
+        const maxRow = 5;
         const startWidth = 40.5;
-        const startHeight = Math.floor(this.height) - 30.5;
         const endWidth = this.width;
+        const startHeight = 0.5;
+        const endHeight = this.height - 30.5;
+        const row = (this.height - 30) / maxRow;
         const solid: any[] = [];
         const dashed = [2,3];
         const lineTick = 1;
         const fontSize = 12;
-        const alignLeft = "right";
+        const alignRight = "right";
 
         const number = Math.ceil(Math.max(...this.data) / 5);
 
-        for(let _row = startHeight; _row >= 0 ; _row -= Math.floor(row)) {
-            if(_row == startHeight){
-                this.CreateLine("white",startWidth,_row,endWidth,_row,lineTick, solid);
+        for(let i= 0; i <= maxRow; i++){
+            if(i == 0){
+                this.CreateLine("gray",startWidth,startHeight,endWidth,startHeight,lineTick, dashed);
+                this.CreateText("0", fontSize, this.font, "white", startWidth - 8, endHeight, alignRight);
+            }
+            else if (i == maxRow) {
+                this.CreateLine("white",startWidth,endHeight,endWidth,endHeight,lineTick, solid);
+                this.CreateText((number * maxRow).toString(), fontSize, this.font, "white", startWidth - 8, startHeight + 8, alignRight);
             }
             else {
-                this.CreateLine("gray",startWidth,_row,endWidth,_row,lineTick, dashed);
+                const h = Math.floor(row * i) + 0.5;
+                this.CreateLine("gray",startWidth,h,endWidth,h,lineTick, dashed);
+                this.CreateText((number * (maxRow - i)).toString(), fontSize, this.font, "white", startWidth - 8, h, alignRight);
             }
-            this.CreateText((number * index).toString(), fontSize, this.font, "white", 30, _row, alignLeft);
-            index++;
         }
     }
 
     CreateVertLines(): void {
         this.vLines = [];
-        let index = 0;
-        const col = this.width / 7;
+        const maxCol = 8;
+        const startHeight = 0.5;
         const startWidth = 40.5;
-        const startHeight = 10.5;
+        const endWidth = this.width - 0.5;
         const endHeight = this.height - 30;
-        const endWidth = this.width;
-        const emptyDash: any[] = [];
-        const dash = [2,3];
+        const col = (this.width - 40) / maxCol;
+        const solid: any[] = [];
+        const dashed = [2,3];
         const lineTick = 1;
         const fontSize = 12;
         const alignLeft = "center";
 
-        for(let _col = startWidth; _col <= endWidth ; _col += Math.floor(col)){
-            this.vLines = [...this.vLines, _col];
-            const textmarginBot = endHeight + 28;
-
-            if(_col == startWidth) {
-                this.CreateLine("white",_col,startHeight,_col,endHeight,lineTick, emptyDash);
+        for(let i= 0; i <= maxCol; i++){
+            if(i == 0){
+                this.CreateLine("white",startWidth,startHeight,startWidth,endHeight,lineTick, solid);
+            }
+            else if( i == maxCol){
+                this.CreateLine("gray",endWidth,startHeight,endWidth,endHeight,lineTick, dashed);
             }
             else {
-                this.CreateLine("gray",_col,startHeight,_col,endHeight,lineTick, dash);
+                const w = Math.floor(startWidth + (col * i)) - 0.5;
+                this.CreateLine("gray",w,startHeight,w,endHeight,lineTick, dashed);
+                this.CreateText(this.week[i-1], fontSize, this.font, "white", w, this.height-3, alignLeft);
             }
-
-            this.CreateText(this.week[index], fontSize, this.font, "white", _col, textmarginBot, alignLeft);
-            index++;
         }
     }
 
-    CreateLinerGraph(): void {
+    CreateBarGraph(): void {
+        const maxCol = 8;
+        const startWidth = 40.5;
+        const endHeight = this.height - 30;
+        const col = (this.width - 40) / maxCol;
+        const solid: any[] = [];
+        const lineTick = 24;
 
+        const number = Math.ceil(Math.max(...this.data) / 5) * 5;
+        const percent = endHeight / number;
+        const result = this.data.map((value) => {
+            return (endHeight - (value * percent));
+        })
+
+        for(let i= 1; i < maxCol; i++){
+            const w = Math.floor(startWidth + (col * i)) - 0.5;
+            this.CreateLine("#2BB2FF",w,result[i-1],w,endHeight-1,lineTick, solid);
+        }
     }
 
 }
