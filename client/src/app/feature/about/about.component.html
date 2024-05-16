@@ -1,11 +1,8 @@
 <app-loader *ngIf="isLoading"></app-loader>
 <section *ngIf="!isLoading" class="flex column">
     <div class="aboutme CRTMonitor flex column justify-ctr align-self-ctr">
-        <div class="flex column margin-top-32">
-            <div class="imageContaier flex relative z-index-1 radius-8 hidden">
-                <img src="assets/images/aboutme.webp" />
-            </div>
-            <div class="flex column margin-left-32 margin-top-56 margin-bot-56">
+        <div class="flex align-bot">
+            <div class="aboutmeInfo flex column width-half margin-left-32 margin-top-56 margin-bot-56">
                 <span class="jobtitle headline-4 bold color-dark margin-bot-16">{{data.jobtitle}}</span>
                 <img class="logofa" src="assets/icons/rezanrzdlogofa.svg" width="321" height="56" alt=""/>
                 <p class="body-2 medium color-dark lineheight-24 margin-top-48">{{data.aboutme}}</p>
@@ -20,25 +17,26 @@
                     <span class="body-2 medium color-dark margin-right-4">{{data.email}}</span>
                 </div>
             </div>
+            <img src="assets/images/aboutme2.webp" class="aboutmeImg width-half height-half" />
         </div>
     </div>
-    <div class="info flex align background-dark padding-top-48 padding-bot-48 z-index-2">
-        <div class="CRTMonitor grid margin-right-auto margin-left-auto">
-            <div class="flex align-ctr">
+    <div class="info flex align z-index-2 justify-ctr">
+        <div class="CRTMonitor background-dark radius-16 width-full padding-64 grid">
+            <div class="flex align-ctr justify-ctr">
                 <app-icon icon="cake" size="48"></app-icon>
                 <div class="flex column margin-right-16">
                     <span class="body-1 color-gray-3 margin-bot-4">تاریخ تولد:</span>
                     <span class="headline-5 bold color-white">{{data.birthday}}</span>
                 </div>
             </div>
-            <div class="flex align-ctr">
+            <div class="flex align-ctr justify-ctr">
                 <app-icon icon="married" size="48"></app-icon>
                 <div class="flex column margin-right-16">
                     <span class="body-1 color-gray-3 margin-bot-4">وضعیت تاهل:</span>
                     <span class="headline-5 bold color-white">{{data.married}}</span>
                 </div>
             </div>
-            <div class="flex align-ctr">
+            <div class="flex align-ctr justify-ctr">
                 <app-icon icon="soldier" size="48"></app-icon>
                 <div class="flex column margin-right-16">
                     <span class="body-1 color-gray-3 margin-bot-4">خدمت سربازی:</span>

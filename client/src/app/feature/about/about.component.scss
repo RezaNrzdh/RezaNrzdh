@@ -3,12 +3,9 @@
 :host{
     section{
         .aboutme{
-            .imageContaier{
-                background-color: color.$color-gray-2;
-                img{
-                    max-width: 100%;
-                    max-height: 256px;
-                }
+            .aboutmeImg{
+                position: relative;
+                top: 54px;
             }
         }
         .info{
@@ -32,15 +29,16 @@
                     }
                     .desc{
                         height: 100%;
-                        background-color: #E9EDC9;
+                        background-color: color.$color-gray-1;
+                        border: 1px solid color.$color-gray-2;
                         &:before{
                             display: flex;
                             content: "";
                             position: absolute;
-                            top:-14px;
+                            top:-15px;
                             width: 48px;
                             height: 16px;
-                            background: url("/assets/images/btnarrow-white.png");
+                            background: url("/assets/images/btnarrow.png");
                         }
                         img{
                             height: 32px;
@@ -130,28 +128,29 @@
     }
 }
 
-@media screen and (max-width: 1100px) {
-    :host {
-        section {
-            .aboutme {
-            }
-        }
-    }
-}
-
 @media screen and (max-width: 900px) {
     :host {
         section {
             .aboutme {
-                .jobtitle {
-                    font-size: 20px;
-                }
-                .logofa {
-                    width: 184px;
-                    height: 32px;
-                }
-                p {
-                    margin-top: 32px;
+                > div {
+                    flex-direction: column;
+                    justify-content: center;
+                    .aboutmeInfo {
+                        width: fit-content;
+                        .jobtitle {
+                            font-size: 20px;
+                        }
+                        .logofa {
+                            width: 184px;
+                            height: 32px;
+                        }
+                        p {
+                            margin-top: 32px;
+                        }
+                    }
+                    .aboutmeImg {
+                        display: none;
+                    }
                 }
             }
             .info{
