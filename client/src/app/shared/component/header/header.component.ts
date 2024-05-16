@@ -48,7 +48,7 @@ export class HeaderComponent implements OnDestroy {
         this.IsInternalPage(this.router);
         this.subUserService = this.userService.userInfo.subscribe({
             next: ((value: any) => {
-                if(value) {
+                if(value.email) {
                     this.isLoggedIn = true;
                     this.role = value.role;
                 }
