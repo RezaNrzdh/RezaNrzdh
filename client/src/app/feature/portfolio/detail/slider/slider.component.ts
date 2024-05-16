@@ -1,5 +1,5 @@
 import {
-    AfterViewInit,
+    AfterViewInit, ChangeDetectorRef,
     Component,
     ElementRef,
     HostListener,
@@ -52,7 +52,7 @@ export class SliderComponent implements OnInit, AfterViewInit, OnChanges {
         this.currentImageSize = this.sliderWrapper.nativeElement.clientWidth;
 
     }
-    constructor() {}
+    constructor(private changeDetector: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.transformX = 0;
@@ -62,6 +62,7 @@ export class SliderComponent implements OnInit, AfterViewInit, OnChanges {
 
     ngAfterViewInit() {
         this.currentImageSize = this.sliderWrapper.nativeElement.clientWidth;
+        this.changeDetector.detectChanges();
     }
 
     ngOnChanges(changes: any) {

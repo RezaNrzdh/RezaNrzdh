@@ -23,6 +23,7 @@ import {SliderComponent} from "./slider/slider.component";
 import {AlertService} from "../../../core/services/alert.service";
 import {AlertStateEnum} from "../../../core/enum/alertState.enum";
 import {AlertEnum} from "../../../core/enum/alert.enum";
+import {LoaderComponent} from "../../../shared/component/loading/loader.component";
 
 @Component({
     selector: "app-portfolio",
@@ -46,10 +47,13 @@ import {AlertEnum} from "../../../core/enum/alert.enum";
         ShareComponent,
         AlertboxComponent,
         GuestComponent,
-        SliderComponent
+        SliderComponent,
+        LoaderComponent
     ]
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
+
+    isLoading: boolean = true;
 
     data: PortfolioModel = new PortfolioModel();
     topPortfolio: Array<PortfolioModel>;
@@ -105,6 +109,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
                         this.OnGetTopPortfolio(this.data.category);
                         this.CheckIsLiked();
                         this.SubmitVisit();
+                        this.isLoading = false;
                     })
                 });
             })
@@ -178,7 +183,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
         })
     }
 
-    SubmitVisit(): void {;
+    SubmitVisit(): void {
         const body = { pid: this.data._id }
         const _localstorage = localStorage.getItem("userVisits");
 

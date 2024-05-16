@@ -24,7 +24,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
 
     isLoading: boolean = true;
 
-    data: Array<PortfolioModel>;
+    data: Array<PortfolioModel> = new Array<PortfolioModel>();
 
     isXSmall: boolean = false;
     isSmall: boolean = false;
@@ -98,11 +98,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     }
 
     IsLastPage(): void {
-        if(this.count <= 0){
-            this.isLastPage = true;
-        }else{
-            this.isLastPage = false;
-        }
+        this.isLastPage = this.count <= 0;
     }
 
     SetTabIndex(value: number): void{

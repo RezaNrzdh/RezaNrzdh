@@ -11,12 +11,11 @@ import { ButtonComponent } from '../../../shared/component/button/button.compone
 import { TextboxComponent } from '../../../shared/component/textbox/textbox.component';
 import { IconComponent } from '../../../shared/component/icon/icon.component';
 import {ShareComponent} from "../../../shared/component/share/share.component";
-import {GuestComponent} from "../../../shared/component/guest/guest.component";
-import {UserService} from "../../../core/services/user.service";
 import {Subscription} from "rxjs";
 import {AlertService} from "../../../core/services/alert.service";
 import {AlertStateEnum} from "../../../core/enum/alertState.enum";
 import {AlertEnum} from "../../../core/enum/alert.enum";
+import {LoaderComponent} from "../../../shared/component/loading/loader.component";
 
 @Component({
     selector: 'app-blog',
@@ -25,14 +24,15 @@ import {AlertEnum} from "../../../core/enum/alert.enum";
     standalone: true,
     imports: [
         IconComponent, FormsModule, ReactiveFormsModule, TextboxComponent,
-        ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe, ShareComponent, GuestComponent
+        ButtonComponent, NgIf, NgFor, CommentComponent, CalendarPipe, ImagePathPipe, ShareComponent, LoaderComponent
     ]
 })
 export class BlogComponent implements OnInit {
 
+    isLoading: boolean = true;
+
     data: BlogModel = new BlogModel();
     share: boolean = false;
-    guest: boolean = false;
     currentUrl: string;
     commentForm: FormGroup | any;
 
@@ -68,6 +68,7 @@ export class BlogComponent implements OnInit {
                         this.data = value;
                         this.CheckIsLiked();
                         this.SubmitVisit();
+                        this.isLoading = false;
                     })
                 })
             })
@@ -156,9 +157,5 @@ export class BlogComponent implements OnInit {
 
     ToggleShare(): void {
         this.share = !this.share;
-    }
-
-    ToggleGuest(): void {
-        this.guest = !this.guest;
     }
 }
