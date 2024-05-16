@@ -7,12 +7,12 @@
     section {
         .headerTable{
             top: 80px;
-            grid-template-columns: 4fr 2fr 1fr 1fr 2fr 1.5fr 1fr 1.2fr;
+            grid-template-columns: 4fr 2fr 1fr 1fr 2fr 1.5fr 1fr;
             grid-column-gap: 16px;
             border-bottom: 1px solid color.$color-gray-2;
         }
         .rowTable{
-            grid-template-columns: 4fr 2fr 1fr 1fr 2fr 1.5fr 1fr 1.2fr;
+            grid-template-columns: 4fr 2fr 1fr 1fr 2fr 1.5fr 1fr;
             grid-column-gap: 16px;
             border-bottom: 1px solid color.$color-gray-1b;
             .like {
