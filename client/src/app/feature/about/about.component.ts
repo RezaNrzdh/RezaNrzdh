@@ -26,6 +26,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     data: AboutModel = new AboutModel();
     show: boolean = false;
     tab: number = 0;
+    toggleName: string = "دسته بندی ها";
     isSmall: boolean = true;
 
     options: Array<string> = ['طراحی UIUX','برنامه نویسی','گرافیک دو بعدی','گرافیک سه بعدی','بازیسازی'];
@@ -63,6 +64,7 @@ export class AboutComponent implements OnInit, OnDestroy {
 
     SetTabIndex(value: number): void {
         this.tab = value;
+        this.toggleName = this.options[value];
     }
 
     ngOnDestroy() {

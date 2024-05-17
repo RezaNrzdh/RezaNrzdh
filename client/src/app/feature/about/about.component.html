@@ -83,7 +83,7 @@
                 </ng-container>
             </div>
             <div *ngIf="isSmall" class="flex margin-top-32">
-                <app-button (click)="ToggleVisible()" class="width-fit" icon="chevron-down" mode="outlined" color="dark2">دسته بندی ها</app-button>
+                <app-button (click)="ToggleVisible()" class="width-fit" icon="chevron-down" mode="outlined" color="dark2">{{ toggleName }}</app-button>
                 <app-bottomsheet
                     *ngIf="isVisible"
                     [title]="bottomsheetData.title"

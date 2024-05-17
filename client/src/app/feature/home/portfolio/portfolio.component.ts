@@ -40,6 +40,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
     options: Array<string> = [...CategoryConstant];
     tab: number = 0;
+    toggleName: string = "دسته بندی ها";
     query: any = {};
 
     isVisible: boolean = false;
@@ -76,6 +77,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     }
 
     SetCurrentTab(value: number): void {
+        this.toggleName = CategoryConstant[value];
         if(this.tab == value) return;
         this.tab = value;
         this.OnGetTopPortfolio(this.tab + 1);

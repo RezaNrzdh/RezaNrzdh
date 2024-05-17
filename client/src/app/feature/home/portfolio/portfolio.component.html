@@ -12,7 +12,7 @@
             </li>
         </ul>
         <div *ngIf="isSmall" class="flex justify-ctr margin-top-32">
-            <app-button (click)="ToggleVisible()" class="width-fit" icon="chevron-down" mode="outlined">دسته بندی ها</app-button>
+            <app-button (click)="ToggleVisible()" class="width-fit" icon="chevron-down" mode="outlined">{{ toggleName }}</app-button>
             <app-bottomsheet
                 *ngIf="isVisible"
                 [title]="bottomsheetData.title"
