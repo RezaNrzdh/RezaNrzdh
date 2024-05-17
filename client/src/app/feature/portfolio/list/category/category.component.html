@@ -8,7 +8,7 @@
         </ng-container>
     </ul>
     <div *ngIf="isSmall">
-        <app-button (click)="ToggleVisible()" mode="outlined" color="dark2" icon="chevron-down">دسته بندی</app-button>
+        <app-button (click)="ToggleVisible()" mode="outlined" color="dark2" icon="chevron-down">{{toggleName}}</app-button>
         <app-bottomsheet *ngIf="isVisible" title="انتخاب دسته بندی" [options]="options" (value)="CallOnGetAllPortfolio($event)" (isVisible)="ToggleVisible()"></app-bottomsheet>
     </div>
 </section>

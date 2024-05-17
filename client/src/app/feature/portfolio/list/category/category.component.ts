@@ -23,11 +23,13 @@ export class CategoryComponent {
     @Output() output: EventEmitter<any> = new EventEmitter<any>();
 
     options: Array<string> = ['همه', ...CategoryConstant];
+    toggleName: string = "همه";
     isVisible: boolean = false;
 
     constructor() {}
 
     CallOnGetAllPortfolio(index: number): void {
+        this.toggleName = this.options[index];
         this.output.emit(index);
     }
 
