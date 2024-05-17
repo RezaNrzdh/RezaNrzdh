@@ -2,8 +2,7 @@
     <a (click)="BtnPrevImage()" class="next absolute right margin-right-24 padding-8 background-white radius-8 opacity-60 z-index-1">
         <app-icon icon="arrow-right" color="dark" size="24"></app-icon>
     </a>
-    <div class="slider flex"
-        [ngStyle]="{  }">
+    <div class="slider flex">
         <div (touchmove)="CheckIsMultiTouch($event)"
              (touchend)="CheckIsMultiTouch($event)"
              (pointerdown)="Start($event)"

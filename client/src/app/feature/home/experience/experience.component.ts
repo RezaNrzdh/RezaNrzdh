@@ -2,14 +2,15 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SkillsService} from "../../../core/services/skills.service";
 import {ExperienceModel} from "../../../core/models/experience.model";
 import { IconComponent } from '../../../shared/component/icon/icon.component';
-import { NgFor, NgClass } from '@angular/common';
+import {NgFor, NgClass, NgIf} from '@angular/common';
+import {CarouselDirective} from "../../../shared/directive/carousel.directive";
 
 @Component({
     selector: 'app--home-experience',
     templateUrl: './experience.component.html',
     styleUrls: ['./experience.component.scss'],
     standalone: true,
-    imports: [NgFor, IconComponent, NgClass]
+    imports: [NgFor, NgIf, IconComponent, NgClass, CarouselDirective]
 })
 export class ExperienceComponent implements OnInit {
 
