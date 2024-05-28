@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+  angular:
+    image: angular:latest
+    container_name: angular-1
+    restart: always
+    ports:
+      - 80:80
