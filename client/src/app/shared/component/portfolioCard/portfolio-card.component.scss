@@ -3,6 +3,11 @@
 
 :host{
     > a {
+        height: 100%;
+        img {
+            height: 296px;
+            background-color: color.$color-gray-2;
+        }
         .title{
             height: 46px;
             span{
