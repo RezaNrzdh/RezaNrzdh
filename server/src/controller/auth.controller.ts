@@ -3,7 +3,7 @@ import {Request, Response} from "express";
 import {AuthService} from "../service/auth.service";
 import {constants} from "../constant";
 
-@Controller("api/v1/auth")
+@Controller("v1/auth")
 export class AuthController {
     constructor(private authService: AuthService) {}
 

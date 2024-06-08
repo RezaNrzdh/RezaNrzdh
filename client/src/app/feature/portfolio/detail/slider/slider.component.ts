@@ -57,7 +57,6 @@ export class SliderComponent implements OnInit, AfterViewInit, OnChanges {
     ngOnInit() {
         this.transformX = 0;
         this.currentImage = 0;
-
     }
 
     ngAfterViewInit() {

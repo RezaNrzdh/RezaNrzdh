@@ -2,7 +2,7 @@ import {Query, Controller, Get, Param, Patch, Body, UseGuards, Post} from "@nest
 import {BlogService} from "../service/blog.service";
 import {AuthGuard} from "../guard/auth.guard";
 
-@Controller("api/v1/blog")
+@Controller("v1/blog")
 export class BlogController {
     constructor(private blogService: BlogService) {}
 

@@ -2,7 +2,7 @@ import {Body, Controller, Get, Patch, Post, Query, UseGuards} from "@nestjs/comm
 import {AuthGuard} from "../guard/auth.guard";
 import {NewsletterService} from "../service/newsletter.service";
 
-@Controller("api/v1/newsletter")
+@Controller("v1/newsletter")
 export class NewsletterController {
     constructor(private newsletterService: NewsletterService) {}
 

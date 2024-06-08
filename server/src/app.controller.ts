@@ -17,7 +17,7 @@ export class AppController {
         console.log("Hello");
     }
 
-    @Post("api/v1/saveImg2")
+    @Post("v1/saveImg2")
     @UseGuards(AuthGuard)
     @UseInterceptors(FileInterceptor('file'))
     SaveImage2(@UploadedFile() file: Express.Multer.File, @Res() res) {

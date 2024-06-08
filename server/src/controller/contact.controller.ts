@@ -2,7 +2,7 @@ import {Body, Controller, Get, Param, Post, UseGuards} from "@nestjs/common";
 import {ContactService} from "../service/contact.service";
 import {AuthGuard} from "../guard/auth.guard";
 
-@Controller("api/v1/contact")
+@Controller("v1/contact")
 export class ContactController {
     constructor(private contactService: ContactService) {
     }

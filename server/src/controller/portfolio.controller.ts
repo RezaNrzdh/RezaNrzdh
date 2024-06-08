@@ -6,7 +6,7 @@ import {PortfolioService} from "../service/portfolio.service";
 import {AuthGuard} from "../guard/auth.guard";
 
 
-@Controller("api/v1/portfolio")
+@Controller("v1/portfolio")
 export class PortfolioController {
     constructor(private portfolioService: PortfolioService) {}
 
